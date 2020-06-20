@@ -5,9 +5,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<<<<<<< Loagin-page
-
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LoginController">
     <left>
         <AnchorPane maxHeight="700.0" prefHeight="200.0" prefWidth="450.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
@@ -39,7 +36,7 @@
         </AnchorPane>
     </right>
 </BorderPane>
-=======
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LoginWindow">
 <children>
     <Pane fx:id="pane1" layoutX="100.0" layoutY="50.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -72,4 +69,4 @@
     </Pane>
 </children>
 </AnchorPane>
->>>>>>> master
+
