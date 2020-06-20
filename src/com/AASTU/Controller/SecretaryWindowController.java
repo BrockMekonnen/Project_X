@@ -1,4 +1,4 @@
-package com.AASTU.controller;
+package com.AASTU.Controller;
 
 public class SecretaryWindowController {
 }
