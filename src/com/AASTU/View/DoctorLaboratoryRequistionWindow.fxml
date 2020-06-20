@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="LaboratoryRequistionForm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1380.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorLaboratoryWindowController">
     <children>
-        <AnchorPane layoutX="-5.0" opacity="0.83" prefHeight="726.0" prefWidth="1380.0" style="-fx-background-color: #00000080;">
+        <AnchorPane layoutX="-5.0" opacity="0.83" prefHeight="740.0" prefWidth="1380.0" style="-fx-background-color: #00000080;">
             <children>
                 <AnchorPane fx:id="RequistionPane" layoutX="94.0" layoutY="1.0" prefHeight="725.0" prefWidth="1183.0" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-radius: 50px; -fx-background-radius: 50px;">
                     <children>
