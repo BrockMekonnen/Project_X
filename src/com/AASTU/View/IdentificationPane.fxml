@@ -13,41 +13,10 @@
 
 <AnchorPane prefHeight="776.0" prefWidth="1374.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.IdentificationController">
    <children>
-      <ImageView fitHeight="791.0" fitWidth="1377.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Resource/imagepage.png" />
-         </image>
-      </ImageView>
-      <AnchorPane id="IdentificationPane1" fx:id="IdentificationPane1" prefHeight="495.0" prefWidth="1378.0" style="-fx-background-color: #000;">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #04afff80;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="971.0" layoutY="217.0" prefHeight="776.0" prefWidth="1378.0" style="-fx-background-color: #00000080;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="548.0" fitWidth="1378.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Resource/banner.jpg" />
-               </image>
-            </ImageView>
-         </children></AnchorPane>
-      <AnchorPane id="IdentificationPane2" fx:id="IdentificationPane2" prefHeight="776.0" prefWidth="1377.0">
-         <children>
-            <ImageView fitHeight="639.0" fitWidth="1377.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Resource/laboratoryImageidentification.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane id="IdentificationPane3" fx:id="IdentificationPane3" prefHeight="743.0" prefWidth="1377.0" style="-fx-background-color: #ffff;">
-         <children>
-            <ImageView fitHeight="776.0" fitWidth="1377.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Resource/6.jpg" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="-1.0" prefHeight="438.0" prefWidth="1378.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" />
-      <AnchorPane layoutX="971.0" layoutY="217.0" prefHeight="776.0" prefWidth="1378.0" style="-fx-background-color: #00000020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane fx:id="FourInOnePane" layoutX="243.0" layoutY="208.0" prefHeight="521.0" prefWidth="893.0" style="-fx-background-color: #00000060;">
+            <AnchorPane fx:id="FourInOnePane" layoutX="241.0" layoutY="127.0" prefHeight="521.0" prefWidth="893.0" style="-fx-background-color: #00000050;">
                <children>
                   <GridPane prefHeight="522.0" prefWidth="893.0">
                     <columnConstraints>
@@ -61,51 +30,23 @@
                      <children>
                         <JFXButton fx:id="DoctorIdentificationBTN" alignment="CENTER" buttonType="RAISED" opacity="0.76" prefHeight="334.0" prefWidth="448.0" style="-fx-background-color: #04afff; -fx-border-color: #ffffff50;" text="DOCTOR" textFill="WHITE">
                            <font>
-                              <Font name="Arial Black" size="22.0" />
+                              <Font name="Georgia" size="22.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="238.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/Doctor.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </JFXButton>
                         <JFXButton fx:id="LaboratoryIdentificaitonBTN" alignment="CENTER" buttonType="RAISED" opacity="0.76" prefHeight="334.0" prefWidth="448.0" style="-fx-background-color: #04afff; -fx-border-color: #ffffff50;" text="LABORATORY" textFill="#e1e1e1" GridPane.columnIndex="1">
                            <font>
-                              <Font name="Arial Black" size="22.0" />
+                              <Font name="Georgia" size="22.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="226.0" fitWidth="299.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/laboratory1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </JFXButton>
                         <JFXButton fx:id="AdminIdentificationBTN" alignment="CENTER" buttonType="RAISED" opacity="0.76" prefHeight="334.0" prefWidth="448.0" style="-fx-background-color: #04afff; -fx-border-color: #ffffff50;" text="ADMINISTRATOR" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Arial Black" size="15.0" />
+                              <Font name="Georgia" size="15.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="208.0" fitWidth="239.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/Manager.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </JFXButton>
                         <JFXButton fx:id="CardRoomIdentificationBTN" alignment="CENTER" buttonType="RAISED" opacity="0.76" prefHeight="334.0" prefWidth="448.0" style="-fx-background-color: #04afff; -fx-border-color: #ffffff50;" text="CARD ROOM" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Arial Black" size="22.0" />
+                              <Font name="Georgia" size="22.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="163.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/cardroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </JFXButton>
                      </children>
                   </GridPane>
