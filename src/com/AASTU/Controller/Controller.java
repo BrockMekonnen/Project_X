@@ -8,7 +8,7 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-class Controller implements Initializable {
+public class Controller implements Initializable {
 
     @FXML
     private Pane pane1;
