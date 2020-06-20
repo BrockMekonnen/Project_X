@@ -8,7 +8,8 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-public class Controller implements Initializable {
+
+public class LoginWindow implements Initializable {
 
     @FXML
     private Pane pane1;
@@ -24,10 +25,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pane1.setStyle("-fx-background-image: url(\"com/AASTU/Resource/1.jpg\")");
-        pane2.setStyle("-fx-background-image: url(\"com/AASTU/Resource/2.jpg\")");
-        pane3.setStyle("-fx-background-image: url(\"com/AASTU/Resource/3.jpg\")");
-        pane4.setStyle("-fx-background-image: url(\"com/AASTU/Resource/4.jpg\")");
+
 //        pane4.setStyle("-fx-background-image: url(\"/sample/3.jpg\")");
 
         backgroundAnimation();
