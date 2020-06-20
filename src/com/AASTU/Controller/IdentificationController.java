@@ -15,16 +15,7 @@ import java.util.ResourceBundle;
 
 public class IdentificationController implements Initializable{
     @FXML
-    private AnchorPane IdentificationPane3;
-
-    @FXML
-    private AnchorPane IdentificationPane1;
-
-    @FXML
     private JFXButton CardRoomIdentificationBTN;
-
-    @FXML
-    private AnchorPane IdentificationPane2;
 
     @FXML
     private AnchorPane FourInOnePane;
@@ -41,48 +32,8 @@ public class IdentificationController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         FourInOnePane.setVisible(false);
-        SlideThePane();
         TransitionAnimation();
        Animation1();
-    }
-    public void SlideThePane(){
-        FadeTransition fadeTransition=new FadeTransition(Duration.seconds(9),IdentificationPane3);
-        fadeTransition.setFromValue(1);
-        fadeTransition.setToValue(0);
-        fadeTransition.play();
-        fadeTransition.setOnFinished(event -> {
-            FadeTransition fadeTransition1=new FadeTransition(Duration.seconds(4),IdentificationPane2);
-            fadeTransition1.setFromValue(1);
-            fadeTransition1.setToValue(0);
-            fadeTransition1.play();
-            fadeTransition1.setOnFinished(event1 -> {
-                FadeTransition fadeTransition2=new FadeTransition(Duration.seconds(4),IdentificationPane1);
-                fadeTransition2.setFromValue(1);
-                fadeTransition2.setToValue(0);
-                fadeTransition2.play();
-                fadeTransition2.setOnFinished(event2 -> {
-                    FadeTransition fadeTransition3=new FadeTransition(Duration.seconds(4),IdentificationPane1);
-                    fadeTransition3.setFromValue(0);
-                    fadeTransition3.setToValue(1);
-                    fadeTransition3.play();
-                    fadeTransition3.setOnFinished(event3 -> {
-                        FadeTransition fadeTransition4=new FadeTransition(Duration.seconds(4),IdentificationPane2);
-                        fadeTransition4.setFromValue(0);
-                        fadeTransition4.setToValue(1);
-                        fadeTransition4.play();
-                        fadeTransition4.setOnFinished(event4 -> {
-                            FadeTransition fadeTransition5=new FadeTransition(Duration.seconds(4),IdentificationPane3);
-                            fadeTransition5.setFromValue(0);
-                            fadeTransition5.setToValue(1);
-                            fadeTransition5.play();
-                            fadeTransition5.setOnFinished(event5 -> {
-                                SlideThePane();
-                            });
-                        });
-                    });
-                });
-            });
-        });
     }
     public void TransitionAnimation(){
         TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(0.1),DoctorIdentificationBTN);
@@ -101,7 +52,7 @@ public class IdentificationController implements Initializable{
     }
     public void Animation1(){
         FourInOnePane.setVisible(true);
-        FadeTransition fadeTransition=new FadeTransition(Duration.seconds(1),FourInOnePane);
+        FadeTransition fadeTransition=new FadeTransition(Duration.seconds(1.5),FourInOnePane);
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(1);
         fadeTransition.play();

@@ -1,4 +1,13 @@
 package com.AASTU.Controller;
 
-public class SecretaryWindowController {
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class SecretaryWindowController implements Initializable{
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

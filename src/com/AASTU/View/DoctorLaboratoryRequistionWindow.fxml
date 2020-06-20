@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane fx:id="LaboratoryRequistionForm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1380.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorLaboratoryWindowController">
+    <children>
+        <AnchorPane layoutX="-5.0" opacity="0.83" prefHeight="740.0" prefWidth="1380.0" style="-fx-background-color: #00000080;">
+            <children>
+                <AnchorPane fx:id="RequistionPane" layoutX="94.0" layoutY="1.0" prefHeight="725.0" prefWidth="1183.0" style="-fx-background-color: #fff; -fx-border-color: #000; -fx-border-radius: 50px; -fx-background-radius: 50px;">
+                    <children>
+                        <AnchorPane prefHeight="66.0" prefWidth="867.0" style="-fx-background-color: #fff; -fx-background-radius: 50px 50px 0px 0px;">
+                            <children>
+                                <Label alignment="CENTER" layoutX="398.0" layoutY="12.0" prefHeight="43.0" prefWidth="455.0" text="Laboratory Requisition Form">
+                                    <font>
+                                        <Font name="Arial Black" size="29.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="51.0" layoutY="131.0" prefHeight="592.0" prefWidth="248.0" style="-fx-border-radius: 50px; -fx-border-color: #000; -fx-background-color: #fff; -fx-background-radius: 50px;">
+                            <effect>
+                                <InnerShadow choke="0.28" height="44.72" radius="18.895" width="32.86" />
+                            </effect>
+                            <children>
+                                <VBox layoutX="7.0" layoutY="52.0" prefHeight="499.0" prefWidth="232.0">
+                                    <children>
+                                        <JFXCheckBox fx:id="DrStoolTestCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="STOOL TEST">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrConsistencyCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Consistency">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrOPCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="O/P">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrConcentrationCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Concentration">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrOccultBloodCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Occult Blood">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrChemistryCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Chemistry">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrFBSRBSCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="FBS/RBS">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrSGOTCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="SGOT">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrSGPTCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="SGPT">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrAlkalinePhosphateCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Alkaline Phosphate">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrBilirubinTotalCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Bilirubin (Total)">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrBillirubinDirectCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Bilirubin(Direct)">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrUreaCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Urea">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrBUNCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="BUN">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrCreatinineCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Creatinine">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrUricAcidCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Uric Acid">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrTotalProteinCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Total Protein">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrTriglyceridesCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Triglycerides">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrCholestrolCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Cholesterol">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrSodiumCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Sodium">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                    </children>
+                                </VBox>
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="2.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 50px 50px 0px 0px; -fx-background-color: #fff;" text="Blood Film">
+                                    <font>
+                                        <Font name="Arial Black" size="14.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="578.0" layoutY="457.0" prefHeight="261.0" prefWidth="248.0" style="-fx-border-radius: 50px; -fx-border-color: #000; -fx-background-color: #fff; -fx-background-radius: 50px;">
+                            <effect>
+                                <InnerShadow choke="0.28" height="44.72" radius="18.895" width="32.86" />
+                            </effect>
+                            <children>
+                                <Label alignment="CENTER" layoutX="30.0" layoutY="2.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 50px 50px 0px 0px; -fx-background-color: #fff;" text="MICROSCOPY">
+                                    <font>
+                                        <Font name="Arial Black" size="14.0" />
+                                    </font>
+                                </Label>
+                                <VBox layoutX="28.0" layoutY="30.0" prefHeight="210.0" prefWidth="192.0">
+                                    <children>
+                                        <JFXCheckBox fx:id="DrEpitCellsCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Epit Cells">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrWBMicroscopyCCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="WBC">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrRBCCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="RBC">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrCastsCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Casts">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrHCGTestCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="HCG Test">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrResultsCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Results">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrHPyloriCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="H.Pylori">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrHBCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="HB">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="311.0" layoutY="421.0" prefHeight="297.0" prefWidth="248.0" style="-fx-border-radius: 50px; -fx-border-color: #000; -fx-background-color: #fff; -fx-background-radius: 50px;">
+                            <effect>
+                                <InnerShadow choke="0.28" height="44.72" radius="18.895" width="32.86" />
+                            </effect>
+                            <children>
+                                <Label alignment="CENTER" layoutX="45.0" layoutY="2.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 50px 50px 0px 0px; -fx-background-color: #fff;" text="SEROLOGY">
+                                    <font>
+                                        <Font name="Arial Black" size="14.0" />
+                                    </font>
+                                </Label>
+                                <VBox layoutX="12.0" layoutY="38.0" prefHeight="219.0" prefWidth="192.0">
+                                    <children>
+                                        <JFXCheckBox fx:id="DrVDRLCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="VDRL">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrWidalCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Widal II">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrOCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="O:">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrPWellFelixCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="P.Well Felix">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrHBSAgCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="HBSAg">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrCRPCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="CRP">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrASOCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="ASO ">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrRheumatiodFactorCheckbox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Rheumatiod Factor">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                        <Label fx:id="DrLaboratoryRequisitionNameLB" layoutX="133.0" layoutY="78.0" prefHeight="25.0" prefWidth="228.0" style="-fx-border-color: #000;">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </Label>
+                        <Label layoutX="51.0" layoutY="78.0" prefHeight="25.0" prefWidth="83.0" text="Full Name :">
+                            <font>
+                                <Font name="Arial Black" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="414.0" layoutY="78.0" prefHeight="25.0" prefWidth="40.0" text="Age :">
+                            <font>
+                                <Font name="Arial Black" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="DrLaboratoryRequisitionAgeLB" layoutX="454.0" layoutY="78.0" prefHeight="25.0" prefWidth="46.0" style="-fx-border-color: #000;">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </Label>
+                        <Label layoutX="548.0" layoutY="78.0" prefHeight="25.0" prefWidth="40.0" text="Sex :">
+                            <font>
+                                <Font name="Arial Black" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="DrLaboratoryRequisitionSexLB" layoutX="588.0" layoutY="78.0" prefHeight="25.0" prefWidth="46.0" style="-fx-border-color: #000;">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </Label>
+                        <Label layoutX="679.0" layoutY="78.0" prefHeight="25.0" prefWidth="46.0" text="Date :">
+                            <font>
+                                <Font name="Arial Black" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="DrLaboratoryRequisitionDateLB" layoutX="725.0" layoutY="78.0" prefHeight="25.0" prefWidth="124.0" style="-fx-border-color: #000;">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </Label>
+                        <AnchorPane layoutX="311.0" layoutY="131.0" prefHeight="275.0" prefWidth="248.0" style="-fx-border-radius: 50px; -fx-border-color: #000; -fx-background-color: #fff; -fx-background-radius: 50px;">
+                            <effect>
+                                <InnerShadow choke="0.28" height="44.72" radius="18.895" width="32.86" />
+                            </effect>
+                            <children>
+                                <VBox layoutX="7.0" layoutY="42.0" prefHeight="181.0" prefWidth="232.0">
+                                    <children>
+                                        <JFXCheckBox fx:id="DrWBCHematologyCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="WBC">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrDff" checkedColor="#04afff" prefHeight="25.0" prefWidth="226.0" text="Diff N__%L__% E__% M__% B__%">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrHgbCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Hgb">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrHctCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Hct">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrESRCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="ESR">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="check it">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrBloodGroupRHCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Blood Group RH">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                    </children>
+                                </VBox>
+                                <Label alignment="CENTER" layoutX="38.0" layoutY="2.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 50px 50px 0px 0px; -fx-background-color: #fff;" text="HEMATOLOGY">
+                                    <font>
+                                        <Font name="Arial Black" size="14.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="578.0" layoutY="131.0" prefHeight="310.0" prefWidth="248.0" style="-fx-border-radius: 50px; -fx-border-color: #000; -fx-background-color: #fff; -fx-background-radius: 50px;">
+                            <effect>
+                                <InnerShadow height="38.79" radius="13.4475" width="17.0" />
+                            </effect>
+                            <children>
+                                <VBox layoutX="20.0" layoutY="35.0" prefHeight="261.0" prefWidth="192.0">
+                                    <children>
+                                        <JFXCheckBox fx:id="DrColorCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Color">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrAppearanceCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Appearance">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrPHCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="PH">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrPSGCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="PSG">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrProteinCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Protein">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrGlucoseCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Glucose">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrKetoneCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Ketone">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrBilrubinCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Bilrubin">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrUrobilinogenCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Urobilinogen">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrBloodCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Blood">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                    </children>
+                                </VBox>
+                                <Label alignment="CENTER" layoutX="36.0" layoutY="2.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 50px 50px 0px 0px; -fx-background-color: #fff;" text="URINALYSIS">
+                                    <font>
+                                        <Font name="Arial Black" size="14.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="849.0" layoutY="131.0" prefHeight="78.0" prefWidth="248.0" style="-fx-border-radius: 50px; -fx-border-color: #00000050; -fx-background-color: #fff; -fx-background-radius: 50px;">
+                            <children>
+                                <Label alignment="CENTER" layoutX="30.0" layoutY="2.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 50px 50px 0px 0px; -fx-background-color: #fff;" text="BACTERIOLOGY">
+                                    <font>
+                                        <Font name="Arial Black" size="14.0" />
+                                    </font>
+                                </Label>
+                                <VBox layoutX="28.0" layoutY="30.0" prefHeight="35.0" prefWidth="192.0">
+                                    <children>
+                                        <JFXCheckBox fx:id="DrSampleCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Sample">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <effect>
+                                <InnerShadow height="38.79" radius="14.4475" />
+                            </effect>
+                        </AnchorPane>
+                        <AnchorPane layoutX="849.0" layoutY="226.0" prefHeight="143.0" prefWidth="248.0" style="-fx-border-radius: 50px; -fx-border-color: #00000050; -fx-background-color: #fff; -fx-background-radius: 50px;">
+                            <children>
+                                <Label alignment="CENTER" layoutX="30.0" layoutY="2.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 50px 50px 0px 0px; -fx-background-color: #fff;" text="KOH">
+                                    <font>
+                                        <Font name="Arial Black" size="14.0" />
+                                    </font>
+                                </Label>
+                                <VBox layoutX="28.0" layoutY="30.0" prefHeight="107.0" prefWidth="192.0">
+                                    <children>
+                                        <JFXCheckBox fx:id="DrGramStainCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Gram Stain">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrWetFilmCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Wet Film">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrAFBCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="AFB">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                        <JFXCheckBox fx:id="DrCultureCheckBox" checkedColor="#04afff" prefHeight="25.0" prefWidth="192.0" text="Culture">
+                                            <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                            </font>
+                                        </JFXCheckBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <effect>
+                                <InnerShadow height="38.79" radius="14.4475" />
+                            </effect>
+                        </AnchorPane>
+                        <JFXCheckBox fx:id="DrNormalValueCheckBox" checkedColor="#04afff" layoutX="905.0" layoutY="409.0" prefHeight="25.0" prefWidth="145.0" text="NORMAL VALUE">
+                            <font>
+                                <Font name="Arial Black" size="12.0" />
+                            </font>
+                        </JFXCheckBox>
+                        <JFXCheckBox fx:id="DrHIVAIDSCheckBok" checkedColor="#04afff" layoutX="905.0" layoutY="445.0" prefHeight="25.0" prefWidth="114.0" text="HIV/AIDS">
+                            <font>
+                                <Font name="Arial Black" size="12.0" />
+                            </font>
+                        </JFXCheckBox>
+                        <JFXButton fx:id="DrLaboratorySendBTN" layoutX="1073.0" layoutY="641.0" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #04afff; -fx-background-radius: 50px;" text="Send" />
+                        <JFXTextField fx:id="RequistedDrNameTF" focusColor="#04afff" layoutX="923.0" layoutY="647.0" prefHeight="25.0" prefWidth="150.0" promptText="Requested By">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </JFXTextField>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
