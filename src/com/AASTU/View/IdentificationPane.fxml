@@ -15,14 +15,14 @@
    <children>
       <ImageView fitHeight="791.0" fitWidth="1377.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@imagepage.png" />
+            <Image url="@../Resource/imagepage.png" />
          </image>
       </ImageView>
       <AnchorPane id="IdentificationPane1" fx:id="IdentificationPane1" prefHeight="495.0" prefWidth="1378.0" style="-fx-background-color: #000;">
          <children>
             <ImageView fitHeight="548.0" fitWidth="1378.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@banner.jpg" />
+                  <Image url="@../Resource/banner.jpg" />
                </image>
             </ImageView>
          </children></AnchorPane>
@@ -30,7 +30,7 @@
          <children>
             <ImageView fitHeight="639.0" fitWidth="1377.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@laboratoryImageidentification.png" />
+                  <Image url="@../Resource/laboratoryImageidentification.png" />
                </image>
             </ImageView>
          </children>
@@ -39,7 +39,7 @@
          <children>
             <ImageView fitHeight="776.0" fitWidth="1377.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@6.jpg" />
+                  <Image url="@../Resource/6.jpg" />
                </image>
             </ImageView>
          </children>
@@ -66,7 +66,7 @@
                            <graphic>
                               <ImageView fitHeight="238.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Doctor.png" />
+                                    <Image url="@../Resource/Doctor.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -78,7 +78,7 @@
                            <graphic>
                               <ImageView fitHeight="226.0" fitWidth="299.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@laboratory1.png" />
+                                    <Image url="@../Resource/laboratory1.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -90,7 +90,7 @@
                            <graphic>
                               <ImageView fitHeight="208.0" fitWidth="239.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Manager.png" />
+                                    <Image url="@../Resource/Manager.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -102,7 +102,7 @@
                            <graphic>
                               <ImageView fitHeight="163.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@cardroom.png" />
+                                    <Image url="@../Resource/cardroom.png" />
                                  </image>
                               </ImageView>
                            </graphic>
