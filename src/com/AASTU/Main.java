@@ -11,12 +11,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/DoctorWindow.fxml"));
-        Parent pane = loader.load();
-        Scene scene = new Scene(pane);
-        scene.getStylesheets().addAll(Main.class.getResource("View/SecretaryWindow.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
     }
 
     public static void main(String[] args) {
