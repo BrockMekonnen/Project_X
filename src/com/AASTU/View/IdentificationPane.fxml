@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="776.0" prefWidth="1374.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.IdentificationController">
+<AnchorPane prefHeight="776.0" prefWidth="1374.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.IdentificationController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #04afff80;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane layoutX="971.0" layoutY="217.0" prefHeight="776.0" prefWidth="1378.0" style="-fx-background-color: #00000080;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -32,21 +30,49 @@
                            <font>
                               <Font name="Georgia" size="22.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="222.0" fitWidth="328.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/Doctor.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </JFXButton>
                         <JFXButton fx:id="LaboratoryIdentificaitonBTN" alignment="CENTER" buttonType="RAISED" opacity="0.76" prefHeight="334.0" prefWidth="448.0" style="-fx-background-color: #04afff; -fx-border-color: #ffffff50;" text="LABORATORY" textFill="#e1e1e1" GridPane.columnIndex="1">
                            <font>
                               <Font name="Georgia" size="22.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="229.0" fitWidth="257.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/laboratory1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </JFXButton>
                         <JFXButton fx:id="AdminIdentificationBTN" alignment="CENTER" buttonType="RAISED" opacity="0.76" prefHeight="334.0" prefWidth="448.0" style="-fx-background-color: #04afff; -fx-border-color: #ffffff50;" text="ADMINISTRATOR" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Georgia" size="15.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="227.0" fitWidth="236.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/Manager.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </JFXButton>
                         <JFXButton fx:id="CardRoomIdentificationBTN" alignment="CENTER" buttonType="RAISED" opacity="0.76" prefHeight="334.0" prefWidth="448.0" style="-fx-background-color: #04afff; -fx-border-color: #ffffff50;" text="CARD ROOM" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
                               <Font name="Georgia" size="22.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="240.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/cardroom.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </JFXButton>
                      </children>
                   </GridPane>

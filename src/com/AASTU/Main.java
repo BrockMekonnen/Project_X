@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader loader= new FXMLLoader(Main.class.getResource("View/DoctorWindow.fxml"));
+        FXMLLoader loader= new FXMLLoader(Main.class.getResource("View/IdentificationPane.fxml"));
         Parent pane=loader.load();
         Scene s=new Scene(pane);
         primaryStage.setScene(s);

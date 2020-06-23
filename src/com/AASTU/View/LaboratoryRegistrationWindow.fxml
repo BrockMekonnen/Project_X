@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="PatientFormWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1370.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorRegistrationWindowController">
+<AnchorPane fx:id="PatientFormWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1370.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LaboratoryRegistrationWindowController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff50;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -24,7 +24,7 @@
                     <children>
                         <AnchorPane prefHeight="69.0" prefWidth="798.0" style="-fx-background-color: #fff; -fx-background-radius: 50px 50px 0px 0px;">
                             <children>
-                                <Label alignment="CENTER" layoutX="140.0" layoutY="9.0" prefHeight="32.0" prefWidth="518.0" text="Doctors Registration Form">
+                                <Label alignment="CENTER" layoutX="110.0" layoutY="6.0" prefHeight="38.0" prefWidth="578.0" text="Laboratory Technician Registration Form">
                                     <font>
                                         <Font name="Arial Black" size="25.0" />
                                     </font>
@@ -36,13 +36,13 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <DatePicker fx:id="DoctorAddDate" layoutX="692.0" layoutY="83.0" />
+                        <DatePicker fx:id="LabTechnicianAddDate" layoutX="692.0" layoutY="83.0" />
                         <Label layoutX="642.0" layoutY="85.0" prefHeight="22.0" prefWidth="47.0" text="Date :">
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
                         </Label>
-                        <Label layoutX="604.0" layoutY="128.0" prefHeight="22.0" prefWidth="88.0" text="Doctor Id :">
+                        <Label layoutX="539.0" layoutY="128.0" prefHeight="22.0" prefWidth="153.0" text="Lab. Technician Id:">
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
@@ -52,7 +52,7 @@
                                 <Font name="Arial Black" size="14.0" />
                             </font>
                         </Label>
-                        <JFXTextField fx:id="DoctorFirsNameTF" focusColor="#04afff" labelFloat="true" layoutX="143.0" layoutY="219.0" prefHeight="25.0" prefWidth="153.0">
+                        <JFXTextField fx:id="LabTechnicianFirsNameTF" focusColor="#04afff" labelFloat="true" layoutX="143.0" layoutY="219.0" prefHeight="25.0" prefWidth="153.0">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -70,7 +70,7 @@
                                 <Font name="Arial Black" size="14.0" />
                             </font>
                         </Label>
-                        <JFXTextField fx:id="DoctorLastName" focusColor="#04afff" layoutX="589.0" layoutY="219.0" prefHeight="25.0" prefWidth="153.0">
+                        <JFXTextField fx:id="LabTechnicianLastName" focusColor="#04afff" layoutX="589.0" layoutY="219.0" prefHeight="25.0" prefWidth="153.0">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -98,7 +98,7 @@
                                 <Font name="Arial Black" size="14.0" />
                             </font>
                         </Label>
-                        <JFXTextField fx:id="DoctorPhoneNumberTF" focusColor="#04afff" layoutX="173.0" layoutY="420.0" prefHeight="25.0" prefWidth="160.0" promptText="+251">
+                        <JFXTextField fx:id="LabTechnicianPhoneNumberTF" focusColor="#04afff" layoutX="173.0" layoutY="420.0" prefHeight="25.0" prefWidth="160.0" promptText="+251">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -111,7 +111,7 @@
                                 <Font name="Arial Black" size="14.0" />
                             </font>
                         </Label>
-                        <JFXTextField fx:id="DoctorAddressKebeleTF" focusColor="#04afff" layoutX="132.0" layoutY="581.0" prefHeight="25.0" prefWidth="153.0" promptText="Kebele">
+                        <JFXTextField fx:id="LabTechnicianAddressKebeleTF" focusColor="#04afff" layoutX="132.0" layoutY="581.0" prefHeight="25.0" prefWidth="153.0" promptText="Kebele">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -119,7 +119,7 @@
                                 <Font size="16.0" />
                             </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="DoctorAddressSubCityTF" focusColor="#04afff" layoutX="132.0" layoutY="527.0" prefHeight="25.0" prefWidth="153.0" promptText="Sub City">
+                        <JFXTextField fx:id="LabTechnicianAddressSubCityTF" focusColor="#04afff" layoutX="132.0" layoutY="527.0" prefHeight="25.0" prefWidth="153.0" promptText="Sub City">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -127,7 +127,7 @@
                                 <Font size="16.0" />
                             </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="DoctorAddressCityTF" focusColor="#04afff" layoutX="132.0" layoutY="479.0" prefHeight="25.0" prefWidth="153.0" promptText="City">
+                        <JFXTextField fx:id="LabTechnicianAddressCityTF" focusColor="#04afff" layoutX="132.0" layoutY="479.0" prefHeight="25.0" prefWidth="153.0" promptText="City">
                             <padding>
                                 <Insets left="10.0" />
                             </padding>
@@ -156,27 +156,14 @@
                                 </RadialGradient>
                             </ripplerFill>
                         </JFXButton>
-                  <Label layoutX="494.0" layoutY="277.0" prefHeight="22.0" prefWidth="95.0" text="Speciality :">
-                     <font>
-                        <Font name="Arial Black" size="14.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField fx:id="DoctorUserName" focusColor="#04afff" layoutX="594.0" layoutY="276.0" prefHeight="25.0" prefWidth="153.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </JFXTextField>
-                  <JFXTextField fx:id="DoctorWorkingHoursTF" focusColor="#04afff" labelFloat="true" layoutX="160.0" layoutY="357.0" prefHeight="25.0" prefWidth="153.0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </JFXTextField>
+                        <JFXTextField fx:id="LabTechnicianWorkingHoursTF" focusColor="#04afff" labelFloat="true" layoutX="160.0" layoutY="357.0" prefHeight="25.0" prefWidth="153.0">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </JFXTextField>
                     </children>
                 </AnchorPane>
             </children>
