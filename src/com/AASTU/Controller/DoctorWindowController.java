@@ -38,18 +38,6 @@ public class DoctorWindowController implements Initializable {
             translation(1);
         });
 
-//        opacityPane.setVisible(false);
-//        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), slidePane);
-//        translateTransition.setByX(-600);
-//        translateTransition.play();
-////
-//        imageDrawer.setOnMouseClicked(event -> {
-//            opacityPane.setVisible(true);
-//            TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), slidePane);
-//            translateTransition1.setByX(+600);
-//            translateTransition1.play();
-//
-//        });
     }
 
     public void translation1(){
@@ -65,11 +53,6 @@ public class DoctorWindowController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
         translation1();
-//        opacityPane.setVisible(true);
-//        TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), slidePane);
-//        translateTransition1.setByX(+600);
-//        translateTransition1.play();
-
     }
 
     public void translation(double second){

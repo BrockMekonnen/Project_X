@@ -2,186 +2,194 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="865.0" prefWidth="1640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LaboratoryWindowController">
-   <children>
-      <VBox layoutY="135.0" prefHeight="740.0" prefWidth="301.0" style="-fx-background-color: #2262c6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-         <children>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Pending Patients From Doctor" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+    <children>
+        <VBox layoutY="135.0" prefHeight="740.0" prefWidth="301.0" style="-fx-background-color: #2262c6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+            <children>
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Pending Patients From Doctor" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Resource/icons8_person_male_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Test Patients " textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Resource/icons8_test_tube_32px_1.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="302.0" text="List All" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Resource/icons8_list_64px_1.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </JFXButton>
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="View Laboratory" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Resource/icons8_line_chart_50px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </JFXButton>
+            </children>
+            <padding>
+                <Insets top="200.0" />
+            </padding>
+        </VBox>
+        <ScrollPane layoutX="626.0" layoutY="157.0" prefHeight="740.0" prefWidth="1339.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="125.0">
+            <content>
+                <TableView fx:id="LaboratoryTableView" prefHeight="740.0" prefWidth="1339.0">
+                    <columns>
+                        <TableColumn fx:id="PatientIdCol" maxWidth="3000.0" prefWidth="75.0" text="Patient Id" />
+                        <TableColumn fx:id="PatientNameCol" prefWidth="75.0" text="Patient Name" />
+                        <TableColumn fx:id="PatientSexCol" maxWidth="1000.0" prefWidth="75.0" text="Sex" />
+                        <TableColumn fx:id="PatientAgeCol" maxWidth="1000.0" prefWidth="75.0" text="Age" />
+                        <TableColumn editable="false" prefWidth="75.0" sortable="false" text="Address">
+                            <columns>
+                                <TableColumn fx:id="PatientCityCol" editable="false" maxWidth="3000.0" prefWidth="75.0" sortable="false" text="City" />
+                                <TableColumn fx:id="PatientSubCityCol" editable="false" maxWidth="3000.0" prefWidth="75.0" sortable="false" text="Sub City" />
+                                <TableColumn fx:id="PatientKebeleCol" editable="false" maxWidth="3000.0" prefWidth="75.0" sortable="false" text="Kebele" />
+                            </columns>
+                        </TableColumn>
+                        <TableColumn fx:id="PatientPaymentCol" editable="false" maxWidth="2500.0" prefWidth="75.0" sortable="false" text="Payment(Birr)" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </content>
+        </ScrollPane>
+        <AnchorPane fx:id="BarPane" prefHeight="69.0" prefWidth="1640.0" style="-fx-background-color: #2262c6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <JFXButton fx:id="OptionBTN" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="65.0" layoutY="7.0" onAction="#OptionAction" prefHeight="53.0" prefWidth="52.0" text="Icon">
+                    <graphic>
+                        <!--<FontAwesomeIcon iconName="ALIGN_JUSTIFY" size="40" />-->
+                    </graphic>
+                    <ripplerFill>
+                        <LinearGradient endX="0.24285714285714288" endY="0.4380952380952381" startX="0.6857142857142857" startY="0.6857142857142857">
+                            <stops>
+                                <Stop color="WHITE" />
+                                <Stop color="#04afff" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
                <graphic>
-                  <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Resource/icons8_person_male_32px.png" />
+                        <Image url="@../Resource/icons8_menu_26px_1.png" />
                      </image>
                   </ImageView>
                </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Test Patients " textFill="WHITE" textOverrun="CLIP" wrapText="true">
-               <graphic>
-                  <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resource/icons8_test_tube_32px_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="302.0" text="List All" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-               <graphic>
-                  <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resource/icons8_list_64px_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="View Laboratory" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-               <graphic>
-                  <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resource/icons8_line_chart_50px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-         </children>
-         <padding>
-            <Insets top="200.0" />
-         </padding>
-      </VBox>
-      <ScrollPane layoutX="626.0" layoutY="157.0" prefHeight="740.0" prefWidth="1339.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="125.0">
-         <content>
-            <TableView fx:id="LaboratoryTableView" prefHeight="740.0" prefWidth="1339.0">
-              <columns>
-                <TableColumn fx:id="PatientIdCol" maxWidth="3000.0" prefWidth="75.0" text="Patient Id" />
-                <TableColumn fx:id="PatientNameCol" prefWidth="75.0" text="Patient Name" />
-                  <TableColumn fx:id="PatientSexCol" maxWidth="1000.0" prefWidth="75.0" text="Sex" />
-                  <TableColumn fx:id="PatientAgeCol" maxWidth="1000.0" prefWidth="75.0" text="Age" />
-                  <TableColumn editable="false" prefWidth="75.0" sortable="false" text="Address">
-                     <columns>
-                        <TableColumn fx:id="PatientCityCol" editable="false" maxWidth="3000.0" prefWidth="75.0" sortable="false" text="City" />
-                        <TableColumn fx:id="PatientSubCityCol" editable="false" maxWidth="3000.0" prefWidth="75.0" sortable="false" text="Sub City" />
-                        <TableColumn fx:id="PatientKebeleCol" editable="false" maxWidth="3000.0" prefWidth="75.0" sortable="false" text="Kebele" />
-                     </columns>
-                  </TableColumn>
-                  <TableColumn fx:id="PatientPaymentCol" editable="false" maxWidth="2500.0" prefWidth="75.0" sortable="false" text="Payment(Birr)" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </content>
-      </ScrollPane>
-      <AnchorPane fx:id="BarPane" prefHeight="69.0" prefWidth="1640.0" style="-fx-background-color: #2262c6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-             <JFXButton fx:id="OptionBTN" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="65.0" layoutY="7.0" onAction="#OptionAction" prefHeight="53.0" prefWidth="52.0" text="Icon">
-               <graphic>
-                  <!--<FontAwesomeIcon iconName="ALIGN_JUSTIFY" size="40" />-->
-               </graphic>
-               <ripplerFill>
-                  <LinearGradient endX="0.24285714285714288" endY="0.4380952380952381" startX="0.6857142857142857" startY="0.6857142857142857">
-                     <stops>
-                        <Stop color="WHITE" />
-                        <Stop color="#04afff" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </ripplerFill>
-            </JFXButton>
-            <Text fill="WHITE" layoutX="717.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clinic Name">
-               <font>
-                  <Font size="39.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <JFXTextField layoutX="1428.0" layoutY="82.0" prefHeight="25.0" prefWidth="192.0" promptText="Search">
-         <font>
-            <Font name="Georgia" size="12.0" />
-         </font>
-      </JFXTextField>
-      <!--<FontAwesomeIcon iconName="SEARCH" layoutX="1400.0" layoutY="101.0" size="20" />-->
-      <AnchorPane fx:id="CoverPane" layoutX="-1.0" layoutY="69.0" prefHeight="750.0" prefWidth="1370.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane fx:id="AccountSettingPane" layoutY="68.0" prefHeight="797.0" prefWidth="301.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="68.0">
-               <children>
-                  <VBox prefHeight="797.0" prefWidth="301.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-                     <children>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Change Password" textOverrun="CLIP" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/icons8_privacy_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Help" textOverrun="CLIP" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/icons8_help_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="302.0" text="Sign Out" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/icons8_logout_rounded_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Exit" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resource/icons8_cancel_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="50.0" />
-                           </padding>
-                        </JFXButton>
-                     </children>
-                     <padding>
-                        <Insets top="200.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-   </children>
+                </JFXButton>
+                <Text fill="WHITE" layoutX="717.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clinic Name">
+                    <font>
+                        <Font size="39.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <JFXTextField layoutX="1428.0" layoutY="82.0" prefHeight="25.0" prefWidth="192.0" promptText="Search">
+            <font>
+                <Font name="Georgia" size="12.0" />
+            </font>
+        </JFXTextField>
+      <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="1381.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resource/icons8_search_filled_50px.png" />
+         </image>
+      </ImageView>
+        <!--<FontAwesomeIcon iconName="SEARCH" layoutX="1400.0" layoutY="101.0" size="20" />-->
+        <AnchorPane fx:id="CoverPane" layoutX="-1.0" layoutY="69.0" prefHeight="750.0" prefWidth="1370.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane fx:id="AccountSettingPane" layoutY="68.0" prefHeight="797.0" prefWidth="301.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="68.0">
+                    <children>
+                        <VBox prefHeight="797.0" prefWidth="301.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                            <children>
+                                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Change Password" textOverrun="CLIP" wrapText="true">
+                                    <graphic>
+                                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Resource/icons8_privacy_32px.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <padding>
+                                        <Insets left="50.0" />
+                                    </padding>
+                                </JFXButton>
+                                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Help" textOverrun="CLIP" wrapText="true">
+                                    <graphic>
+                                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Resource/icons8_help_32px.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <padding>
+                                        <Insets left="50.0" />
+                                    </padding>
+                                </JFXButton>
+                                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="302.0" text="Sign Out" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                    <graphic>
+                                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Resource/icons8_logout_rounded_32px.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <padding>
+                                        <Insets left="50.0" />
+                                    </padding>
+                                </JFXButton>
+                                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Exit" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                    <graphic>
+                                        <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../Resource/icons8_cancel_32px.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <padding>
+                                        <Insets left="50.0" />
+                                    </padding>
+                                </JFXButton>
+                            </children>
+                            <padding>
+                                <Insets top="200.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>
