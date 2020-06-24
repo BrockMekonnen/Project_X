@@ -110,6 +110,7 @@ public class LaboratoryWindowController implements Initializable {
         fadeTransition.play();
         translation1();
     }
+
     public void ExitAction(){
         int i= JOptionPane.showConfirmDialog(null,"Are You Sure You Want to Exit The System","Confirmation",JOptionPane.YES_NO_OPTION);
         if(i==JOptionPane.YES_OPTION){
