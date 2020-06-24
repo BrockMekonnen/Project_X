@@ -38,7 +38,6 @@ public class DoctorWindowController implements Initializable {
             translation(1);
         });
 
-
     }
 
     public void translation1(){
@@ -54,7 +53,6 @@ public class DoctorWindowController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
         translation1();
-
 
     }
 
