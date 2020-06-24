@@ -1,0 +1,14 @@
+.menu-bar {
+    -fx-font-family: sans-serif;
+    -fx-font-size: 13px;
+    -fx-padding : 0 20 0 20;
+    -fx-border-color : #29B6F6;
+    -fx-border-width: 0 0 2 0;
+    -fx-vgap : 5;
+    -fx-background-color:  #E1F5FE;
+}
+#pane_3{
+    -fx-border-color : #29B6F6;
+    -fx-border-width: 0 0 2 0;
+
+}
