@@ -1,3 +1,8 @@
-#rootPane{
+#rootPane {
     -fx-background-color: linear-gradient(to right, #283C50, #5AB0E2);
+}
+
+#log_lbl{
+    -fx-font-family: sans-serif;
+    -fx-background-color: linear-gradient(to right, #283C58, #5AB0E8);
 }
