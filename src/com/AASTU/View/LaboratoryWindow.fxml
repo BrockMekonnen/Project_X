@@ -96,7 +96,7 @@
          <children>
              <JFXButton fx:id="OptionBTN" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="65.0" layoutY="7.0" onAction="#OptionAction" prefHeight="53.0" prefWidth="52.0" text="Icon">
                <graphic>
-                  <FontAwesomeIcon iconName="ALIGN_JUSTIFY" size="40" />
+                  <!--<FontAwesomeIcon iconName="ALIGN_JUSTIFY" size="40" />-->
                </graphic>
                <ripplerFill>
                   <LinearGradient endX="0.24285714285714288" endY="0.4380952380952381" startX="0.6857142857142857" startY="0.6857142857142857">
@@ -119,7 +119,7 @@
             <Font name="Georgia" size="12.0" />
          </font>
       </JFXTextField>
-      <FontAwesomeIcon iconName="SEARCH" layoutX="1400.0" layoutY="101.0" size="20" />
+      <!--<FontAwesomeIcon iconName="SEARCH" layoutX="1400.0" layoutY="101.0" size="20" />-->
       <AnchorPane fx:id="CoverPane" layoutX="-1.0" layoutY="69.0" prefHeight="750.0" prefWidth="1370.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="AccountSettingPane" layoutY="68.0" prefHeight="797.0" prefWidth="301.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="68.0">
