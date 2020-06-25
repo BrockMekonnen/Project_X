@@ -25,7 +25,7 @@
 
             <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" layoutX="41.0" layoutY="31.0" opacity="0.76" prefHeight="212.0" prefWidth="391.0" ripplerFill="WHITE" style="-fx-background-color: #40C4FF;" text="DOCTOR" textFill="WHITE">
 
-            <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" opacity="0.76" prefHeight="243.0" prefWidth="407.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF; -fx-border-color: #ffffff50;" text="DOCTOR" textFill="WHITE" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+<!--             <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" opacity="0.76" prefHeight="243.0" prefWidth="407.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF; -fx-border-color: #ffffff50;" text="DOCTOR" textFill="WHITE" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER"> -->
 
                <font>
                   <Font name="Georgia" size="22.0" />
