@@ -1,7 +1,6 @@
 package com.AASTU.Controller;
 
 import com.jfoenix.controls.JFXButton;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
