@@ -83,6 +83,107 @@
                 </TableView>
             </content>
         </ScrollPane>
+
+      <AnchorPane prefHeight="56.0" prefWidth="1640.0" style="-fx-background-color: #2262c6;">
+         <children>
+            <JFXButton fx:id="OptionBTN" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="49.0" layoutY="2.0" onAction="#OptionAction" prefHeight="53.0" prefWidth="52.0" text="Icon">
+               <ripplerFill>
+                  <LinearGradient endX="0.24285714285714288" endY="0.4380952380952381" startX="0.6857142857142857" startY="0.6857142857142857">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#04afff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resource/icons8_menu_26px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Text fill="WHITE" layoutX="730.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clinic Name">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="1395.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resource/icons8_search_filled_50px.png" />
+         </image>
+      </ImageView>
+      <JFXTextField layoutX="1434.0" layoutY="73.0" prefHeight="25.0" prefWidth="192.0" promptText="Search">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font>
+      </JFXTextField>
+      <AnchorPane fx:id="opacityPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="slidePane" layoutY="56.0" prefHeight="810.0" prefWidth="301.0" style="-fx-background-color: #2262c6;">
+               <children>
+                  <VBox layoutY="-2.0" prefHeight="809.0" prefWidth="301.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Change Password" textOverrun="CLIP" wrapText="true">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/icons8_privacy_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Help" textOverrun="CLIP" wrapText="true">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/icons8_help_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="302.0" text="Sign Out" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/icons8_logout_rounded_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton alignment="BASELINE_LEFT" graphicTextGap="22.0" prefHeight="56.0" prefWidth="301.0" text="Exit" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resource/icons8_cancel_32px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets left="50.0" />
+                           </padding>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets top="200.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+
         <AnchorPane prefHeight="56.0" prefWidth="1640.0" style="-fx-background-color: #2262c6;">
             <children>
                 <JFXButton fx:id="OptionBTN" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="49.0" layoutY="2.0" onAction="#OptionAction" prefHeight="53.0" prefWidth="52.0" text="Icon">
@@ -182,5 +283,6 @@
                 </AnchorPane>
             </children>
         </AnchorPane>
+
     </children>
 </AnchorPane>

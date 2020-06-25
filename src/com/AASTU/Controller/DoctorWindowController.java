@@ -50,6 +50,7 @@ public class DoctorWindowController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
         translation1();
+
     }
 
     public void translation(double second){
