@@ -1,7 +1,6 @@
 package com.AASTU.Controller;
 
 import com.jfoenix.controls.JFXButton;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -24,8 +23,6 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private JFXButton OptionBTN;
 
-    @FXML
-    private FontAwesomeIcon navDrawer;
 
 
 

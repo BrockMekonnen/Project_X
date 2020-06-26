@@ -102,13 +102,13 @@
                             </stops>
                         </LinearGradient>
                     </ripplerFill>
-               <graphic>
-                  <ImageView fitHeight="42.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resource/icons8_menu_26px_1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+                    <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Resource/icons8_menu_26px_1.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </JFXButton>
                 <Text fill="WHITE" layoutX="717.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clinic Name">
                     <font>
@@ -122,11 +122,11 @@
                 <Font name="Georgia" size="12.0" />
             </font>
         </JFXTextField>
-      <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="1381.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Resource/icons8_search_filled_50px.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="30.0" fitWidth="40.0" layoutX="1381.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../Resource/icons8_search_filled_50px.png" />
+            </image>
+        </ImageView>
         <!--<FontAwesomeIcon iconName="SEARCH" layoutX="1400.0" layoutY="101.0" size="20" />-->
         <AnchorPane fx:id="CoverPane" layoutX="-1.0" layoutY="69.0" prefHeight="750.0" prefWidth="1370.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
