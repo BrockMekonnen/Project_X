@@ -19,70 +19,19 @@ import java.util.ResourceBundle;
 public class LaboratoryWindowController implements Initializable {
 
     @FXML
-    private JFXButton ChangePassword;
+    private JFXButton navBtn;
 
     @FXML
-    private TableView<?> LaboratoryTableView;
+    private AnchorPane coverPane;
 
     @FXML
-    private TableColumn<?, ?> PatientSexCol;
-
-    @FXML
-    private JFXButton SignOut;
-
-    @FXML
-    private TableColumn<?, ?> PatientSubCityCol;
-
-    @FXML
-    private JFXButton Help;
-
-    @FXML
-    private TableColumn<?, ?> PatientCityCol;
-
-    @FXML
-    private TableColumn<?, ?> PatientPaymentCol;
-
-    @FXML
-    private JFXButton TestBTN;
-
-    @FXML
-    private TableColumn<?, ?> PatientIdCol;
-
-    @FXML
-    private JFXButton ListBTN;
-
-    @FXML
-    private AnchorPane CoverPane,AccountSettingPane;
-
-    @FXML
-    private TableColumn<?, ?> PatientNameCol;
-
-    @FXML
-    private AnchorPane BarPane;
-
-    @FXML
-    private JFXButton pendingBTN;
-
-    @FXML
-    private Label WellcomeLB;
-
-    @FXML
-    private TableColumn<?, ?> PatientAgeCol;
-
-    @FXML
-    private TableColumn<?, ?> PatientKebeleCol;
-
-    @FXML
-    private JFXButton ViewAllLaboratoryBTN;
-
-    @FXML
-    private JFXButton Exit,Option;
+    private AnchorPane AccountSettingPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CoverPane.setVisible(false);
+        coverPane.setVisible(false);
         translation(0.1);
-        CoverPane.setOnMouseClicked(event -> {
+        coverPane.setOnMouseClicked(event -> {
             translation(1);
         });
     }
@@ -92,7 +41,7 @@ public class LaboratoryWindowController implements Initializable {
         translateTransition.setByX(-600);
         translateTransition.play();
         translateTransition.setOnFinished(event -> {
-            CoverPane.setVisible(false);
+            coverPane.setVisible(false);
         });
     }
     public void translation1(){
@@ -102,8 +51,8 @@ public class LaboratoryWindowController implements Initializable {
 
     }
     public void OptionAction(){
-        CoverPane.setVisible(true);
-        FadeTransition fadeTransition=new FadeTransition(Duration.seconds(0.1),CoverPane);
+        coverPane.setVisible(true);
+        FadeTransition fadeTransition=new FadeTransition(Duration.seconds(0.1),coverPane);
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(1);
         fadeTransition.play();
@@ -118,7 +67,7 @@ public class LaboratoryWindowController implements Initializable {
         }
         else {
             translation(1);
-            CoverPane.setVisible(false);
+            coverPane.setVisible(false);
         }
     }
 }
