@@ -95,10 +95,13 @@ public class DoctorLaboratoryWindowController implements Initializable {
     private JFXCheckBox DrCholestrolCheckBox;
 
     @FXML
-    private Label DrLaboratoryRequisitionDateLB,DrLaboratorySendBTN,DrBloodGroupRHCheckBox,DrBilrubinCheckBox,DrCultureCheckBox,DrConcentrationCheck,DrCRPCheckBox;
+    private JFXCheckBox DrBloodGroupRHCheckBox,DrBilrubinCheckBox,DrCultureCheckBox,DrConcentrationCheck,DrCRPCheckBox;
 
     @FXML
-    private Label DrLaboratoryRequisitionSexLB;
+    private JFXButton DrLaboratorySendBTN;
+
+    @FXML
+    private Label DrLaboratoryRequisitionSexLB,DrLaboratoryRequisitionDateLB;
 
     @FXML
     private JFXCheckBox DrAFBCheckBox;
