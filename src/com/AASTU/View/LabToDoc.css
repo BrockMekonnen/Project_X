@@ -1,0 +1,27 @@
+#rootPane{
+    -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
+
+}
+#lbl_title{
+    -fx-font-family: sans-serif;
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+
+}
+#lbl_name,
+#lbl_sex,
+#lbl_age,
+#lbl_date{
+    -fx-font-family: sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+
+}
+
+#pnl_header{
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: white;
+}
+

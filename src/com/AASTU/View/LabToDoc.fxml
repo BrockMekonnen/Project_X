@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="rootPane" prefHeight="900.0" prefWidth="1600.0" stylesheets="@LabToDoc.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LabToDoc">
+   <children>
+      <GridPane layoutX="700.0" layoutY="137.0" prefHeight="763.0" prefWidth="1600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="137.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" maxWidth="369.0" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="689.0" minWidth="10.0" prefWidth="311.25" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="550.0" minWidth="10.0" prefWidth="311.25" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1495.0" minWidth="10.0" prefWidth="311.25" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1495.0" minWidth="10.0" prefWidth="311.25" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="1495.0" minWidth="10.0" prefWidth="200.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane GridPane.columnIndex="5">
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="574.0" prefHeight="56.0" prefWidth="170.0" ripplerFill="#29b6f6" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;" text="Send" textFill="#01579b" AnchorPane.bottomAnchor="133.0" />
+                  <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="674.0" prefHeight="56.0" prefWidth="170.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;" text="Close" textFill="#01579b" AnchorPane.bottomAnchor="33.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="770.0" maxWidth="350.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 50 0 0 50;" GridPane.columnIndex="1">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="688.0" layoutX="4.0" layoutY="49.0" stroke="#01579b" strokeType="INSIDE" width="271.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="0.0" />
+                  <Label alignment="CENTER" layoutX="33.0" layoutY="13.0" prefHeight="32.0" prefWidth="274.0" text="HEMATOLOGY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="57.0" layoutY="54.0" prefHeight="32.0" prefWidth="241.0" text=" CBC" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="98.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="WBC ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="98.0" prefHeight="27.0" prefWidth="137.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="135.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="LYM">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="135.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="172.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="GRA">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="172.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="209.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="MID">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="209.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="246.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="RBC">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="246.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="283.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="HGB">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="283.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="320.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="MCHC">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="320.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="357.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="MCH">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="357.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="394.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="MCV">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="394.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="431.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="RDW-CV">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="431.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="468.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="HCT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="468.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="505.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="PLT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="505.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="542.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="PCT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="542.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="579.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="P-LCR">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="579.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="616.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="ESR">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="616.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="653.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Blood group Rh">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="653.0" prefHeight="27.0" prefWidth="137.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="690.0" prefHeight="27.0" prefWidth="102.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Blood Film">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="161.0" layoutY="690.0" prefHeight="27.0" prefWidth="137.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+            </AnchorPane>
+            <AnchorPane maxHeight="770.0" maxWidth="345.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="290.0" layoutX="23.0" layoutY="14.0" stroke="#01579b" strokeType="INSIDE" width="274.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="18.0" />
+                  <Label alignment="CENTER" layoutX="45.0" layoutY="21.0" prefHeight="32.0" prefWidth="241.0" text="PARASTOLGY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="65.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="STOOL TEST">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="154.0" layoutY="65.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="102.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Occult Blood">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="154.0" layoutY="102.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="139.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Consistency">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="154.0" layoutY="139.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <JFXTextField layoutX="154.0" layoutY="170.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="208.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Consistency">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="154.0" layoutY="208.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <JFXTextField layoutX="154.0" layoutY="239.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <JFXTextField layoutX="154.0" layoutY="270.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="422.0" layoutX="23.0" layoutY="318.0" stroke="#01579b" strokeType="INSIDE" width="274.0" />
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="318.0" prefHeight="32.0" prefWidth="241.0" text="CHEMISTRY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="38.0" layoutY="353.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="FBS">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="148.0" layoutY="353.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="38.0" layoutY="390.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="RBS">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="148.0" layoutY="390.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label layoutX="37.0" layoutY="428.0" prefHeight="27.0" prefWidth="241.0" text="LST" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="58.0" layoutY="455.0" prefHeight="27.0" prefWidth="75.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="SGOT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="174.0" layoutY="455.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="u/l   up to 18 u/l">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="131.0" layoutY="455.0" prefHeight="27.0" prefWidth="43.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="58.0" layoutY="492.0" prefHeight="27.0" prefWidth="75.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="SGPT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="174.0" layoutY="492.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="u/l   up to 18 u/l">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="131.0" layoutY="492.0" prefHeight="27.0" prefWidth="43.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="58.0" layoutY="529.0" prefHeight="27.0" prefWidth="135.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Alkaline Phosphate">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="244.0" layoutY="529.0" prefHeight="27.0" prefWidth="40.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="u/l">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="193.0" layoutY="529.0" prefHeight="27.0" prefWidth="51.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="58.0" layoutY="566.0" prefHeight="27.0" prefWidth="135.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Bilirubin (Total)">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="244.0" layoutY="566.0" prefHeight="27.0" prefWidth="40.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="mg/dl">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="193.0" layoutY="566.0" prefHeight="27.0" prefWidth="51.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="58.0" layoutY="603.0" prefHeight="27.0" prefWidth="135.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Bilirubin (Direct)">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="244.0" layoutY="603.0" prefHeight="27.0" prefWidth="40.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="mg/dl">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="193.0" layoutY="603.0" prefHeight="27.0" prefWidth="51.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label layoutX="44.0" layoutY="638.0" prefHeight="27.0" prefWidth="241.0" text="RST" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="61.0" layoutY="665.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="BUN">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="228.0" layoutY="665.0" prefHeight="27.0" prefWidth="56.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="mg/dl">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="171.0" layoutY="665.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="63.0" layoutY="699.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Creatinine">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="230.0" layoutY="699.0" prefHeight="27.0" prefWidth="56.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="mg/dl">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="173.0" layoutY="699.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="763.0" maxWidth="345.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="130.0" layoutX="25.0" layoutY="7.0" stroke="#01579b" strokeType="INSIDE" width="274.0" />
+                  <Label layoutX="43.0" layoutY="7.0" prefHeight="27.0" prefWidth="241.0" text="RST" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="46.0" layoutY="31.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Uric Acid">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="213.0" layoutY="31.0" prefHeight="27.0" prefWidth="56.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="mg/dl">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="156.0" layoutY="31.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="46.0" layoutY="66.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Total Protein">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="213.0" layoutY="66.0" prefHeight="27.0" prefWidth="56.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 0; -fx-background-color: #ffffff;" text="mg/dl">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField alignment="CENTER_RIGHT" layoutX="156.0" layoutY="66.0" prefHeight="27.0" prefWidth="57.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="47.0" layoutY="100.0" prefHeight="27.0" prefWidth="110.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Cholesterol">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="157.0" layoutY="100.0" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="607.0" layoutX="26.0" layoutY="144.0" stroke="#01579b" strokeType="INSIDE" width="274.0" />
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="145.0" prefHeight="34.0" prefWidth="248.0" text="URINALYSIS" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="43.0" layoutY="179.0" prefHeight="32.0" prefWidth="241.0" text="DIPISTIC" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="211.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Color ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="211.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="246.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Appearance ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="246.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="281.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="PH">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="281.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="316.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="PSG">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="316.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="351.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Protein ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="351.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="386.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Glucose ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="386.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="421.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Ketone ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="421.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="456.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Bilirubin ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="456.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="45.0" layoutY="491.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Urobilinogen ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="155.0" layoutY="491.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="45.0" layoutY="526.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Blood ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="155.0" layoutY="526.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label layoutX="43.0" layoutY="551.0" prefHeight="32.0" prefWidth="241.0" text="MICROSCOPY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="583.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Epit Cells ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="583.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="43.0" layoutY="617.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="WBC">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="153.0" layoutY="617.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="651.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="RBC ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="154.0" layoutY="651.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="45.0" layoutY="685.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Casts ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="155.0" layoutY="685.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="44.0" layoutY="719.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Bacteria ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="154.0" layoutY="719.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="763.0" maxWidth="350.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 0 50 50 0;" GridPane.columnIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="354.0" layoutX="13.0" layoutY="15.0" stroke="#01579b" strokeType="INSIDE" width="274.0" />
+                  <Label alignment="CENTER" layoutX="30.0" layoutY="18.0" prefHeight="32.0" prefWidth="241.0" text="SEROLOGY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="50.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="VDRL">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_vdrl" layoutX="147.0" layoutY="50.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Positive" />
+                              <String fx:value="Negative" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="84.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Widal II         H :">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_h" layoutX="147.0" layoutY="84.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Reactive" />
+                              <String fx:value="Nonreactive" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <JFXComboBox fx:id="cbo_o" layoutX="147.0" layoutY="115.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Reactive" />
+                              <String fx:value="Nonreactive" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" layoutX="111.0" layoutY="115.0" prefHeight="27.0" prefWidth="36.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="O :">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="149.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Well Felix">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_felix" layoutX="147.0" layoutY="149.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Reactive" />
+                              <String fx:value="Nonreactive" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="183.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="HBSag ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_hbs" layoutX="147.0" layoutY="183.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Positive" />
+                              <String fx:value="Negative" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="217.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="CRP">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_crp" layoutX="147.0" layoutY="217.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Positive" />
+                              <String fx:value="Negative" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="254.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="ASO">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_aso" layoutX="147.0" layoutY="254.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Reactive" />
+                              <String fx:value="Nonreactive" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="291.0" prefHeight="27.0" prefWidth="117.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Rheumatoid Factor">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_rhe" layoutX="153.0" layoutY="291.0" prefHeight="27.0" prefWidth="122.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Reactive" />
+                              <String fx:value="Nonreactive" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="328.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="H.Pylori Serum">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_serum" layoutX="147.0" layoutY="328.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Positive" />
+                              <String fx:value="Negative" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="127.0" layoutX="14.0" layoutY="377.0" stroke="#01579b" strokeType="INSIDE" width="271.0" />
+                  <Label alignment="CENTER" layoutX="33.0" layoutY="384.0" prefHeight="32.0" prefWidth="241.0" text="BACTEROLOGY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="416.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="H.Pylori Stool">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="146.0" layoutY="416.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="453.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="KOH">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="146.0" layoutY="453.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="521.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Gram Stain">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="146.0" layoutY="521.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="563.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Wet Film">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="146.0" layoutY="563.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="36.0" layoutY="604.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="AFB">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="146.0" layoutY="604.0" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <Label alignment="CENTER" layoutX="37.0" layoutY="660.0" prefHeight="27.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="HIV/AIDS ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbo_aids" layoutX="146.0" layoutY="660.0" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Positive" />
+                              <String fx:value="Negative" />
+                          </FXCollections>
+                      </items>
+                  </JFXComboBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <AnchorPane id="pnl_header" prefHeight="127.0" prefWidth="1600.0" stylesheets="@LabToDoc.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label id="lbl_title" alignment="CENTER" contentDisplay="CENTER" layoutX="621.0" layoutY="14.0" prefHeight="43.0" prefWidth="352.0" text="Laboratory Result" AnchorPane.leftAnchor="621.0" AnchorPane.rightAnchor="627.0" />
+            <Label id="lbl_name" alignment="CENTER" layoutX="229.0" layoutY="80.0" prefHeight="28.0" prefWidth="75.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Name" />
+            <Label id="lbl_sex" alignment="CENTER" layoutX="701.0" layoutY="80.0" prefHeight="28.0" prefWidth="43.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Sex" />
+            <Label id="lbl_age" alignment="CENTER" layoutX="890.0" layoutY="80.0" prefHeight="28.0" prefWidth="46.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Age" />
+            <Label id="lbl_date" alignment="CENTER" layoutX="1092.0" layoutY="79.0" prefHeight="28.0" prefWidth="56.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Date" />
+            <JFXTextField focusColor="WHITE" layoutX="1148.0" layoutY="79.0" prefHeight="25.0" prefWidth="214.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
+            <JFXTextField focusColor="WHITE" layoutX="744.0" layoutY="80.0" prefHeight="25.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
+            <JFXTextField focusColor="WHITE" layoutX="936.0" layoutY="80.0" prefHeight="25.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
+            <JFXTextField focusColor="WHITE" layoutX="304.0" layoutY="80.0" prefHeight="25.0" prefWidth="330.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
