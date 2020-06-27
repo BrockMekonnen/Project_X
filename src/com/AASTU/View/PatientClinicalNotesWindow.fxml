@@ -30,7 +30,7 @@
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Resource/icons8_delete_48px.png" />
+                        <!--<Image url="@../Resource/icons8_delete_48px.png" />-->
                      </image>
                   </ImageView>
                </graphic>
@@ -56,7 +56,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Resource/icons8_checkmark_48px_1.png" />
+                        <!--<Image url="@../Resource/icons8_checkmark_48px_1.png" />-->
                      </image>
                   </ImageView>
                </graphic>
@@ -76,7 +76,7 @@
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Resource/icons8_create_128px.png" />
+                        <!--<Image url="@../Resource/icons8_create_128px.png" />-->
                      </image>
                   </ImageView>
                </graphic>
