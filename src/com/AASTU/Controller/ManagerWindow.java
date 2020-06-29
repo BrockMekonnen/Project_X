@@ -3,7 +3,14 @@ package com.AASTU.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ManagerWindow {
 
@@ -97,6 +104,69 @@ public class ManagerWindow {
 
     @FXML
     private AnchorPane pnl_table_work;
+
+
+    /**
+     * Secretory
+     * */
+    @FXML
+    public void deleteLaboratoryBtn(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void addLaboratoryBtn(ActionEvent event) throws IOException {
+        toRegWindow(event, "../View/LaboratoryRegistration.fxml");
+    }
+
+    @FXML
+    public void editLaboratoryBtn(ActionEvent event) {
+
+    }
+
+    /**
+     * Doctor
+     * */
+
+    @FXML
+    public void addDoctorBtn(ActionEvent event) throws IOException {
+        toRegWindow(event, "../View/DoctorRegistrationWindow.fxml");
+    }
+
+    @FXML
+    public void editDoctorBtn(ActionEvent event) throws IOException {
+    }
+
+    @FXML
+    public void deleteDoctorBtn(ActionEvent event) throws IOException {
+
+    }
+    /**
+     * Secretary
+     * */
+
+    @FXML
+    public void addSecretaryBtn(ActionEvent event) throws IOException {
+        toRegWindow(event, "../View/SecretaryRegistration.fxml");
+    }
+
+    @FXML
+    public void deleteSecretaryBtn(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML
+    public void editSecretaryBtn(ActionEvent event) throws IOException {
+    }
+
+    public void toRegWindow(ActionEvent event, String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent pane = loader.load();
+        Scene registrationScene =  new Scene(pane);
+        Stage registWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        registWindow.setScene(registrationScene);
+        registWindow.show();
+    }
 
     @FXML
     void handleButtonAction(ActionEvent event) {
@@ -317,6 +387,8 @@ public class ManagerWindow {
         pnl_line_work.setVisible(true);
         pnl_line_work.toFront();
     }
+
+
 }
 
 
