@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 
@@ -16,6 +15,7 @@ public class Main extends Application {
     Stage stage;
     public static int x=0;
     @Override
+
     public void start(Stage primaryStage)throws Exception {
         this.stage=primaryStage;
         WellcomScreen();
@@ -33,6 +33,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
 
     public void action(ActionEvent event, String fxml, AnchorPane rootPane){
         try {
