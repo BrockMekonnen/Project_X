@@ -1,0 +1,17 @@
+#rootPane{
+    -fx-background-color: linear-gradient(to right, #01579B, #81D4FA);
+}
+#subPane1{
+    -fx-background-color :#E1F5FE;
+}
+#lblTitle{
+    -fx-font-family: sans-serif;
+    -fx-font-size: 20px;
+    -fx-text-fill: #01579B;
+    -fx-border-color: #01579B;
+    -fx-background-color: white;
+
+}
+#subPane2{
+    -fx-background-color: transparent;
+}

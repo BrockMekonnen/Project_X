@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
@@ -14,10 +13,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/SecretaryWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/.fxml"));
         AnchorPane pane = loader.load();
         Scene scene = new Scene(pane);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
         primaryStage.show();
 
