@@ -47,7 +47,7 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="487.0" layoutY="816.0" prefHeight="53.0" prefWidth="139.0" style="-fx-border-color: #0598ff; -fx-border-radius: 50px;" text="Back" textFill="#0598ff" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="31.0">
+            <JFXButton layoutX="487.0" layoutY="816.0" onAction="#ToIdentificationWindow" prefHeight="53.0" prefWidth="139.0" style="-fx-border-color: #0598ff; -fx-border-radius: 50px;" text="Back" textFill="#0598ff" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="31.0">
                <font>
                   <Font size="14.0" />
                </font>

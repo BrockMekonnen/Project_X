@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-
-<?import javafx.geometry.Insets?>
-
-<?import javafx.scene.effect.DropShadow?>
-
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-
-
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -23,9 +14,9 @@
       <AnchorPane layoutX="661.0" layoutY="218.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="522.0" prefWidth="915.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="218.0">
          <children>
 
-            <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" layoutX="41.0" layoutY="31.0" opacity="0.76" prefHeight="212.0" prefWidth="391.0" ripplerFill="WHITE" style="-fx-background-color: #40C4FF;" text="DOCTOR" textFill="WHITE">
+            <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" layoutX="41.0" layoutY="31.0" onAction="#toDoctor" opacity="0.76" prefHeight="212.0" prefWidth="391.0" ripplerFill="WHITE" style="-fx-background-color: #40C4FF;" text="DOCTOR" textFill="WHITE">
 
-<!--             <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" opacity="0.76" prefHeight="243.0" prefWidth="407.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF; -fx-border-color: #ffffff50;" text="DOCTOR" textFill="WHITE" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER"> -->
+             <!--<JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" opacity="0.76" prefHeight="243.0" prefWidth="407.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF; -fx-border-color: #ffffff50;" text="DOCTOR" textFill="WHITE" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER"> -->
 
                <font>
                   <Font name="Georgia" size="22.0" />
@@ -38,7 +29,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="LaboratoryIdentificaitonBTN" alignment="CENTER" buttonType="RAISED" layoutX="455.0" layoutY="31.0" opacity="0.76" prefHeight="212.0" prefWidth="391.0" ripplerFill="WHITE" style="-fx-background-color: #40C4FF;" text="LABORATORY" textFill="WHITE">
+            <JFXButton fx:id="LaboratoryIdentificaitonBTN" alignment="CENTER" buttonType="RAISED" layoutX="455.0" layoutY="31.0" onAction="#toLaboratory" opacity="0.76" prefHeight="212.0" prefWidth="391.0" ripplerFill="WHITE" style="-fx-background-color: #40C4FF;" text="LABORATORY" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="22.0" />
                </font>
@@ -50,7 +41,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="AdminIdentificationBTN" alignment="CENTER" buttonType="RAISED" layoutX="455.0" layoutY="269.0" opacity="0.76" prefHeight="224.0" prefWidth="391.0" ripplerFill="WHITE" style="-fx-background-color: #40C4FF;" text="Manager" textFill="WHITE">
+            <JFXButton fx:id="AdminIdentificationBTN" alignment="CENTER" buttonType="RAISED" layoutX="455.0" layoutY="269.0" onAction="#toManager" opacity="0.76" prefHeight="224.0" prefWidth="391.0" ripplerFill="WHITE" style="-fx-background-color: #40C4FF;" text="Manager" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="22.0" />
                </font>
@@ -62,7 +53,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="CardRoomIdentificationBTN" alignment="CENTER" buttonType="RAISED" layoutX="41.0" layoutY="269.0" opacity="0.76" prefHeight="224.0" prefWidth="391.0" style="-fx-background-color: #40C4FF;" text="CARD ROOM" textFill="WHITE">
+            <JFXButton fx:id="CardRoomIdentificationBTN" alignment="CENTER" buttonType="RAISED" layoutX="41.0" layoutY="269.0" onAction="#toCardRoom" opacity="0.76" prefHeight="224.0" prefWidth="391.0" style="-fx-background-color: #40C4FF;" text="CARD ROOM" textFill="WHITE">
                <font>
                   <Font name="Georgia" size="22.0" />
                </font>
