@@ -2,6 +2,7 @@ package com.AASTU.Controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,49 +16,62 @@ import java.util.ResourceBundle;
 public class LaboratoryRegistrationWindowController implements Initializable {
 
     @FXML
-    private AnchorPane PatientFormWindow;
+    private AnchorPane rootPane;
 
     @FXML
-    private AnchorPane PatientFormPane;
+    private AnchorPane pnlInner;
 
     @FXML
-    private DatePicker LabTechnicianAddDate;
+    private Label lblTitle;
 
     @FXML
-    private Label DoctorIdLB;
+    private JFXTextField LabTechSecondName;
 
     @FXML
-    private JFXTextField LabTechnicianFirsNameTF;
+    private JFXTextField LabTechFirstName;
 
     @FXML
-    private JFXTextField LabTechnicianLastName;
+    private JFXDatePicker LabTechDate;
 
     @FXML
-    private JFXComboBox<?> GenderCombo;
+    private JFXTextField LabTechstartWorkingHour;
 
     @FXML
-    private JFXTextField LabTechnicianPhoneNumberTF;
+    private JFXComboBox<String> GenderCombo;
 
     @FXML
-    private JFXTextField LabTechnicianAddressKebeleTF;
+    private JFXComboBox<String> cboTime;
 
     @FXML
-    private JFXTextField LabTechnicianAddressSubCityTF;
+    private JFXTextField LabTechEndWorkingHour;
 
     @FXML
-    private JFXTextField LabTechnicianAddressCityTF;
+    private JFXComboBox<?> cboTime1;
 
     @FXML
-    private JFXButton DoneBTN;
+    private JFXTextField LaboTechPhoneNumber;
 
     @FXML
-    private JFXButton CancelBTN;
+    private JFXTextField LabTchCityAddress;
 
     @FXML
-    private JFXTextField LabTechnicianWorkingHoursTF;
+    private JFXTextField LabTechSucCityAddress;
+
+    @FXML
+    private JFXTextField LabTechKebeleAddress;
+
+    @FXML
+    private JFXButton btnConfirm;
+
+    @FXML
+    private JFXButton btnDiscard;
+
+    @FXML
+    private JFXTextField LabTechId;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
 
     }
 
