@@ -13,9 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
+import javafx.event.ActionEvent;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,6 +38,38 @@ public class IdentificationController implements Initializable{
 
     @FXML
     private JFXButton LaboratoryIdentificaitonBTN;
+
+
+    @FXML
+    void toCardRoom(ActionEvent event) throws IOException {
+        ChangeToLoginWindow(event,"../View/login.fxml");
+    }
+
+    @FXML
+    public void toDoctor(ActionEvent event) throws IOException {
+        ChangeToLoginWindow(event,"../View/login.fxml");
+    }
+
+    @FXML
+    void toLaboratory(ActionEvent event) throws IOException {
+        ChangeToLoginWindow(event,"../View/login.fxml");
+    }
+
+    @FXML
+    void toManager(ActionEvent event) throws IOException {
+        ChangeToLoginWindow(event,"../View/login.fxml");
+    }
+
+
+    public void ChangeToLoginWindow(ActionEvent event, String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent pane = loader.load();
+        Scene loginScene =  new Scene(pane);
+            Stage loginwindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            loginwindow.setScene(loginScene);
+            loginwindow.show();
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -87,4 +120,5 @@ public class IdentificationController implements Initializable{
             });
         });
     }
+
 }
