@@ -1,14 +1,19 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,6 +24,9 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     private AnchorPane slidePane1;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private AnchorPane opacityPane1;
@@ -57,6 +65,15 @@ public class SecretaryWindowController implements Initializable {
         translateTransition.setByX(600);
         translateTransition.play();
 
+    }
+
+    public void AddPatientAction(ActionEvent Event){
+        try{
+        Main main=new Main();
+        main.action(Event,"View/PatientRegistration.fxml",rootPane);
+    }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
