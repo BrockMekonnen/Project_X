@@ -49,7 +49,7 @@
                   </ImageView>
                </graphic>
                 </JFXButton>
-                <JFXButton buttonType="RAISED" layoutX="44.0" layoutY="696.0" prefHeight="55.0" prefWidth="183.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Sign Out" textFill="#01579b" AnchorPane.bottomAnchor="40.0">
+                <JFXButton buttonType="RAISED" layoutX="44.0" layoutY="696.0" onAction="#signOutHandler" prefHeight="55.0" prefWidth="183.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Sign Out" textFill="#01579b" AnchorPane.bottomAnchor="40.0">
                     <graphic>
                         <FontAwesomeIconView fill="#01579b" glyphName="SIGN_OUT" size="25" wrappingWidth="36.0" />
                     </graphic>

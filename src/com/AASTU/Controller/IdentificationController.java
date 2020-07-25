@@ -42,43 +42,28 @@ public class IdentificationController implements Initializable{
 
     @FXML
     void toCardRoom(ActionEvent event) throws IOException {
-        ChangeToLoginWindow(event,"../View/login.fxml");
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "sec";
-//        SwitchWindows.windowController(event,"../View/login.fxml");
     }
 
     @FXML
     public void toDoctor(ActionEvent event) throws IOException {
-        ChangeToLoginWindow(event,"../View/login.fxml");
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "doc";
-//        SwitchWindows.windowController(event,"../View/login.fxml");
     }
 
     @FXML
     void toLaboratory(ActionEvent event) throws IOException {
-        ChangeToLoginWindow(event,"../View/login.fxml");
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "lab";
-//        SwitchWindows.windowController(event,"../View/login.fxml");
+
     }
 
     @FXML
     void toManager(ActionEvent event) throws IOException {
-        ChangeToLoginWindow(event,"../View/login.fxml");
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "mana";
-//        SwitchWindows.windowController(event,"../View/login.fxml");
     }
-
-
-
-    public void ChangeToLoginWindow(ActionEvent event, String fxml) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Parent pane = loader.load();
-        Scene loginScene =  new Scene(pane);
-            Stage loginwindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            loginwindow.setScene(loginScene);
-            loginwindow.show();
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

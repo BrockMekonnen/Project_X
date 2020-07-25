@@ -3,12 +3,14 @@ package com.AASTU.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -60,5 +62,10 @@ public class DoctorWindowController implements Initializable {
         translateTransition.setOnFinished(event -> {
             opacityPane.setVisible(false);
         });
+    }
+
+    @FXML
+    void signOutHandler(ActionEvent event) throws IOException {
+        new WindowChangeController().signOut(event,"../view/Login.fxml");
     }
 }

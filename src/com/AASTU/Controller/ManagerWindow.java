@@ -116,7 +116,7 @@ public class ManagerWindow {
 
     @FXML
     public void addLaboratoryBtn(ActionEvent event) throws IOException {
-        toRegWindow(event, "../View/LaboratoryRegistration.fxml");
+        new WindowChangeController().changeWindow(event, "../View/LaboratoryRegistration.fxml");
     }
 
     @FXML
@@ -130,7 +130,7 @@ public class ManagerWindow {
 
     @FXML
     public void addDoctorBtn(ActionEvent event) throws IOException {
-        toRegWindow(event, "../View/DoctorRegistrationWindow.fxml");
+        new WindowChangeController().changeWindow(event, "../View/DoctorRegistrationWindow.fxml");
     }
 
     @FXML
@@ -147,7 +147,7 @@ public class ManagerWindow {
 
     @FXML
     public void addSecretaryBtn(ActionEvent event) throws IOException {
-        toRegWindow(event, "../View/SecretaryRegistration.fxml");
+        new WindowChangeController().changeWindow(event, "../View/SecretaryRegistration.fxml");
     }
 
     @FXML
@@ -159,13 +159,10 @@ public class ManagerWindow {
     public void editSecretaryBtn(ActionEvent event) throws IOException {
     }
 
-    public void toRegWindow(ActionEvent event, String fxml) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Parent pane = loader.load();
-        Scene registrationScene =  new Scene(pane);
-        Stage registWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        registWindow.setScene(registrationScene);
-        registWindow.show();
+
+    @FXML
+    void signOutHandler(ActionEvent event) throws IOException {
+            new WindowChangeController().signOut(event,"../view/Login.fxml");
     }
 
     @FXML

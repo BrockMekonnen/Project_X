@@ -88,7 +88,7 @@
                <font>
                   <Font size="13.0" />
                </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1447.0" layoutY="11.0" prefHeight="49.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-border-color: #00B0FFa7; -fx-border-radius: 25px; -fx-border-width: 2;" text="Sign Out" textFill="#1565c0" AnchorPane.rightAnchor="30.0">
+            <JFXButton buttonType="RAISED" layoutX="1447.0" layoutY="11.0" onAction="#signOutHandler" prefHeight="49.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-border-color: #00B0FFa7; -fx-border-radius: 25px; -fx-border-width: 2;" text="Sign Out" textFill="#1565c0" AnchorPane.rightAnchor="30.0">
                <font>
                   <Font size="14.0" />
                </font>

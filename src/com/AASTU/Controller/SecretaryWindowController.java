@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -67,28 +68,14 @@ public class SecretaryWindowController implements Initializable {
 
     }
 
-    public void AddPatientAction(ActionEvent Event){
-        try{
-        Main main=new Main();
-        main.action(Event,"View/PatientRegistration.fxml",rootPane);
-
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PatientRegistration.fxml"));
-//        AnchorPane root=loader.load();
-//        Scene scene = new Scene(root);
-//        Stage stage = new Stage();
-//        stage.setScene(scene);
-//        stage.show();
-//        rootPane.getScene().getWindow().hide();
-
-
-    }catch (Exception e){
-            e.printStackTrace();
-        }
+    public void AddPatientAction(ActionEvent event) throws IOException {
+        new WindowChangeController().changeWindow(event, "../View/PatientRegistration.fxml");
     }
 
-
-
-
+    @FXML
+    void signOutHandler(ActionEvent event) throws IOException {
+        new WindowChangeController().signOut(event, "../view/Login.fxml");
+    }
 
 
 }
