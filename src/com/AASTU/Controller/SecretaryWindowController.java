@@ -71,6 +71,16 @@ public class SecretaryWindowController implements Initializable {
         try{
         Main main=new Main();
         main.action(Event,"View/PatientRegistration.fxml",rootPane);
+
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PatientRegistration.fxml"));
+//        AnchorPane root=loader.load();
+//        Scene scene = new Scene(root);
+//        Stage stage = new Stage();
+//        stage.setScene(scene);
+//        stage.show();
+//        rootPane.getScene().getWindow().hide();
+
+
     }catch (Exception e){
             e.printStackTrace();
         }
