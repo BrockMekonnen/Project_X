@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 
 
 
@@ -26,13 +28,20 @@ public class Main extends Application {
             AnchorPane pane=loader.load();
             Scene scene = new Scene(pane);
             if(x==0)
+
+                stage.initStyle(StageStyle.UNDECORATED);
+
             stage.initStyle(StageStyle.UNDECORATED);
+
             stage.setScene(scene);
             stage.show();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
+
+
 
 
     public void action(ActionEvent event, String fxml, AnchorPane rootPane){

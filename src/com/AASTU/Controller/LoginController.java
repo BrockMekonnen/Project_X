@@ -1,6 +1,10 @@
 package com.AASTU.Controller;
 
+
 import com.jfoenix.controls.JFXTextField;
+
+import com.AASTU.Main;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -58,13 +63,28 @@ public class LoginController implements Initializable{
         loginwindow.show();
     }
     @FXML
+    private AnchorPane rootPane;
+
+    @FXML
     void ToIdentificationWindow(ActionEvent event) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/IdentificationPane.fxml"));
         Parent pane = loader.load();
         Scene identificationScene =  new Scene(pane);
         Stage identification = (Stage) ((Node) event.getSource()).getScene().getWindow();
         identification.setScene(identificationScene);
         identification.show();
+
+        Main m=new Main();
+        m.action(event,"View/IdentificationPane.fxml",rootPane);
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/IdentificationPane.fxml"));
+//        Parent pane = loader.load();
+//        Scene identificationScene =  new Scene(pane);
+//        Stage identification = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        identification.setScene(identificationScene);
+//        identification.show();
+
+
     }
 
     @Override
