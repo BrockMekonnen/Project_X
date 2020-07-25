@@ -39,24 +39,29 @@ public class IdentificationController implements Initializable{
     @FXML
     private JFXButton LaboratoryIdentificaitonBTN;
 
+    public static int Identifier;
 
     @FXML
     void toCardRoom(ActionEvent event) throws IOException {
+        Identifier=1;
         ChangeToLoginWindow(event,"../View/login.fxml");
     }
 
     @FXML
     public void toDoctor(ActionEvent event) throws IOException {
+        Identifier=2;
         ChangeToLoginWindow(event,"../View/login.fxml");
     }
 
     @FXML
     void toLaboratory(ActionEvent event) throws IOException {
+        Identifier=3;
         ChangeToLoginWindow(event,"../View/login.fxml");
     }
 
     @FXML
     void toManager(ActionEvent event) throws IOException {
+        Identifier=4;
         ChangeToLoginWindow(event,"../View/login.fxml");
     }
 
