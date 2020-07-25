@@ -143,7 +143,7 @@
                      </font>
                   </Label>
                   <JFXTextField layoutX="125.0" layoutY="550.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
-                  <Label alignment="CENTER" layoutX="45.0" layoutY="582.0" prefHeight="27.0" prefWidth="100.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Blood Film">
+                  <Label alignment="CENTER" layoutX="45.0" layoutY="582.0" prefHeight="27.0" prefWidth="80.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Blood Film">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -289,7 +289,7 @@
                </GridPane.margin>
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="123.0" layoutX="13.0" layoutY="6.0" stroke="#01579b" strokeType="INSIDE" width="228.0" />
-                  <Label layoutX="31.0" layoutY="7.0" prefHeight="25.0" prefWidth="181.0" text="RST" textFill="#01579b" underline="true">
+                  <Label layoutX="31.0" layoutY="7.0" prefHeight="25.0" prefWidth="181.0" text="OTHER" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

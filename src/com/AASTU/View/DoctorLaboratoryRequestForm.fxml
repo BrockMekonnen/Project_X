@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@DoctorLaboratoryRequestForm.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorLaboratoryRequestForm">
+   <children>
+      <AnchorPane layoutY="4.0" prefHeight="130.0" prefWidth="1350.0" style="-fx-border-color: #E1F5FE; -fx-border-width: 0 0 2 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lblTitle" alignment="CENTER" layoutX="440.0" layoutY="6.0" prefHeight="46.0" prefWidth="470.0" stylesheets="@DoctorLaboratoryRequestForm.css" text="Laboratory Requisition Form" textFill="#e1f5fe" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="53.0" layoutY="82.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #E1F5FE;" text="Name">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="129.0" layoutY="82.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="CENTER" layoutX="428.0" layoutY="82.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Age">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="493.0" layoutY="82.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="CENTER" layoutX="620.0" layoutY="82.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Sex">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="685.0" layoutY="82.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXTextField>
+            <Label alignment="CENTER" layoutX="848.0" layoutY="82.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Date">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXTextField layoutX="913.0" layoutY="82.0" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXTextField>
+         </children></AnchorPane>
+      <GridPane layoutX="575.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="141.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="250.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="8.0" prefWidth="262.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="262.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="262.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="262.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" minWidth="10.0" prefWidth="202.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <StackPane maxHeight="750.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="555.0" stroke="#01579b" strokeType="INSIDE" width="212.0" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets top="19.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Blood Film " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="520.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="WBC" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="440.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="LYM" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets bottom="380.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MID" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="320.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="GRA" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="260.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBC" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="200.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HGB" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="140.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCHC" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="80.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCH" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="20.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCV " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="40.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RDW-CV " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="100.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HCT" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="160.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PLT" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="220.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PCT" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="280.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="P-LCR " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="340.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="ESR" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="400.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="125.0" text="Blood Group Rh " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="25.0" top="460.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <Label prefHeight="32.0" prefWidth="124.0" text="CBC" textFill="#01579b" underline="true">
+                     <StackPane.margin>
+                        <Insets bottom="500.0" right="50.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="174.0" text="HEMATOLOGY" textFill="#01579b" underline="true" StackPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets bottom="570.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXCheckBox fx:id="cbcSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#cbcSelectAll" prefHeight="32.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="500.0" left="121.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+               </children>
+            </StackPane>
+            <StackPane maxHeight="750.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="2">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="145.0" stroke="#01579b" strokeType="INSIDE" width="212.0" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets bottom="445.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <JFXCheckBox prefHeight="30.0" prefWidth="100.0" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="520.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="STOOL TEST" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="505.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Occult Blood " textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets bottom="448.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Consistency" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="390.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="119.0" text="OVAL PARASITE " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="334.0" left="21.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="409.0" stroke="#01579b" strokeType="INSIDE" width="212.0">
+                     <StackPane.margin>
+                        <Insets top="179.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="FBS" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="195.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBS" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="138.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="SGOT" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="-43.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="SGPT" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="17.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="137.0" text="Alkaline Phosphate" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="36.0" top="81.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="124.0" text="Bilirubin (Total)" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="24.0" top="141.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="120.0" text="Bilirubin (Direct)" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="21.0" top="198.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="BUN" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="299.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Creatinine" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="351.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <Label prefHeight="30.0" prefWidth="174.0" text="PARASTOLGY" textFill="#01579b" underline="true">
+                     <StackPane.margin>
+                        <Insets bottom="557.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="174.0" text="CHEMISTRY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets bottom="260.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="174.0" text="LST" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets bottom="89.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="174.0" text="RST" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="252.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Uric Acid" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="448.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <Label prefHeight="26.0" prefWidth="174.0" text="OTHER" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="398.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Total Protein" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="499.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Cholesterol " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="548.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="parastologySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#parastologySelectAll" prefHeight="32.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="557.0" left="140.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="lstSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#lstSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="89.0" left="140.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="rstSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#rstSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="140.0" top="252.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="otherSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#otherSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="140.0" top="398.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+            </StackPane>
+            <StackPane maxHeight="750.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="545.0" stroke="#01579b" strokeType="INSIDE" width="212.0" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets top="38.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Color" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="400.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Appearance" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets bottom="340.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PH" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="280.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PSG" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="220.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Protein" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="160.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Glucose" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="100.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Ketone" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="40.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Bilirubin" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="20.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Urobilinogen" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="80.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Blood" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="140.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Epit Cells " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="260.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="WBC" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="320.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBC" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="380.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Casts" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="440.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <Label prefHeight="32.0" prefWidth="174.0" text="DIPISTIC" textFill="#01579b" underline="true">
+                     <StackPane.margin>
+                        <Insets bottom="460.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="174.0" text="URINALYSIS" textFill="#01579b" underline="true" StackPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets bottom="540.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="32.0" prefWidth="174.0" text="MICROSCOPY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="200.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Bacteria" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="500.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="dipisticSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#dipisticSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="460.0" left="140.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="microscopySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#microscopySelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="140.0" top="200.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+            </StackPane>
+            <StackPane maxHeight="750.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="4">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="249.0" stroke="#01579b" strokeType="INSIDE" width="212.0" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets bottom="288.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Widal II " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="440.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Well Felix " textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                     <StackPane.margin>
+                        <Insets bottom="380.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HBSag " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="320.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="CRP" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="260.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="ASO" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="200.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="139.0" text="Rheumatoid Factor " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="140.0" left="38.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="H.Pylori Serum" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="80.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="80.0" stroke="#01579b" strokeType="INSIDE" width="212.0">
+                     <StackPane.margin>
+                        <Insets top="130.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="VDRL" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="500.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="H.Pylori Stool" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="100.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="KOH" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="160.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Gram Stain" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="280.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Wet Film" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="350.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="AFB" textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="420.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HIV/AIDS " textFill="#01579b" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets top="490.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="174.0" text="SEROLOGY" textFill="#01579b" underline="true" StackPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets bottom="565.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="174.0" text="BACTEROLOGY" textFill="#01579b" underline="true">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="20.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXCheckBox fx:id="serologySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#serologySelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets bottom="565.0" left="140.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="bacterologySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#bacterologySelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                     <StackPane.margin>
+                        <Insets left="160.0" top="20.0" />
+                     </StackPane.margin>
+                  </JFXCheckBox>
+               </children>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </GridPane.margin>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@DoctorLaboratoryRequestForm.css" GridPane.columnIndex="5">
+               <children>
+                  <JFXButton buttonType="RAISED" prefHeight="52.0" prefWidth="150.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="SEND" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="125.0" right="25.0" />
+                     </StackPane.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" prefHeight="52.0" prefWidth="150.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="BACK" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="30.0" right="25.0" />
+                     </StackPane.margin>
+                  </JFXButton>
+               </children>
+            </StackPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
