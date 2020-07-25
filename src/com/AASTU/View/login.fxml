@@ -32,17 +32,17 @@
                         <Font size="36.0" />
                     </font>
                 </Text>
-            <JFXTextField alignment="BASELINE_LEFT" focusColor="#0598ff" labelFloat="true" layoutX="201.0" layoutY="288.0" prefHeight="46.0" prefWidth="286.0" promptText="User Name/ID" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" AnchorPane.bottomAnchor="566.0" AnchorPane.rightAnchor="170.0">
+            <JFXTextField fx:id="userName" alignment="BASELINE_LEFT" focusColor="#0598ff" labelFloat="true" layoutX="201.0" layoutY="288.0" prefHeight="46.0" prefWidth="286.0" promptText="User Name/ID" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" AnchorPane.bottomAnchor="566.0" AnchorPane.rightAnchor="170.0">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="#0598ff" labelFloat="true" layoutX="201.0" layoutY="391.0" prefHeight="46.0" prefWidth="286.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" AnchorPane.bottomAnchor="463.0" AnchorPane.rightAnchor="170.0">
+            <JFXTextField fx:id="password" focusColor="#0598ff" labelFloat="true" layoutX="201.0" layoutY="391.0" prefHeight="46.0" prefWidth="286.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" AnchorPane.bottomAnchor="463.0" AnchorPane.rightAnchor="170.0">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <JFXButton buttonType="RAISED" layoutX="260.0" layoutY="505.0" prefHeight="53.0" prefWidth="194.0" ripplerFill="WHITE" style="-fx-background-color: #01579b; -fx-background-radius: 50px;" text="Sign In" textFill="#f2eded" AnchorPane.bottomAnchor="342.0" AnchorPane.rightAnchor="203.0">
+            <JFXButton buttonType="RAISED" layoutX="260.0" layoutY="505.0" onAction="#signIn" prefHeight="53.0" prefWidth="194.0" ripplerFill="WHITE" style="-fx-background-color: #01579b; -fx-background-radius: 50px;" text="Sign In" textFill="#f2eded" AnchorPane.bottomAnchor="342.0" AnchorPane.rightAnchor="203.0">
                <font>
                   <Font size="14.0" />
                </font>

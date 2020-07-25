@@ -43,22 +43,31 @@ public class IdentificationController implements Initializable{
     @FXML
     void toCardRoom(ActionEvent event) throws IOException {
         ChangeToLoginWindow(event,"../View/login.fxml");
+        LoginController.source = "sec";
+//        SwitchWindows.windowController(event,"../View/login.fxml");
     }
 
     @FXML
     public void toDoctor(ActionEvent event) throws IOException {
         ChangeToLoginWindow(event,"../View/login.fxml");
+        LoginController.source = "doc";
+//        SwitchWindows.windowController(event,"../View/login.fxml");
     }
 
     @FXML
     void toLaboratory(ActionEvent event) throws IOException {
         ChangeToLoginWindow(event,"../View/login.fxml");
+        LoginController.source = "lab";
+//        SwitchWindows.windowController(event,"../View/login.fxml");
     }
 
     @FXML
     void toManager(ActionEvent event) throws IOException {
         ChangeToLoginWindow(event,"../View/login.fxml");
+        LoginController.source = "mana";
+//        SwitchWindows.windowController(event,"../View/login.fxml");
     }
+
 
 
     public void ChangeToLoginWindow(ActionEvent event, String fxml) throws IOException {
