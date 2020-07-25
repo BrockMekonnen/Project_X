@@ -10,5 +10,21 @@
 #pane_3{
     -fx-border-color : #29B6F6;
     -fx-border-width: 0 0 2 0;
+    -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
+}
 
+#rootPane {
+    -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
+}
+
+#slideBar{
+    -fx-background-color: linear-gradient(to right, #01579B, #0277BD);
+
+    -fx-background-radius: 0 40 0 0;
+}
+
+#title {
+    -fx-font-family: Helvetica;
+    -fx-font-size: 35px;
+    -fx-font-style: inherit;
 }
