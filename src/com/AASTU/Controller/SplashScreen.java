@@ -38,7 +38,9 @@ public class SplashScreen implements Initializable{
                         AnchorPane root = null;
                         try {
                             root = FXMLLoader.load(getClass().getResource("../View/IdentificationPane.fxml"));
+
                             Main.x=1;
+
                         } catch (IOException e) {
                             Logger.getLogger(SplashScreen.class.getName()).log(Level.SEVERE, null, e);
                         }

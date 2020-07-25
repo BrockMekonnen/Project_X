@@ -126,9 +126,9 @@
                   </JFXTreeTableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <JFXButton layoutX="1238.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0" />
-                        <JFXButton layoutX="789.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0" />
-                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
+                        <JFXButton layoutX="1238.0" layoutY="27.0" onAction="#deleteLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0" />
+                        <JFXButton layoutX="789.0" layoutY="27.0" onAction="#addLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0" />
+                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -149,17 +149,17 @@
                   </JFXTreeTableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
+                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" onAction="#deleteDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
+                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" onAction="#addDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
+                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -180,17 +180,17 @@
                   </JFXTreeTableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
+                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" onAction="#deleteSecretaryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
+                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" onAction="#addSecretaryBtn" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
+                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editSecretaryBtn" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
                            <font>
                               <Font size="14.0" />
                            </font>

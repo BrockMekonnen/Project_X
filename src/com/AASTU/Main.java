@@ -12,10 +12,12 @@ import javafx.stage.StageStyle;
 
 
 
+
 public class Main extends Application {
     Stage stage;
     public static int x=0;
     @Override
+
     public void start(Stage primaryStage)throws Exception {
         this.stage=primaryStage;
         WellcomScreen();
@@ -26,13 +28,21 @@ public class Main extends Application {
             AnchorPane pane=loader.load();
             Scene scene = new Scene(pane);
             if(x==0)
+
                 stage.initStyle(StageStyle.UNDECORATED);
+
+            stage.initStyle(StageStyle.UNDECORATED);
+
             stage.setScene(scene);
             stage.show();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
+
+
+
 
     public void action(ActionEvent event, String fxml, AnchorPane rootPane){
         try {

@@ -1,8 +1,17 @@
 #rootPane {
-    -fx-background-color: linear-gradient(to right, #283C50, #5AB0E2);
+    -fx-background-color: linear-gradient(to right, #01579b, #5AB0E2);
 }
 
 #log_lbl{
     -fx-font-family: sans-serif;
-    -fx-background-color: linear-gradient(to right, #283C58, #5AB0E8);
+    -fx-font-size: 54px;
+}
+.button {
+    -fx-background-color: #ffffff;
+}
+.button:hover{
+    -fx-background-color: #4FC3F7;
+}
+.button:pressed{
+    -fx-background-color: #0277BD;
 }

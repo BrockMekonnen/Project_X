@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="700.0" prefWidth="1300.0" stylesheets="@DoctorPatientView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorPatientView">
+   <children>
+      <AnchorPane layoutX="34.0" layoutY="10.0" prefHeight="690.0" prefWidth="1233.0" style="-fx-border-color: #E1F5FE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <AnchorPane layoutX="3.0" layoutY="2.0" prefHeight="157.0" prefWidth="1229.0" style="-fx-background-color: #E1F5FEa7;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label fx:id="lblTitle" alignment="CENTER" layoutX="430.0" layoutY="3.0" prefHeight="35.0" prefWidth="340.0" text="Patient Card" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="429.0" AnchorPane.topAnchor="8.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="24.0" layoutY="68.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Name " textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="82.0" layoutY="68.0" prefHeight="27.0" prefWidth="217.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="338.0" layoutY="68.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Age" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="396.0" layoutY="68.0" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="496.0" layoutY="68.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Sex" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="554.0" layoutY="68.0" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="24.0" layoutY="114.0" prefHeight="29.0" prefWidth="67.0" style="-fx-background-color: #01579B;" text="Address" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="101.0" layoutY="114.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="City" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="160.0" layoutY="114.0" prefHeight="27.0" prefWidth="143.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="324.0" layoutY="114.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Subcity" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="383.0" layoutY="114.0" prefHeight="27.0" prefWidth="143.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="556.0" layoutY="114.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Kebele" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="615.0" layoutY="114.0" prefHeight="27.0" prefWidth="143.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="664.0" layoutY="68.0" prefHeight="29.0" prefWidth="67.0" style="-fx-background-color: #01579B;" text="Phone No" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="730.0" layoutY="68.0" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="781.0" layoutY="114.0" prefHeight="29.0" prefWidth="67.0" style="-fx-background-color: #01579B;" text="House No" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="848.0" layoutY="114.0" prefHeight="27.0" prefWidth="143.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" />
+                  <Label alignment="CENTER" layoutX="1003.0" layoutY="15.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Date" textFill="WHITE" AnchorPane.rightAnchor="169.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="1061.0" layoutY="15.0" prefHeight="27.0" prefWidth="158.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" AnchorPane.rightAnchor="12.0" />
+                  <Label alignment="CENTER" layoutX="1003.0" layoutY="54.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="ID" textFill="WHITE" AnchorPane.rightAnchor="169.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="1061.0" layoutY="54.0" prefHeight="27.0" prefWidth="158.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" AnchorPane.rightAnchor="12.0" />
+               </children>
+            </AnchorPane>
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="2.0" layoutY="185.0" pannable="true" prefHeight="481.0" prefWidth="1231.0" stylesheets="@DoctorPatientView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="204.0">
+               <content>
+                  <VBox fx:id="pnl_Scroll" maxHeight="600.0" maxWidth="-Infinity" prefHeight="477.0" prefWidth="1229.0" spacing="20.0" style="-fx-background-color: transparent;">
+                     <padding>
+                        <Insets left="100.0" />
+                     </padding></VBox>
+               </content>
+            </ScrollPane>
+            <AnchorPane layoutX="1.0" layoutY="158.0" prefHeight="46.0" prefWidth="1223.0" style="-fx-border-color: #fff; -fx-border-width: 1 0 1 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="702.0" layoutY="8.0" prefHeight="30.0" prefWidth="303.0" style="-fx-background-color: #E1F5FE;" text="Clinical Note" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="218.0" layoutY="9.0" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #E1F5FE;" text="Date" textFill="#01579b">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="779.0" layoutY="620.0" prefHeight="71.0" prefWidth="487.0" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="34.0">
+         <children>
+            <JFXButton fx:id="btn_addNote" buttonType="RAISED" layoutX="73.0" layoutY="13.0" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="147.0" style="-fx-background-radius: 10px; -fx-background-color: #E1F5FE; -fx-border-radius: 10px;" text="Add New Note" />
+            <JFXButton buttonType="RAISED" layoutX="315.0" layoutY="13.0" prefHeight="46.0" prefWidth="147.0" style="-fx-background-radius: 10px; -fx-background-color: #E1F5FE; -fx-border-radius: 10px;" text="Back" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
