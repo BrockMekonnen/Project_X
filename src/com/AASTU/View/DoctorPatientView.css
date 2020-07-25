@@ -1,0 +1,19 @@
+#rootPane{
+    -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
+
+}
+#lblTitle{
+    -fx-font-family: sans-serif;
+    -fx-text-fill: #ffffff;
+    -fx-background-color:  #01579B;
+    -fx-font-size: 18px;
+    -fx-border-color: white;
+}
+
+
+#scrollPane > .viewport {
+    -fx-background-color: transparent;
+}
+#scrollPane{
+    -fx-background-color: transparent;
+}

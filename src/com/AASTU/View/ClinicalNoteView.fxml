@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="524.0" prefWidth="1229.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="40.0" prefHeight="487.0" prefWidth="1188.0" style="-fx-background-color: transparent;">
+         <children>
+            <JFXTextArea editable="false" layoutX="244.0" layoutY="14.0" prefHeight="472.0" prefWidth="944.0" style="-fx-background-color: #FFF;" />
+            <JFXTextField editable="false" layoutY="30.0" prefHeight="39.0" prefWidth="222.0" style="-fx-background-color: #ffffff;" unFocusColor="#e1f5fe" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,18 @@
+#rootPane{
+    -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
+
+}
+.button:hover{
+    -fx-background-color: #01579B;
+}
+.button:pressed{
+    -fx-background-color: #01579B;
+}
+
+#lblTitle{
+    -fx-font-family: sans-serif;
+    -fx-font-size: 24px;
+    -fx-text-fill:  #E1F5FE;
+    -fx-border-color:  #E1F5FE;
+
+}

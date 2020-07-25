@@ -261,6 +261,17 @@
                         <Insets bottom="30.0" right="10.0" />
                      </StackPane.margin>
                   </JFXButton>
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="House Number" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="180.0" top="568.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
                </children>
             </StackPane>
          </children>
