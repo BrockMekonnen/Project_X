@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1300.0" stylesheets="@CommenRegistration.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.PatientRegistration">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1350.0" stylesheets="@CommenRegistration.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.PatientRegistration">
    <children>
       <AnchorPane fx:id="pnlInner" layoutX="150.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0">
          <effect>
@@ -245,7 +245,7 @@
                         <Insets right="20.0" top="60.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXButton fx:id="btnConfirm" buttonType="RAISED" prefHeight="44.0" prefWidth="126.0" text="Confirm" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="btnConfirm" buttonType="RAISED" onAction="#ConfirmationAction" prefHeight="44.0" prefWidth="126.0" text="Confirm" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -253,7 +253,7 @@
                         <Insets bottom="30.0" right="170.0" />
                      </StackPane.margin>
                   </JFXButton>
-                  <JFXButton fx:id="btnDiscard" buttonType="RAISED" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="btnDiscard" buttonType="RAISED" onAction="#DiscardAction" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
