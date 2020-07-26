@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1300.0" stylesheets="@CommenRegistration.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.SecretaryRegistration">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1202.0" stylesheets="@CommenRegistration.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorRegistrationWindow">
    <children>
-      <AnchorPane fx:id="pnlInner" layoutX="160.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="980.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="41.0">
+      <AnchorPane fx:id="pnlInner" layoutX="160.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
             <Label fx:id="lblTitle" alignment="CENTER" layoutX="327.0" layoutY="25.0" prefHeight="45.0" prefWidth="326.0" stylesheets="@CommenRegistration.css" text="New Doctor Registration Form" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="327.0" />
-            <StackPane layoutX="103.0" layoutY="99.0" prefHeight="529.0" prefWidth="815.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="99.0">
+            <StackPane layoutX="103.0" layoutY="86.0" prefHeight="602.0" prefWidth="1035.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="86.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="81.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Last Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="81.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Speciality" textFill="#01579b" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="69.0" top="150.0" />
                      </StackPane.margin>
@@ -206,7 +206,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnDiscard" buttonType="RAISED" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="btnDiscard" buttonType="RAISED" onAction="#handleDiscardBtn" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="30.0" right="10.0" />
                      </StackPane.margin>
@@ -244,15 +244,15 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Speciality" textFill="#01579b">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Last Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets bottom="250.0" left="150.0" />
+                        <Insets left="350.0" top="100.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe">
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -260,7 +260,7 @@
                         <Font size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets bottom="250.0" left="400.0" />
+                        <Insets left="431.0" top="100.0" />
                      </StackPane.margin>
                   </JFXTextField>
                </children>

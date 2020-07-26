@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1350.0" stylesheets="@CommenRegistration.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LaboratoryRegistrationWindowController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="1202.0" stylesheets="@CommenRegistration.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LaboratoryRegistrationWindow">
     <children>
-        <AnchorPane fx:id="pnlInner" layoutX="160.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="980.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="41.0">
+        <AnchorPane fx:id="pnlInner" layoutX="160.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="980.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
             <children>
                 <Label fx:id="lblTitle" alignment="CENTER" layoutX="290.0" layoutY="23.0" prefHeight="45.0" prefWidth="441.0" stylesheets="@CommenRegistration.css" text="New Laboratory Technician Registration Form" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="249.0" />
                 <StackPane layoutX="103.0" layoutY="99.0" prefHeight="529.0" prefWidth="815.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="99.0">
@@ -211,7 +211,7 @@
                                 <Font name="System Bold" size="13.0" />
                             </font>
                         </JFXButton>
-                        <JFXButton fx:id="btnDiscard" buttonType="RAISED" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                        <JFXButton fx:id="btnDiscard" buttonType="RAISED" onAction="#handleDiscardButton" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                             <StackPane.margin>
                                 <Insets bottom="30.0" right="10.0" />
                             </StackPane.margin>

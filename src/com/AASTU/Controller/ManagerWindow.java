@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class ManagerWindow {
@@ -116,7 +117,7 @@ public class ManagerWindow {
 
     @FXML
     public void addLaboratoryBtn(ActionEvent event) throws IOException {
-        new WindowChangeController().changeWindow(event, "../View/LaboratoryRegistration.fxml");
+        new WindowChangeController().popupWindow(event, "../View/LaboratoryRegistration.fxml");
     }
 
     @FXML
@@ -130,8 +131,9 @@ public class ManagerWindow {
 
     @FXML
     public void addDoctorBtn(ActionEvent event) throws IOException {
-        new WindowChangeController().changeWindow(event, "../View/DoctorRegistrationWindow.fxml");
+        new WindowChangeController().popupWindow(event, "../View/DoctorRegistrationWindow.fxml");
     }
+
 
     @FXML
     public void editDoctorBtn(ActionEvent event) throws IOException {
@@ -147,7 +149,7 @@ public class ManagerWindow {
 
     @FXML
     public void addSecretaryBtn(ActionEvent event) throws IOException {
-        new WindowChangeController().changeWindow(event, "../View/SecretaryRegistration.fxml");
+        new WindowChangeController().popupWindow(event, "../View/SecretaryRegistration.fxml");
     }
 
     @FXML
@@ -210,42 +212,33 @@ public class ManagerWindow {
     }
     @FXML
     void goToTableView(ActionEvent event){
-        pnl_line.setVisible(false);
-        pnl_pie.setVisible(false);
-        pnl_bar.setVisible(false);
-
-        pnl_table.setVisible(true);
+        goToView(false,false, false, true);
         pnl_table.toFront();
 
     }
     @FXML
     void goToBarChartView(ActionEvent event){
-        pnl_line.setVisible(false);
-        pnl_pie.setVisible(false);
-        pnl_table.setVisible(false);
-
-        pnl_bar.setVisible(true);
+        goToView(false, false, true, false);
         pnl_bar.toFront();
 
     }
     @FXML
     void goToPieChartView(ActionEvent event){
-        pnl_line.setVisible(false);
-        pnl_table.setVisible(false);
-        pnl_bar.setVisible(false);
-
-        pnl_pie.setVisible(true);
+        goToView(false, true, false, false);
         pnl_pie.toFront();
 
     }
     @FXML
     void goToLineChartView(ActionEvent event){
-        pnl_table.setVisible(false);
-        pnl_pie.setVisible(false);
-        pnl_bar.setVisible(false);
-
-        pnl_line.setVisible(true);
+        goToView(true, false , false , false);
         pnl_line.toFront();
+    }
+
+    private void goToView(boolean line, boolean pie, boolean bar, boolean table){
+        pnl_table.setVisible(table);
+        pnl_pie.setVisible(pie);
+        pnl_line.setVisible(line);
+        pnl_bar.setVisible(bar);
     }
 
 
@@ -256,44 +249,35 @@ public class ManagerWindow {
     }
     @FXML
     void goToTableViewIncome(ActionEvent event){
-        pnl_line_income.setVisible(false);
-        pnl_pie_income.setVisible(false);
-        pnl_bar_income.setVisible(false);
-
-        pnl_table_income.setVisible(true);
+        goToIncome(true, false, false, false);
         pnl_table_income.toFront();
 
     }
     @FXML
     void goToBarChartViewIncome(ActionEvent event){
-        pnl_line_income.setVisible(false);
-        pnl_pie_income.setVisible(false);
-        pnl_table_income.setVisible(false);
-
-        pnl_bar_income.setVisible(true);
+        goToIncome(false, false, true, false);
         pnl_bar_income.toFront();
 
     }
     @FXML
     void goToPieChartViewIncome(ActionEvent event){
-        pnl_line_income.setVisible(false);
-        pnl_table_income.setVisible(false);
-        pnl_bar_income.setVisible(false);
-
-        pnl_pie_income.setVisible(true);
+        goToIncome(false, true, false, false);
         pnl_pie_income.toFront();
 
     }
     @FXML
     void goToLineChartViewIncome(ActionEvent event){
-        pnl_table_income.setVisible(false);
-        pnl_pie_income.setVisible(false);
-        pnl_bar_income.setVisible(false);
-
-        pnl_line_income.setVisible(true);
+        goToIncome(false, false, false, true);
         pnl_line_income.toFront();
-
     }
+
+    private void goToIncome(boolean table, boolean pie, boolean bar, boolean line){
+        pnl_table_income.setVisible(table);
+        pnl_pie_income.setVisible(pie);
+        pnl_bar_income.setVisible(bar);
+        pnl_line_income.setVisible(line);
+    }
+
 
     @FXML
     void gotoTableViewDisease(){
@@ -302,42 +286,33 @@ public class ManagerWindow {
     }
     @FXML
     void goToTableViewDisease(ActionEvent event){
-        pnl_line_disease.setVisible(false);
-        pnl_pie_disease.setVisible(false);
-        pnl_bar_disease.setVisible(false);
-
-        pnl_table_disease.setVisible(true);
+        goToDisease(true, false, false , false);
         pnl_table_disease.toFront();
 
     }
     @FXML
     void goToBarChartViewDisease(ActionEvent event){
-        pnl_line_disease.setVisible(false);
-        pnl_pie_disease.setVisible(false);
-        pnl_table_disease.setVisible(false);
-
-        pnl_bar_disease.setVisible(true);
+        goToDisease(false, false, true, false);
         pnl_bar_disease.toFront();
 
     }
     @FXML
     void goToPieChartViewDisease(ActionEvent event){
-        pnl_line_disease.setVisible(false);
-        pnl_table_disease.setVisible(false);
-        pnl_bar_disease.setVisible(false);
-
-        pnl_pie_disease.setVisible(true);
+        goToDisease(false, true, false, false);
         pnl_pie_disease.toFront();
 
     }
     @FXML
     void goToLineChartViewDisease(ActionEvent event){
-        pnl_table_disease.setVisible(false);
-        pnl_pie_disease.setVisible(false);
-        pnl_bar_disease.setVisible(false);
-
-        pnl_line_disease.setVisible(true);
+        goToDisease(false, false, false, true);
         pnl_line_disease.toFront();
+    }
+
+    private void goToDisease(boolean table, boolean pie, boolean bar, boolean line){
+        pnl_table_disease.setVisible(table);
+        pnl_pie_disease.setVisible(pie);
+        pnl_bar_disease.setVisible(bar);
+        pnl_line_disease.setVisible(line);
     }
 
     @FXML
@@ -347,42 +322,33 @@ public class ManagerWindow {
     }
     @FXML
     void goToTableViewWork(ActionEvent event){
-        pnl_line_work.setVisible(false);
-        pnl_pie_work.setVisible(false);
-        pnl_bar_work.setVisible(false);
-
-        pnl_table_work.setVisible(true);
+        goToWork(true, false, false, false);
         pnl_table_work.toFront();
 
     }
     @FXML
     void goToBarChartViewWork(ActionEvent event){
-        pnl_line_work.setVisible(false);
-        pnl_pie_work.setVisible(false);
-        pnl_table_work.setVisible(false);
-
-        pnl_bar_work.setVisible(true);
+        goToWork(false, false, true, false);
         pnl_bar_work.toFront();
 
     }
     @FXML
     void goToPieChartViewWork(ActionEvent event){
-        pnl_line_work.setVisible(false);
-        pnl_table_work.setVisible(false);
-        pnl_bar_work.setVisible(false);
-
-        pnl_pie_work.setVisible(true);
+        goToWork(false,true,false,false);
         pnl_pie_work.toFront();
 
     }
     @FXML
     void goToLineChartViewWork(ActionEvent event){
-        pnl_table_work.setVisible(false);
-        pnl_pie_work.setVisible(false);
-        pnl_bar_work.setVisible(false);
-
-        pnl_line_work.setVisible(true);
+        goToWork(false, false, false, true);
         pnl_line_work.toFront();
+    }
+
+    private void goToWork(boolean table, boolean pie, boolean bar, boolean line){
+        pnl_table_work.setVisible(table);
+        pnl_pie_work.setVisible(pie);
+        pnl_bar_work.setVisible(bar);
+        pnl_line_work.setVisible(line);
     }
 
 
