@@ -61,17 +61,6 @@ public class LaboratoryWindowController implements Initializable {
         translation1();
     }
 
-    public void ExitAction(){
-        int i= JOptionPane.showConfirmDialog(null,"Are You Sure You Want to Exit The System","Confirmation",JOptionPane.YES_NO_OPTION);
-        if(i==JOptionPane.YES_OPTION){
-            Platform.exit();
-            System.exit(0);
-        }
-        else {
-            translation(1);
-            coverPane.setVisible(false);
-        }
-    }
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {

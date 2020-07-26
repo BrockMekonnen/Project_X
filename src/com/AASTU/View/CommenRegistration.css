@@ -1,17 +1,24 @@
 #rootPane{
-    -fx-background-color: linear-gradient(to right, #01579B, #81D4FA);
 
+    -fx-background-radius: 10px;
+    -fx-background-color:  #01579B;
+    -fx-border-color: #01579B;
+    -fx-border-radius: 20px;
 }
+
 #lblTitle{
     -fx-font-family: sans-serif;
     -fx-font-size: 20px;
     -fx-text-fill: #01579B;
     -fx-border-color: #01579B;
+    -fx-border-width: 2 2 2 2;
     -fx-background-color: white;
 
 }
 #pnlInner{
     -fx-background-color: #E1F5FE;
+    -fx-border-color: #01579B;
+    -fx-border-width: 2 2 2 2;
 }
 
 #cboTime{
