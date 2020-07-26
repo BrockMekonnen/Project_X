@@ -2,33 +2,26 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.Cursor?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" focusTraversable="true" prefHeight="900.0" prefWidth="1600.0" stylesheets="@IdentificationPane.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.IdentificationController">
+<AnchorPane fx:id="rootPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@IdentificationPane.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.IdentificationController">
    <children>
-      <Pane layoutX="122.0" layoutY="379.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="499.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="321.0" AnchorPane.rightAnchor="917.0" AnchorPane.topAnchor="379.0">
-         <children>
-            <Label fx:id="log_lbl" alignment="CENTER" layoutX="81.0" layoutY="33.0" prefHeight="135.0" prefWidth="385.0" style="-fx-background-color: transparent; -fx-border-color: #4FC3F7; -fx-border-width: 0 0 1 3;" stylesheets="@IdentificationPane.css" text="Log In As" textFill="WHITE">
-               <font>
-                  <Font size="49.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <AnchorPane layoutX="661.0" layoutY="218.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="522.0" prefWidth="915.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="218.0">
+      <Pane layoutX="122.0" layoutY="379.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="499.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="321.0" AnchorPane.rightAnchor="917.0" AnchorPane.topAnchor="379.0" />
+      <StackPane layoutX="81.0" layoutY="105.0" prefHeight="541.0" prefWidth="1231.0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="105.0">
          <children>
 
-            <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" layoutX="41.0" layoutY="31.0" onAction="#toDoctor" prefHeight="212.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="DOCTOR" textFill="#01579b">
+                  <JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" onAction="#toDoctor" prefHeight="212.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="DOCTOR" textFill="#01579b" StackPane.alignment="CENTER">
 
-             <!--<JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" opacity="0.76" prefHeight="243.0" prefWidth="407.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF; -fx-border-color: #ffffff50;" text="DOCTOR" textFill="WHITE" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER"> -->
+                   <!--<JFXButton fx:id="DoctorIdentificationBTN" alignment="BASELINE_CENTER" buttonType="RAISED" opacity="0.76" prefHeight="243.0" prefWidth="407.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF; -fx-border-color: #ffffff50;" text="DOCTOR" textFill="WHITE" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER"> -->
 
-               <font>
+                     <font>
                   <Font name="Georgia" size="22.0" />
                </font>
                <graphic>
@@ -43,8 +36,11 @@
                      </stops>
                   </LinearGradient>
                </ripplerFill>
+               <StackPane.margin>
+                  <Insets bottom="235.0" right="109.0" />
+               </StackPane.margin>
             </JFXButton>
-            <JFXButton fx:id="LaboratoryIdentificaitonBTN" alignment="CENTER" buttonType="RAISED" layoutX="455.0" layoutY="31.0" onAction="#toLaboratory" prefHeight="212.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="LABORATORY" textFill="#01579b">
+            <JFXButton fx:id="LaboratoryIdentificaitonBTN" alignment="CENTER" buttonType="RAISED" onAction="#toLaboratory" prefHeight="212.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="LABORATORY" textFill="#01579b" StackPane.alignment="CENTER">
                <font>
                   <Font name="Georgia" size="22.0" />
                </font>
@@ -60,8 +56,11 @@
                      </stops>
                   </LinearGradient>
                </ripplerFill>
+               <StackPane.margin>
+                  <Insets bottom="235.0" left="700.0" />
+               </StackPane.margin>
             </JFXButton>
-            <JFXButton fx:id="AdminIdentificationBTN" alignment="CENTER" buttonType="RAISED" layoutX="455.0" layoutY="269.0" onAction="#toManager" prefHeight="224.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="MANAGER" textFill="#01579b">
+            <JFXButton fx:id="AdminIdentificationBTN" alignment="CENTER" buttonType="RAISED" onAction="#toManager" prefHeight="224.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="MANAGER" textFill="#01579b" StackPane.alignment="CENTER">
                <font>
                   <Font name="Georgia" size="22.0" />
                </font>
@@ -77,8 +76,11 @@
                      </stops>
                   </LinearGradient>
                </ripplerFill>
+               <StackPane.margin>
+                  <Insets left="700.0" top="225.0" />
+               </StackPane.margin>
             </JFXButton>
-            <JFXButton fx:id="CardRoomIdentificationBTN" alignment="CENTER" buttonType="RAISED" layoutX="41.0" layoutY="269.0" onAction="#toCardRoom" prefHeight="224.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="CARD ROOM" textFill="#01579b">
+            <JFXButton fx:id="CardRoomIdentificationBTN" alignment="CENTER" buttonType="RAISED" onAction="#toCardRoom" prefHeight="224.0" prefWidth="391.0" stylesheets="@IdentificationPane.css" text="CARD ROOM" textFill="#01579b" StackPane.alignment="CENTER">
                <font>
                   <Font name="Georgia" size="22.0" />
                </font>
@@ -94,11 +96,19 @@
                      </stops>
                   </LinearGradient>
                </ripplerFill>
+               <StackPane.margin>
+                  <Insets right="110.0" top="225.0" />
+               </StackPane.margin>
             </JFXButton>
+            <Label fx:id="log_lbl" alignment="CENTER" prefHeight="94.0" prefWidth="322.0" style="-fx-background-color: transparent; -fx-border-color: #4FC3F7; -fx-border-width: 0 0 1 3;" stylesheets="@IdentificationPane.css" text="Log In As" textFill="WHITE" StackPane.alignment="CENTER_LEFT">
+               <font>
+                  <Font size="49.0" />
+               </font>
+            </Label>
          </children>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </AnchorPane>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </StackPane>
    </children>
 </AnchorPane>
