@@ -1,5 +1,6 @@
 package com.AASTU;
 
+import com.AASTU.Controller.WindowChangeController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
+    public static WindowChangeController controller = new WindowChangeController();
     Stage stage;
     public static int x=0;
     @Override
