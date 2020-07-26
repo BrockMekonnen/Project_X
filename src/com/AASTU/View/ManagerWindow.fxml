@@ -3,92 +3,61 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.ManagerWindow">
+<AnchorPane id="rootPane" prefHeight="900.0" prefWidth="1600.0" stylesheets="@ManagerWindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.ManagerWindow">
    <children>
-      <AnchorPane prefHeight="33.0" prefWidth="1600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="pane_3" prefHeight="128.0" prefWidth="1600.0" stylesheets="@ManagerWindow.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <MenuBar prefHeight="20.0" prefWidth="1600.0" stylesheets="@ManagerWindow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </MenuBar>
-         </children>
-      </AnchorPane>
-      <AnchorPane id="pane_3" layoutX="179.0" layoutY="34.0" prefHeight="73.0" prefWidth="1600.0" style="-fx-background-color: #E1F5FE;" stylesheets="@ManagerWindow.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <JFXButton fx:id="btn_doctors" buttonType="RAISED" layoutX="42.0" layoutY="11.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #00B0FF;" text="Doctors" textFill="WHITE">
+            <JFXButton fx:id="btn_doctors" buttonType="RAISED" layoutX="190.0" layoutY="60.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #fff;" text="Doctors" textFill="#01579b">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER_MD" size="30" wrappingWidth="29.714285850524902" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="USER_MD" size="30" wrappingWidth="29.714285850524902" />
                </graphic>
                <font>
                   <Font size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btn_lab" buttonType="RAISED" layoutX="213.0" layoutY="12.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #00B0FF;" text="Laboratorists" textFill="WHITE">
+            <JFXButton fx:id="btn_lab" buttonType="RAISED" layoutX="361.0" layoutY="61.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #fff;" text="Laboratorists" textFill="#01579b">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER_MD" size="30" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="USER_MD" size="30" />
                </graphic>
                <font>
                   <Font size="13.0" />
                </font></JFXButton>
-            <JFXButton fx:id="btn_secretaries" buttonType="RAISED" layoutX="404.0" layoutY="11.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #00B0FF;" text="Secretaries" textFill="WHITE">
+            <JFXButton fx:id="btn_secretaries" buttonType="RAISED" layoutX="552.0" layoutY="60.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #fff;" text="Secretaries" textFill="#01579b">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="USER" size="30" />
                </graphic>
                <font>
                   <Font size="13.0" />
                </font></JFXButton>
-            <JFXButton fx:id="btn_analysis_patient" buttonType="RAISED" layoutX="585.0" layoutY="11.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #00B0FF;" text="Analysis Patients" textFill="WHITE">
+            <JFXButton fx:id="btn_analysis_patient" buttonType="RAISED" layoutX="733.0" layoutY="60.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #fff;" text="Analysis Patients" textFill="#01579b">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="25" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="BAR_CHART" size="25" />
                </graphic>
                <font>
                   <Font size="13.0" />
                </font></JFXButton>
-            <JFXButton fx:id="btn_ana_Income" buttonType="RAISED" layoutX="763.0" layoutY="11.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #00B0FF;" text="Analysis Income" textFill="WHITE">
+            <JFXButton fx:id="btn_ana_Income" buttonType="RAISED" layoutX="911.0" layoutY="60.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #fff;" text="Analysis Income" textFill="#01579b">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="BAR_CHART" size="25" wrappingWidth="36.571428298950195" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="BAR_CHART" size="25" wrappingWidth="36.571428298950195" />
                </graphic>
                <font>
                   <Font size="13.0" />
                </font></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="1447.0" layoutY="11.0" onAction="#signOutHandler" prefHeight="49.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-border-color: #00B0FFa7; -fx-border-radius: 25px; -fx-border-width: 2;" text="Sign Out" textFill="#1565c0" AnchorPane.rightAnchor="30.0">
+            <JFXButton buttonType="RAISED" layoutX="1447.0" layoutY="61.0" onAction="#signOutHandler" prefHeight="49.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-border-color: #00B0FFa7; -fx-background-radius: 25px; -fx-background-color: #ffffff; -fx-border-radius: 25px; -fx-border-width: 2;" text="Sign Out" textFill="#01579b" AnchorPane.rightAnchor="30.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -96,22 +65,40 @@
                   <DropShadow />
                </effect>
                <graphic>
-                  <FontAwesomeIconView fill="#00b0ff" glyphName="SIGN_OUT" size="20" wrappingWidth="23.571428298950195" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="SIGN_OUT" size="20" wrappingWidth="23.571428298950195" />
                </graphic></JFXButton>
-            <JFXButton fx:id="btn_disease_record" buttonType="RAISED" layoutX="943.0" layoutY="11.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #00B0FF;" text="Disease Record " textFill="WHITE">
+            <JFXButton fx:id="btn_disease_record" buttonType="RAISED" layoutX="1091.0" layoutY="60.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #fff;" text="Disease Record " textFill="#01579b">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT" size="25" wrappingWidth="32.428571701049805" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="FILE_TEXT" size="25" wrappingWidth="32.428571701049805" />
                </graphic>
                <font>
                   <Font size="13.0" />
                </font></JFXButton>
-            <JFXButton fx:id="btn_work_record" buttonType="RAISED" layoutX="1121.0" layoutY="11.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #00B0FF;" text="Work Record" textFill="WHITE">
+            <JFXButton fx:id="btn_work_record" buttonType="RAISED" layoutX="1269.0" layoutY="60.0" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="157.0" style="-fx-background-color: #fff;" text="Work Record" textFill="#01579b">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT" size="25" wrappingWidth="34.428571701049805" />
+                  <FontAwesomeIconView fill="#01579b" glyphName="FILE_TEXT" size="25" wrappingWidth="34.428571701049805" />
                </graphic></JFXButton>
+            <JFXButton fx:id="navBtn" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="57.0" layoutY="58.0" onAction="#OptionAction" prefHeight="53.0" prefWidth="52.0" text="Icon" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="0.24285714285714288" endY="0.4380952380952381" startX="0.6857142857142857" startY="0.6857142857142857">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#04afff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <graphic>
+                  <FontAwesomeIconView id="icon_drow" fill="WHITE" glyphName="ALIGN_JUSTIFY" size="40" stroke="#29b6f6" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow color="#46558d" />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+            </JFXButton>
+            <Label id="title" layoutX="677.0" prefHeight="29.0" prefWidth="269.0" stylesheets="@ManagerWindow.css" text="Clinic Name" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-7.0" layoutY="108.0" prefHeight="792.0" prefWidth="1600.0" style="-fx-background-color: #E1F5FE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="108.0">
+      <AnchorPane layoutX="-7.0" layoutY="128.0" prefHeight="851.0" prefWidth="1600.0" style="-fx-background-color: #E1F5FE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
          <children>
             <AnchorPane fx:id="pnl_lab" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -126,9 +113,9 @@
                   </JFXTreeTableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <JFXButton layoutX="1238.0" layoutY="27.0" onAction="#deleteLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0" />
-                        <JFXButton layoutX="789.0" layoutY="27.0" onAction="#addLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0" />
-                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
+                        <JFXButton layoutX="1238.0" layoutY="27.0" onAction="#deleteLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #01579b;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0" />
+                        <JFXButton layoutX="789.0" layoutY="27.0" onAction="#addLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0" />
+                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editLaboratoryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #01579b;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -149,17 +136,17 @@
                   </JFXTreeTableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" onAction="#deleteDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
+                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" onAction="#deleteDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #01579b;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" onAction="#addDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
+                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" onAction="#addDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
+                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editDoctorBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #01579b;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -180,17 +167,17 @@
                   </JFXTreeTableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" onAction="#deleteSecretaryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #00B0FF;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
+                        <JFXButton buttonType="RAISED" layoutX="1238.0" layoutY="27.0" onAction="#deleteSecretaryBtn" prefHeight="59.0" prefWidth="177.0" style="-fx-background-color: #01579b;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="185.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" onAction="#addSecretaryBtn" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
+                        <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="27.0" onAction="#addSecretaryBtn" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="634.0">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editSecretaryBtn" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #00B0FF;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
+                        <JFXButton buttonType="RAISED" layoutX="1011.0" layoutY="27.0" onAction="#editSecretaryBtn" prefHeight="59.0" prefWidth="177.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="412.0">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -206,9 +193,9 @@
                         <PieChart prefHeight="706.0" prefWidth="1505.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0" />
                         <Pane prefHeight="85.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label alignment="CENTER" prefHeight="59.0" prefWidth="242.0" text="Pie Chart" textFill="#dd1111" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="707.0">
@@ -221,18 +208,18 @@
                   <AnchorPane fx:id="pnl_bar" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <BarChart layoutX="-9.0" layoutY="-13.0" prefHeight="706.0" prefWidth="1505.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
-                          <xAxis>
-                            <CategoryAxis prefHeight="16.0" prefWidth="443.0" side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
+                           <xAxis>
+                              <CategoryAxis prefHeight="16.0" prefWidth="443.0" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
                         </BarChart>
                         <Pane layoutX="892.0" layoutY="706.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="BarChart" textFill="#ac17c3" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -245,18 +232,18 @@
                   <AnchorPane fx:id="pnl_line" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <LineChart prefHeight="706.0" prefWidth="1505.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
                         </LineChart>
                         <Pane layoutX="595.0" layoutY="701.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="LineChart" textFill="#0fbf21" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -281,9 +268,9 @@
                         </JFXTreeTableView>
                         <Pane prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartView" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                      </children>
@@ -296,9 +283,9 @@
                         <PieChart prefHeight="706.0" prefWidth="1505.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0" />
                         <Pane prefHeight="85.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label alignment="CENTER" prefHeight="59.0" prefWidth="242.0" text="Pie Chart" textFill="#dd1111" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="707.0">
@@ -320,9 +307,9 @@
                         </BarChart>
                         <Pane layoutX="892.0" layoutY="706.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="BarChart" textFill="#ac17c3" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -344,9 +331,9 @@
                         </LineChart>
                         <Pane layoutX="595.0" layoutY="701.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="LineChart" textFill="#0fbf21" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -371,9 +358,9 @@
                         </JFXTreeTableView>
                         <Pane prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewIncome" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                      </children>
@@ -386,9 +373,9 @@
                         <PieChart prefHeight="706.0" prefWidth="1505.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0" />
                         <Pane prefHeight="85.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label alignment="CENTER" prefHeight="59.0" prefWidth="242.0" text="Pie Chart" textFill="#dd1111" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="707.0">
@@ -410,9 +397,9 @@
                         </BarChart>
                         <Pane layoutX="892.0" layoutY="706.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="BarChart" textFill="#ac17c3" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -434,9 +421,9 @@
                         </LineChart>
                         <Pane layoutX="595.0" layoutY="701.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="LineChart" textFill="#0fbf21" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -461,9 +448,9 @@
                         </JFXTreeTableView>
                         <Pane prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewDisease" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                      </children>
@@ -476,9 +463,9 @@
                         <PieChart prefHeight="706.0" prefWidth="1505.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="0.0" />
                         <Pane prefHeight="85.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label alignment="CENTER" prefHeight="59.0" prefWidth="242.0" text="Pie Chart" textFill="#dd1111" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="558.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="707.0">
@@ -500,9 +487,9 @@
                         </BarChart>
                         <Pane layoutX="892.0" layoutY="706.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToPieChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="BarChart" textFill="#ac17c3" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -524,9 +511,9 @@
                         </LineChart>
                         <Pane layoutX="595.0" layoutY="701.0" prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="Table" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToTableViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="Table" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToPieChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                         <Label layoutX="549.0" layoutY="706.0" prefHeight="59.0" prefWidth="230.0" text="LineChart" textFill="#0fbf21" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="549.0" AnchorPane.rightAnchor="821.0" AnchorPane.topAnchor="706.0">
@@ -551,14 +538,42 @@
                         </JFXTreeTableView>
                         <Pane prefHeight="85.0" prefWidth="700.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="PieChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="BarChart" textFill="#f2f2f2" />
-                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #00B0FF;" text="LineChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="45.0" layoutY="18.0" onAction="#goToPieChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="PieChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="238.0" layoutY="18.0" onAction="#goToBarChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="BarChart" textFill="#f2f2f2" />
+                              <JFXButton layoutX="427.0" layoutY="18.0" onAction="#goToLineChartViewWork" prefHeight="49.0" prefWidth="169.0" style="-fx-background-color: #01579b;" text="LineChart" textFill="#f2f2f2" />
                            </children>
                         </Pane>
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
          </children></AnchorPane>
+      <AnchorPane fx:id="opacityPane" prefHeight="914.0" prefWidth="1600.0" style="-fx-background-color: #00000020;" visible="false">
+         <children>
+            <AnchorPane id="slideBar" fx:id="slidePane" layoutY="128.0" prefHeight="777.0" prefWidth="262.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="128.0">
+               <children>
+                  <JFXButton layoutX="24.0" layoutY="83.0" prefHeight="57.0" prefWidth="215.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
+                     <graphic>
+                        <FontAwesomeIconView fill="#01579b" glyphName="EDIT" size="30" wrappingWidth="36.0" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton layoutX="24.0" layoutY="272.0" prefHeight="57.0" prefWidth="215.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Help" textFill="#01579b">
+                     <graphic>
+                        <FontAwesomeIconView fill="#01579b" glyphName="QUESTION" size="30" wrappingWidth="42.0" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton layoutX="40.0" layoutY="723.0" prefHeight="55.0" prefWidth="183.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="CLOSE" textFill="#01579b" AnchorPane.bottomAnchor="45.0">
+                     <graphic>
+                        <FontAwesomeIconView fill="#01579b" glyphName="CLOSE" size="30" wrappingWidth="32.571428298950195" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton layoutX="24.0" layoutY="176.0" prefHeight="57.0" prefWidth="215.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Setting" textFill="#01579b">
+                     <graphic>
+                        <FontAwesomeIconView fill="#01579b" glyphName="COG" size="30" wrappingWidth="35.714284896850586" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
