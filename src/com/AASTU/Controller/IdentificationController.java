@@ -1,6 +1,5 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -29,9 +28,6 @@ public class IdentificationController implements Initializable{
     private JFXButton CardRoomIdentificationBTN;
 
     @FXML
-    private AnchorPane rootPane;
-
-    @FXML
     private AnchorPane FourInOnePane;
 
     @FXML
@@ -46,26 +42,26 @@ public class IdentificationController implements Initializable{
 
     @FXML
     void toCardRoom(ActionEvent event) throws IOException {
-        Main.object.action(event,"../View/login.fxml",rootPane);
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "sec";
     }
 
     @FXML
     public void toDoctor(ActionEvent event) throws IOException {
-        Main.object.action(event,"../View/login.fxml",rootPane);
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "doc";
     }
 
     @FXML
     void toLaboratory(ActionEvent event) throws IOException {
-        Main.object.action(event,"../View/login.fxml",rootPane);
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "lab";
 
     }
 
     @FXML
     void toManager(ActionEvent event) throws IOException {
-        Main.object.action(event,"../View/login.fxml",rootPane);
+        new WindowChangeController().changeWindow(event,"../View/login.fxml");
         LoginController.source = "mana";
     }
 

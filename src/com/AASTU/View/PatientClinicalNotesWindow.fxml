@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ClinicalNotePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #04afff80;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.PatientClinicalNotesWindowController">
+<AnchorPane fx:id="ClinicalNotePane" prefHeight="722.0" prefWidth="1370.0" style="-fx-background-color: #04afff80;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.PatientClinicalNotesWindowController">
    <children>
       <AnchorPane layoutX="240.0" prefHeight="742.0" prefWidth="1129.0" style="-fx-background-color: #fff;">
          <effect>
