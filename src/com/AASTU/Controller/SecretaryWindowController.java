@@ -69,7 +69,7 @@ public class SecretaryWindowController implements Initializable {
     }
 
     public void AddPatientAction(ActionEvent event) throws IOException {
-        new WindowChangeController().changeWindow(event, "../View/PatientRegistration.fxml");
+        new WindowChangeController().popupWindow(event, "../View/PatientRegistration.fxml");
     }
 
     @FXML

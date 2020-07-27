@@ -30,7 +30,38 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private JFXButton OptionBTN;
 
+    @FXML
+    private AnchorPane outPnl;
 
+    @FXML
+    private AnchorPane pendingPnl;
+
+    @FXML
+    private AnchorPane diseasePnl;
+
+
+    @FXML
+    void goToOut(ActionEvent event) {
+        pendingPnl.setVisible(false);
+        diseasePnl.setVisible(false);
+        outPnl.setVisible(true);
+
+    }
+
+    @FXML
+    void goToPending(ActionEvent event) {
+        diseasePnl.setVisible(false);
+        outPnl.setVisible(false);
+        pendingPnl.setVisible(true);
+    }
+
+    @FXML
+    void goToDisease(ActionEvent event) {
+        outPnl.setVisible(false);
+        pendingPnl.setVisible(false);
+        diseasePnl.setVisible(true);
+
+    }
 
 
     @Override

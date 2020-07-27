@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,14 +46,35 @@ public class PatientRegistration implements Initializable{
         cboCalender.getSelectionModel().select("E.C");
     }
 
+
     public void DiscardAction(ActionEvent event){
         int i= JOptionPane.showConfirmDialog(null,"Are You sure You want to Discard The file","Message",JOptionPane.YES_NO_OPTION);
         if(i==JOptionPane.YES_OPTION) {
             Main.object.action(event, "../View/SecretaryWindow.fxml", rootPane);
         }
     }
+=======
+//    public void DiscardAction(ActionEvent event){
+//        int i= JOptionPane.showConfirmDialog(null,"Are You sure You want to Discard The file","Message",JOptionPane.YES_NO_OPTION);
+//        if(i==JOptionPane.YES_OPTION) {
+//            Main main = new Main();
+//            main.action(event, "View/SecretaryWindow.fxml", rootPane);
+//        }
+//    }
+
+
     public void ConfirmationAction(){
         JOptionPane.showMessageDialog(null,"You Successfully Register Patient","Message",JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @FXML
+    void DiscardAction(ActionEvent event) {
+        WindowChangeController.popupStage.close();
+    }
+
+    @FXML
+    void addOutPatient(ActionEvent event) throws IOException {
+
     }
 }
 
