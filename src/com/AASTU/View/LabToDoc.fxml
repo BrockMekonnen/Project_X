@@ -194,7 +194,7 @@
                      </font>
                   </Label>
                   <JFXTextField layoutX="115.0" layoutY="336.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
-                  <Label layoutX="26.0" layoutY="366.0" prefHeight="27.0" prefWidth="241.0" text="LST" textFill="#01579b" underline="true">
+                  <Label layoutX="26.0" layoutY="366.0" prefHeight="27.0" prefWidth="241.0" text="LFT" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -254,7 +254,7 @@
                      </font>
                   </Label>
                   <JFXTextField alignment="CENTER_RIGHT" layoutX="159.0" layoutY="521.0" prefHeight="27.0" prefWidth="40.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" />
-                  <Label layoutX="33.0" layoutY="549.0" prefHeight="27.0" prefWidth="241.0" text="RST" textFill="#01579b" underline="true">
+                  <Label layoutX="33.0" layoutY="549.0" prefHeight="27.0" prefWidth="241.0" text="RFT" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
