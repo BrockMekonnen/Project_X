@@ -1,6 +1,7 @@
 package com.AASTU.Controller;
 
 
+import com.AASTU.Main;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable{
+
+
+    @FXML
+    private AnchorPane rootPane;
 
     public static String source;
 
@@ -24,22 +29,19 @@ public class LoginController implements Initializable{
     @FXML
     void signIn(ActionEvent event) throws IOException {
         if(source.equals("sec")){
-           new WindowChangeController().changeWindow(event,"../view/SecretaryWindow.fxml");
+            Main.object.action(event,"../View/SecretaryWindow.fxml",rootPane);
         } else if(source.equals("doc")){
-            new WindowChangeController().changeWindow(event,"../view/DoctorWindow.fxml");
+            Main.object.action(event,"../View/DoctorWindow.fxml",rootPane);
         }else if(source.equals("mana")) {
-            new WindowChangeController().changeWindow(event,"../view/ManagerWindow.fxml");
-        }else if(source.equals("lab")){
-            new WindowChangeController().changeWindow(event,"../view/LaboratoryWindow.fxml");
+            Main.object.action(event,"../View/ManagerWindow.fxml",rootPane);
+        }else if(source.equals("lab"))
+            Main.object.action(event,"../View/LaboratoryWindow.fxml",rootPane);
         }
-    }
 
-    @FXML
-    private AnchorPane rootPane;
 
     @FXML
     void ToIdentificationWindow(ActionEvent event) throws IOException {
-        new WindowChangeController().changeWindow(event,"../View/IdentificationPane.fxml");
+        Main.object.action(event,"../View/IdentificationPane.fxml",rootPane);
     }
 
     @Override

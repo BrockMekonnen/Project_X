@@ -48,8 +48,7 @@ public class PatientRegistration implements Initializable{
     public void DiscardAction(ActionEvent event){
         int i= JOptionPane.showConfirmDialog(null,"Are You sure You want to Discard The file","Message",JOptionPane.YES_NO_OPTION);
         if(i==JOptionPane.YES_OPTION) {
-            Main main = new Main();
-            main.action(event, "View/SecretaryWindow.fxml", rootPane);
+            Main.object.action(event, "../View/SecretaryWindow.fxml", rootPane);
         }
     }
     public void ConfirmationAction(){

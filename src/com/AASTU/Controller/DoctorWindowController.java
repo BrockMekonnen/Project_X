@@ -1,5 +1,6 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import sun.plugin.javascript.navig.Anchor;
 
 
 import java.io.IOException;
@@ -18,6 +20,9 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     private AnchorPane slidePane;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private AnchorPane opacityPane;
@@ -66,6 +71,6 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().signOut(event,"../view/Login.fxml");
+        Main.object.action(event,"../View/login.fxml",rootPane);
     }
 }

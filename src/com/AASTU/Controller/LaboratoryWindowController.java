@@ -1,5 +1,6 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -22,6 +23,9 @@ public class LaboratoryWindowController implements Initializable {
 
     @FXML
     private JFXButton navBtn;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private AnchorPane coverPane;
@@ -64,6 +68,6 @@ public class LaboratoryWindowController implements Initializable {
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().signOut(event, "../view/Login.fxml");
+        Main.object.action(event,"../View/login.fxml",rootPane);
     }
 }

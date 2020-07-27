@@ -1,5 +1,6 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -69,6 +70,8 @@ public class ManagerWindow implements Initializable {
     @FXML
     private AnchorPane pnl_work_record;
 
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private AnchorPane pnl_pie;
@@ -210,7 +213,7 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
-            new WindowChangeController().signOut(event,"../view/Login.fxml");
+        Main.object.action(event,"../View/login.fxml",rootPane);
     }
 
     @FXML

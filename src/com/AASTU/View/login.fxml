@@ -13,11 +13,11 @@
 <!--     </right>
 </BorderPane> -->
 
-<AnchorPane fx:id="rootPane" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LoginController">
+<AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LoginController">
    <children>
-      <AnchorPane prefHeight="900.0" prefWidth="945.0" style="-fx-background-color: #01579b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="655.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="853.0" prefWidth="740.0" style="-fx-background-color: #01579b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="655.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="260.0" layoutY="405.0" prefHeight="90.0" prefWidth="450.0" text="Clinic Managment" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="405.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="259.0" AnchorPane.topAnchor="405.0">
+            <Label alignment="CENTER" layoutX="209.0" layoutY="369.0" prefHeight="70.0" prefWidth="436.0" text="Clinic Managment" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="414.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="369.0">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
@@ -55,10 +55,10 @@
                   <MaterialDesignIconView fill="#0598ff" glyphName="KEYBOARD_BACKSPACE" size="20" wrappingWidth="26.0" />
                </graphic>
             </JFXButton>
-            <FontAwesomeIconView fill="#01579b" glyphName="USER" layoutX="153.0" layoutY="322.0" size="30" />
-            <FontAwesomeIconView fill="#01579b" glyphName="KEY" layoutX="153.0" layoutY="424.0" size="30" />
             </children>
         </AnchorPane>
+      <FontAwesomeIconView fill="#01579b" glyphName="USER" layoutX="905.0" layoutY="307.0" size="30" AnchorPane.bottomAnchor="568.1283473968506" AnchorPane.rightAnchor="470.4285717010498" />
+      <FontAwesomeIconView fill="#01579b" glyphName="KEY" layoutX="909.0" layoutY="409.0" size="30" AnchorPane.bottomAnchor="466.1283473968506" AnchorPane.rightAnchor="470.8571434020996" />
 
    </children>
 </AnchorPane>
