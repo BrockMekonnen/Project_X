@@ -39,3 +39,9 @@
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
+#btnOutPatient{
+    -fx-background-color: #01579B;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-text-fill: white;
+}

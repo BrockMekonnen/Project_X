@@ -22,7 +22,7 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="USERS" size="30" wrappingWidth="51.0" />
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="outBtn" buttonType="RAISED" graphicTextGap="7.0" layoutX="31.0" layoutY="143.0" onAction="#goToOut" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Out Patient" textFill="#01579b">
+                <JFXButton fx:id="outBtn" buttonType="RAISED" graphicTextGap="7.0" layoutX="31.0" layoutY="143.0" onAction="#goToOut" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Add Out Patinet" textFill="#01579b">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -31,7 +31,7 @@
                   </ImageView>
                </graphic>
                 </JFXButton>
-                <JFXButton fx:id="diseaseBtn" buttonType="RAISED" layoutX="30.0" layoutY="241.0" onAction="#goToDisease" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Disease Status" textFill="#01579b">
+                <JFXButton fx:id="diseaseBtn" buttonType="RAISED" layoutX="31.0" layoutY="235.0" onAction="#goToDisease" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Disease Status" textFill="#01579b">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
