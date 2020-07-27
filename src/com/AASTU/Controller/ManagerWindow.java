@@ -118,6 +118,12 @@ public class ManagerWindow implements Initializable {
     @FXML
     private AnchorPane pnl_table_work;
 
+    @FXML
+    private JFXButton pricingBtn;
+
+    @FXML
+    private AnchorPane pnl_price;
+
 
     /**
      * Secretory
@@ -248,6 +254,9 @@ public class ManagerWindow implements Initializable {
             pnl_work_record.toFront();
             gotoTableViewWork();
 
+        } else if(event.getSource() == pricingBtn){
+            pnl_price.setVisible(true);
+            pnl_price.toFront();
         }
     }
 

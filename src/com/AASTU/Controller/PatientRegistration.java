@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -60,6 +61,11 @@ public class PatientRegistration implements Initializable{
     @FXML
     void DiscardAction(ActionEvent event) {
         WindowChangeController.popupStage.close();
+    }
+
+    @FXML
+    void addOutPatient(ActionEvent event) throws IOException {
+
     }
 }
 
