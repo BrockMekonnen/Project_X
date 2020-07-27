@@ -74,7 +74,7 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().signOut(event, "../view/Login.fxml");
+        Main.object.action(event,"../View/login.fxml",rootPane);
     }
 
 

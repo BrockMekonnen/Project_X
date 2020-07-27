@@ -17,7 +17,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
+
+
+
 <AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@ManagerWindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.ManagerWindow">
+
    <children>
       <AnchorPane id="pane_3" prefHeight="128.0" prefWidth="1350.0" stylesheets="@ManagerWindow.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>

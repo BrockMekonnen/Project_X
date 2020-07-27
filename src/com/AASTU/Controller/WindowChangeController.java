@@ -1,5 +1,6 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,7 +17,7 @@ import java.io.IOException;
 
 public class WindowChangeController {
 
-    private Stage stage;
+    public static Stage stage;
     private AnchorPane pane;
     static Stage popupStage;
 
@@ -53,6 +54,41 @@ public class WindowChangeController {
         popupStage.initModality(Modality.APPLICATION_MODAL);
         popupStage.showAndWait();
 
+    }
+    public static int x=0;
+
+    public void initializer(Stage primaryStage){
+        stage=primaryStage;
+        WellcomScreen();
+    }
+
+    public void WellcomScreen(){
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/SplashScreen.fxml"));
+            Parent pane=loader.load();
+            Scene scene = new Scene(pane);
+            if(x==0)
+                stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void action(ActionEvent event, String fxml, AnchorPane rootPane){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            AnchorPane root=loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            rootPane.getScene().getWindow().hide();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
