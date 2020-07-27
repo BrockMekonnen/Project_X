@@ -28,3 +28,46 @@
     -fx-font-size: 35px;
     -fx-font-style: inherit;
 }
+#labTable .column-header {
+    -fx-border-color: #00838Fa2;
+    -fx-border-width: 0.5 0.5 0.5 0.5;
+
+}
+#labTable .column-header .label {
+    -fx-text-fill: #00838F;
+    -fx-alignment: CENTER;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-pref-height: 45px;
+    -fx-padding: 0px 0px 4px 0px;
+}
+
+#docTable .column-header{
+    -fx-border-color: #0D47A1a2;
+    -fx-border-width: 0.5 0.5 0.5 0.5;
+}
+#docTable .column-header .label {
+    -fx-text-fill: #01579B;
+    -fx-alignment: CENTER;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-pref-height: 45px;
+    -fx-padding: 0px 0px 4px 0px;
+}
+
+#secTable .column-header{
+    -fx-border-color: #AD1457a2;
+    -fx-border-width: 0.5 0.5 0.5 0.5;
+}
+#secTable .column-header .label {
+    -fx-text-fill: #AD1457;
+    -fx-alignment: CENTER;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-pref-height: 45px;
+    -fx-padding: 0px 0px 4px 0px;
+}
+
+
+
+
