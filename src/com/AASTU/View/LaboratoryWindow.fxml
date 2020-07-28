@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@CommenDSL.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LaboratoryWindowController">
     <children>
@@ -90,6 +91,83 @@
                 <FontAwesomeIconView fill="#51bfee" glyphName="SEARCH" size="25" />
             </graphic>
         </JFXButton>
+
+        <AnchorPane fx:id="coverPane" opacity="0.16" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+          <AnchorPane id="pnl_side" fx:id="AccountSettingPane" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">
+              <children>
+                  <JFXButton layoutX="24.0" layoutY="83.0" onAction="#profileHandler" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
+                      <graphic>
+                          <FontAwesomeIconView fill="#01579b" glyphName="EDIT" size="30" wrappingWidth="36.0" />
+                      </graphic>
+                  </JFXButton>
+                  <JFXButton layoutX="24.0" layoutY="272.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Help" textFill="#01579b">
+                      <graphic>
+                          <FontAwesomeIconView fill="#01579b" glyphName="QUESTION" size="30" wrappingWidth="42.0" />
+                      </graphic>
+                  </JFXButton>
+                  <JFXButton layoutX="40.0" layoutY="723.0" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="CLOSE" textFill="#01579b" AnchorPane.bottomAnchor="45.0">
+                      <graphic>
+                          <FontAwesomeIconView fill="#01579b" glyphName="CLOSE" size="30" wrappingWidth="32.571428298950195" />
+                      </graphic>
+                  </JFXButton>
+                  <JFXButton layoutX="24.0" layoutY="176.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Setting" textFill="#01579b">
+                      <graphic>
+                          <FontAwesomeIconView fill="#01579b" glyphName="COG" size="30" wrappingWidth="35.714284896850586" />
+                      </graphic>
+                  </JFXButton>
+              </children>
+          </AnchorPane>
+      <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="profilePane" layoutX="344.0" layoutY="109.0" prefHeight="641.0" prefWidth="510.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;">
+               <children>
+                  <Label layoutX="80.0" layoutY="99.0" prefHeight="25.0" prefWidth="71.0" text="Full Name" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="14.0" prefHeight="33.0" prefWidth="89.0" text="Profile" />
+                  <JFXTextField layoutX="193.0" layoutY="96.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" />
+                  <Label layoutX="80.0" layoutY="162.0" prefHeight="25.0" prefWidth="71.0" text="Gender" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="193.0" layoutY="159.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="Female" />
+                  <Label layoutX="80.0" layoutY="216.0" prefHeight="25.0" prefWidth="111.0" text="Working Hour" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="203.0" layoutY="213.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="from 2 pm to 6pm" />
+                  <Label layoutX="80.0" layoutY="274.0" prefHeight="25.0" prefWidth="89.0" text="Phone number" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="203.0" layoutY="271.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="0933333333" />
+                  <Label layoutX="80.0" layoutY="332.0" prefHeight="25.0" prefWidth="89.0" text="city" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="203.0" layoutY="329.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="none" />
+                  <Label layoutX="80.0" layoutY="378.0" prefHeight="25.0" prefWidth="89.0" text="Subcity" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="203.0" layoutY="375.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="none" />
+                  <Label layoutX="80.0" layoutY="419.0" prefHeight="25.0" prefWidth="89.0" text="Kebeke" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="203.0" layoutY="416.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="none" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
         <AnchorPane fx:id="coverPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <AnchorPane id="pnl_side" fx:id="AccountSettingPane" layoutY="82.0" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">
