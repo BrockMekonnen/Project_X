@@ -217,6 +217,7 @@ public class ManagerWindow implements Initializable {
     @FXML
     void OptionAction(ActionEvent event) {
         opacityPane.setVisible(true);
+        slidePane.setVisible(true);
         TransitionController.translation(slidePane,0,1,0.1);
         TransitionController.translateTransition(slidePane, 600, 1);
     }

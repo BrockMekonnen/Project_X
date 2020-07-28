@@ -97,6 +97,7 @@ public class DoctorWindowController implements Initializable {
 
     public void OptionAction(){
         opacityPane.setVisible(true);
+        slidePane.setVisible(true);
         TransitionController.translation(slidePane,0,1,0.1);
         TransitionController.translateTransition(slidePane, 600, 1);
 
