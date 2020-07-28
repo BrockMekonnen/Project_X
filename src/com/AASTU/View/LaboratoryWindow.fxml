@@ -23,7 +23,7 @@
                         <Insets left="30.0" />
                     </padding>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="7.0" layoutX="27.0" layoutY="143.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="On waiting" textAlignment="CENTER" textFill="#01579b">
+                <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="7.0" layoutX="27.0" layoutY="143.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="On Waiting" textAlignment="CENTER" textFill="#01579b">
                     <padding>
                         <Insets left="30.0" />
                     </padding>
@@ -34,7 +34,7 @@
                   <Insets />
                </opaqueInsets>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="26.0" layoutY="241.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="List All" textFill="#01579b">
+                <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="26.0" layoutY="241.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="List All Actives" textFill="#01579b">
                     <padding>
                         <Insets left="30.0" />
                     </padding>
@@ -47,7 +47,7 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="SIGN_OUT" size="25" wrappingWidth="36.0" />
                     </graphic>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="24.0" layoutY="342.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="All Lab Record" textFill="#01579b">
+                <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="24.0" layoutY="342.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text=" Lab Record" textFill="#01579b">
                     <padding>
                         <Insets left="30.0" />
                     </padding>

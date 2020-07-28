@@ -12,14 +12,12 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px;" stylesheets="@CommenRegistration.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.PatientRegistration">
    <children>
       <AnchorPane fx:id="pnlInner" layoutX="150.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
-         <effect>
-            <DropShadow />
-         </effect>
          <children>
             <Label fx:id="lblTitle" alignment="CENTER" layoutX="359.0" layoutY="14.0" prefHeight="40.0" prefWidth="249.0" stylesheets="@CommenRegistration.css" text="New Patient" AnchorPane.leftAnchor="359.0" AnchorPane.rightAnchor="359.0" />
             <StackPane fx:id="subpane2" layoutX="84.0" layoutY="64.0" prefHeight="629.0" prefWidth="1030.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="62.0">
@@ -273,22 +271,40 @@
                         <Insets left="180.0" top="568.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXCheckBox alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" prefHeight="40.0" prefWidth="20.0" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="55.0" stroke="#01579b" strokeType="INSIDE" width="180.0" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
-                        <Insets bottom="120.0" right="-16.0" />
+                        <Insets bottom="112.0" right="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <JFXButton fx:id="btnOutPatient" buttonType="RAISED" onAction="#addOutPatient" prefHeight="36.0" prefWidth="109.0" stylesheets="@CommenRegistration.css" text="Out Patinet" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets bottom="121.0" right="86.0" />
+                     </StackPane.margin>
+                  </JFXButton>
+                  <JFXCheckBox alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="30.0" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="120.0" right="45.0" />
                      </StackPane.margin>
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </JFXCheckBox>
-                  <JFXButton fx:id="btnOutPatient" buttonType="RAISED" onAction="#addOutPatient" prefHeight="36.0" prefWidth="106.0" stylesheets="@CommenRegistration.css" text="Out Patinet" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="55.0" stroke="#01579b" strokeType="INSIDE" width="180.0" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
-                        <Insets bottom="121.0" right="50.0" />
+                        <Insets bottom="185.0" right="40.0" />
                      </StackPane.margin>
-                  </JFXButton>
+                  </Rectangle>
+                  <JFXCheckBox alignment="CENTER" checkedColor="WHITE" contentDisplay="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="42.0" prefWidth="145.0" style="-fx-background-color: #01579B; -fx-background-radius: 8px;" text="No Laboratory test" textFill="WHITE" unCheckedColor="WHITE" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="192.0" right="53.0" />
+                     </StackPane.margin>
+                     <effect>
+                        <DropShadow color="WHITE" />
+                     </effect>
+                  </JFXCheckBox>
                </children>
             </StackPane>
          </children>

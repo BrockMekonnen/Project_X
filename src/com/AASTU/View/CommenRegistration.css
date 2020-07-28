@@ -1,9 +1,9 @@
 #rootPane{
 
     -fx-background-radius: 10px;
-    -fx-background-color:  #01579B;
-    -fx-border-color: #01579B;
-    -fx-border-radius: 20px;
+    -fx-background-color:  white;
+    -fx-border-color: white;
+    -fx-border-radius: 10px;
 }
 
 #lblTitle{
@@ -34,8 +34,9 @@
 
 #btnDiscard,
 #btnConfirm{
-    -fx-background-color: white;
+    -fx-background-color: #01579B;
     -fx-border-color: #01579B;
+    -fx-text-fill: white;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
