@@ -97,12 +97,12 @@
             </ScrollPane>
             <AnchorPane layoutX="1.0" layoutY="158.0" prefHeight="46.0" prefWidth="1223.0" style="-fx-border-color: #fff; -fx-border-width: 1 0 1 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Label alignment="CENTER" layoutX="702.0" layoutY="8.0" prefHeight="30.0" prefWidth="303.0" style="-fx-background-color: #E1F5FE;" text="Clinical Note" textFill="#01579b">
+                  <Label alignment="CENTER" layoutX="702.0" layoutY="8.0" prefHeight="30.0" prefWidth="303.0" style="-fx-background-color: #E1F5FE; -fx-border-color: #01579B;" text="Clinical Note" textFill="#01579b">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="218.0" layoutY="9.0" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #E1F5FE;" text="Date" textFill="#01579b">
+                  <Label alignment="CENTER" layoutX="218.0" layoutY="9.0" prefHeight="29.0" prefWidth="100.0" style="-fx-background-color: #E1F5FE; -fx-border-color: #01579B;" text="Date" textFill="#01579b">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -111,10 +111,11 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="779.0" layoutY="620.0" prefHeight="71.0" prefWidth="487.0" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="34.0">
+      <AnchorPane layoutX="779.0" layoutY="620.0" prefHeight="151.0" prefWidth="614.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="34.0">
          <children>
-            <JFXButton fx:id="btn_addNote" buttonType="RAISED" layoutX="73.0" layoutY="13.0" onAction="#handleButtonAction" prefHeight="46.0" prefWidth="147.0" style="-fx-background-radius: 10px; -fx-background-color: #E1F5FE; -fx-border-radius: 10px;" text="Add New Note" />
-            <JFXButton buttonType="RAISED" layoutX="315.0" layoutY="13.0" prefHeight="46.0" prefWidth="147.0" style="-fx-background-radius: 10px; -fx-background-color: #E1F5FE; -fx-border-radius: 10px;" text="Back" />
+            <JFXButton fx:id="btn_addNote" buttonType="RAISED" layoutX="73.0" layoutY="85.0" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="147.0" style="-fx-background-radius: 10px; -fx-background-color: #E1F5FE; -fx-border-radius: 10px;" text="Add New Note" textFill="#01579b" />
+            <JFXButton buttonType="RAISED" layoutX="434.0" layoutY="85.0" prefHeight="45.0" prefWidth="147.0" style="-fx-background-radius: 10px; -fx-background-color: #E1F5FE; -fx-border-radius: 10px;" text="Back" textFill="#01579b" />
+            <JFXButton buttonType="RAISED" layoutX="256.0" layoutY="85.0" prefHeight="45.0" prefWidth="145.0" style="-fx-background-radius: 10px; -fx-background-color: #E1F5FE; -fx-border-radius: 10px;" text="Add Out Patient" textFill="#01579b" />
          </children>
       </AnchorPane>
    </children>
