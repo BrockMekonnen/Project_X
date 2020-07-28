@@ -20,6 +20,13 @@ import java.util.ResourceBundle;
 
 public class LaboratoryWindowController implements Initializable {
 
+
+    @FXML
+    public AnchorPane profilePane;
+
+    @FXML
+    public AnchorPane profileOpacityPane;
+
     @FXML
     private JFXButton navBtn;
 
@@ -31,10 +38,18 @@ public class LaboratoryWindowController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        profilePane.setVisible(false);
+        profileOpacityPane.setVisible(false);
         coverPane.setVisible(false);
         translation(0.1);
         coverPane.setOnMouseClicked(event -> {
             translation(1);
+        });
+
+        profileOpacityPane.setOnMouseClicked(event -> {
+            profilePane.setVisible(false);
+            profileOpacityPane.setVisible(false);
+
         });
     }
 
@@ -59,6 +74,13 @@ public class LaboratoryWindowController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
         translation1();
+    }
+
+    @FXML
+    void profileHandler(ActionEvent event) {
+        translation(1);
+        profileOpacityPane.setVisible(true);
+        profilePane.setVisible(true);
     }
 
 

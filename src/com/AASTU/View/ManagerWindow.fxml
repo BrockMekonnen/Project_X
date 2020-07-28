@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.chart.BarChart?>
@@ -531,7 +532,7 @@
          <children>
             <AnchorPane id="slideBar" fx:id="slidePane" layoutY="128.0" prefHeight="622.0" prefWidth="238.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="125.0">
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="82.0" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
+                  <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="82.0" onAction="#profileHandler" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
                      <graphic>
                         <FontAwesomeIconView fill="#01579b" glyphName="EDIT" size="30" wrappingWidth="54.0" />
                      </graphic>
@@ -551,6 +552,33 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="QUESTION" size="30" wrappingWidth="53.0" />
                      </graphic>
                   </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="profilePane" layoutX="344.0" layoutY="125.0" prefHeight="625.0" prefWidth="510.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;">
+               <children>
+                  <Label layoutX="80.0" layoutY="99.0" prefHeight="25.0" prefWidth="71.0" text="Full Name" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="14.0" prefHeight="33.0" prefWidth="89.0" text="Profile" />
+                  <JFXTextField layoutX="193.0" layoutY="96.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="none" />
+                  <Label layoutX="80.0" layoutY="162.0" prefHeight="25.0" prefWidth="71.0" text="Gender" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="193.0" layoutY="159.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="Female" />
+                  <Label layoutX="80.0" layoutY="236.0" prefHeight="25.0" prefWidth="89.0" text="Phone number" textFill="#01579b">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField layoutX="203.0" layoutY="233.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="0933333333" />
                </children>
             </AnchorPane>
          </children>

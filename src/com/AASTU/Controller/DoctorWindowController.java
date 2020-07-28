@@ -17,6 +17,12 @@ import java.util.ResourceBundle;
 public class DoctorWindowController implements Initializable {
 
     @FXML
+    public AnchorPane profilePane;
+
+    @FXML
+    public AnchorPane profileOpacityPane;
+
+    @FXML
     private AnchorPane slidePane;
 
     @FXML
@@ -62,10 +68,18 @@ public class DoctorWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        profilePane.setVisible(false);
+        profileOpacityPane.setVisible(false);
         opacityPane.setVisible(false);
         translation(0.1);
         opacityPane.setOnMouseClicked(event -> {
             translation(1);
+        });
+
+        profileOpacityPane.setOnMouseClicked(event -> {
+            profilePane.setVisible(false);
+            profileOpacityPane.setVisible(false);
+
         });
 
     }
@@ -85,6 +99,14 @@ public class DoctorWindowController implements Initializable {
         translation1();
 
     }
+
+    @FXML
+    void profileHandler(ActionEvent event) {
+        translation(1);
+        profileOpacityPane.setVisible(true);
+        profilePane.setVisible(true);
+    }
+
 
     public void translation(double second){
         TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(second),slidePane);

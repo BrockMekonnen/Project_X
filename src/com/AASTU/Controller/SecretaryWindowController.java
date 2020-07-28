@@ -21,6 +21,12 @@ import java.util.ResourceBundle;
 public class SecretaryWindowController implements Initializable {
 
     @FXML
+    public AnchorPane profilePane;
+
+    @FXML
+    public AnchorPane profileOpacityPane;
+
+    @FXML
     private JFXButton navBtn;
 
     @FXML
@@ -45,13 +51,27 @@ public class SecretaryWindowController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        profilePane.setVisible(false);
+        profileOpacityPane.setVisible(false);
         opacityPane1.setVisible(false);
         translation(0.1);
         opacityPane1.setOnMouseClicked(event -> {
             translation(1);
         });
+
+        profileOpacityPane.setOnMouseClicked(event -> {
+            profilePane.setVisible(false);
+            profileOpacityPane.setVisible(false);
+
+        });
     }
 
+    @FXML
+    void profileHandler(ActionEvent event) {
+        translation(1);
+        profileOpacityPane.setVisible(true);
+        profilePane.setVisible(true);
+    }
     public void translation(double second){
         TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(second),slidePane1);
         translateTransition.setByX(-600);
