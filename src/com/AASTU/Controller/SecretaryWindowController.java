@@ -42,6 +42,7 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     public void navAction(ActionEvent event) {
         opacityPane1.setVisible(true);
+        slidePane1.setVisible(true);
         TransitionController.translation(slidePane1,0,1,0.1);
         TransitionController.translateTransition(slidePane1, 600, 1);
 

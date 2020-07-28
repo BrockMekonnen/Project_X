@@ -170,7 +170,7 @@
             </children>
         </AnchorPane>
         <AnchorPane fx:id="opacityPane" opacity="0.12" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <AnchorPane id="pnl_side" fx:id="slidePane" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">
+        <AnchorPane id="pnl_side" fx:id="slidePane" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">
             <children>
                 <JFXButton layoutX="24.0" layoutY="83.0" onAction="#profileHandler" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
                     <graphic>

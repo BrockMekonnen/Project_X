@@ -529,7 +529,7 @@
             </AnchorPane>
          </children></AnchorPane>
       <AnchorPane fx:id="opacityPane" opacity="0.16" prefHeight="914.0" prefWidth="1350.0" style="-fx-background-color: #000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane id="slideBar" fx:id="slidePane" prefHeight="622.0" prefWidth="238.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="125.0">
+      <AnchorPane id="slideBar" fx:id="slidePane" prefHeight="622.0" prefWidth="238.0" stylesheets="@CommenDSL.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="125.0">
          <children>
             <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="82.0" onAction="#profileHandler" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
                <graphic>

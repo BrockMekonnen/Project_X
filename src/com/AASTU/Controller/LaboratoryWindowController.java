@@ -65,6 +65,7 @@ public class LaboratoryWindowController implements Initializable {
 
     public void OptionAction(){
         coverPane.setVisible(true);
+        AccountSettingPane.setVisible(true);
         TransitionController.translation(AccountSettingPane,0,1,0.1);
         TransitionController.translateTransition(AccountSettingPane, 600, 1);
     }
