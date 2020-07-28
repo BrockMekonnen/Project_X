@@ -557,7 +557,7 @@
          <children>
             <AnchorPane fx:id="profilePane" layoutX="344.0" layoutY="125.0" prefHeight="625.0" prefWidth="510.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;">
                <children>
-                  <Label layoutX="80.0" layoutY="99.0" prefHeight="25.0" prefWidth="71.0" text="Full Name" textFill="#01579b">
+                  <Label layoutX="80.0" layoutY="99.0" prefHeight="25.0" prefWidth="89.0" text="Full Name" textFill="#01579b">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -570,32 +570,12 @@
                      </font>
                   </Label>
                   <JFXTextField layoutX="193.0" layoutY="159.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="Female" />
-                  <Label layoutX="80.0" layoutY="236.0" prefHeight="25.0" prefWidth="89.0" text="Phone number" textFill="#01579b">
+                  <Label layoutX="80.0" layoutY="236.0" prefHeight="25.0" prefWidth="110.0" text="Phone number" textFill="#01579b">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
                   <JFXTextField layoutX="203.0" layoutY="233.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="0933333333" />
-                  <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="82.0" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
-                     <graphic>
-                        <FontAwesomeIconView fill="#01579b" glyphName="EDIT" size="30" wrappingWidth="54.0" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="723.0" onAction="#CloseBTN" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="CLOSE" textFill="#01579b" AnchorPane.bottomAnchor="45.0">
-                     <graphic>
-                        <FontAwesomeIconView fill="#01579b" glyphName="CLOSE" size="30" wrappingWidth="32.571428298950195" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="169.0" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Setting" textFill="#01579b">
-                     <graphic>
-                        <FontAwesomeIconView fill="#01579b" glyphName="COG" size="30" wrappingWidth="52.714284896850586" />
-                     </graphic>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="253.0" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Help" textFill="#01579b">
-                     <graphic>
-                        <FontAwesomeIconView fill="#01579b" glyphName="QUESTION" size="30" wrappingWidth="53.0" />
-                     </graphic>
-                  </JFXButton>
                </children>
             </AnchorPane>
          </children>
