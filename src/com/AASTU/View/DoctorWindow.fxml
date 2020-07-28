@@ -78,6 +78,7 @@
         </JFXButton>
         <AnchorPane fx:id="outPnl" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
             <children>
+
                 <JFXTreeTableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="791.0" prefWidth="1332.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
                     <columns>
                         <TreeTableColumn prefWidth="63.0" text="No" />
@@ -91,6 +92,30 @@
                         <TreeTableColumn prefWidth="183.0" text="Column X" />
                     </columns>
                 </JFXTreeTableView>
+                <AnchorPane id="pnl_side" fx:id="slidePane" layoutY="82.0" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">
+                    <children>
+                        <JFXButton layoutX="24.0" layoutY="83.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">
+                            <graphic>
+                                <FontAwesomeIconView fill="#01579b" glyphName="EDIT" size="30" wrappingWidth="36.0" />
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="24.0" layoutY="272.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Help" textFill="#01579b">
+                            <graphic>
+                                <FontAwesomeIconView fill="#01579b" glyphName="QUESTION" size="30" wrappingWidth="42.0" />
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="40.0" layoutY="723.0" onAction="#CloseBTN" prefHeight="50.0" prefWidth="165.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="CLOSE" textFill="#01579b" AnchorPane.bottomAnchor="45.0">
+                            <graphic>
+                                <FontAwesomeIconView fill="#01579b" glyphName="CLOSE" size="30" wrappingWidth="32.571428298950195" />
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="24.0" layoutY="176.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Setting" textFill="#01579b">
+                            <graphic>
+                                <FontAwesomeIconView fill="#01579b" glyphName="COG" size="30" wrappingWidth="35.714284896850586" />
+                            </graphic>
+                        </JFXButton>
+                    </children>
+                </AnchorPane>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="pendingPnl" layoutX="245.0" layoutY="109.0" prefHeight="641.0" prefWidth="1105.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">

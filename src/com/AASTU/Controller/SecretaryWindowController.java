@@ -4,6 +4,7 @@ import com.AASTU.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,6 +87,14 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
         new WindowChangeController().signOut(event, "../view/Login.fxml");
+    }
+
+    @FXML
+    void CloseBTN(ActionEvent event){
+        int i=JOptionPane.showConfirmDialog(null,"Do you want to Exit the system","Attention",JOptionPane.YES_NO_OPTION);
+        if(i== JOptionPane.YES_OPTION){
+        System.exit(0);
+        Platform.exit();}
     }
 
 
