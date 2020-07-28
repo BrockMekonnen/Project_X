@@ -66,4 +66,12 @@ public class LaboratoryWindowController implements Initializable {
     void signOutHandler(ActionEvent event) throws IOException {
         new WindowChangeController().signOut(event, "../view/Login.fxml");
     }
+
+    @FXML
+    void CloseBTN(ActionEvent event){
+        int i=JOptionPane.showConfirmDialog(null,"Do you want to Exit the system","Attention",JOptionPane.YES_NO_OPTION);
+        if(i== JOptionPane.YES_OPTION){
+            System.exit(0);
+            Platform.exit();}
+    }
 }

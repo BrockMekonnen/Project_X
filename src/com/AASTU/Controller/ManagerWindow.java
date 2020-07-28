@@ -3,6 +3,7 @@ package com.AASTU.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -404,6 +406,14 @@ public class ManagerWindow implements Initializable {
         pnl_pie_work.setVisible(pie);
         pnl_bar_work.setVisible(bar);
         pnl_line_work.setVisible(line);
+    }
+
+    @FXML
+    void CloseBTN(ActionEvent event){
+        int i= JOptionPane.showConfirmDialog(null,"Do you want to Exit the system","Attention",JOptionPane.YES_NO_OPTION);
+        if(i== JOptionPane.YES_OPTION){
+            System.exit(0);
+            Platform.exit();}
     }
 
 
