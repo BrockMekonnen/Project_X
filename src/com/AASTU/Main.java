@@ -12,8 +12,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
-
-
 public class Main extends Application {
     public static WindowChangeController controller = new WindowChangeController();
     Stage stage;
@@ -29,9 +27,9 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("View/SplashScreen.fxml"));
             AnchorPane pane=loader.load();
             Scene scene = new Scene(pane);
-            if(x==0)
-
-                stage.initStyle(StageStyle.UNDECORATED);
+//            if(x==0)
+//
+//                stage.initStyle(StageStyle.UNDECORATED);
 
             stage.initStyle(StageStyle.UNDECORATED);
 
@@ -41,9 +39,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
-
-
 
 
     public void action(ActionEvent event, String fxml, AnchorPane rootPane){
