@@ -1,6 +1,7 @@
 package com.AASTU.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -42,6 +43,11 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private AnchorPane diseasePnl;
 
+    @FXML
+    private JFXComboBox<?> comboTime;
+
+    @FXML
+    private JFXComboBox<?> comboTimeEnd;
 
     @FXML
     void goToOut(ActionEvent event) {
