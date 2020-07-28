@@ -46,11 +46,12 @@ public class PatientRegistration implements Initializable{
         cboCalender.getSelectionModel().select("E.C");
     }
 
+//    @FXML
 //    public void DiscardAction(ActionEvent event){
 //        int i= JOptionPane.showConfirmDialog(null,"Are You sure You want to Discard The file","Message",JOptionPane.YES_NO_OPTION);
 //        if(i==JOptionPane.YES_OPTION) {
 //            Main main = new Main();
-//            main.action(event, "View/SecretaryWindow.fxml", rootPane);
+//            Main.controller.action(event, "View/SecretaryWindow.fxml", rootPane);
 //        }
 //    }
 
@@ -60,6 +61,8 @@ public class PatientRegistration implements Initializable{
 
     @FXML
     void DiscardAction(ActionEvent event) {
+        int i=JOptionPane.showConfirmDialog(null,"Are you sure you want to Discard the registration","Attention", JOptionPane.YES_NO_OPTION);
+        if(i==JOptionPane.YES_OPTION)
         WindowChangeController.popupStage.close();
     }
 
