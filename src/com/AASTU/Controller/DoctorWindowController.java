@@ -67,13 +67,13 @@ public class DoctorWindowController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         opacityPane.setVisible(false);
-        translation(0.1);
+        TransitionController.translateTransition(slidePane, -600, 0.5);
+        TransitionController.translation(slidePane,1,0,0.1);
         opacityPane.setOnMouseClicked(event -> {
-            translation(1);
+            translateTransitionBack(slidePane, -600, 1);
         });
 
         profileOpacityPane.setOnMouseClicked(event -> {
@@ -84,38 +84,30 @@ public class DoctorWindowController implements Initializable {
 
     }
 
-    public void translation1(){
-        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(1),slidePane);
-        translateTransition.setByX(600);
-        translateTransition.play();
-
-    }
-    public void OptionAction(){
-        opacityPane.setVisible(true);
-        FadeTransition fadeTransition=new FadeTransition(Duration.seconds(0.1),slidePane);
-        fadeTransition.setFromValue(0);
-        fadeTransition.setToValue(1);
-        fadeTransition.play();
-        translation1();
-
-    }
-
-    @FXML
-    void profileHandler(ActionEvent event) {
-        translation(1);
-        profileOpacityPane.setVisible(true);
-        profilePane.setVisible(true);
-    }
-
-
-    public void translation(double second){
-        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(second),slidePane);
-        translateTransition.setByX(-600);
+    public void translateTransitionBack(AnchorPane pane, double move, double sec){
+        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);
+        translateTransition.setByX(move);
         translateTransition.play();
         translateTransition.setOnFinished(event -> {
             opacityPane.setVisible(false);
         });
     }
+
+    public void OptionAction(){
+        opacityPane.setVisible(true);
+        TransitionController.translation(slidePane,0,1,0.1);
+        TransitionController.translateTransition(slidePane, 600, 1);
+
+    }
+
+    @FXML
+    void profileHandler(ActionEvent event) {
+        translateTransitionBack(slidePane,-600,1);
+        profileOpacityPane.setVisible(true);
+        profilePane.setVisible(true);
+    }
+
+
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
