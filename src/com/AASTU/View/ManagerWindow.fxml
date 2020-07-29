@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
@@ -14,8 +16,10 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@ManagerWindow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.ManagerWindow">
@@ -553,31 +557,141 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="profilePane" layoutX="10.0" layoutY="125.0" prefHeight="625.0" prefWidth="480.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="125.0">
          <children>
-            <AnchorPane fx:id="profilePane" layoutX="344.0" layoutY="125.0" prefHeight="625.0" prefWidth="510.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;">
+            <Pane prefHeight="52.0" prefWidth="510.0" style="-fx-background-radius: 20 20 0 0; -fx-background-color: #01579B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="80.0" layoutY="99.0" prefHeight="25.0" prefWidth="89.0" text="Full Name" textFill="#01579b">
+                  <Label layoutX="54.0" layoutY="12.0" prefHeight="34.0" prefWidth="98.0" text="Profile" textFill="WHITE">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label layoutX="25.0" layoutY="14.0" prefHeight="33.0" prefWidth="89.0" text="Profile" />
-                  <JFXTextField layoutX="193.0" layoutY="96.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="none" />
-                  <Label layoutX="80.0" layoutY="162.0" prefHeight="25.0" prefWidth="71.0" text="Gender" textFill="#01579b">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField layoutX="193.0" layoutY="159.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="Female" />
-                  <Label layoutX="80.0" layoutY="236.0" prefHeight="25.0" prefWidth="110.0" text="Phone number" textFill="#01579b">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField layoutX="203.0" layoutY="233.0" promptText="ms. Kasech " style="-fx-background-color: #fff;" text="0933333333" />
                </children>
-            </AnchorPane>
+            </Pane>
+            <StackPane layoutX="42.0" layoutY="90.0" prefHeight="539.0" prefWidth="421.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="90.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="First Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets right="100.0" top="30.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="110.0" top="30.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Last Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets right="100.0" top="80.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="89.0" text="Kebeke" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="50.0" top="400.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Gender" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets right="100.0" top="130.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Address" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="3.0" top="283.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="89.0" text="Subcity" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="50.0" top="360.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="110.0" top="80.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXComboBox prefHeight="25.0" prefWidth="96.0" style="-fx-border-color: #01579B; -fx-border-width: 0 0 1 0; -fx-background-color: #ffffff;" unFocusColor="WHITE" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="110.0" top="130.0" />
+                     </StackPane.margin>
+                  </JFXComboBox>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="City" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="50.0" top="320.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" top="400.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" top="320.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" top="360.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXButton buttonType="RAISED" prefHeight="33.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" text="Cancel" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="20.0" right="20.0" />
+                     </StackPane.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #01579B;" text="Save" textFill="WHITE" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="20.0" right="160.0" />
+                     </StackPane.margin>
+                  </JFXButton>
+                  <Line endX="143.0" startX="-100.0" stroke="#01579b" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="308.0" />
+                     </StackPane.margin>
+                  </Line>
+                  <Label prefHeight="25.0" prefWidth="30.0" text="+251" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="114.0" top="232.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Phone number" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="232.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="150.0" top="232.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
    </children>
