@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -13,13 +15,17 @@ import javafx.stage.StageStyle;
 import org.omg.CORBA.TRANSIENT;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Optional;
 
 public class WindowChangeController {
 
     private Stage stage;
     private AnchorPane pane;
-    static Stage popupStage;
+    private static Stage popupStage[]= new Stage[5];
+    private static int windowCount=0;
 
+    public static int x=0;
 
     public WindowChangeController(){
         stage = new Stage();
@@ -46,21 +52,48 @@ public class WindowChangeController {
 
         Parent root = FXMLLoader.load((getClass().getResource(fxml)));
         Scene scene = new Scene(root);
-        popupStage = new Stage();
-        popupStage.setScene(scene);
-        popupStage.initStyle(StageStyle.UNDECORATED);
-        popupStage.centerOnScreen();
-        popupStage.initModality(Modality.APPLICATION_MODAL);
-        popupStage.showAndWait();
+        Stage temp = new Stage();
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.centerOnScreen();
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+
+
+    }
+    public void warningPopup(String warnHeader, String warnBody, String imageUrl ) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader((getClass().getResource("../View/WarningPopup.fxml")));
+        Parent root = loader.load();
+        Warning warn = loader.getController();
+        warn.setWarnHeaderFld(warnHeader);
+        warn.setWarnBodyFld(warnBody);
+        warn.setWarnImg(imageUrl);
+        Scene scene = new Scene(root);
+        Stage temp = new Stage();
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.centerOnScreen();
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+
 
     }
 
-    public static int x=0;
-    public void initializer(Stage primaryStage){
-        this.stage=primaryStage;
-        WellcomScreen();
+
+
+    public static void closeWindow(){
+        Stage stage = popupStage[windowCount-1];
+        windowCount--;
+        stage.close();
 
     }
+
+
 
     public void WellcomScreen(){
         try {
@@ -72,7 +105,6 @@ public class WindowChangeController {
                 stage.initStyle(StageStyle.UNDECORATED);
 
             stage.initStyle(StageStyle.UNDECORATED);
-
             stage.setScene(scene);
             stage.show();
         }catch (Exception e){
@@ -92,7 +124,12 @@ public class WindowChangeController {
         }catch (Exception e){
             e.printStackTrace();
         }
+
     }
+
+
+
+
 
 
 

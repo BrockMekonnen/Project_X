@@ -11,9 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class PatientRegistration implements Initializable{
 
@@ -46,29 +48,23 @@ public class PatientRegistration implements Initializable{
         cboCalender.getSelectionModel().select("E.C");
     }
 
-//    @FXML
-//    public void DiscardAction(ActionEvent event){
-//        int i= JOptionPane.showConfirmDialog(null,"Are You sure You want to Discard The file","Message",JOptionPane.YES_NO_OPTION);
-//        if(i==JOptionPane.YES_OPTION) {
-//            Main main = new Main();
-//            Main.controller.action(event, "View/SecretaryWindow.fxml", rootPane);
-//        }
-//    }
 
-    public void ConfirmationAction(){
-        JOptionPane.showMessageDialog(null,"You Successfully Register Patient","Message",JOptionPane.INFORMATION_MESSAGE);
+    public void ConfirmationAction() throws IOException {
+        new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
     }
 
     @FXML
-    void DiscardAction(ActionEvent event) {
-        int i=JOptionPane.showConfirmDialog(null,"Are you sure you want to Discard the registration","Attention", JOptionPane.YES_NO_OPTION);
-        if(i==JOptionPane.YES_OPTION)
-        WindowChangeController.popupStage.close();
+    void DiscardAction(ActionEvent event) throws IOException {
+        WindowChangeController.closeWindow();
+
     }
 
     @FXML
     void addOutPatient(ActionEvent event) throws IOException {
-
+        new WindowChangeController().popupWindow(event,"../View/NewOutPatient.fxml");
     }
+
+
 }
+
 
