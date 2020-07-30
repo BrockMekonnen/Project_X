@@ -8,7 +8,7 @@ import javafx.util.Duration;
 public class TransitionController {
     public TransitionController(){
 
-    };
+    }
 
     public static void translateTransition(AnchorPane pane, double move, double sec){
         TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(sec),pane);

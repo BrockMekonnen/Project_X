@@ -25,22 +25,7 @@ import java.util.logging.Logger;
 public class DoctorPatientView implements Initializable{
 
     @FXML
-    private AnchorPane rootPane;
-
-    @FXML
-    private Label lblTitle;
-
-    @FXML
-    private ScrollPane scrollPane;
-
-    @FXML
     private VBox pnl_Scroll;
-
-    @FXML
-    private JFXButton btn_addNote;
-
-    static Stage stage;
-
 
 
     @Override
@@ -66,24 +51,7 @@ public class DoctorPatientView implements Initializable{
     }
 
     @FXML
-    void handleButtonAction(ActionEvent event) {
-        if(event.getSource() == btn_addNote) {
-            if(stage == null){
-            try {
-                Parent root = FXMLLoader.load((getClass().getResource("../View/ClinicalNoteAdd.fxml")));
-                stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.setAlwaysOnTop(true);
-                stage.setResizable(true);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else {
-                stage.show();
-            }
-
-        }
+    void handleButtonAction(ActionEvent event) throws IOException {
+        new WindowChangeController().popupWindow(event,"../View/ClinicalNoteAdd.fxml");
     }
 }

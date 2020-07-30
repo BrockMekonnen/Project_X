@@ -14,11 +14,6 @@ public class LoginController implements Initializable{
 
     public static String source;
 
-    @FXML
-    private JFXTextField userName;
-
-
-
 
     @FXML
     void signIn(ActionEvent event) throws IOException {
@@ -32,9 +27,6 @@ public class LoginController implements Initializable{
             new WindowChangeController().changeWindow(event,"../view/LaboratoryWindow.fxml");
         }
     }
-
-    @FXML
-    private AnchorPane rootPane;
 
     @FXML
     void ToIdentificationWindow(ActionEvent event) throws IOException {
