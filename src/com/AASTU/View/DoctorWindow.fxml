@@ -30,17 +30,7 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="USERS" size="30" wrappingWidth="51.0" />
                     </graphic>
                 </JFXButton>
-
-                <JFXButton fx:id="outBtn" buttonType="RAISED" graphicTextGap="7.0" layoutX="34.0" layoutY="140.0" onAction="#goToOut" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Add Out Patinet" textFill="#01579b">
-               <graphic>
-                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Resource/icons8_health_checkup_filled_50px_2.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-                </JFXButton>
-                <JFXButton fx:id="diseaseBtn" buttonType="RAISED" layoutX="34.0" layoutY="230.0" onAction="#goToDisease" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Disease Status" textFill="#01579b">
+                <JFXButton fx:id="diseaseBtn" buttonType="RAISED" layoutX="34.0" layoutY="140.0" onAction="#goToDisease" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Disease Status" textFill="#01579b">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -73,7 +63,7 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="SIGN_OUT" size="25" wrappingWidth="36.0" />
                     </graphic>
                 </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="34.0" layoutY="320.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Record" textFill="#01579b">
+            <JFXButton buttonType="RAISED" layoutX="34.0" layoutY="230.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Record" textFill="#01579b">
                <graphic>
                   <FontAwesomeIconView fill="#01579b" glyphName="HISTORY" size="30" wrappingWidth="39.714284896850586" />
                </graphic>
@@ -108,48 +98,6 @@
                 <FontAwesomeIconView fill="#51bfee" glyphName="SEARCH" size="25" />
             </graphic>
         </JFXButton>
-        <AnchorPane fx:id="outPnl" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
-            <children>
-
-                <JFXTreeTableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="791.0" prefWidth="1332.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                        <TreeTableColumn prefWidth="63.0" text="No" />
-                        <TreeTableColumn prefWidth="149.0" text="Out Patinet" />
-                        <TreeTableColumn prefWidth="104.0" text="Column X" />
-                        <TreeTableColumn prefWidth="92.0" text="Column X" />
-                        <TreeTableColumn prefWidth="94.0" text="Column X" />
-                        <TreeTableColumn prefWidth="109.0" text="Column X" />
-                        <TreeTableColumn prefWidth="133.0" text="Column X" />
-                        <TreeTableColumn prefWidth="161.0" text="Column X" />
-                        <TreeTableColumn prefWidth="183.0" text="Column X" />
-                    </columns>
-                </JFXTreeTableView>
-                <!--<AnchorPane id="pnl_side" fx:id="slidePane" layoutY="82.0" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">-->
-                    <!--<children>-->
-                        <!--<JFXButton layoutX="24.0" layoutY="83.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">-->
-                            <!--<graphic>-->
-                                <!--<FontAwesomeIconView fill="#01579b" glyphName="EDIT" size="30" wrappingWidth="36.0" />-->
-                            <!--</graphic>-->
-                        <!--</JFXButton>-->
-                        <!--<JFXButton layoutX="24.0" layoutY="272.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Help" textFill="#01579b">-->
-                            <!--<graphic>-->
-                                <!--<FontAwesomeIconView fill="#01579b" glyphName="QUESTION" size="30" wrappingWidth="42.0" />-->
-                            <!--</graphic>-->
-                        <!--</JFXButton>-->
-                        <!--<JFXButton layoutX="40.0" layoutY="723.0" onAction="#CloseBTN" prefHeight="50.0" prefWidth="165.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="CLOSE" textFill="#01579b" AnchorPane.bottomAnchor="45.0">-->
-                            <!--<graphic>-->
-                                <!--<FontAwesomeIconView fill="#01579b" glyphName="CLOSE" size="30" wrappingWidth="32.571428298950195" />-->
-                            <!--</graphic>-->
-                        <!--</JFXButton>-->
-                        <!--<JFXButton layoutX="24.0" layoutY="176.0" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Setting" textFill="#01579b">-->
-                            <!--<graphic>-->
-                                <!--<FontAwesomeIconView fill="#01579b" glyphName="COG" size="30" wrappingWidth="35.714284896850586" />-->
-                            <!--</graphic>-->
-                        <!--</JFXButton>-->
-                    <!--</children>-->
-                <!--</AnchorPane>-->
-            </children>
-        </AnchorPane>
         <AnchorPane fx:id="pendingPnl" layoutX="245.0" layoutY="109.0" prefHeight="641.0" prefWidth="1105.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
             <children>
                 <JFXTreeTableView layoutX="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="791.0" prefWidth="1332.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
@@ -176,7 +124,7 @@
                 </JFXTreeTableView>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="opacityPane" opacity="0.12" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <AnchorPane fx:id="opacityPane" opacity="0.12" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <AnchorPane id="pnl_side" fx:id="slidePane" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">
             <children>
                 <JFXButton layoutX="24.0" layoutY="83.0" onAction="#profileHandler" prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50px;" text="Profile" textFill="#01579b">

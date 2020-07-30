@@ -54,7 +54,7 @@
                   <Insets top="150.0" />
                </StackPane.margin>
             </JFXButton>
-            <JFXButton buttonType="RAISED" onAction="#ToIdentificationWindow" prefHeight="53.0" prefWidth="139.0" style="-fx-border-color: #0598ff; -fx-border-radius: 50px;" text="Back" textFill="#0598ff" StackPane.alignment="BOTTOM_RIGHT">
+            <JFXButton onAction="#ToIdentificationWindow" prefHeight="45.0" prefWidth="130.0" style="-fx-border-color: #01579B; -fx-border-radius: 50px; -fx-background-radius: 50px;" text="Back" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                <font>
                   <Font size="14.0" />
                </font>
@@ -62,7 +62,7 @@
                   <Insets bottom="35.0" right="35.0" />
                </StackPane.margin>
                <graphic>
-                  <MaterialDesignIconView fill="#0598ff" glyphName="KEYBOARD_BACKSPACE" size="20" wrappingWidth="37.0" />
+                  <MaterialDesignIconView fill="#01579b" glyphName="KEYBOARD_BACKSPACE" size="20" wrappingWidth="37.0" />
                </graphic>
             </JFXButton>
             <FontAwesomeIconView fill="#01579b" glyphName="USER" size="40" wrappingWidth="36.571428298950195" StackPane.alignment="CENTER">

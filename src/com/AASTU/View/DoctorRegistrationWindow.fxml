@@ -198,7 +198,7 @@
                         <Insets left="180.0" top="470.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXButton fx:id="btnConfirm" buttonType="RAISED" prefHeight="44.0" prefWidth="126.0" text="Confirm" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="btnConfirm" buttonType="RAISED" onAction="#handleConfirmButton" prefHeight="44.0" prefWidth="126.0" text="Confirm" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="30.0" right="170.0" />
                      </StackPane.margin>
