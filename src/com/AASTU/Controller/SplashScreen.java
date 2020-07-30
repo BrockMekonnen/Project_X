@@ -31,15 +31,13 @@ public class SplashScreen implements Initializable{
         @Override
         public void run(){
             try {
-                Thread.sleep(4000);
+                Thread.sleep(3000);
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         AnchorPane root = null;
                         try {
                             root = FXMLLoader.load(getClass().getResource("../View/IdentificationPane.fxml"));
-
-                            WindowChangeController.x=1;
 
                         } catch (IOException e) {
                             Logger.getLogger(SplashScreen.class.getName()).log(Level.SEVERE, null, e);

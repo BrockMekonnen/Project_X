@@ -24,20 +24,6 @@ import java.util.ResourceBundle;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Node;
 
 public class IdentificationController implements Initializable{
-    @FXML
-    private JFXButton CardRoomIdentificationBTN;
-
-    @FXML
-    private AnchorPane FourInOnePane;
-
-    @FXML
-    private JFXButton AdminIdentificationBTN;
-
-    @FXML
-    private JFXButton DoctorIdentificationBTN;
-
-    @FXML
-    private JFXButton LaboratoryIdentificaitonBTN;
 
 
     @FXML

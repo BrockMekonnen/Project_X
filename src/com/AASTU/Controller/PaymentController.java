@@ -1,4 +1,13 @@
 package com.AASTU.Controller;
 
-public class PaymentController {
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class PaymentController implements Initializable{
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

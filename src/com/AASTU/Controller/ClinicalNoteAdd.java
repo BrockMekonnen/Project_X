@@ -15,7 +15,7 @@ public class ClinicalNoteAdd {
     @FXML
     void handleButtonAction(ActionEvent event) {
         if(event.getSource() == closeBtn){
-            DoctorPatientView.stage.close();
+            WindowChangeController.closeWindow();
         }
     }
 
