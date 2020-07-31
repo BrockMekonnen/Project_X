@@ -558,7 +558,7 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane fx:id="profilePane" layoutX="10.0" layoutY="125.0" prefHeight="625.0" prefWidth="480.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="125.0">
+      <AnchorPane fx:id="profilePane" layoutX="10.0" layoutY="125.0" prefHeight="625.0" prefWidth="480.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="125.0">
          <children>
             <Pane prefHeight="52.0" prefWidth="510.0" style="-fx-background-radius: 20 20 0 0; -fx-background-color: #01579B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
