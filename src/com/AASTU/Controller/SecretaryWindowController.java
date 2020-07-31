@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -40,6 +41,9 @@ public class SecretaryWindowController implements Initializable {
     private AnchorPane opacityPane1;
 
     @FXML
+    private ImageView exitBtn;
+
+    @FXML
     public void navAction(ActionEvent event) {
         opacityPane1.setVisible(true);
         slidePane1.setVisible(true);
@@ -60,9 +64,11 @@ public class SecretaryWindowController implements Initializable {
         });
 
         profileOpacityPane.setOnMouseClicked(event -> {
-            profilePane.setVisible(false);
-            profileOpacityPane.setVisible(false);
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
 
+        exitBtn.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
         });
     }
 

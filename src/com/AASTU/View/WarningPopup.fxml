@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -12,6 +13,11 @@
    <children>
       <Pane prefHeight="52.0" prefWidth="400.0" style="-fx-background-color: #01579B;" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <ImageView fx:id="exitBtn" fitHeight="50.0" fitWidth="48.0" layoutX="348.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resource/icons8_cancel_32px_4.png" />
+               </image>
+            </ImageView>
             <JFXTextField fx:id="warnHeaderFld" editable="false" focusColor="#01579b" focusTraversable="false" layoutX="66.0" layoutY="5.0" prefHeight="37.0" prefWidth="292.0" style="-fx-text-fill: #ffffff;" unFocusColor="#01579b">
                <font>
                   <Font size="16.0" />

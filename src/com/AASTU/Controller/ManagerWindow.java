@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -132,6 +133,9 @@ public class ManagerWindow implements Initializable {
     @FXML
     private AnchorPane pnl_price;
 
+    @FXML
+    private ImageView exitBtn;
+
 
     /**
      * Secretory
@@ -200,9 +204,11 @@ public class ManagerWindow implements Initializable {
         });
 
         profileOpacityPane.setOnMouseClicked(event -> {
-            profilePane.setVisible(false);
-            profileOpacityPane.setVisible(false);
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
 
+        exitBtn.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
         });
     }
 

@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -47,6 +48,8 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private JFXComboBox<?> comboTimeEnd;
 
+    @FXML
+    private ImageView exitBtn;
 
     @FXML
     void goToPending(ActionEvent event) {
@@ -74,9 +77,12 @@ public class DoctorWindowController implements Initializable {
         });
 
         profileOpacityPane.setOnMouseClicked(event -> {
-            profilePane.setVisible(false);
-            profileOpacityPane.setVisible(false);
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
 
+        });
+
+        exitBtn.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
         });
 
     }

@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -35,6 +36,9 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private AnchorPane AccountSettingPane;
 
+    @FXML
+    private ImageView exitBtn;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         profilePane.setVisible(false);
@@ -48,9 +52,11 @@ public class LaboratoryWindowController implements Initializable {
         });
 
         profileOpacityPane.setOnMouseClicked(event -> {
-            profilePane.setVisible(false);
-            profileOpacityPane.setVisible(false);
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
 
+        exitBtn.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
         });
     }
 
