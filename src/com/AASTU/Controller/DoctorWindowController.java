@@ -112,4 +112,14 @@ public class DoctorWindowController implements Initializable {
         new WindowChangeController().signOut(event,"../view/Login.fxml");
     }
 
+    @FXML
+    void CloseBTN(ActionEvent event){
+        int i=JOptionPane.showConfirmDialog(null,"Do You Want To Exit The System?","Attention",JOptionPane.YES_NO_OPTION);
+        if(i==JOptionPane.YES_OPTION){
+            //to exit the systems
+            System.exit(0);
+            Platform.exit();
+        }
+    }
+
 }
