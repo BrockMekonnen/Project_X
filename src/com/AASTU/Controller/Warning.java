@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 
 
 public class Warning implements Initializable{
+    @FXML
+    private ImageView exitBtn;
 
     @FXML
     private JFXTextField warnHeaderFld = new JFXTextField();
@@ -21,6 +23,7 @@ public class Warning implements Initializable{
 
     @FXML
     private JFXTextField warnBodyFld = new JFXTextField();
+
 
     public void setWarnHeaderFld(String warnHeader) {
         warnHeaderFld.setText(warnHeader);
@@ -36,7 +39,9 @@ public class Warning implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        exitBtn.setOnMouseClicked(event -> {
+            WindowChangeController.closeWindow();
+        });
     }
 
 

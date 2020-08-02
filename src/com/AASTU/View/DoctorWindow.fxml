@@ -154,6 +154,11 @@
               <children>
             <Pane prefHeight="52.0" prefWidth="510.0" style="-fx-background-radius: 20 20 0 0; -fx-background-color: #01579B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
+                  <ImageView fx:id="exitBtn" fitHeight="50.0" fitWidth="48.0" layoutX="424.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resource/icons8_cancel_32px_4.png" />
+                     </image>
+                  </ImageView>
                   <Label layoutX="54.0" layoutY="12.0" prefHeight="34.0" prefWidth="98.0" text="Profile" textFill="WHITE">
                      <font>
                         <Font size="23.0" />

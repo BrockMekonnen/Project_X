@@ -22,4 +22,8 @@ public class TransitionController {
         fadeTransition.setToValue(to);
         fadeTransition.play();
     }
+    public static void exitHandler(AnchorPane pane1,AnchorPane pane2){
+        pane1.setVisible(false);
+        pane2.setVisible(false);
+    }
 }
