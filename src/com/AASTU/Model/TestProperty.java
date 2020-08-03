@@ -1,5 +1,8 @@
 package com.AASTU.Model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class TestProperty {
     private String value;
     private double price;
