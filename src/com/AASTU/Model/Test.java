@@ -1,7 +1,6 @@
 package com.AASTU.Model;
 
 
-import com.AASTU.Model.Manager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -25,7 +24,6 @@ public class Test {
             session.save(tempManager);
 
             session.getTransaction().commit();
-
 
         } finally {
             factory.close();
