@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Bacteriology {
 
     @Id
+    @GeneratedValue
     private int bacteriologyId;
 
     @Embedded

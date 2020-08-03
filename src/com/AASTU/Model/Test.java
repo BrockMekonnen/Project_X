@@ -12,7 +12,7 @@ public class Test {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-                                .addAnnotatedClass(Bacteriology.class)
+                                .addAnnotatedClass(Serology.class)
                                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
@@ -25,11 +25,11 @@ public class Test {
 
             TestProperty test = new TestProperty("postive", 2154,true);
 //            Others obj = new Others(test, test, test, test);
-            Bacteriology bacteriology = new Bacteriology(test, test);
+//            Bacteriology bacteriology = new Bacteriology(test, test);
+            Serology serology = new Serology(test,test,test,test,test,test,test,test,test);
             session.beginTransaction();
 
-            session.save(bacteriology);
-
+            session.save(serology);
 
             session.getTransaction().commit();
 
