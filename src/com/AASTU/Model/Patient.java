@@ -31,14 +31,12 @@ public class Patient {
     private String kebele;
     @Column(name="House_Number")
     private String houseNumber;
-    @Column(name="Notes")
     @OneToMany
     private Collection<ClinicalNotes> notes=new ArrayList<ClinicalNotes>();
-    @Column(name="Lab_Request")
     @OneToMany
     private Collection<LabRequest> labRequest=new ArrayList<LabRequest>();
 
-    public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber, Collection notes, Collection labRequest) {
+    public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber, ClinicalNotes notes, LabRequest labRequest) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -49,8 +47,8 @@ public class Patient {
         this.subcity = subcity;
         this.kebele = kebele;
         this.houseNumber = houseNumber;
-        this.notes = notes;
-        this.labRequest = labRequest;
+        this.notes.add(notes);
+        this.labRequest.add(labRequest);
     }
 
     public int getPatientId() {

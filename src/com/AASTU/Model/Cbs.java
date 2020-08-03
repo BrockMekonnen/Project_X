@@ -1,22 +1,45 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+
+@Entity
 public class Cbs {
+    @Id
+    @GeneratedValue
+    private int labformid;
+    @OneToOne
     private TestProperty wbc;
+    @OneToOne
     private TestProperty lym;
+    @OneToOne
     private TestProperty mid;
+    @OneToOne
     private TestProperty gra;
+    @OneToOne
     private TestProperty rbc;
+    @OneToOne
     private TestProperty hgb;
+    @OneToOne
     private TestProperty mchc;
+    @OneToOne
     private TestProperty mch;
+    @OneToOne
     private TestProperty mcv;
+    @OneToOne
     private TestProperty rdw_cv;
+    @OneToOne
     private TestProperty hct;
+    @OneToOne
     private TestProperty plt;
+    @OneToOne
     private TestProperty pct;
+    @OneToOne
     private TestProperty p_lcr;
+    @OneToOne
     private TestProperty esr;
+    @OneToOne
     private TestProperty bloodGroupRh;
+    @OneToOne
     private TestProperty bloodFilm;
 
     public Cbs(){

@@ -1,15 +1,31 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+
+@Entity
 public class Dipstick {
+    @Id
+    @GeneratedValue
+    private int labformid;
+    @OneToOne
     private TestProperty testColor;
+    @OneToOne
     private TestProperty appearance;
+    @OneToOne
     private TestProperty ph;
+    @OneToOne
     private TestProperty psg;
+    @OneToOne
     private TestProperty protein;
+    @OneToOne
     private TestProperty glucose;
+    @OneToOne
     private TestProperty ketone;
+    @OneToOne
     private TestProperty bilrubin;
+    @OneToOne
     private TestProperty urobilinogen;
+    @OneToOne
     private TestProperty blood;
 
     public Dipstick(TestProperty color, TestProperty appearance, TestProperty ph, TestProperty psg, TestProperty protein, TestProperty glucose, TestProperty ketone, TestProperty bilrubin, TestProperty urobilinogen, TestProperty blood) {

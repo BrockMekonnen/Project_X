@@ -23,9 +23,12 @@ public class Test {
 //            Doctor doctor = new Doctor(111,"test", "fff",  LocalDate.now(),"123",12,3,2,4,"+2517777777","city","subcity","kebele");
 //            Secretary secretary = new Secretary(111,"test", "fff",  LocalDate.now(),"123",12,3,2,4,"+2517777777","city","subcity","kebele");
 
+            ClinicalNotes notes=new ClinicalNotes(LocalDate.now(),"notes");
+            LabRequest lab=new LabRequest(1,2,null,null,null,null,null,null,null,null);
+            Patient patient=new Patient("name","name",4,'d',LocalDate.now(),"77","city","suc","dd","777",notes,lab);
             session.beginTransaction();
 
-            session.save(tempManager);
+            session.save(patient);
 
             session.getTransaction().commit();
 

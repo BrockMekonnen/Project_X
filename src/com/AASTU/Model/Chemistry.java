@@ -1,17 +1,35 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+
+@Entity
 public class Chemistry {
+    @Id
+    @GeneratedValue
+    private int labformid;
+    @OneToOne
     private TestProperty fbs;
+    @OneToOne
     private TestProperty rbs;
+    @OneToOne
     private TestProperty sgot;
+    @OneToOne
     private TestProperty sgpt;
+    @OneToOne
     private TestProperty alkalinePhospate;
+    @OneToOne
     private TestProperty bilirubinTotal;
+    @OneToOne
     private TestProperty bilirubinDirect;
+    @OneToOne
     private TestProperty bun;
+    @OneToOne
     private TestProperty creatinine;
+    @OneToOne
     private TestProperty uricAcid;
+    @OneToOne
     private TestProperty totalProtein;
+    @OneToOne
     private TestProperty cholesterol;
 
     public Chemistry(TestProperty fbs, TestProperty rbs, TestProperty sgot, TestProperty sgpt, TestProperty alkalinePhospate, TestProperty bilirubinTotal, TestProperty bilirubinDirect, TestProperty bun, TestProperty creatinine, TestProperty uricAcid, TestProperty totalProtin, TestProperty cholestrol) {

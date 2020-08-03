@@ -1,15 +1,30 @@
 package com.AASTU.Model;
 
+import javax.annotation.Generated;
+import javax.persistence.*;
+
+@Entity
 public class Serology {
+    @Id
+    @GeneratedValue
     private int labFormId;
+    @OneToOne
     private TestProperty vdrl;
+    @OneToOne
     private TestProperty widal_II_h;
+    @OneToOne
     private TestProperty widal_II_o;
+    @OneToOne
     private TestProperty wellFelix;
+    @OneToOne
     private TestProperty hbsag;
+    @OneToOne
     private TestProperty crp;
+    @OneToOne
     private TestProperty aso;
+    @OneToOne
     private TestProperty rheumatoidFactor;
+    @OneToOne
     private TestProperty hpyloriSerum;
 
     public Serology(TestProperty vdrl, TestProperty widal_II_h, TestProperty widal_II_o, TestProperty wellFelix, TestProperty hbsag, TestProperty crp, TestProperty aso, TestProperty rheumatoidFactor, TestProperty hpyloriSerum) {

@@ -1,11 +1,21 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+
+@Entity
 public class Microscopy {
+    @Id
+    @GeneratedValue
     private int labFormId;
+    @OneToOne
     private TestProperty epitCells;
+    @OneToOne
     private TestProperty wbc;
+    @OneToOne
     private TestProperty rbc;
+    @OneToOne
     private TestProperty casts;
+    @OneToOne
     private TestProperty bacteria;
 
     public Microscopy( TestProperty epitCells, TestProperty wbc, TestProperty rbc, TestProperty casts, TestProperty bacteria) {

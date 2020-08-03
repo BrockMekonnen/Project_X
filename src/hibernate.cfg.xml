@@ -8,7 +8,7 @@
 
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/ClinicManagementSystem?useSSL=false</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/ClinicManagementSystem?useSSL=true</property>
         <property name="connection.username">CMSystem</property>
         <property name="connection.password">aastu</property>
 
@@ -26,7 +26,28 @@
 
 
         <property name="hibernate.hbm2ddl.auto">create</property>
- 
+
+        <!-- Names the annotated entity class -->
+        <mapping class="com.AASTU.Model.ClinicalNotes"/>
+        <mapping class="com.AASTU.Model.LabRequest"/>
+        <mapping class="com.AASTU.Model.Cbs"/>
+        <mapping class="com.AASTU.Model.Laboratory"/>
+        <mapping class="com.AASTU.Model.Microscopy"/>
+        <mapping class="com.AASTU.Model.Chemistry"/>
+        <mapping class="com.AASTU.Model.Dipstick"/>
+        <mapping class="com.AASTU.Model.Others"/>
+        <mapping class="com.AASTU.Model.Patient"/>
+        <mapping class="com.AASTU.Model.Serology"/>
+        <mapping class="com.AASTU.Model.Parasitology"/>
+        <mapping class="com.AASTU.Model.AgeScale"/>
+        <mapping class="com.AASTU.Model.DiseaseRecord"/>
+        <mapping class="com.AASTU.Model.Secretary"/>
+        <mapping class="com.AASTU.Model.TestProperty"/>
+        <mapping class="com.AASTU.Model.Test"/>
+        <mapping class="com.AASTU.Model.Doctor"/>
+        <!--<mapping class="com.AASTU.Model.Doctor"/>-->
+
+
     </session-factory>
 
 </hibernate-configuration>

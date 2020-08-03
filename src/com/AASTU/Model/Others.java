@@ -1,10 +1,19 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+
+@Entity
 public class Others {
+    @Id
+    @GeneratedValue
     private int labFormId;
+    @OneToOne
     private TestProperty gramStain;
+    @OneToOne
     private TestProperty wetFilm;
+    @OneToOne
     private TestProperty afb;
+    @OneToOne
     private TestProperty hivAids;
 
     public Others(TestProperty gramStain, TestProperty wetFilm, TestProperty afb, TestProperty hivAids) {

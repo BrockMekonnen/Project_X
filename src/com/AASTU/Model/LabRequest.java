@@ -1,31 +1,28 @@
 package com.AASTU.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="Lab_Request")
 public class LabRequest {
-    @Column(name="Patient_Id")
+    @Id
+    @GeneratedValue
     private int patientId;
-    @Column(name="Lab_Form_Id")
     private int labFormId;
-    @Column(name="Parasitology")
+    @OneToOne
     private Parasitology parasitology;
-    @Column(name="Bacteriology")
-    private Bacteriology bacterology;
-    @Column(name="Microscopy")
+//    @OneToOne
+//    private Bacteriology bacterology;
+    @OneToOne
     private Microscopy microscopy;
-    @Column(name="Chemistry")
+    @OneToOne
     private Chemistry chemistry;
-    @Column(name="Dipistic")
+    @OneToOne
     private Dipstick dipistic;
-    @Column(name="Others")
+    @OneToOne
     private Others others;
-    @Column(name="CBS")
+    @OneToOne
     private Cbs cbs;
-    @Column(name="Serology")
+    @OneToOne
     private Serology serology;
 
     public int getPatientId() {
@@ -52,13 +49,13 @@ public class LabRequest {
         this.parasitology = parasitology;
     }
 
-    public Bacteriology getBacterology() {
-        return bacterology;
-    }
-
-    public void setBacterology(Bacteriology bacterology) {
-        this.bacterology = bacterology;
-    }
+//    public Bacteriology getBacterology() {
+//        return bacterology;
+//    }
+//
+//    public void setBacterology(Bacteriology bacterology) {
+//        this.bacterology = bacterology;
+//    }
 
     public Microscopy getMicroscopy() {
         return microscopy;
@@ -112,7 +109,7 @@ public class LabRequest {
         this.patientId = patientId;
         this.labFormId = labFormId;
         this.parasitology = parasitology;
-        this.bacterology = bacterology;
+//        this.bacterology = bacterology;
         this.microscopy = microscopy;
         this.chemistry = chemistry;
         this.dipistic = dipistic;

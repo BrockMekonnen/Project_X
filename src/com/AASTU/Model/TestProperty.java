@@ -1,5 +1,11 @@
 package com.AASTU.Model;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Embeddable
 public class TestProperty {
     private String value;
     private double price;

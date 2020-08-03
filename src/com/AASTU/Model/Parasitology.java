@@ -1,13 +1,25 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+
+@Entity
 public class Parasitology {
-    private int labFormId;
+    @Id
+    @GeneratedValue
+    private int Id;
+    @OneToOne
     private TestProperty stoolTest;
+    @OneToOne
     private TestProperty occultBlood;
+    @OneToOne
     private TestProperty consistency1;
+    @OneToOne
     private TestProperty consistency2;
+    @OneToOne
     private TestProperty ovalParasite1;
+    @OneToOne
     private TestProperty ovalParasite2;
+    @OneToOne
     private TestProperty ovalParasite3;
 
     public Parasitology(TestProperty stoolTest, TestProperty occultBlood, TestProperty consistency1, TestProperty consistency2, TestProperty ovalParasite1, TestProperty ovalParasite2, TestProperty ovalParasite3) {

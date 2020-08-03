@@ -2,12 +2,16 @@ package com.AASTU.Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="Age_Scale")
 public class AgeScale {
-
+    @Id
+    @Column(name="Day")
+    private LocalDate date;
     @Column(name ="Male_Less_Than_1")
     private int mLess1;
     @Column(name="Male_Between_1_and_4")
@@ -33,7 +37,8 @@ public class AgeScale {
     @Column(name ="Female_Greater_Than_65")
     private int fGreater65;
 
-    public AgeScale(int mLess1, int m1to4, int m5to14, int m15to29, int m30to64, int mGreater65, int fLess1, int f1to4, int f5to14, int f15to29, int f30to64, int fGreater65) {
+    public AgeScale(LocalDate date,int mLess1, int m1to4, int m5to14, int m15to29, int m30to64, int mGreater65, int fLess1, int f1to4, int f5to14, int f15to29, int f30to64, int fGreater65) {
+        this.date=date;
         this.mLess1 = mLess1;
         this.m1to4 = m1to4;
         this.m5to14 = m5to14;
