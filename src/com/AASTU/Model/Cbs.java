@@ -1,22 +1,130 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+
+@Entity
 public class Cbs {
+    @Id
+    @GeneratedValue
+    private String labformId;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "WBC_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "WBC_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "WBC_test"))
+    })
     private TestProperty wbc;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "LYM_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "LYM_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "LYM_test"))
+    })
     private TestProperty lym;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "mid_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "mid_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "mid_test"))
+    })
     private TestProperty mid;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "gra_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "gra_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "gra_test"))
+    })
     private TestProperty gra;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "RBC_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "RBC_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "RBC_test"))
+    })
     private TestProperty rbc;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "HGB_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "HGB_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "HGB_test"))
+    })
     private TestProperty hgb;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "MCHC_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "MCHC_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "MCHC_test"))
+    })
     private TestProperty mchc;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "MCH_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "MCH_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "MCH_test"))
+    })
     private TestProperty mch;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "MCV_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "MCV_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "MCV_test"))
+    })
     private TestProperty mcv;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "RDW_CV_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "RDW_CV_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "RDW_CV_test"))
+    })
     private TestProperty rdw_cv;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "HCT_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "HCT_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "HCT_test"))
+    })
     private TestProperty hct;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "PLT_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "PLT_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "PLT_test"))
+    })
     private TestProperty plt;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "PCT_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "PCT_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "PCT_test"))
+    })
     private TestProperty pct;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "p_LCR_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "P_LCR_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "P_LCR_test"))
+    })
     private TestProperty p_lcr;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "ESR_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "ESR_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "ESR_test"))
+    })
     private TestProperty esr;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "BloodGroupRh_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "BloodGroupRh_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "BloodGroupRh_test"))
+    })
     private TestProperty bloodGroupRh;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "BloodFilm_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "BloodFilm_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "BloodFilm_test"))
+    })
     private TestProperty bloodFilm;
 
     public Cbs(){

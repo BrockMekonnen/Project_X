@@ -1,25 +1,102 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
+@Entity
 public class Chemistry {
+    @Id
+    @GeneratedValue
+    private String labformid;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "FSB_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "FSB_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "FSB_test"))
+    })
     private TestProperty fbs;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "RBS_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "RBS_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "RBS_test"))
+    })
     private TestProperty rbs;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "SGOT_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "SGOT_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "SGOT_test"))
+    })
     private TestProperty sgot;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "SGPT_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "SGPT_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "SGPT_test"))
+    })
     private TestProperty sgpt;
-    private TestProperty alkalinePhospate;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "AlkalinePhosphate_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "AlkalinePhosphate_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "AlkalinePhosphate_test"))
+    })
+    private TestProperty AlkalinePhosphate;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "BilrubinTotal_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "BilrubinTotal_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "BilrubinTotal_test"))
+    })
     private TestProperty bilirubinTotal;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "BilrubinDirect_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "BilrubinDirect_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "BilrubinDirect_test"))
+    })
     private TestProperty bilirubinDirect;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "Bun_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "Bun_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "Bun_test"))
+    })
     private TestProperty bun;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "Creatinine_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "Creatinine_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "Creatinine_test"))
+    })
     private TestProperty creatinine;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "UricAcid_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "UricAcid_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "UricAcid_test"))
+    })
     private TestProperty uricAcid;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "TotalProtein_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "TotalProtein_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "TotalProtein_test"))
+    })
     private TestProperty totalProtein;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride( name = "value", column = @Column(name = "Cholesterol_value")),
+            @AttributeOverride( name = "price", column = @Column(name = "Cholesterol_price")),
+            @AttributeOverride( name = "test", column = @Column(name = "Cholesterol_test"))
+    })
     private TestProperty cholesterol;
 
-    public Chemistry(TestProperty fbs, TestProperty rbs, TestProperty sgot, TestProperty sgpt, TestProperty alkalinePhospate, TestProperty bilirubinTotal, TestProperty bilirubinDirect, TestProperty bun, TestProperty creatinine, TestProperty uricAcid, TestProperty totalProtin, TestProperty cholestrol) {
+    public Chemistry(TestProperty fbs, TestProperty rbs, TestProperty sgot, TestProperty sgpt, TestProperty AlkalinePhosphate, TestProperty bilirubinTotal, TestProperty bilirubinDirect, TestProperty bun, TestProperty creatinine, TestProperty uricAcid, TestProperty totalProtin, TestProperty cholestrol) {
         this.fbs = fbs;
         this.rbs = rbs;
         this.sgot = sgot;
         this.sgpt = sgpt;
-        this.alkalinePhospate = alkalinePhospate;
+        this.AlkalinePhosphate = AlkalinePhosphate;
         this.bilirubinTotal = bilirubinTotal;
         this.bilirubinDirect = bilirubinDirect;
         this.bun = bun;
@@ -61,12 +138,12 @@ public class Chemistry {
         this.sgpt = sgpt;
     }
 
-    public TestProperty getAlkalinePhospate() {
-        return alkalinePhospate;
+    public TestProperty getAlkalinePhosphate() {
+        return AlkalinePhosphate;
     }
 
-    public void setAlkalinePhospate(TestProperty alkalinePhospate) {
-        this.alkalinePhospate = alkalinePhospate;
+    public void setAlkalinePhosphate(TestProperty alkalinePhosphate) {
+        this.AlkalinePhosphate = alkalinePhosphate;
     }
 
     public TestProperty getBilirubinTotal() {
