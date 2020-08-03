@@ -1,17 +1,36 @@
 package com.AASTU.Model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Age_Scale")
 public class AgeScale {
+
+    @Column(name ="Male_Less_Than_1")
     private int mLess1;
+    @Column(name="Male_Between_1_and_4")
     private int m1to4;
+    @Column(name = "Male_between_5_and_14")
     private int m5to14;
+    @Column(name = "Male_between_15_and_29")
     private int m15to29;
+    @Column(name = "Male_between_30_and_64")
     private int m30to64;
+    @Column(name = "Male_Greater_Than_65")
     private int mGreater65;
+    @Column(name ="Female_Less_Than 1")
     private int fLess1;
+    @Column(name ="Female_Between_1_and_4")
     private int f1to4;
+    @Column(name ="Female_Between_5_and_14")
     private int f5to14;
+    @Column(name ="Female_Between_15_and_29")
     private int f15to29;
+    @Column(name ="Female_Between_30_and_64")
     private int f30to64;
+    @Column(name ="Female_Greater_Than_65")
     private int fGreater65;
 
     public AgeScale(int mLess1, int m1to4, int m5to14, int m15to29, int m30to64, int mGreater65, int fLess1, int f1to4, int f5to14, int f15to29, int f30to64, int fGreater65) {

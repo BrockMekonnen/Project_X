@@ -1,30 +1,51 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
+@Entity
+@Table(name="Patient")
 public class Patient {
+    @Id
+    @Column(name="Patient_Id")
     private int patientId;
+    @Column(name="First_name")
     private String firstName;
+    @Column(name="Last_name")
     private String lastName;
+    @Column(name="Age")
     private int age;
+    @Column(name="Sex")
     private char sex;
+    @Column(name="Date")
     private LocalDate date;
+    @Column(name="Phone_Number")
     private String phoneNumber;
+    @Column(name="City")
     private String City;
+    @Column(name="Sub_City")
     private String subcity;
+    @Column(name="Kebele")
     private String kebele;
+    @Column(name="House_Number")
     private String houseNumber;
-    private ClinicalNotes notes;
-    private LabRequest labRequest;
+    @Column(name="Notes")
+    @OneToMany
+    private Collection<ClinicalNotes> notes=new ArrayList<ClinicalNotes>();
+    @Column(name="Lab_Request")
+    @OneToMany
+    private Collection<LabRequest> labRequest=new ArrayList<LabRequest>();
 
-    public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber, ClinicalNotes notes, LabRequest labRequest) {
+    public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber, Collection notes, Collection labRequest) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.sex = sex;
         this.date = date;
         this.phoneNumber = phoneNumber;
-        City = city;
+        this.City = city;
         this.subcity = subcity;
         this.kebele = kebele;
         this.houseNumber = houseNumber;
@@ -116,19 +137,23 @@ public class Patient {
         this.houseNumber = houseNumber;
     }
 
-    public ClinicalNotes getNotes() {
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
+
+    public Collection<ClinicalNotes> getNotes() {
         return notes;
     }
 
-    public void setNotes(ClinicalNotes notes) {
+    public void setNotes(Collection<ClinicalNotes> notes) {
         this.notes = notes;
     }
 
-    public LabRequest getLabRequest() {
+    public Collection<LabRequest> getLabRequest() {
         return labRequest;
     }
 
-    public void setLabRequest(LabRequest labRequest) {
+    public void setLabRequest(Collection<LabRequest> labRequest) {
         this.labRequest = labRequest;
     }
 }

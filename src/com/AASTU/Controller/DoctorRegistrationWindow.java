@@ -17,7 +17,7 @@ public class DoctorRegistrationWindow implements Initializable {
 
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
-        new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
+        new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you want to save it? ","warn_confirm.png");
     }
 
     @Override

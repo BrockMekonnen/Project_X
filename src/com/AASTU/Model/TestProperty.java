@@ -10,6 +10,7 @@ public class TestProperty {
         this.price = price;
         this.test = test;
     }
+
     public TestProperty(){
 
     }
