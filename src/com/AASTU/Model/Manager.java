@@ -18,14 +18,14 @@ public class Manager {
     @Column(name="password")
     private String password;
 
+    public Manager(){    }
+
     public Manager(int managerId, String firstName, String lastName, String password) {
         this.managerId = managerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
     }
-
-    public Manager(){    }
 
     public int getManagerId() {
         return managerId;
