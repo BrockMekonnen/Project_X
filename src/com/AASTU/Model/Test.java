@@ -13,6 +13,7 @@ public class Test {
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
                                 .addAnnotatedClass(Serology.class)
+//                                 .addAnnotatedClass(Dipstick.class)
                                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
@@ -24,9 +25,13 @@ public class Test {
 //            Secretary secretary = new Secretary(111,"test", "fff",  LocalDate.now(),"123",12,3,2,4,"+2517777777","city","subcity","kebele");
 
             TestProperty test = new TestProperty("postive", 2154,true);
+
 //            Others obj = new Others(test, test, test, test);
 //            Bacteriology bacteriology = new Bacteriology(test, test);
             Serology serology = new Serology(test,test,test,test,test,test,test,test,test);
+
+//             Dipstick obj = new Dipstick(test,test,test,test,test,test,test,test,test,test);
+
             session.beginTransaction();
 
             session.save(serology);
