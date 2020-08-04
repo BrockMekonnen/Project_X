@@ -1,28 +1,23 @@
-package com.AASTU.Model;
+package com.AASTU.Model.LaboratoryRequest;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "Bacteriology")
+@Embeddable
 public class Bacteriology {
-
-    @Id
-    @GeneratedValue
-    private int bacteriologyId;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "hpyloriStool_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "hpyloriStool_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "hpyloriStool_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "hpyloriStool_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "hpyloriStool_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "hpyloriStool_test", length = 20))
     })
     private TestProperty hpyloriStool;
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "koh_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "koh_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "koh_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "koh_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "koh_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "koh_test", length = 20))
     })
 
 
