@@ -13,9 +13,12 @@ public class Test {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
+
+                                .addAnnotatedClass(DiseaseRecord.class)
 //                                .addAnnotatedClass(Pricing.class)
                                 .addAnnotatedClass(Laboratory.class)
 //                                 .addAnnotatedClass(Dipstick.class)
+          
                                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
@@ -45,9 +48,13 @@ public class Test {
 //            Pricing hpaylori = new Pricing(50);
 //            Pricing koh = new Pricing(50);
 
+            DiseaseRecord record=new DiseaseRecord(LocalDate.now(),"diseasename",new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6));
             session.beginTransaction();
 
-              session.save(laboratory);
+
+            session.save(record);
+
+//               session.save(laboratory);
 //            session.save(hpaylori);
 //            session.save(koh);
 

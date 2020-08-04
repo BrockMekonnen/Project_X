@@ -1,5 +1,8 @@
 package com.AASTU.Model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class AgeScale {
     private int mLess1;
     private int m1to4;
@@ -27,6 +30,9 @@ public class AgeScale {
         this.f15to29 = f15to29;
         this.f30to64 = f30to64;
         this.fGreater65 = fGreater65;
+    }
+
+    public AgeScale() {
     }
 
     public int getmLess1() {
