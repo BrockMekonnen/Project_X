@@ -6,12 +6,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.time.LocalDate;
+
 public class Test {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-                                .addAnnotatedClass(Pricing.class)
+                                .addAnnotatedClass(DiseaseRecord.class)
 //                                 .addAnnotatedClass(Dipstick.class)
                                 .buildSessionFactory();
 
@@ -38,13 +40,14 @@ public class Test {
 //
 //            LabRequest lab = new LabRequest(obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8);
 //            LabRequest lab2 = new LabRequest(obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8);
-            Pricing hpaylori = new Pricing(50);
-            Pricing koh = new Pricing(50);
+//            Pricing hpaylori = new Pricing(50);
+//            Pricing koh = new Pricing(50);
 
+            DiseaseRecord record=new DiseaseRecord(LocalDate.now(),"diseasename",new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6));
             session.beginTransaction();
 
-            session.save(hpaylori);
-            session.save(koh);
+            session.save(record);
+//            session.save(koh);
 
             session.getTransaction().commit();
 
