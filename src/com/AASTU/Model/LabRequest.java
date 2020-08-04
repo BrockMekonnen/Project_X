@@ -1,8 +1,19 @@
 package com.AASTU.Model;
 
+import com.AASTU.Model.LaboratoryRequest.*;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "labRequest")
 public class LabRequest {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int patientId;
-    private int labFormId;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private int labFormId;
+
     private Parasitology parasitology;
     private Bacteriology bacterology;
     private Microscopy microscopy;
@@ -12,9 +23,7 @@ public class LabRequest {
     private Cbs cbs;
     private Serology serology;
 
-    public LabRequest(int patientId, int labFormId, Parasitology parasitology, Bacteriology bacterology, Microscopy microscopy, Chemistry chemistry, Dipstick dipistic, Others others, Cbs cbs, Serology serology) {
-        this.patientId = patientId;
-        this.labFormId = labFormId;
+    public LabRequest(Parasitology parasitology, Bacteriology bacterology, Microscopy microscopy, Chemistry chemistry, Dipstick dipistic, Others others, Cbs cbs, Serology serology) {
         this.parasitology = parasitology;
         this.bacterology = bacterology;
         this.microscopy = microscopy;
@@ -24,4 +33,8 @@ public class LabRequest {
         this.cbs = cbs;
         this.serology = serology;
     }
+
+
+
 }
+

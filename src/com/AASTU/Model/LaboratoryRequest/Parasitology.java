@@ -1,58 +1,57 @@
-package com.AASTU.Model;
+package com.AASTU.Model.LaboratoryRequest;
 
 import javax.persistence.*;
-@Entity
+
+@Embeddable
 public class Parasitology {
-    @Id
-    @GeneratedValue
-    private int labFormId;
+
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "stoolTest_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "StoolTest_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "StoolTest_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "stoolTest_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "StoolTest_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "StoolTest_test", length = 20))
     })
     private TestProperty stoolTest;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "OccultBlood_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "OccultBlood_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "OccultBlood_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "OccultBlood_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "OccultBlood_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "OccultBlood_test", length = 20))
     })
     private TestProperty occultBlood;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "Consistency1_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "Consistency1_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "Consistency1_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "Consistency1_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "Consistency1_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "Consistency1_test", length = 20))
     })
     private TestProperty consistency1;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "Consistency2_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "Consistency2_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "Consistency2_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "Consistency2_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "Consistency2_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "Consistency2_test", length = 20))
     })
     private TestProperty consistency2;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "OvalParasite1_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "OvalParasite1_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "OvalParasite1_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "OvalParasite1_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "OvalParasite1_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "OvalParasite1_test", length = 20))
     })
     private TestProperty ovalParasite1;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "OvalParasite2_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "OvalParasite2_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "OvalParasite2_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "OvalParasite2_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "OvalParasite2_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "OvalParasite2_test", length = 20))
     })
     private TestProperty ovalParasite2;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "OvalParasite_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "OvalParasite3_price")),
-            @AttributeOverride( name = "test", column = @Column(name = "OvalParasite3_test"))
+            @AttributeOverride( name = "value", column = @Column(name = "OvalParasite_value", length = 20)),
+            @AttributeOverride( name = "price", column = @Column(name = "OvalParasite3_price", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "OvalParasite3_test", length = 20))
     })
     private TestProperty ovalParasite3;
 
@@ -64,6 +63,9 @@ public class Parasitology {
         this.ovalParasite1 = ovalParasite1;
         this.ovalParasite2 = ovalParasite2;
         this.ovalParasite3 = ovalParasite3;
+    }
+
+    public Parasitology() {
     }
 
 

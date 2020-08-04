@@ -1,11 +1,15 @@
-package com.AASTU.Model;
+package com.AASTU.Model.LaboratoryRequest;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class TestProperty {
+
     private String value;
+
     private double price;
+
     private boolean test;
 
     public TestProperty(String value, double price, boolean test) {
