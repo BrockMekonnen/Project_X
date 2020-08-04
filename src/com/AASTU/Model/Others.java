@@ -12,7 +12,7 @@ public class Others {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "gramStain_value")),
-            @AttributeOverride( name = "price", column = @Column(name = "garmStain_price")),
+            @AttributeOverride( name = "price", column = @Column(name = "gramStain_price")),
             @AttributeOverride( name = "test", column = @Column(name = "gramStain_test"))
     })
     private TestProperty gramStain;
