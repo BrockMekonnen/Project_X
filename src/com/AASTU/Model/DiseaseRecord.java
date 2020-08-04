@@ -4,21 +4,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 @Entity
 public class DiseaseRecord {
-    private int mLess1;
-    private int m1to4;
-    private int m5to14;
-    private int m15to29;
-    private int m30to64;
-    private int mGreater65;
-    private int fLess1;
-    private int f1to4;
-    private int f5to14;
-    private int f15to29;
-    private int f30to64;
-    private int fGreater65;
     @Id
     private LocalDate date;
-    @Column(name="Disease_Name")
+    @Column(name="disease_Name")
     private String diseaseName;
     @Embedded
     @AttributeOverrides({
