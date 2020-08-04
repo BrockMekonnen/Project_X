@@ -25,11 +25,15 @@ public class Bacteriology {
             @AttributeOverride( name = "test", column = @Column(name = "koh_test"))
     })
 
+
     private TestProperty koh;
 
     public Bacteriology(TestProperty hpyloriStool, TestProperty koh) {
         this.hpyloriStool = hpyloriStool;
         this.koh = koh;
+    }
+
+    public Bacteriology() {
     }
 
     public TestProperty getHpyloriStool() {
