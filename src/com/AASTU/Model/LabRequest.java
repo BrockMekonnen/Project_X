@@ -10,9 +10,6 @@ public class LabRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int patientId;
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private int labFormId;
 
     private Parasitology parasitology;
     private Bacteriology bacterology;
@@ -33,6 +30,8 @@ public class LabRequest {
         this.cbs = cbs;
         this.serology = serology;
     }
+
+
 
 
 
