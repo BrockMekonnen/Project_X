@@ -6,12 +6,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.time.LocalDate;
+
 public class Test {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-                                .addAnnotatedClass(Pricing.class)
+//                                .addAnnotatedClass(Pricing.class)
+                                .addAnnotatedClass(Laboratory.class)
 //                                 .addAnnotatedClass(Dipstick.class)
                                 .buildSessionFactory();
 
@@ -19,6 +22,7 @@ public class Test {
 
         try{
 
+              Laboratory laboratory = new Laboratory(111,"test", "fff",  LocalDate.now(),"123",12,3,2,4,"+2517777777","city","subcity","kebele");
 //            Manager tempManager = new Manager(124, "test", "test", "123456789");
 //            Doctor doctor = new Doctor(111,"test", "fff",  LocalDate.now(),"123",12,3,2,4,"+2517777777","city","subcity","kebele");
 //            Secretary secretary = new Secretary(111,"test", "fff",  LocalDate.now(),"123",12,3,2,4,"+2517777777","city","subcity","kebele");
@@ -38,13 +42,14 @@ public class Test {
 //
 //            LabRequest lab = new LabRequest(obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8);
 //            LabRequest lab2 = new LabRequest(obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8);
-            Pricing hpaylori = new Pricing(50);
-            Pricing koh = new Pricing(50);
+//            Pricing hpaylori = new Pricing(50);
+//            Pricing koh = new Pricing(50);
 
             session.beginTransaction();
 
-            session.save(hpaylori);
-            session.save(koh);
+              session.save(laboratory);
+//            session.save(hpaylori);
+//            session.save(koh);
 
             session.getTransaction().commit();
 

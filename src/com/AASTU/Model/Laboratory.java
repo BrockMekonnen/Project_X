@@ -1,20 +1,51 @@
 package com.AASTU.Model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "laboratory")
 public class Laboratory {
+    @Id
     private int laboratoryId;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "added_date")
     private LocalDate addedDate;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "start_hour")
     private int workingHourStartHour;
+
+    @Column(name = "start_minute")
     private int workingHourStartMin;
+
+    @Column(name = "end_hour")
     private int workingHourEndHour;
+
+    @Column(name = "end_minute")
     private int workingHourEndMin;
+
+    @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "city")
     private String City;
+
+    @Column(name = "sub_city")
     private String Subcity;
+
+    @Column(name = "kebele")
     private String kebele;
 
     public Laboratory(int laboratoryId, String firstName, String lastName, LocalDate addedDate, String password, int workingHourStartHour, int workingHourStartMin, int workingHourEndHour, int workingHourEndMin, String phoneNumber, String city, String subcity, String kebele) {
