@@ -26,8 +26,7 @@ public class Test {
                                 .addAnnotatedClass(Cbs.class)
                                 .addAnnotatedClass(Serology.class)
                                 .addAnnotatedClass(LabRequest.class)
-//                                 .addAnnotatedClass(Dipstick.class)
-          
+
                                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
