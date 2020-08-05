@@ -1,23 +1,51 @@
 package com.AASTU.Model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "patient")
 public class Patient {
-    private int patientId;
-    private String firstName;
-    private String lastName;
-    private int age;
-    private char sex;
-    private LocalDate date;
-    private String phoneNumber;
-    private String City;
-    private String subcity;
-    private String kebele;
-    private String houseNumber;
-    private ClinicalNotes notes;
-    private LabRequest labRequest;
 
-    public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber, ClinicalNotes notes, LabRequest labRequest) {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int patientId;
+
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "age")
+    private int age;
+    @Column(name = "sex")
+    private char sex;
+    @Column(name = "added_date")
+    private LocalDate date;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "city")
+    private String City;
+    @Column(name = "sub_city")
+    private String subcity;
+    @Column(name = "kebele")
+    private String kebele;
+    @Column(name = "house_number")
+    private String houseNumber;
+
+    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name="patient_id")
+    private List<ClinicalNotes> notes;
+
+    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name="patient_id")
+    private List<LabRequest> requests;
+    public Patient(){}
+
+    public Patient(int patientId, String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber) {
+        this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -28,8 +56,6 @@ public class Patient {
         this.subcity = subcity;
         this.kebele = kebele;
         this.houseNumber = houseNumber;
-        this.notes = notes;
-        this.labRequest = labRequest;
     }
 
     public int getPatientId() {
@@ -116,19 +142,37 @@ public class Patient {
         this.houseNumber = houseNumber;
     }
 
-    public ClinicalNotes getNotes() {
+    public List<ClinicalNotes> getNotes() {
         return notes;
     }
 
-    public void setNotes(ClinicalNotes notes) {
+    public void setNotes(List<ClinicalNotes> notes) {
         this.notes = notes;
     }
 
-    public LabRequest getLabRequest() {
-        return labRequest;
+    public List<LabRequest> getRequests() {
+        return requests;
     }
 
-    public void setLabRequest(LabRequest labRequest) {
-        this.labRequest = labRequest;
+    public void setRequests(List<LabRequest> requests) {
+        this.requests = requests;
+    }
+
+    public void addClincalNote(ClinicalNotes clinicalNote) {
+
+        if (notes == null) {
+            notes = new ArrayList<>();
+        }
+
+        notes.add(clinicalNote);
+    }
+
+    public void addLabRequest(LabRequest labRequest) {
+
+        if (requests == null) {
+            requests = new ArrayList<>();
+        }
+
+        requests.add(labRequest);
     }
 }
