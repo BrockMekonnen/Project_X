@@ -44,6 +44,64 @@ public class SecretaryWindowController implements Initializable {
     private ImageView exitBtn;
 
     @FXML
+    private JFXButton paymentBtn;
+
+    @FXML
+    private JFXButton outPatientBtn;
+
+    @FXML
+    private JFXButton recordBtn;
+
+    @FXML
+    private JFXButton activePatientBtn;
+
+    @FXML
+    private AnchorPane ActivePatientPnl;
+
+    @FXML
+    private AnchorPane paymentPnl;
+
+    @FXML
+    private AnchorPane outPatientPnl;
+
+    @FXML
+    private AnchorPane recordPnl;
+
+    void goToView(boolean active, boolean pay, boolean out, boolean record){
+        ActivePatientPnl.setVisible(active);
+        paymentPnl.setVisible(pay);
+        outPatientPnl.setVisible(out);
+        recordPnl.setVisible(record);
+
+
+    }
+
+
+    @FXML
+    void handleActivePatientButton(ActionEvent event) {
+        goToView(true,false,false,false);
+        ActivePatientPnl.toFront();
+    }
+
+    @FXML
+    void handleOutPatientButton(ActionEvent event) {
+        goToView(false,false,true,false);
+        outPatientPnl.toFront();
+    }
+
+    @FXML
+    void handlePaymentButton(ActionEvent event) {
+        goToView(false,true,false,false);
+        paymentPnl.toFront();
+    }
+
+    @FXML
+    void handleRecordButton(ActionEvent event) {
+        goToView(false,false,false,true);
+        recordPnl.toFront();
+    }
+
+    @FXML
     public void navAction(ActionEvent event) {
         opacityPane1.setVisible(true);
         slidePane1.setVisible(true);
@@ -103,6 +161,9 @@ public class SecretaryWindowController implements Initializable {
         System.exit(0);
         Platform.exit();}
     }
+
+
+
 
 
 }

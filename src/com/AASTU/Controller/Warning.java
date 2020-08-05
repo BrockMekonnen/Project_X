@@ -6,14 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class Warning implements Initializable{
-    @FXML
-    private ImageView exitBtn;
+
 
     @FXML
     private JFXTextField warnHeaderFld = new JFXTextField();
@@ -39,9 +39,7 @@ public class Warning implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        exitBtn.setOnMouseClicked(event -> {
-            WindowChangeController.closeWindow();
-        });
+
     }
 
 
@@ -53,6 +51,11 @@ public class Warning implements Initializable{
     @FXML
     void handleOkButton(ActionEvent event) {
         WindowChangeController.closeWindow();
+        WindowChangeController.closeWindow();
+    }
+
+    @FXML
+    void close(MouseEvent event) {
         WindowChangeController.closeWindow();
     }
 
