@@ -39,6 +39,61 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private ImageView exitBtn;
 
+    @FXML
+    private JFXButton pendingBtn;
+
+    @FXML
+    private JFXButton waitingBtn;
+
+    @FXML
+    private JFXButton activeBtn;
+
+    @FXML
+    private JFXButton recordBtn;
+
+    @FXML
+    private AnchorPane pendingPnl;
+
+    @FXML
+    private AnchorPane waitingPnl;
+
+    @FXML
+    private AnchorPane activePnl;
+
+    @FXML
+    private AnchorPane recordPnl;
+
+    void goToView(boolean active, boolean pending, boolean record, boolean waiting){
+        pendingPnl.setVisible(pending);
+        waitingPnl.setVisible(waiting);
+        activePnl.setVisible(active);
+        recordPnl.setVisible(record);
+    }
+
+    @FXML
+    void handleActiveButton(ActionEvent event) {
+        goToView(true,false,false,false);
+        activePnl.toFront();
+    }
+
+    @FXML
+    void handlePendingButton(ActionEvent event) {
+        goToView(false,true,false,false);
+        pendingPnl.toFront();
+    }
+
+    @FXML
+    void handleRecordButton(ActionEvent event) {
+        goToView(false,false,true,false);
+        recordPnl.toFront();
+    }
+
+    @FXML
+    void handleWaitingButton(ActionEvent event) {
+        goToView(false,false, false,true);
+        waitingPnl.toFront();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         profilePane.setVisible(false);
