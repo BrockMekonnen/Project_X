@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class LabRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int patientId;
+    private int id;
 
     private Parasitology parasitology;
     private Bacteriology bacterology;
