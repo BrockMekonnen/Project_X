@@ -13,7 +13,7 @@
         <property name="connection.password">aastu</property>
 
         <!-- JDBC connection pool settings ... using built-in test pool -->
-        <property name="connection.pool_size">3</property>
+        <property name="connection.pool_size">5</property>
 
         <!-- Select our SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
