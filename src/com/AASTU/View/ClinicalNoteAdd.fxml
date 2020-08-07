@@ -5,22 +5,23 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #E1F5FEa7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.ClinicalNoteAdd">
+<AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="550.0" prefWidth="1050.0" style="-fx-background-color: #E1F5FEa7; -fx-border-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.ClinicalNoteAdd">
    <children>
-      <BorderPane prefHeight="594.0" prefWidth="1191.0" style="-fx-border-color: #01579B; -fx-border-width: 2 2 2 2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="594.0" prefWidth="1191.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <Pane prefHeight="75.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="900.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets bottom="10.0" top="-20.0" />
+                  <Insets bottom="10.0" />
                </BorderPane.margin>
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="796.0" layoutY="14.0" prefHeight="47.0" prefWidth="153.0" style="-fx-background-color: #01579B;" text="Save" textFill="WHITE" />
-                  <JFXButton fx:id="closeBtn" buttonType="RAISED" cancelButton="true" layoutX="996.0" layoutY="14.0" onAction="#handleButtonAction" prefHeight="47.0" prefWidth="153.0" style="-fx-background-color: #01579B;" text="Cancel" textFill="WHITE" />
+                  <JFXButton buttonType="RAISED" layoutX="537.0" layoutY="16.0" prefHeight="38.0" prefWidth="140.0" style="-fx-background-color: #01579B;" text="Save" textFill="WHITE" />
+                  <JFXButton fx:id="closeBtn" buttonType="RAISED" cancelButton="true" layoutX="733.0" layoutY="16.0" onAction="#handleButtonAction" prefHeight="38.0" prefWidth="140.0" style="-fx-background-color: #01579B;" text="Cancel" textFill="WHITE" />
                </children>
             </Pane>
          </bottom>
@@ -30,19 +31,22 @@
                   <Insets />
                </BorderPane.margin>
                <children>
-                  <Label alignment="CENTER" layoutX="50.0" layoutY="18.0" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: #01579B;" text="Date" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="50.0" layoutY="20.0" prefHeight="31.0" prefWidth="88.0" style="-fx-background-color: #01579B;" text="Date" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <JFXDatePicker defaultColor="#01579b" layoutX="138.0" layoutY="18.0" prefHeight="32.0" prefWidth="211.0" />
+                  <JFXDatePicker defaultColor="#01579b" layoutX="138.0" layoutY="18.0" prefHeight="32.0" prefWidth="180.0">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></JFXDatePicker>
                </children>
             </Pane>
          </top>
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXTextArea layoutX="50.0" prefHeight="517.0" prefWidth="1093.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 2 1; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
+                  <JFXTextArea layoutX="50.0" prefHeight="408.0" prefWidth="950.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 2 1; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -52,4 +56,7 @@
          </center>
       </BorderPane>
    </children>
+   <effect>
+      <DropShadow color="WHITE" />
+   </effect>
 </AnchorPane>

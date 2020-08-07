@@ -20,8 +20,6 @@ public class ClinicalNotes {
         this.notes = notes;
     }
 
-
-
     public LocalDate getDate() {
         return date;
     }
