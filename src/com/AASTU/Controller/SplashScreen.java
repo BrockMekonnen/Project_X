@@ -3,12 +3,14 @@ package com.AASTU.Controller;
 import com.AASTU.Main;
 import javafx.fxml.FXML;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,6 +46,11 @@ public class SplashScreen implements Initializable{
                         }
                         Scene scene = new Scene(root);
                         Stage stage = new Stage();
+                        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+                        if(screenBounds.getHeight() > 780 && screenBounds.getWidth() > 1370){
+                            stage.setHeight(screenBounds.getHeight() - 100);
+                            stage.setWidth(screenBounds.getWidth() - 100);
+                        }
                         stage.setScene(scene);
                         stage.show();
 

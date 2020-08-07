@@ -2,17 +2,20 @@
     -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
 
 }
-.button:hover{
+
+.jfxbutton:hover{
     -fx-background-color: #01579B;
 }
-.button:pressed{
+
+.jfxbutton:pressed{
     -fx-background-color: #01579B;
 }
 
 #lblTitle{
     -fx-font-family: sans-serif;
     -fx-font-size: 24px;
-    -fx-text-fill:  #E1F5FE;
-    -fx-border-color:  #E1F5FE;
-
+    -fx-text-fill:  #01579B;
+    -fx-border-color: #000000;
+    -fx-border-width: 1 0.5 0.5 0.5;
+    -fx-background-color: white;
 }

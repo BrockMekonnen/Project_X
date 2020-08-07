@@ -1,11 +1,15 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Model.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -17,7 +21,7 @@ public class WindowChangeController {
     private static Stage popupStage[]= new Stage[5];
     private static int windowCount=0;
 
-    double width,height;
+    private double width,height;
 
 
     public void signOut(ActionEvent event, String fxml) throws IOException {
@@ -33,18 +37,15 @@ public class WindowChangeController {
             e.printStackTrace();
         }
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         stage.setWidth(width);
         stage.setHeight(height);
         Scene loginScene =  new Scene(pane,width,height);
-
         stage.setScene(loginScene);
         stage.show();
         double x =  stage.widthProperty().doubleValue();
         double y = stage.widthProperty().doubleValue();
         width = x;
         height = y;
-
     }
 
     public void popupWindow(ActionEvent event, String fxml) throws IOException {
@@ -59,9 +60,27 @@ public class WindowChangeController {
         popupStage[windowCount] = temp;
         windowCount++;
         temp.showAndWait();
+    }
 
+    /* this function accepts mouse event, string text and patient object
+     * and create a window that pops up with information inside of patient object */
+    public void popupWindow(MouseEvent event, String fxml, Patient obj) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        DoctorPatientView view = loader.getController(); // get the controller of DoctorPatientView
+        view.setObject(obj); // assign some information from the object to the Scene
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
 
     }
+
     public void warningPopup(String warnHeader, String warnBody, String imageUrl ) throws IOException {
 
         FXMLLoader loader = new FXMLLoader((getClass().getResource("../View/WarningPopup.fxml")));
@@ -70,8 +89,8 @@ public class WindowChangeController {
         warn.setWarnHeaderFld(warnHeader);
         warn.setWarnBodyFld(warnBody);
         warn.setWarnImg(imageUrl);
-        Scene scene = new Scene(root);
         Stage temp = new Stage();
+        Scene scene = new Scene(root);
         temp.setScene(scene);
         temp.initStyle(StageStyle.UNDECORATED);
         temp.centerOnScreen();
@@ -79,8 +98,6 @@ public class WindowChangeController {
         popupStage[windowCount] = temp;
         windowCount++;
         temp.showAndWait();
-
-
     }
 
     public static void closeWindow(){
@@ -89,6 +106,5 @@ public class WindowChangeController {
         stage.close();
 
     }
-
 
 }

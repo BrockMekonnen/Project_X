@@ -1,9 +1,7 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Model.ClinicalNotes;
-import com.AASTU.Model.LabRequest;
+import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
-import com.AASTU.Model.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
@@ -16,13 +14,11 @@ import java.util.List;
 public class DataLoader {
 
 
-    public ObservableList<Patient> loadPatientData(){
-        ObservableList<Patient> patientObservableList = FXCollections.observableArrayList();
+    public List<Patient> loadPatientData(){
         List<Patient> patientList;
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-
                 .addAnnotatedClass(Patient.class)
                 .addAnnotatedClass(ClinicalNotes.class)
                 .addAnnotatedClass(TestProperty.class)
@@ -35,6 +31,31 @@ public class DataLoader {
                 .addAnnotatedClass(Cbs.class)
                 .addAnnotatedClass(Serology.class)
                 .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            patientList = session.createQuery("from Patient").list();
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return patientList;
+    }
+
+    public List<DiseaseRecord> loadDiseaseData(){
+        List<DiseaseRecord> diseaseRecords;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(DiseaseRecord.class)
+                .addAnnotatedClass(AgeScale.class)
 
                 .buildSessionFactory();
 
@@ -44,7 +65,7 @@ public class DataLoader {
 
             session.beginTransaction();
 
-            patientList = session.createQuery("from Patient").list();
+            diseaseRecords = session.createQuery("from DiseaseRecord").list();
 
             session.getTransaction().commit();
 
@@ -53,11 +74,7 @@ public class DataLoader {
             session.close();
         }
 
-        for(Patient tempPatent: patientList){
-            patientObservableList.add(tempPatent);
-        }
-
-        return patientObservableList;
+        return  diseaseRecords;
     }
 
 }

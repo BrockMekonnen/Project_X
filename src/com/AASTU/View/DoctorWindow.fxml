@@ -3,14 +3,15 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -63,7 +64,7 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="SIGN_OUT" size="25" wrappingWidth="36.0" />
                     </graphic>
                 </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="34.0" layoutY="230.0" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Record" textFill="#01579b">
+            <JFXButton buttonType="RAISED" layoutX="34.0" layoutY="230.0" onAction="#goToRecord" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Record" textFill="#01579b">
                <graphic>
                   <FontAwesomeIconView fill="#01579b" glyphName="HISTORY" size="30" wrappingWidth="39.714284896850586" />
                </graphic>
@@ -98,32 +99,6 @@
                 <FontAwesomeIconView fill="#51bfee" glyphName="SEARCH" size="25" />
             </graphic>
         </JFXButton>
-        <AnchorPane fx:id="pendingPnl" layoutX="245.0" layoutY="109.0" prefHeight="641.0" prefWidth="1105.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
-            <children>
-                <JFXTreeTableView layoutX="1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="791.0" prefWidth="1332.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                        <TreeTableColumn prefWidth="47.0" text="No" />
-                        <TreeTableColumn prefWidth="140.0" text="Pending Patient" />
-                        <TreeTableColumn prefWidth="106.0" text="Column X" />
-                        <TreeTableColumn prefWidth="116.0" text="Column X" />
-                        <TreeTableColumn prefWidth="99.0" text="Column X" />
-                        <TreeTableColumn prefWidth="111.0" text="Column X" />
-                        <TreeTableColumn prefWidth="140.0" text="Column X" />
-                        <TreeTableColumn prefWidth="128.0" text="Column X" />
-                        <TreeTableColumn prefWidth="181.0" text="Column X" />
-                    </columns></JFXTreeTableView>
-            </children>
-        </AnchorPane>
-        <AnchorPane fx:id="diseasePnl" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
-            <children>
-                <JFXTreeTableView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                        <TreeTableColumn prefWidth="75.0" text="No" />
-                        <TreeTableColumn prefWidth="141.0" text="Disease " />
-                    </columns>
-                </JFXTreeTableView>
-            </children>
-        </AnchorPane>
         <AnchorPane fx:id="opacityPane" opacity="0.12" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <AnchorPane id="pnl_side" fx:id="slidePane" prefHeight="823.0" prefWidth="245.0" stylesheets="@CommenDSL.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="77.0">
             <children>
@@ -149,7 +124,7 @@
                 </JFXButton>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
           <AnchorPane fx:id="profilePane" prefHeight="619.0" prefWidth="480.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="109.0">
               <children>
             <Pane prefHeight="52.0" prefWidth="510.0" style="-fx-background-radius: 20 20 0 0; -fx-background-color: #01579B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -339,5 +314,92 @@
             </StackPane>
               </children>
           </AnchorPane>
+      <AnchorPane layoutX="245.0" layoutY="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+         <children>
+              <AnchorPane fx:id="pendingPnl" prefHeight="641.0" prefWidth="1105.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="pendingTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                    <columns>
+                        <TableColumn prefWidth="23.0" />
+                      <TableColumn fx:id="columnId" prefWidth="191.0" text="Patient ID" />
+                      <TableColumn fx:id="columnFirst" prefWidth="268.0" text="First Name" />
+                        <TableColumn fx:id="columnLast" prefWidth="288.0" text="Last Name" />
+                        <TableColumn fx:id="columnSex" prefWidth="164.0" text="Sex" />
+                        <TableColumn fx:id="columnAge" prefWidth="107.0" text="Age" />
+                    </columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </TableView>
+                  <Pane prefHeight="28.0" prefWidth="1103.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Card" />
+                        <JFXButton buttonType="RAISED" layoutX="151.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Lab" />
+                        <JFXButton buttonType="RAISED" layoutX="302.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                     </children>
+                  </Pane>
+               </children>
+              </AnchorPane>
+              <AnchorPane fx:id="diseasePnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="28.0" prefWidth="1103.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Today" />
+                        <JFXButton buttonType="RAISED" layoutX="151.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yestarday" />
+                        <JFXButton buttonType="RAISED" layoutX="302.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                     </children>
+                  </Pane>
+                  <TableView fx:id="diseaseTable" layoutY="36.0" prefHeight="608.0" prefWidth="1103.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+                    <columns>
+                        <TableColumn prefWidth="22.0" />
+                      <TableColumn fx:id="columnDate" prefWidth="185.0" text="Date" />
+                      <TableColumn fx:id="columnDisease" prefWidth="198.0" text="Disease" />
+                        <TableColumn fx:id="columnless1" prefWidth="90.0" text="m &lt; 1" />
+                        <TableColumn fx:id="column1to4" prefWidth="90.0" text="1 &lt; m &lt; 4" />
+                        <TableColumn fx:id="column5to14" prefWidth="90.0" text="5 &lt; m &lt;14" />
+                        <TableColumn fx:id="column14to29" prefWidth="90.0" text="14 &lt; m &lt; 29" />
+                        <TableColumn fx:id="column28to64" prefWidth="90.0" text="28&lt; m &lt;64" />
+                        <TableColumn fx:id="columnGreater63" prefWidth="90.0" text="63 &lt; m" />
+                        <TableColumn fx:id="columnFless1" prefWidth="90.0" text="f &lt; 1" />
+                        <TableColumn fx:id="columnF1to4" prefWidth="90.0" text="1&lt; f &lt;4" />
+                        <TableColumn fx:id="columnF5to14" prefWidth="90.0" text="5&lt; f &lt;14" />
+                        <TableColumn fx:id="columnF14to29" prefWidth="90.0" text="14&lt; f &lt;29" />
+                        <TableColumn fx:id="columnF28to64" prefWidth="90.0" text="28&lt; f &lt;64" />
+                        <TableColumn fx:id="columnFgreater63" prefWidth="90.0" text="63 &lt; f" />
+                    </columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </TableView>
+               </children>
+              </AnchorPane>
+            <AnchorPane fx:id="recordPnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="recordTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                    <columns>
+                      <TableColumn prefWidth="22.0" />
+                      <TableColumn fx:id="columnRecordId" prefWidth="161.0" text="Patient ID" />
+                        <TableColumn fx:id="columnRecordDate" prefWidth="248.0" text="Date" />
+                        <TableColumn fx:id="columnRecordFirst" prefWidth="215.0" text="First Name" />
+                        <TableColumn fx:id="columnRecordLast" prefWidth="208.0" text="Last Name" />
+                        <TableColumn fx:id="columnRecordSex" prefWidth="104.0" text="Sex" />
+                        <TableColumn fx:id="columnRecordAge" prefWidth="101.0" text="Age" />
+                    </columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </TableView>
+                  <Pane prefHeight="27.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yesterday" />
+                        <JFXButton buttonType="RAISED" layoutX="151.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Week" />
+                        <JFXButton buttonType="RAISED" layoutX="302.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Month" />
+                        <JFXButton buttonType="RAISED" layoutX="453.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

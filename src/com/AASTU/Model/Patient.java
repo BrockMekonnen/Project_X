@@ -35,7 +35,7 @@ public class Patient {
     @Column(name = "house_number")
     private String houseNumber;
 
-    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="patient_id")
     private List<ClinicalNotes> notes;
 
@@ -44,7 +44,7 @@ public class Patient {
     private List<LabRequest> requests;
     public Patient(){}
 
-    public Patient(int patientId, String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber) {
+    public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber) {
         this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,14 +14,17 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@DoctorLaboratoryRequestForm.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorLaboratoryRequestForm">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" stylesheets="@DoctorLaboratoryRequestForm.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorLaboratoryRequestForm">
    <children>
-      <AnchorPane layoutY="4.0" prefHeight="130.0" prefWidth="1350.0" style="-fx-border-color: #E1F5FE; -fx-border-width: 0 0 2 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutY="4.0" prefHeight="123.0" prefWidth="1300.0" style="-fx-border-color: #E1F5FE; -fx-border-width: 0 0 2 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="lblTitle" alignment="CENTER" layoutX="440.0" layoutY="6.0" prefHeight="46.0" prefWidth="470.0" stylesheets="@DoctorLaboratoryRequestForm.css" text="Laboratory Requisition Form" textFill="#e1f5fe" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0">
+            <Label fx:id="lblTitle" alignment="CENTER" layoutX="440.0" layoutY="6.0" prefHeight="42.0" prefWidth="470.0" stylesheets="@DoctorLaboratoryRequestForm.css" text="Laboratory Requisition Form" textFill="#e1f5fe" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="27.0" />
                </font>
+               <effect>
+                  <DropShadow color="#6f6d6d" />
+               </effect>
             </Label>
             <Label alignment="CENTER" layoutX="53.0" layoutY="82.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #E1F5FE;" text="Name">
                <font>
@@ -601,14 +605,14 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@DoctorLaboratoryRequestForm.css" GridPane.columnIndex="5">
                <children>
-                  <JFXButton buttonType="RAISED" prefHeight="52.0" prefWidth="150.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="SEND" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
-                     <StackPane.margin>
-                        <Insets bottom="125.0" right="25.0" />
-                     </StackPane.margin>
-                  </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="52.0" prefWidth="150.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="BACK" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleBackButton" prefHeight="40.0" prefWidth="140.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="BACK" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="30.0" right="25.0" />
+                     </StackPane.margin>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" prefHeight="40.0" prefWidth="140.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="SEND" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="110.0" right="25.0" />
                      </StackPane.margin>
                   </JFXButton>
                </children>
@@ -616,4 +620,7 @@
          </children>
       </GridPane>
    </children>
+   <effect>
+      <DropShadow color="WHITE" />
+   </effect>
 </AnchorPane>

@@ -1,21 +1,33 @@
 package com.AASTU.Controller;
 
-import com.jfoenix.controls.JFXButton;
+import com.AASTU.Model.AgeScale;
+import com.AASTU.Model.DiseaseRecord;
+import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXComboBox;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 import javafx.util.Duration;
 
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DoctorWindowController implements Initializable {
@@ -33,14 +45,13 @@ public class DoctorWindowController implements Initializable {
     private AnchorPane opacityPane;
 
     @FXML
-    private JFXButton OptionBTN;
-
-
-    @FXML
     private AnchorPane pendingPnl;
 
     @FXML
     private AnchorPane diseasePnl;
+
+    @FXML
+    private AnchorPane recordPnl;
 
     @FXML
     private JFXComboBox<?> comboTime;
@@ -52,21 +63,325 @@ public class DoctorWindowController implements Initializable {
     private ImageView exitBtn;
 
     @FXML
-    void goToPending(ActionEvent event) {
-        diseasePnl.setVisible(false);
-        pendingPnl.setVisible(true);
-    }
+    private TableView<Patient> pendingTable;
 
     @FXML
-    void goToDisease(ActionEvent event) {
-        pendingPnl.setVisible(false);
-        diseasePnl.setVisible(true);
+    private TableColumn<Patient, Integer> columnId;
+
+    @FXML
+    private TableColumn<Patient, String> columnFirst;
+
+    @FXML
+    private TableColumn<Patient, String> columnLast;
+
+    @FXML
+    private TableColumn<Patient, Character> columnSex;
+
+    @FXML
+    private TableColumn<Patient, Integer> columnAge;
+
+    @FXML
+    private TableColumn<DiseaseRecord, LocalDate> columnDate;
+
+    @FXML
+    private TableColumn<DiseaseRecord, String> columnDisease;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnless1;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> column1to4;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> column5to14;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> column14to29;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> column28to64;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnGreater63;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnFless1;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnF1to4;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnF5to14;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnF14to29;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnF28to64;
+
+    @FXML
+    private TableColumn<AgeScale, Integer> columnFgreater63;
+
+    @FXML
+    private TableView<DiseaseRecord> diseaseTable;
+
+    @FXML
+    private TableView<Patient> recordTable;
+
+    @FXML
+    private TableColumn<Patient, Integer> columnRecordId;
+
+    @FXML
+    private TableColumn<Patient, String> columnRecordFirst;
+
+    @FXML
+    private TableColumn<Patient, String> columnRecordLast;
+
+    @FXML
+    private TableColumn<Patient, Character> columnRecordSex;
+
+    @FXML
+    private TableColumn<Patient, Integer> columnRecordAge;
+
+    @FXML
+    private TableColumn<Patient, LocalDate> columnRecordDate;
+
+    private void populateRecordTable(){
+        columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        columnRecordDate.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        columnRecordFirst.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+        columnRecordLast.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+        columnRecordSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        columnRecordAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        ObservableList<Patient> observableList = FXCollections.observableArrayList();
+        List<Patient> patientList = new DataLoader().loadPatientData();
+        for(Patient temp: patientList){
+            observableList.add(temp);
+        }
+        recordTable.setItems(observableList);
+    }
+
+
+    private void populateDiseaseTable(){
+        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData();
+        ObservableList<DiseaseRecord> observableList = FXCollections.observableArrayList();
+
+        for(DiseaseRecord temp: diseaseRecordList) {
+            columnDate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, LocalDate>, ObservableValue<LocalDate>>() {
+                @Override
+                public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<DiseaseRecord, LocalDate> param) {
+                    ObservableValue<LocalDate> dateObservableValue = new SimpleObjectProperty<>(temp.getDate());
+                    return dateObservableValue;
+                }
+            });
+
+
+            columnDisease.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, String>, ObservableValue<String>>() {
+                @Override
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<DiseaseRecord, String> param) {
+                    ObservableValue<String> disease = new SimpleStringProperty(temp.getDiseaseName());
+                    return disease;
+                }
+            });
+
+
+            columnless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getfLess1()).asObject();
+                    return obsInt;
+                }
+            });
+
+            column1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getM1to4()).asObject();
+                    return obsInt;
+                }
+            });
+
+            column5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getM5to14()).asObject();
+                    return obsInt;
+                }
+            });
+
+            column14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF15to29()).asObject();
+                    return obsInt;
+                }
+            });
+
+            column28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getM30to64()).asObject();
+                    return obsInt;
+                }
+            });
+
+            columnGreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getmGreater65()).asObject();
+                    return obsInt;
+                }
+            });
+
+            columnFless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getfLess1()).asObject();
+                    return obsInt;
+                }
+            });
+
+            columnF1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF1to4()).asObject();
+                    return obsInt;
+                }
+            });
+
+            columnF5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF5to14()).asObject();
+                    return obsInt;
+                }
+            });
+
+            columnF14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF15to29()).asObject();
+                    return obsInt;
+                }
+            });
+
+            columnF28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF30to64()).asObject();
+                    return obsInt;
+                }
+            });
+
+            columnFgreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
+                @Override
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
+                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getfGreater65()).asObject();
+                    return obsInt;
+                }
+            });
+
+            observableList.add(temp);
+        }
+        diseaseTable.setItems(observableList);
+
 
     }
 
+    /* this function inserts data from the database to the pendingTable */
+    private void populatePendingTable(){
+        pendingTable.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().popupWindow(event, "../View/DoctorPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
+        columnId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        columnFirst.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+        columnLast.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+        columnSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        columnAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        ObservableList<Patient> observableList = FXCollections.observableArrayList();
+        List<Patient> patientList = new DataLoader().loadPatientData(); // get list of data from the database
+        for(Patient temp: patientList){
+            observableList.add(temp); // change each object from list to observableList
+        }
+        pendingTable.setItems(observableList);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        transition();
+        goToPending();
+
+    }
+
+    private void goToView(boolean disease, boolean pending, boolean record){
+        diseasePnl.setVisible(disease);
+        pendingPnl.setVisible(pending);
+        recordPnl.setVisible(record);
+    }
+
+    @FXML
+    void goToPending(ActionEvent event) {
+        populatePendingTable();
+        goToView(false,true,false);
+    }
+    void goToPending() {
+        populatePendingTable();
+        goToView(false,true,false);
+    }
+
+
+    @FXML
+    void goToDisease(ActionEvent event) {
+        populateDiseaseTable();
+        goToView(true,false,false);
+    }
+
+    @FXML
+    void goToRecord(ActionEvent event) {
+        populateRecordTable();
+        goToView(false,false,true);
+    }
+
+    public void translateTransitionBack(AnchorPane pane, double move, double sec){
+        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);
+        translateTransition.setByX(move);
+        translateTransition.play();
+        translateTransition.setOnFinished(event -> {
+            opacityPane.setVisible(false);
+        });
+    }
+
+    public void OptionAction(){
+        opacityPane.setVisible(true);
+        slidePane.setVisible(true);
+        TransitionController.translation(slidePane,0,1,0.1);
+        TransitionController.translateTransition(slidePane, 600, 1);
+    }
+
+    @FXML
+    void profileHandler(ActionEvent event) {
+        translateTransitionBack(slidePane,-600,1);
+        profileOpacityPane.setVisible(true);
+        profilePane.setVisible(true);
+    }
+
+    @FXML
+    void signOutHandler(ActionEvent event) throws IOException {
+        new WindowChangeController().signOut(event,"../view/Login.fxml");
+    }
+
+    private void transition(){
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         opacityPane.setVisible(false);
@@ -84,38 +399,6 @@ public class DoctorWindowController implements Initializable {
         exitBtn.setOnMouseClicked(event -> {
             TransitionController.exitHandler(profilePane, profileOpacityPane);
         });
-
-    }
-
-    public void translateTransitionBack(AnchorPane pane, double move, double sec){
-        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);
-        translateTransition.setByX(move);
-        translateTransition.play();
-        translateTransition.setOnFinished(event -> {
-            opacityPane.setVisible(false);
-        });
-    }
-
-    public void OptionAction(){
-        opacityPane.setVisible(true);
-        slidePane.setVisible(true);
-        TransitionController.translation(slidePane,0,1,0.1);
-        TransitionController.translateTransition(slidePane, 600, 1);
-
-    }
-
-    @FXML
-    void profileHandler(ActionEvent event) {
-        translateTransitionBack(slidePane,-600,1);
-        profileOpacityPane.setVisible(true);
-        profilePane.setVisible(true);
-    }
-
-
-
-    @FXML
-    void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().signOut(event,"../view/Login.fxml");
     }
 
 }

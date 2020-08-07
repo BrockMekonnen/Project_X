@@ -5,6 +5,10 @@ import java.time.LocalDate;
 @Entity
 public class DiseaseRecord {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
+    @Column(name = "date")
     private LocalDate date;
     @Column(name="disease_Name")
     private String diseaseName;
@@ -24,6 +28,8 @@ public class DiseaseRecord {
             @AttributeOverride( name = "fGreater65", column = @Column(name = "FemaleGreaterThan_65", length = 20))
     })
     private AgeScale age;
+
+    public DiseaseRecord(){ }
 
     public DiseaseRecord(LocalDate date, String diseasName, AgeScale age) {
         this.date = date;

@@ -5,8 +5,10 @@
 #lbl_title{
     -fx-font-family:sans-serif;
     -fx-font-size: 20px;
-    -fx-text-fill: white;
-    -fx-border-color: white;
+    -fx-text-fill: #01579B;
+    -fx-border-color: black;
+    -fx-border-width: 1 0 1 0;
+    -fx-background-color: white;
 
 }
 #lbl_name,
@@ -23,5 +25,6 @@
     -fx-background-color: transparent;
     -fx-border-width: 0 0 2 0;
     -fx-border-color: white;
+
 }
 
