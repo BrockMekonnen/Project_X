@@ -170,4 +170,23 @@ public class Doctor {
     public void setKebele(String kebele) {
         this.kebele = kebele;
     }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "doctorID=" + doctorID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", addedDate=" + addedDate +
+                ", password='" + password + '\'' +
+                ", workingHourStartHour=" + workingHourStartHour +
+                ", workingHourStartMin=" + workingHourStartMin +
+                ", workingHourEndHour=" + workingHourEndHour +
+                ", workingHourEndMin=" + workingHourEndMin +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", City='" + City + '\'' +
+                ", Subcity='" + Subcity + '\'' +
+                ", kebele='" + kebele + '\'' +
+                '}';
+    }
 }
