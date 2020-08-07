@@ -30,7 +30,7 @@
                         <Insets left="69.0" top="100.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="firstNameTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -49,7 +49,7 @@
                         <Insets left="69.0" top="150.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="lastNameTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -84,7 +84,7 @@
                         <Insets left="69.0" top="270.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="44.0" promptText=" Day" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="birthDayTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="44.0" promptText=" Day" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -95,7 +95,7 @@
                         <Insets left="190.0" top="270.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="46.0" promptText=" Month" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="birthMonthTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="46.0" promptText=" Month" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -106,7 +106,7 @@
                         <Insets left="245.0" top="270.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" promptText=" Year" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="birthYearTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" promptText=" Year" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -130,7 +130,7 @@
                         <Insets left="178.0" top="390.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 1 1 0;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="phoneNumberTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 1 1 0;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -146,7 +146,7 @@
                         <Insets left="69.0" top="330.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="ageTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -176,7 +176,7 @@
                         <Insets left="69.0" top="450.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="City" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="cityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="City" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -187,7 +187,7 @@
                         <Insets left="180.0" top="450.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Subcity" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="subcityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Subcity" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -198,7 +198,7 @@
                         <Insets left="180.0" top="490.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Kebele" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="kebeleTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Kebele" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -217,7 +217,7 @@
                         <Insets right="193.0" top="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXDatePicker defaultColor="#01579b" prefHeight="30.0" prefWidth="174.0" style="-fx-border-color: #01579b; -fx-background-color: #ffffff;" StackPane.alignment="TOP_RIGHT">
+                  <JFXDatePicker fx:id="addedDateTf" defaultColor="#01579b" prefHeight="30.0" prefWidth="174.0" style="-fx-border-color: #01579b; -fx-background-color: #ffffff;" StackPane.alignment="TOP_RIGHT">
                      <effect>
                         <DropShadow color="#b3e5fc" />
                      </effect>
@@ -233,7 +233,7 @@
                         <Insets right="193.0" top="60.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="173.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_RIGHT">
+                  <JFXTextField fx:id="patientIdTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="173.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_RIGHT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -260,7 +260,7 @@
                         <Insets bottom="20.0" right="27.0" />
                      </StackPane.margin>
                   </JFXButton>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="House Number" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="houseNuberTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="House Number" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <effect>
                         <DropShadow color="#29b6f6" />
                      </effect>
@@ -284,7 +284,7 @@
                         <Insets bottom="121.0" right="86.0" />
                      </StackPane.margin>
                   </JFXButton>
-                  <JFXCheckBox alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="30.0" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXCheckBox fx:id="isOutCb" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="30.0" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="120.0" right="45.0" />
                      </StackPane.margin>
@@ -297,7 +297,7 @@
                         <Insets bottom="185.0" right="40.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <JFXCheckBox alignment="CENTER" checkedColor="WHITE" contentDisplay="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="42.0" prefWidth="145.0" style="-fx-background-color: #01579B; -fx-background-radius: 8px;" text="No Laboratory test" textFill="WHITE" unCheckedColor="WHITE" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXCheckBox fx:id="hasLabCb" alignment="CENTER" checkedColor="WHITE" contentDisplay="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="42.0" prefWidth="145.0" style="-fx-background-color: #01579B; -fx-background-radius: 8px;" text="No Laboratory test" textFill="WHITE" unCheckedColor="WHITE" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="192.0" right="53.0" />
                      </StackPane.margin>
