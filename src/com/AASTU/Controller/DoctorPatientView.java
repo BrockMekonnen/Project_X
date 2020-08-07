@@ -94,6 +94,8 @@ public class DoctorPatientView implements Initializable{
         new WindowChangeController().popupWindow(event,"../View/ClinicalNoteAdd.fxml");
     }
 
+    /* this function accepts Patient Object and assign
+     * some values to the textField */
     public void setObject(Patient object){
         nameFld.setText(object.getFirstName() + " " + object.getLastName());
         ageFld.setText(( String.valueOf(object.getAge())));
@@ -103,7 +105,7 @@ public class DoctorPatientView implements Initializable{
         kebeleFld.setText(object.getKebele());
         phoneFld.setText(object.getPhoneNumber());
         houseFld.setText(object.getHouseNumber());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
         dateFld.setText(object.getDate().format(formatter));
         idFld.setText(String.valueOf(object.getPatientId()));
         refreshNodes(object.getNotes());
@@ -115,4 +117,18 @@ public class DoctorPatientView implements Initializable{
         WindowChangeController.closeWindow();
     }
 
+    @FXML
+    void handleRequestAction(ActionEvent event) throws IOException {
+        new WindowChangeController().popupWindow(event, "../View/DoctorLaboratoryRequestForm.fxml");
+    }
+
+    @FXML
+    void handleOutPatientButton(ActionEvent event) throws IOException {
+        new WindowChangeController().popupWindow(event, "../View/NewOutPatient.fxml");
+    }
+
+    @FXML
+    void handleResultButton(ActionEvent event) throws IOException {
+        new WindowChangeController().popupWindow(event, "../View/LabToDoc.fxml");
+    }
 }

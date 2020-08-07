@@ -89,5 +89,11 @@ public class DoctorLaboratoryRequestForm implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
+    }
+
+    @FXML
+    void handleBackButton(ActionEvent event) {
+        WindowChangeController.closeWindow();
     }
 }

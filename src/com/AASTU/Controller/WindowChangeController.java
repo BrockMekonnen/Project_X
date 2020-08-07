@@ -3,11 +3,13 @@ package com.AASTU.Controller;
 import com.AASTU.Model.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -60,12 +62,14 @@ public class WindowChangeController {
         temp.showAndWait();
     }
 
+    /* this function accepts mouse event, string text and patient object
+     * and create a window that pops up with information inside of patient object */
     public void popupWindow(MouseEvent event, String fxml, Patient obj) throws IOException {
 
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
-        DoctorPatientView view = loader.getController();
-        view.setObject(obj);
+        DoctorPatientView view = loader.getController(); // get the controller of DoctorPatientView
+        view.setObject(obj); // assign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
@@ -74,7 +78,7 @@ public class WindowChangeController {
         popupStage[windowCount] = temp;
         windowCount++;
         temp.showAndWait();
-        temp.centerOnScreen();
+
     }
 
     public void warningPopup(String warnHeader, String warnBody, String imageUrl ) throws IOException {

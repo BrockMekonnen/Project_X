@@ -7,6 +7,7 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@LabToDoc.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LabToDoc">
+<AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1300.0" stylesheets="@LabToDoc.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LabToDoc">
    <children>
       <GridPane layoutX="6.0" layoutY="125.0" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columnConstraints>
@@ -31,14 +32,14 @@
          <children>
             <AnchorPane prefHeight="768.0" prefWidth="188.0" GridPane.columnIndex="5">
                <children>
-                  <JFXButton buttonType="RAISED" layoutY="493.0" prefHeight="43.0" prefWidth="137.0" ripplerFill="#29b6f6" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;" text="Send" textFill="#01579b" AnchorPane.bottomAnchor="132.0" AnchorPane.rightAnchor="33.0" />
-                  <JFXButton buttonType="RAISED" layoutY="570.0" prefHeight="43.0" prefWidth="137.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;" text="Close" textFill="#01579b" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="33.0" />
+                  <JFXButton buttonType="RAISED" layoutX="17.0" layoutY="498.0" prefHeight="38.0" prefWidth="120.0" ripplerFill="#29b6f6" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;" text="Send" textFill="#01579b" AnchorPane.bottomAnchor="132.0" AnchorPane.rightAnchor="16.0" />
+                  <JFXButton buttonType="RAISED" layoutX="17.0" layoutY="575.0" onAction="#handleCloseButton" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10px;" text="Close" textFill="#01579b" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="16.0" />
                </children>
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="270.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 50 0 0 50;" GridPane.columnIndex="1">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="270.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 30 0 0 30;" GridPane.columnIndex="1">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="589.0" layoutX="31.0" layoutY="32.0" stroke="#01579b" strokeType="INSIDE" width="230.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="9.0" />
                   <Label alignment="CENTER" layoutX="33.0" layoutY="1.0" prefHeight="34.0" prefWidth="232.0" text="HEMATOLOGY" textFill="#01579b" underline="true">
@@ -364,7 +365,7 @@
                   <JFXTextField layoutX="118.0" layoutY="620.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
                </children>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="270.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 0 50 50 0;" GridPane.columnIndex="4">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="270.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 0 30 30 0;" GridPane.columnIndex="4">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="-10.0" />
                </GridPane.margin>
@@ -543,18 +544,33 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <AnchorPane id="pnl_header" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="1366.0" stylesheets="@LabToDoc.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="pnl_header" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="1366.0" stylesheets="@LabToDoc.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label id="lbl_title" alignment="CENTER" contentDisplay="CENTER" layoutX="503.0" layoutY="-3.0" prefHeight="35.0" prefWidth="332.0" text="Laboratory Result" AnchorPane.leftAnchor="503.0" AnchorPane.rightAnchor="531.0" AnchorPane.topAnchor="0.0" />
-            <Label id="lbl_name" alignment="CENTER" layoutX="79.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="75.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Name" />
-            <Label id="lbl_sex" alignment="CENTER" layoutX="551.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="43.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Sex" />
-            <Label id="lbl_age" alignment="CENTER" layoutX="731.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="46.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Age" />
-            <Label id="lbl_date" alignment="CENTER" layoutX="933.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="56.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Date" />
-            <JFXTextField focusColor="WHITE" layoutX="989.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
-            <JFXTextField focusColor="WHITE" layoutX="594.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
-            <JFXTextField focusColor="WHITE" layoutX="777.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
-            <JFXTextField focusColor="WHITE" layoutX="154.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="352.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #ffffff;" unFocusColor="WHITE" />
+            <Label id="lbl_title" alignment="CENTER" contentDisplay="CENTER" layoutX="503.0" layoutY="-3.0" prefHeight="30.0" prefWidth="332.0" text="Laboratory Result" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label id="lbl_name" alignment="CENTER" layoutX="78.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="75.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Name" />
+            <Label id="lbl_sex" alignment="CENTER" layoutX="464.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="43.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Sex" />
+            <Label id="lbl_age" alignment="CENTER" layoutX="644.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="46.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Age" />
+            <Label id="lbl_date" alignment="CENTER" layoutX="846.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="56.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2;" text="Date" />
+            <JFXTextField focusColor="WHITE" layoutX="902.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="WHITE">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></JFXTextField>
+            <JFXTextField focusColor="WHITE" layoutX="507.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="WHITE">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></JFXTextField>
+            <JFXTextField focusColor="WHITE" layoutX="690.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="WHITE">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></JFXTextField>
+            <JFXTextField focusColor="WHITE" layoutX="153.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="270.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="WHITE">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></JFXTextField>
          </children>
       </AnchorPane>
    </children>
+   <effect>
+      <DropShadow />
+   </effect>
 </AnchorPane>

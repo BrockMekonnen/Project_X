@@ -288,16 +288,15 @@ public class DoctorWindowController implements Initializable {
 
     }
 
-
-
+    /* this function inserts data from the database to the pendingTable */
     private void populatePendingTable(){
         pendingTable.setRowFactory(tv -> {
-            TableRow<Patient> row = new TableRow<>();
+            TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    Patient rowData = row.getItem();
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
                     try {
-                        new WindowChangeController().popupWindow(event, "../View/DoctorPatientView.fxml", rowData);
+                        new WindowChangeController().popupWindow(event, "../View/DoctorPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -311,17 +310,18 @@ public class DoctorWindowController implements Initializable {
         columnSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadPatientData();
+        List<Patient> patientList = new DataLoader().loadPatientData(); // get list of data from the database
         for(Patient temp: patientList){
-            observableList.add(temp);
+            observableList.add(temp); // change each object from list to observableList
         }
         pendingTable.setItems(observableList);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        goToPending();
         transition();
+        goToPending();
+
     }
 
     private void goToView(boolean disease, boolean pending, boolean record){
