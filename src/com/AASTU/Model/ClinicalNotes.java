@@ -12,6 +12,8 @@ public class ClinicalNotes {
     private LocalDate date;
     @Column(name = "note")
     private String notes;
+    //to identify The Doctor who writes the Clinical note or who treats the patient
+    private String DoctorId;
 
     public ClinicalNotes() {}
 

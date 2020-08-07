@@ -48,6 +48,40 @@ public class DataLoader {
         return patientList;
     }
 
+    public List<Patient> loadSpecificData(String SelectiveCommand){
+        List<Patient> patientList;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            patientList = session.createQuery(SelectiveCommand).list();
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return patientList;
+    }
+
     public List<DiseaseRecord> loadDiseaseData(){
         List<DiseaseRecord> diseaseRecords;
 
