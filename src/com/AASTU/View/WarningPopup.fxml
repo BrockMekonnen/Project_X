@@ -3,42 +3,43 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="210.0" prefWidth="400.0" style="-fx-border-color: #01579Ba1; -fx-border-width: 2 2 2 2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.Warning">
+<AnchorPane prefHeight="190.0" prefWidth="360.0" style="-fx-border-color: #01579Ba1; -fx-border-width: 2 2 2 2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.Warning">
    <children>
-      <Pane prefHeight="52.0" prefWidth="400.0" style="-fx-background-color: #01579B;" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #01579B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="363.0" layoutY="33.0" onMouseClicked="#close" size="30" wrappingWidth="30.0000062584877" />
-            <JFXTextField fx:id="warnHeaderFld" editable="false" focusColor="#01579b" focusTraversable="false" layoutX="66.0" layoutY="5.0" prefHeight="37.0" prefWidth="281.0" style="-fx-text-fill: #ffffff;" unFocusColor="#01579b">
+            <JFXTextField fx:id="warnHeaderFld" editable="false" focusColor="#01579b" focusTraversable="false" layoutX="60.0" layoutY="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="240.0" style="-fx-text-fill: #ffffff;" text="saldkf dasfjl" unFocusColor="#01579b">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <FontAwesomeIconView fill="WHITE" glyphName="WARNING" layoutX="14.0" layoutY="34.0" size="30" />
+            <FontAwesomeIconView fill="WHITE" glyphName="WARNING" layoutX="13.0" layoutY="31.0" size="28" />
+            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="308.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="48.0" text="Button">
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="WINDOW_CLOSE" size="24" />
+               </graphic>
+            </JFXButton>
          </children>
       </Pane>
-      <Pane layoutX="4.0" layoutY="158.0" prefHeight="48.0" prefWidth="396.0" style="-fx-border-color: #01579B; -fx-border-width: 1 0 0 0;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
+      <Pane layoutX="4.0" layoutY="158.0" prefHeight="42.0" prefWidth="396.0" style="-fx-border-color: #01579B; -fx-border-width: 1 0 0 0;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0">
          <children>
-            <JFXButton buttonType="RAISED" layoutX="173.0" layoutY="10.0" onAction="#handleOkButton" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #01579B;" text="OK" textFill="WHITE" />
-            <JFXButton buttonType="RAISED" layoutX="286.0" layoutY="10.0" onAction="#handleCancelButton" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #01579B;" text="Cancel" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="156.0" layoutY="6.0" onAction="#handleOkButton" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: #01579B;" text="OK" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="259.0" layoutY="6.0" onAction="#handleCancelButton" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: #01579B;" text="Cancel" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutY="49.0" prefHeight="109.0" prefWidth="396.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+      <Pane layoutX="4.0" layoutY="42.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="357.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Pane layoutX="282.0" layoutY="14.0">
-               <children>
-                  <ImageView fx:id="warnImg" fitHeight="79.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </Pane>
-            <JFXTextField fx:id="warnBodyFld" editable="false" focusColor="WHITE" layoutX="9.0" layoutY="29.0" prefHeight="48.0" prefWidth="269.0" style="-fx-text-fill: #01579B;" unFocusColor="WHITE">
+            <JFXTextField fx:id="warnBodyFld" editable="false" focusColor="WHITE" layoutX="9.0" layoutY="25.0" prefHeight="48.0" prefWidth="229.0" style="-fx-text-fill: #01579B;" unFocusColor="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </JFXTextField>
+            <ImageView fx:id="warnImg" fitHeight="70.0" fitWidth="90.0" layoutX="249.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

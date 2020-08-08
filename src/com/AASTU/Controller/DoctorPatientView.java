@@ -129,6 +129,16 @@ public class DoctorPatientView implements Initializable{
 
     @FXML
     void handleResultButton(ActionEvent event) throws IOException {
-        new WindowChangeController().popupWindow(event, "../View/DocLabResultView.fxml");
+        new WindowChangeController().docLabResultView(event, "../View/DocLabResultView.fxml");
+    }
+
+    @FXML
+    void handleExitButton(ActionEvent event) {
+        WindowChangeController.closeWindow();
+    }
+
+    @FXML
+    void handleMaxButton(ActionEvent event) {
+
     }
 }

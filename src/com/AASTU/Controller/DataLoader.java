@@ -111,4 +111,41 @@ public class DataLoader {
         return  diseaseRecords;
     }
 
+    public LabRequest loadLabRequest(Patient tempPateint) {
+        List<LabRequest> labRequestList;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "from LabRequest where patient_id = " + tempPateint.getPatientId();
+            labRequestList = session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        LabRequest labRequest;
+        if(labRequestList.size() != 0){
+            labRequest = labRequestList.get(labRequestList.size() - 1);
+        } else {
+            labRequest = null;
+        }
+
+        return labRequest;
+
+    }
+
 }

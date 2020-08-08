@@ -1,21 +1,24 @@
 #rootPane{
     -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
-
-}
-
-.jfxbutton:hover{
-    -fx-background-color: #01579B;
-}
-
-.jfxbutton:pressed{
-    -fx-background-color: #01579B;
+    -fx-border-color: black;
+    -fx-border-width: 0 1 1 1;
 }
 
 #lblTitle{
     -fx-font-family: sans-serif;
-    -fx-font-size: 24px;
-    -fx-text-fill:  #01579B;
-    -fx-border-color: #000000;
-    -fx-border-width: 1 0.5 0.5 0.5;
+    -fx-text-fill: #01579B;
     -fx-background-color: white;
+    -fx-font-size: 18px;
+    -fx-border-color: black;
+    -fx-border-width: 1 1 1 1;
+}
+
+#exitBtn:hover{
+    -fx-background-color: #D32F2F;
+    -fx-border-color: #D32F2F;
+}
+
+#maxBtn:hover{
+    -fx-background-color: #4FC3F7;
+    -fx-border-color: #4FC3F7;
 }
