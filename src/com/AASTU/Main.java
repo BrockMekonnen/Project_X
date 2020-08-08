@@ -16,7 +16,7 @@ import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
-    public static WindowChangeController controller = new WindowChangeController();
+
     public static DataLoader controller1=new DataLoader();
     Stage stage;
     @Override

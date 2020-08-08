@@ -1,5 +1,6 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.Patient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.print.Doc;
 import java.io.IOException;
 
 public class WindowChangeController {
@@ -20,6 +22,7 @@ public class WindowChangeController {
     private Stage stage;
     private static Stage popupStage[]= new Stage[5];
     private static int windowCount=0;
+    private static Patient tempObject;
 
     private double width,height;
 
@@ -65,7 +68,7 @@ public class WindowChangeController {
     /* this function accepts mouse event, string text and patient object
      * and create a window that pops up with information inside of patient object */
     public void popupWindow(MouseEvent event, String fxml, Patient obj) throws IOException {
-
+        tempObject = obj;
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         DoctorPatientView view = loader.getController(); // get the controller of DoctorPatientView
@@ -79,6 +82,26 @@ public class WindowChangeController {
         windowCount++;
         temp.showAndWait();
 
+    }
+
+    public void docLabResultView(ActionEvent event, String fxml) throws IOException {
+        LabRequest labObject = new DataLoader().loadLabRequest(tempObject);
+        if(labObject == null){
+            new WindowChangeController().warningPopup("Not Found","Laboratory Result Not Found!","warn_exclamation.png");
+            return;
+        }
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        DocLabResultView view = loader.getController();
+        view.setLabResult(labObject);
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
     }
 
     public void warningPopup(String warnHeader, String warnBody, String imageUrl ) throws IOException {

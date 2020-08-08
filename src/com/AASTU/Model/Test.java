@@ -89,10 +89,19 @@ public class Test {
 //            session.save(hpaylori);
 //            session.save(koh);
 
+
 //            List<DiseaseRecord> diseaseRecords = session.createQuery("from DiseaseRecord").list();
-            List<Patient> list = session.createQuery("from Patient").list();
-            List<ClinicalNotes> notes =  new ArrayList<>(list.get(0).getNotes());
-            System.out.println(notes.get(0).getNotes());
+//            List<Patient> list = session.createQuery("select firstName, lastName from Patient").list();
+//            List<LabRequest>  labRequests=  new ArrayList<>(list.get(0).getRequests());
+//
+//            String id =  String.valueOf(list.get(0).getPatientId());
+//            String quiry = "from LabRequest where id = " + id;
+//            List<LabRequest> labRequestList = session.createQuery("from LabRequest where patient_id = 1").list();
+
+//            System.out.println(labRequestList.get(0).getCbs().getBloodFilm());
+//            System.out.println(labRequests.get(0).getCbs().getBloodFilm());
+
+//            System.out.println(list.get(1).getFirstName());
 
 
             session.getTransaction().commit();

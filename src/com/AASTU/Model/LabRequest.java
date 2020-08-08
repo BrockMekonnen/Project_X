@@ -20,6 +20,10 @@ public class LabRequest {
     private Cbs cbs;
     private Serology serology;
 
+    public LabRequest(){
+
+    }
+
     public LabRequest(Parasitology parasitology, Bacteriology bacterology, Microscopy microscopy, Chemistry chemistry, Dipstick dipistic, Others others, Cbs cbs, Serology serology) {
         this.parasitology = parasitology;
         this.bacterology = bacterology;
