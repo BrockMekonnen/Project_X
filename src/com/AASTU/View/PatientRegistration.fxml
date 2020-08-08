@@ -292,19 +292,6 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </JFXCheckBox>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="55.0" stroke="#01579b" strokeType="INSIDE" width="180.0" StackPane.alignment="BOTTOM_RIGHT">
-                     <StackPane.margin>
-                        <Insets bottom="185.0" right="40.0" />
-                     </StackPane.margin>
-                  </Rectangle>
-                  <JFXCheckBox fx:id="hasLabCb" alignment="CENTER" checkedColor="WHITE" contentDisplay="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="42.0" prefWidth="145.0" style="-fx-background-color: #01579B; -fx-background-radius: 8px;" text="No Laboratory test" textFill="WHITE" unCheckedColor="WHITE" StackPane.alignment="BOTTOM_RIGHT">
-                     <StackPane.margin>
-                        <Insets bottom="192.0" right="53.0" />
-                     </StackPane.margin>
-                     <effect>
-                        <DropShadow color="WHITE" />
-                     </effect>
-                  </JFXCheckBox>
                </children>
             </StackPane>
          </children>

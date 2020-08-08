@@ -1,11 +1,8 @@
 package com.AASTU.Controller;
 
 import com.AASTU.Main;
-import com.AASTU.Model.ClinicalNotes;
-import com.AASTU.Model.LabRequest;
+import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
-import com.AASTU.Model.Patient;
-import com.AASTU.Model.Secretary;
 import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class PatientRegistration implements Initializable{
 
+    public static boolean isout = false;
     @FXML
     private AnchorPane subPane1;
 
@@ -104,10 +102,14 @@ public class PatientRegistration implements Initializable{
 
     }
 
+    private char sex;
+
+    // save new patient to database
     public void saveNewPatient(){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(OutPatient.class)
                 .addAnnotatedClass(ClinicalNotes.class)
                 .addAnnotatedClass(TestProperty.class)
                 .addAnnotatedClass(Parasitology.class)
@@ -119,12 +121,13 @@ public class PatientRegistration implements Initializable{
                 .addAnnotatedClass(Cbs.class)
                 .addAnnotatedClass(Serology.class)
                 .addAnnotatedClass(LabRequest.class)
-//                                 .addAnnotatedClass(Dipstick.class)
+
 
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
         try{
+
             session.beginTransaction();
             TestProperty test = new TestProperty("postive", 2154,true);
 //
@@ -141,13 +144,27 @@ public class PatientRegistration implements Initializable{
 
             ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"ggggg");
 
-            Patient patient = new Patient(firstNameTf.getText(),lastNameTf.getText(),Integer.parseInt(ageTf.getText()),'s', LocalDate.now(),phoneNumberTf.getText(),cityTf.getText(),subcityTf.getText(),kebeleTf.getText(),houseNuberTf.getText());
 
-            patient.addClincalNote(clinicalNote);
-            patient.addLabRequest(lab);
-            session.save(patient);
+            if(cboGender.getValue().toString().equals("Male")){
+                sex = 'm';
+            }else if(cboGender.getValue().toString().equals("Female")) {
+                sex = 'f';
+            }
+            // this if condition is temporary and it is not finished
+            if(isout){
+                OutPatient outPatient = new OutPatient(firstNameTf.getText(),lastNameTf.getText(),Integer.parseInt(ageTf.getText()),sex, LocalDate.now(),phoneNumberTf.getText(),cityTf.getText(),subcityTf.getText(),kebeleTf.getText(),houseNuberTf.getText(),LocalDate.now(),LocalDate.now());
+                outPatient.addClincalNote(clinicalNote);
+                outPatient.addLabRequest(lab);
+                session.save(outPatient);
+            } else {
+            Patient patient = new Patient(firstNameTf.getText(),lastNameTf.getText(),Integer.parseInt(ageTf.getText()),sex, LocalDate.now(),phoneNumberTf.getText(),cityTf.getText(),subcityTf.getText(),kebeleTf.getText(),houseNuberTf.getText());
+                patient.addClincalNote(clinicalNote);
+                patient.addLabRequest(lab);
+                session.save(patient);
+            }
+
+            isout= false;
             session.getTransaction().commit();
-
         } finally {
             factory.close();
             session.close();
