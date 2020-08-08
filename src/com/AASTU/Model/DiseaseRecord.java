@@ -10,7 +10,7 @@ public class DiseaseRecord {
     private int id;
     @Column(name = "date")
     private LocalDate date;
-    @Column(name="Disease_Name")
+    @Column(name="disease_Name")
     private String diseaseName;
     @Embedded
     @AttributeOverrides({

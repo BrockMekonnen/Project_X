@@ -10,7 +10,7 @@ public class LabRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
+    private String LabratoryTechnicianId;
     private Parasitology parasitology;
     private Bacteriology bacterology;
     private Microscopy microscopy;
