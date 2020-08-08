@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -11,42 +13,37 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="760.0" prefWidth="1300.0" style="-fx-border-color: #000000a2;" stylesheets="@DoctorPatientView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorPatientView">
+<AnchorPane fx:id="rootPane" prefHeight="760.0" prefWidth="1300.0" style="-fx-border-color: #000000a2; -fx-border-width: 0 1 1 1;" stylesheets="@DoctorPatientView.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorPatientView">
    <children>
       <AnchorPane prefHeight="157.0" prefWidth="1007.0" style="-fx-background-color: #E1F5FEa7;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="lblTitle" alignment="CENTER" layoutX="430.0" layoutY="3.0" prefHeight="35.0" prefWidth="340.0" text="Patient Card" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="429.0" AnchorPane.topAnchor="5.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="24.0" layoutY="68.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Name " textFill="WHITE">
+            <Label alignment="CENTER" layoutX="24.0" layoutY="64.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Name " textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="nameFld" layoutX="82.0" layoutY="68.0" prefHeight="27.0" prefWidth="186.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" text="2154" unFocusColor="#01579b">
+            <JFXTextField fx:id="nameFld" layoutX="82.0" layoutY="64.0" prefHeight="27.0" prefWidth="186.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" text="2154" unFocusColor="#01579b">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <Label alignment="CENTER" layoutX="286.0" layoutY="69.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Age" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="286.0" layoutY="65.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Age" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="ageFld" layoutX="344.0" layoutY="69.0" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b">
+            <JFXTextField fx:id="ageFld" layoutX="344.0" layoutY="65.0" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <Label alignment="CENTER" layoutX="430.0" layoutY="69.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Sex" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="430.0" layoutY="65.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Sex" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="sexFld" layoutX="488.0" layoutY="69.0" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b">
+            <JFXTextField fx:id="sexFld" layoutX="488.0" layoutY="65.0" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
@@ -82,12 +79,12 @@
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <Label alignment="CENTER" layoutX="569.0" layoutY="69.0" prefHeight="29.0" prefWidth="67.0" style="-fx-background-color: #01579B;" text="Phone No" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="569.0" layoutY="65.0" prefHeight="29.0" prefWidth="67.0" style="-fx-background-color: #01579B;" text="Phone No" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="phoneFld" layoutX="635.0" layoutY="69.0" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b">
+            <JFXTextField fx:id="phoneFld" layoutX="635.0" layoutY="65.0" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
@@ -100,21 +97,21 @@
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <Label alignment="CENTER" layoutX="1069.0" layoutY="69.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Date" textFill="WHITE" AnchorPane.rightAnchor="170.0">
+            <Label alignment="CENTER" layoutX="1061.0" layoutY="60.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="Date" textFill="WHITE" AnchorPane.rightAnchor="178.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="dateFld" layoutX="1127.0" layoutY="69.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" AnchorPane.rightAnchor="51.0">
+            <JFXTextField fx:id="dateFld" layoutX="1119.0" layoutY="60.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" AnchorPane.rightAnchor="59.0">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <Label alignment="CENTER" layoutX="1069.0" layoutY="108.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="ID" textFill="WHITE" AnchorPane.rightAnchor="170.0">
+            <Label alignment="CENTER" layoutX="1061.0" layoutY="106.0" prefHeight="29.0" prefWidth="59.0" style="-fx-background-color: #01579B;" text="ID" textFill="WHITE" AnchorPane.rightAnchor="178.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="idFld" layoutX="1127.0" layoutY="108.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" AnchorPane.rightAnchor="51.0">
+            <JFXTextField fx:id="idFld" layoutX="1119.0" layoutY="106.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fff; -fx-border-color: #01579B;" unFocusColor="#01579b" AnchorPane.rightAnchor="59.0">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
@@ -146,12 +143,42 @@
       <Pane prefHeight="60.0" prefWidth="773.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <children>
             <JFXButton fx:id="btn_addNote" buttonType="RAISED" layoutX="294.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonAction" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #f3f3f3e1; -fx-border-width: 2 2 2 2;" text="Add New Note" textFill="WHITE" />
-            <JFXButton buttonType="RAISED" layoutX="579.0" layoutY="11.0" onAction="#handleBackButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579Ba2; -fx-border-width: 2 2 2 2;" text="Back" textFill="#01579b" />
+            <JFXButton buttonType="RAISED" layoutX="579.0" layoutY="11.0" onAction="#handleBackButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579Ba2; -fx-border-width: 2 2 2 2;" text="Cancel" textFill="#01579b" />
             <JFXButton buttonType="RAISED" layoutX="439.0" layoutY="11.0" onAction="#handleOutPatientButton" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #fafafae1; -fx-border-width: 2 2 2 2;" text="Add Out Patient" textFill="WHITE" />
             <JFXButton fx:id="requestBtn" buttonType="RAISED" layoutX="149.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleRequestAction" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #f3f3f3e1; -fx-border-width: 2 2 2 2;" text="Lab Request" textFill="WHITE" />
             <JFXButton buttonType="RAISED" layoutX="9.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleResultButton" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #f3f3f3e1; -fx-border-width: 2 2 2 2;" text="Lab Result" textFill="WHITE" />
          </children>
       </Pane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lblTitle" alignment="CENTER" prefHeight="31.0" prefWidth="340.0" text="Patient Card" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" stylesheets="@DoctorPatientView.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+               <graphic>
+                  <MaterialDesignIconView fill="#01579b" glyphName="CLOSE" size="22" fx:id="xIcon">
+                     <effect>
+                        <DropShadow color="WHITE" />
+                     </effect>
+                  </MaterialDesignIconView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="maxBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" stylesheets="@DoctorPatientView.css" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="1.0">
+               <graphic>
+                  <FontAwesomeIconView fill="#01579b" glyphName="EXPAND" layoutX="4.0" layoutY="5.0" size="18">
+                     <effect>
+                        <DropShadow color="WHITE" />
+                     </effect>
+                  </FontAwesomeIconView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
    <effect>
       <DropShadow color="WHITE" />
