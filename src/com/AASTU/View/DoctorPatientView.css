@@ -2,18 +2,30 @@
     -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
 
 }
+
 #lblTitle{
     -fx-font-family: sans-serif;
-    -fx-text-fill: #ffffff;
-    -fx-background-color:  #01579B;
+    -fx-text-fill: #01579B;
+    -fx-background-color: white;
     -fx-font-size: 18px;
-    -fx-border-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1 1 1 1;
 }
-
 
 #scrollPane > .viewport {
     -fx-background-color: transparent;
 }
+
 #scrollPane{
     -fx-background-color: transparent;
+}
+
+#exitBtn:hover{
+    -fx-background-color: #D32F2F;
+    -fx-border-color: #D32F2F;
+}
+
+#maxBtn:hover{
+    -fx-background-color: #4FC3F7;
+    -fx-border-color: #4FC3F7;
 }

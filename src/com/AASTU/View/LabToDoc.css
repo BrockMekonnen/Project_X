@@ -1,23 +1,26 @@
 #rootPane{
     -fx-background-color: linear-gradient(to right, #01579B, #4FC3F7);
-
-}
-#lbl_title{
-    -fx-font-family:sans-serif;
-    -fx-font-size: 20px;
-    -fx-text-fill: #01579B;
     -fx-border-color: black;
-    -fx-border-width: 1 0 1 0;
-    -fx-background-color: white;
+    -fx-border-width: 0 1 1 1;
 
 }
+
+#lbl_title{
+    -fx-font-family: sans-serif;
+    -fx-text-fill: #01579B;
+    -fx-background-color: white;
+    -fx-font-size: 18px;
+    -fx-border-color: black;
+    -fx-border-width: 1 1 1 1;
+}
+
 #lbl_name,
 #lbl_sex,
 #lbl_age,
 #lbl_date{
     -fx-font-family: sans-serif;
     -fx-font-size: 13px;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 
 }
 
@@ -27,4 +30,15 @@
     -fx-border-color: white;
 
 }
+
+#exitBtn:hover{
+    -fx-background-color: #D32F2F;
+    -fx-border-color: #D32F2F;
+}
+
+#maxBtn:hover{
+    -fx-background-color: #4FC3F7;
+    -fx-border-color: #4FC3F7;
+}
+
 
