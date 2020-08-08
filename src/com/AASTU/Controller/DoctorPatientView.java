@@ -105,7 +105,7 @@ public class DoctorPatientView implements Initializable{
         kebeleFld.setText(object.getKebele());
         phoneFld.setText(object.getPhoneNumber());
         houseFld.setText(object.getHouseNumber());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy");
         dateFld.setText(object.getDate().format(formatter));
         idFld.setText(String.valueOf(object.getPatientId()));
         refreshNodes(object.getNotes());
@@ -129,6 +129,6 @@ public class DoctorPatientView implements Initializable{
 
     @FXML
     void handleResultButton(ActionEvent event) throws IOException {
-        new WindowChangeController().popupWindow(event, "../View/LabToDoc.fxml");
+        new WindowChangeController().popupWindow(event, "../View/DocLabResultView.fxml");
     }
 }
