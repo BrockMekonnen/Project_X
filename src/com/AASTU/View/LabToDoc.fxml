@@ -552,19 +552,19 @@
             <Label id="lbl_sex" alignment="CENTER" layoutX="464.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="43.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2; -fx-background-color: #E1F5FE;" text="Sex" />
             <Label id="lbl_age" alignment="CENTER" layoutX="644.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="46.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2; -fx-background-color: #E1F5FE;" text="Age" />
             <Label id="lbl_date" alignment="CENTER" layoutX="846.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="56.0" style="-fx-border-color: #B3E5FC; -fx-border-width: 2 0 2 2; -fx-background-color: #E1F5FE;" text="Date" />
-            <JFXTextField focusColor="WHITE" layoutX="902.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="150.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#03a9f4">
+            <JFXTextField fx:id="DateTF" focusColor="WHITE" layoutX="902.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="150.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#03a9f4">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <JFXTextField focusColor="WHITE" layoutX="507.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#0288d1">
+            <JFXTextField fx:id="SexTF" focusColor="WHITE" layoutX="507.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#0288d1">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <JFXTextField focusColor="WHITE" layoutX="690.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#0288d1">
+            <JFXTextField fx:id="AgeTF" focusColor="WHITE" layoutX="690.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="75.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#0288d1">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>
-            <JFXTextField focusColor="WHITE" layoutX="153.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="270.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#01579b">
+            <JFXTextField fx:id="NameTF" focusColor="WHITE" layoutX="153.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="270.0" style="-fx-border-color: #E1F5FE; -fx-text-fill: #000000; -fx-background-color: #ffffff;" unFocusColor="#01579b">
                <padding>
                   <Insets left="5.0" />
                </padding></JFXTextField>

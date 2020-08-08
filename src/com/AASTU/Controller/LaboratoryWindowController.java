@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -200,6 +201,22 @@ public class LaboratoryWindowController implements Initializable {
     }
 
     public void TableOperation(){
+
+        PendingPatientTableView.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().popupWindow1(event, "../View/LabToDoc.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
+
         /** Pending Patient Table List Operation **/
         PendingKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
         PendingSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
@@ -212,6 +229,20 @@ public class LaboratoryWindowController implements Initializable {
         PendingPhoneNumbelCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
         PendingCitycol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
         PendingPatientTableView.setItems(PendingPatientList);
+        ActivePatientTableView.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
         /**Active Patient Table List Operation**/
         ActiveKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
         ActiveSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
@@ -236,6 +267,20 @@ public class LaboratoryWindowController implements Initializable {
         RecordPhoneNumberCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
         RecordCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
         RecordedPatientTableView.setItems(RecordedDataPatientList);
+        WaitingPatientTableView.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
         /**Waiting Patient Table View List**/
         WaitingKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
         WaitingSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));

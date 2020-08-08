@@ -80,6 +80,23 @@ public class WindowChangeController {
         temp.showAndWait();
 
     }
+    public void popupWindow1(MouseEvent event,String fxml,Patient obj) throws IOException{
+
+
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        LabToDoc view = loader.getController(); // get the controller of DoctorPatientView
+        view.setObject(obj); // assign some information from the object to the Scene
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+
+    }
 
     public void warningPopup(String warnHeader, String warnBody, String imageUrl ) throws IOException {
 
