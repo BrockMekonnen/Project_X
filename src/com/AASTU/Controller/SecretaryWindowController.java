@@ -144,6 +144,28 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     private TableColumn<Patient, String> houseNoOutCol;
+
+    // RECORD
+    @FXML
+    private TableView<Patient> recordTable;
+
+    @FXML
+    private TableColumn<Patient, Integer> patientIdColRec;
+
+    @FXML
+    private TableColumn<Patient, LocalDate> addedDateColRec;
+
+    @FXML
+    private TableColumn<Patient, String> fullNameColRec;
+
+    @FXML
+    private TableColumn<Patient, Character> sexColRec;
+
+    @FXML
+    private TableColumn<Patient, Integer> ageColRec;
+
+    @FXML
+    private TableColumn<Patient, String> cityColRec;
     ///////////////////////////////////////////////////
     @FXML
     private AnchorPane recordPnl;
@@ -169,6 +191,7 @@ public class SecretaryWindowController implements Initializable {
     private JFXTextField searchfield;
 
 // getting patient lists from database
+List<Patient> allPatientList = new DataLoader().loadPatientData();
 List<Patient> normalPatientList =new DataLoader().loadSpecificData("from Patient p where p.pType = Patient");
 List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p where p.pType = OutPatient");
 
@@ -240,9 +263,27 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
         paymentTable.setItems(patientsList);
     }
 
+    public void displayRecords() {
+        patientIdColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        fullNameColRec.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Patient, String> param) {
+                return new SimpleStringProperty(param.getValue().getFirstName() + " " + param.getValue().getLastName());
+            }
+        });
+        addedDateColRec.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        sexColRec.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        ageColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        cityColRec.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
+        ObservableList<Patient> recordList = FXCollections.observableArrayList();
+        for(Patient patient: allPatientList) {
+            recordList.add(patient);
+        }
+        recordTable.setItems(recordList);
+    }
+
     // method to display the registered patients to the table
     public  void displayPatients() {
-
         // to display normal patient
         patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
@@ -305,6 +346,7 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
         });
         displayPatients();
         displayPayment();
+        displayRecords();
     }
 
     public void translateTransitionBack(AnchorPane pane, double move, double sec){
