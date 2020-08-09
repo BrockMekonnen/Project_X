@@ -177,4 +177,21 @@ public class Patient {
 
         requests.add(labRequest);
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patientId=" + patientId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", date=" + date +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", City='" + City + '\'' +
+                ", subcity='" + subcity + '\'' +
+                ", kebele='" + kebele + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                '}';
+    }
 }

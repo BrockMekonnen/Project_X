@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -16,58 +18,50 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1300.0" stylesheets="@DoctorLaboratoryRequestForm.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorLaboratoryRequestForm">
    <children>
-      <AnchorPane layoutY="4.0" prefHeight="123.0" prefWidth="1300.0" style="-fx-border-color: #E1F5FE; -fx-border-width: 0 0 2 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutY="4.0" prefHeight="110.0" prefWidth="1300.0" style="-fx-border-color: #E1F5FE; -fx-border-width: 0 0 2 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="lblTitle" alignment="CENTER" layoutX="440.0" layoutY="6.0" prefHeight="42.0" prefWidth="470.0" stylesheets="@DoctorLaboratoryRequestForm.css" text="Laboratory Requisition Form" textFill="#e1f5fe" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <effect>
-                  <DropShadow color="#6f6d6d" />
-               </effect>
-            </Label>
-            <Label alignment="CENTER" layoutX="53.0" layoutY="82.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #E1F5FE;" text="Name">
+            <Label alignment="CENTER" layoutX="53.0" layoutY="62.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #E1F5FE;" text="Name">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="129.0" layoutY="82.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField layoutX="129.0" layoutY="62.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="428.0" layoutY="82.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Age">
+            <Label alignment="CENTER" layoutX="428.0" layoutY="62.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Age">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="493.0" layoutY="82.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField layoutX="493.0" layoutY="62.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="620.0" layoutY="82.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Sex">
+            <Label alignment="CENTER" layoutX="620.0" layoutY="62.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Sex">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="685.0" layoutY="82.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField layoutX="685.0" layoutY="62.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="848.0" layoutY="82.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Date">
+            <Label alignment="CENTER" layoutX="848.0" layoutY="62.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Date">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="913.0" layoutY="82.0" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField layoutX="913.0" layoutY="62.0" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
          </children></AnchorPane>
-      <GridPane layoutX="575.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="141.0">
+      <GridPane layoutX="575.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" maxWidth="250.0" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="8.0" prefWidth="262.0" />
@@ -605,20 +599,42 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" stylesheets="@DoctorLaboratoryRequestForm.css" GridPane.columnIndex="5">
                <children>
-                  <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleBackButton" prefHeight="40.0" prefWidth="140.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="BACK" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="backBtn" buttonType="RAISED" onAction="#handleBackButton" prefHeight="35.0" prefWidth="100.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="BACK" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
-                        <Insets bottom="30.0" right="25.0" />
+                        <Insets bottom="35.0" right="35.0" />
                      </StackPane.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="40.0" prefWidth="140.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="SEND" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton buttonType="RAISED" prefHeight="35.0" prefWidth="100.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="SEND" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
-                        <Insets bottom="110.0" right="25.0" />
+                        <Insets bottom="100.0" right="35.0" />
                      </StackPane.margin>
                   </JFXButton>
                </children>
             </StackPane>
          </children>
       </GridPane>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lblTitle" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="340.0" stylesheets="@DoctorLaboratoryRequestForm.css" text="Laboratory Requisition Form" textFill="#e1f5fe" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <JFXButton fx:id="maxBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="1.0">
+               <graphic>
+                  <FontAwesomeIconView fill="#01579b" glyphName="EXPAND" size="18" wrappingWidth="21.285715103149414" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+               <graphic>
+                  <MaterialDesignIconView fill="#01579b" glyphName="CLOSE" size="22" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
    <effect>
       <DropShadow color="WHITE" />

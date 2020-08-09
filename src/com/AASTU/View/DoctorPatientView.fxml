@@ -159,7 +159,7 @@
                   <DropShadow />
                </effect>
             </Label>
-            <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" stylesheets="@DoctorPatientView.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+            <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleExitButton" prefHeight="28.0" prefWidth="48.0" stylesheets="@DoctorPatientView.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
                <graphic>
                   <MaterialDesignIconView fill="#01579b" glyphName="CLOSE" size="22" fx:id="xIcon">
                      <effect>
@@ -168,7 +168,7 @@
                   </MaterialDesignIconView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="maxBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" stylesheets="@DoctorPatientView.css" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="1.0">
+            <JFXButton fx:id="maxBtn" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleMaxButton" prefHeight="28.0" prefWidth="48.0" stylesheets="@DoctorPatientView.css" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="1.0">
                <graphic>
                   <FontAwesomeIconView fill="#01579b" glyphName="EXPAND" layoutX="4.0" layoutY="5.0" size="18">
                      <effect>
