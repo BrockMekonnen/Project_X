@@ -1,25 +1,23 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Main;
-import com.AASTU.Model.Patient;
+import com.AASTU.Model.*;
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
+import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.util.Callback;
 import javafx.util.Duration;
 
 import javax.swing.*;
@@ -90,59 +88,62 @@ public class SecretaryWindowController implements Initializable {
     private AnchorPane paymentPnl;
 
     @FXML
-    private TableView<?> paymentTable;
+    private TableView<Patient> paymentTable;
 
     @FXML
-    private TableColumn<?, ?> payPatientIdCol;
+    private TableColumn<Patient, Integer> payPatientIdCol;
 
     @FXML
-    private TableColumn<?, ?> fullNameCol;
+    private TableColumn<Patient, String> fullNameCol;
 
     @FXML
-    private TableColumn<?, ?> paymentCol;
+    private TableColumn<Patient, Double> paymentCol;
 
     // OUT PATIENT
     @FXML
     private AnchorPane outPatientPnl;
 
     @FXML
-    private TableView<?> outPatientTable;
+    private TableView<Patient> outPatientTable;
 
     @FXML
-    private TableColumn<?, ?> patientOutIdCol1;
+    private TableColumn<Patient, Integer> patientOutIdCol;
 
     @FXML
-    private TableColumn<?, ?> firstNameOutCol1;
+    private TableColumn<Patient, String> firstNameOutCol;
 
     @FXML
-    private TableColumn<?, ?> lastNameOutCol1;
+    private TableColumn<Patient, String> lastNameOutCol;
 
     @FXML
-    private TableColumn<?, ?> sexOutCol1;
+    private TableColumn<Patient, Character> sexOutCol;
 
     @FXML
-    private TableColumn<?, ?> ageOutCol1;
+    private TableColumn<Patient, Integer> ageOutCol;
 
     @FXML
-    private TableColumn<?, ?> addedDateOutCol1;
+    private TableColumn<Patient, LocalDate> addedDateOutCol;
 
     @FXML
-    private TableColumn<?, ?> checkDateCol11;
+    private TableColumn<Patient, LocalDate> startDateCol;
 
     @FXML
-    private TableColumn<?, ?> phoneNoOutCol1;
+    private TableColumn<Patient, LocalDate> endDateCol;
 
     @FXML
-    private TableColumn<?, ?> cityOutCol1;
+    private TableColumn<Patient, String> phoneNoOutCol;
 
     @FXML
-    private TableColumn<?, ?> subCityOutCol1;
+    private TableColumn<Patient, String> cityOutCol;
 
     @FXML
-    private TableColumn<?, ?> kebeleOutCol1;
+    private TableColumn<Patient, String> subCityOutCol;
 
     @FXML
-    private TableColumn<?, ?> houseNoOutCol1;
+    private TableColumn<Patient, String> kebeleOutCol;
+
+    @FXML
+    private TableColumn<Patient, String> houseNoOutCol;
     ///////////////////////////////////////////////////
     @FXML
     private AnchorPane recordPnl;
@@ -164,8 +165,12 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     private ImageView exitBtn;
+    @FXML
+    private JFXTextField searchfield;
 
-//    List<Patient> list;
+// getting patient lists from database
+List<Patient> normalPatientList =new DataLoader().loadSpecificData("from Patient p where p.pType = Patient");
+List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p where p.pType = OutPatient");
 
     void goToView(boolean active, boolean pay, boolean out, boolean record){
         ActivePatientPnl.setVisible(active);
@@ -209,11 +214,36 @@ public class SecretaryWindowController implements Initializable {
         TransitionController.translateTransition(slidePane1, 600, 1);
 
     }
+//    method to refresh the table
     public void refreshTable(){
 //        list.clear();
         displayPatients();
     }
+
+    // method to display the total payment of patient but it is not finished yet!
+    public void displayPayment() {
+
+        payPatientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        // display full name
+        fullNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>,ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(
+                    TableColumn.CellDataFeatures<Patient, String> p) {
+                return new SimpleStringProperty(p.getValue().getFirstName()
+                        + " " + p.getValue().getLastName());
+            }
+        });
+        ObservableList<Patient> patientsList = FXCollections.observableArrayList();
+        for(Patient tempPatent: normalPatientList){
+            patientsList.add(tempPatent);
+        }
+        paymentTable.setItems(patientsList);
+    }
+
+    // method to display the registered patients to the table
     public  void displayPatients() {
+
+        // to display normal patient
         patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
@@ -225,13 +255,35 @@ public class SecretaryWindowController implements Initializable {
         subCityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
         kebeleCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
         houseNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
-        ObservableList<Patient> patientObservableList = FXCollections.observableArrayList();
-        List<Patient> patientList =new DataLoader().loadPatientData();;
-        for(Patient tempPatent: patientList){
-            patientObservableList.add(tempPatent);
+        ObservableList<Patient> normalPatientObservableList = FXCollections.observableArrayList();
+        for(Patient tempPatent: normalPatientList){
+            normalPatientObservableList.add(tempPatent);
         }
-        mainTable.setItems(patientObservableList);
+
+        mainTable.setItems(normalPatientObservableList);
+
+        // to display out patient
+        patientOutIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        firstNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+        lastNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+        sexOutCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        ageOutCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        addedDateOutCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        phoneNoOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
+        cityOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
+        subCityOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
+        kebeleOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
+        houseNoOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
+        startDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("startDate"));
+        endDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("endDate"));
+        ObservableList<Patient> outPatientObservableList = FXCollections.observableArrayList();
+        for(Patient tempPatent: outPatientList){
+            outPatientObservableList.add(tempPatent);
+        }
+
+        outPatientTable.setItems(outPatientObservableList);
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -251,8 +303,8 @@ public class SecretaryWindowController implements Initializable {
         exitBtn.setOnMouseClicked(event -> {
             TransitionController.exitHandler(profilePane, profileOpacityPane);
         });
-
         displayPatients();
+        displayPayment();
     }
 
     public void translateTransitionBack(AnchorPane pane, double move, double sec){
@@ -281,7 +333,7 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     void CloseBTN(ActionEvent event){
-        int i=JOptionPane.showConfirmDialog(null,"Do you want to Exit the system","Attention",JOptionPane.YES_NO_OPTION);
+        int i= JOptionPane.showConfirmDialog(null,"Do you want to Exit the system","Attention",JOptionPane.YES_NO_OPTION);
         if(i== JOptionPane.YES_OPTION){
             System.exit(0);
             Platform.exit();}

@@ -11,6 +11,10 @@ import java.util.ResourceBundle;
 
 public class NewOutPatient implements Initializable {
 
+
+    @FXML
+    private JFXButton addBtn;
+
     @FXML
     private JFXButton btnCancel;
 
@@ -21,6 +25,12 @@ public class NewOutPatient implements Initializable {
     @FXML
     void handleAddButton(ActionEvent event) throws IOException {
         new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
+
+        if(addBtn.isPressed()) {
+            PatientRegistration.isout = true;
+        }else if(btnCancel.isPressed()) {
+            PatientRegistration.isout = false;
+        }
     }
 
 

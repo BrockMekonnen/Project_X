@@ -22,7 +22,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="193.0" layoutY="332.0" onAction="#handleAddButton" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: #01579B;" text="Add" textFill="WHITE" />
+            <JFXButton fx:id="addBtn" buttonType="RAISED" layoutX="193.0" layoutY="332.0" onAction="#handleAddButton" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: #01579B;" text="Add" textFill="WHITE" />
             <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="329.0" layoutY="332.0" onAction="#cancelWindow" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: #01579B;" text="Cancel" textFill="WHITE" />
          </children>
       </AnchorPane>

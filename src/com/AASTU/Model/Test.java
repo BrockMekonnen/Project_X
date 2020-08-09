@@ -17,8 +17,8 @@ public class Test {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-
                                 .addAnnotatedClass(Patient.class)
+                                .addAnnotatedClass(OutPatient.class)
                                 .addAnnotatedClass(ClinicalNotes.class)
                                 .addAnnotatedClass(TestProperty.class)
                                 .addAnnotatedClass(Parasitology.class)
@@ -31,7 +31,7 @@ public class Test {
                                 .addAnnotatedClass(Serology.class)
                                 .addAnnotatedClass(LabRequest.class)
                                 .addAnnotatedClass(DiseaseRecord.class)
-                                .addAnnotatedClass(AgeScale.class)
+//                                .addAnnotatedClass(AgeScale.class)
 
                                 .buildSessionFactory();
 
@@ -64,8 +64,8 @@ public class Test {
 
             DiseaseRecord record2=new DiseaseRecord(LocalDate.now(),"tiphoyid",new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6));
 //
-//            Patient patient = new Patient("Brock","Mk",44,'m',LocalDate.now(),"215487","city","cc","kk","5");
-//            Patient patient1 = new Patient("Brook","ML",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
+            OutPatient patient = new OutPatient("Brock","Mk",44,'m',LocalDate.now(),"215487","city","cc","kk","5",LocalDate.now(),LocalDate.now());
+            Patient patient1 = new Patient("Brook","ML",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
 //            Patient patient2 = new Patient("Aman","Ab",44,'m',LocalDate.now(),"326598","city","cc","kk","5");
 //            Patient patient3 = new Patient("Biruk","Molla",44,'m',LocalDate.now(),"125465","city","cc","kk","5");
 //            Patient patient4 = new Patient("Biruk","Mekonnen",44,'m',LocalDate.now(),"985412","city","cc","kk","5");
@@ -80,9 +80,9 @@ public class Test {
             session.beginTransaction();
 
 
-//            session.save(patient1);
+            session.save(patient);
 //            session.save(record2);
-//            session.save(patient2);
+            session.save(patient1);
 //            session.save(patient3);
 //            session.save(patient4);
 //            session.save(laboratory);
@@ -91,6 +91,10 @@ public class Test {
 
 
 //            List<DiseaseRecord> diseaseRecords = session.createQuery("from DiseaseRecord").list();
+//            List<Patient> list = session.createQuery("from Patient").list();
+//            List<ClinicalNotes> notes =  new ArrayList<>(list.get(0).getNotes());
+//            System.out.println(notes.get(0).getNotes());
+
 //            List<Patient> list = session.createQuery("select firstName, lastName from Patient").list();
 //            List<LabRequest>  labRequests=  new ArrayList<>(list.get(0).getRequests());
 //
@@ -102,6 +106,7 @@ public class Test {
 //            System.out.println(labRequests.get(0).getCbs().getBloodFilm());
 
 //            System.out.println(list.get(1).getFirstName());
+
 
 
             session.getTransaction().commit();

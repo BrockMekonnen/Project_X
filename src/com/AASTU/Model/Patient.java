@@ -7,13 +7,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "patient")
+@DiscriminatorColumn(name = "pType")
 public class Patient {
 
+    @Column(insertable = false, updatable = false)
+    private String pType;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private int patientId;
-
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
