@@ -50,17 +50,23 @@ public class Warning implements Initializable{
         return false;
     }
 
-    @FXML
-    boolean handleOkButton(ActionEvent event) {
-        isOk = false;
-    }
+//    @FXML
+//    boolean handleOkButton(ActionEvent event) {
+//        isOk = false;
+//    }
+
+//     @FXML
+//     boolean handleOkButton(ActionEvent event) {
+//         isOk = false;
+//     }
 
     @FXML
     void handleOkButton(ActionEvent event) {
+
         isOk = true;
         WindowChangeController.closeWindow();
         WindowChangeController.closeWindow();
-        return true;
+//         return true;
     }
 
     @FXML
