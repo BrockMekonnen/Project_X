@@ -38,7 +38,7 @@ public class DataLoader {
         try{
             session.beginTransaction();
 
-            patientList = session.createQuery("from Patient where patientStates = 1").list();
+            patientList = session.createQuery("from Patient").list();
 
             session.getTransaction().commit();
         } finally {
@@ -54,6 +54,7 @@ public class DataLoader {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(OutPatient.class)
                 .addAnnotatedClass(ClinicalNotes.class)
                 .addAnnotatedClass(TestProperty.class)
                 .addAnnotatedClass(Parasitology.class)
