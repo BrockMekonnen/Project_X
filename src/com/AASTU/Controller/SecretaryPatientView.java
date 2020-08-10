@@ -1,6 +1,5 @@
 package com.AASTU.Controller;
 
-
 import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -78,12 +77,10 @@ public class SecretaryPatientView implements Initializable {
     @FXML
     private JFXComboBox<Patient> calanderCb;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
 
     /* this function accepts Patient Object and assign
     * some values to the textField */
@@ -125,5 +122,4 @@ public class SecretaryPatientView implements Initializable {
     void exitBtnHandler(ActionEvent event) {
         WindowChangeController.closeWindow();
     }
-
 }
