@@ -22,7 +22,6 @@ import java.util.ResourceBundle;
 
 public class PatientRegistration implements Initializable{
 
-    public static boolean isout = false;
     @FXML
     private AnchorPane subPane1;
 
@@ -98,12 +97,15 @@ public class PatientRegistration implements Initializable{
     @FXML
     private JFXCheckBox hasLabCb;
 
+    public static LocalDate startDate;
+
+    public static LocalDate endDate;
+
     public void addNewPatient(){
 
     }
 
     private char sex;
-
     // save new patient to database
     public void saveNewPatient(){
         SessionFactory factory = new Configuration()
@@ -121,8 +123,6 @@ public class PatientRegistration implements Initializable{
                 .addAnnotatedClass(Cbs.class)
                 .addAnnotatedClass(Serology.class)
                 .addAnnotatedClass(LabRequest.class)
-
-
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
@@ -150,20 +150,34 @@ public class PatientRegistration implements Initializable{
             }else if(cboGender.getValue().toString().equals("Female")) {
                 sex = 'f';
             }
-            // this if condition is temporary and it is not finished
-            if(isout){
-                OutPatient outPatient = new OutPatient(firstNameTf.getText(),lastNameTf.getText(),Integer.parseInt(ageTf.getText()),sex, LocalDate.now(),phoneNumberTf.getText(),cityTf.getText(),subcityTf.getText(),kebeleTf.getText(),houseNuberTf.getText(),LocalDate.now(),LocalDate.now());
+            //this if condition is temporary and it is not finished
+            if(NewOutPatient.isAdd && Warning.isOk){
+                OutPatient outPatient = new OutPatient(firstNameTf.getText(),lastNameTf.getText(),Integer.parseInt(ageTf.getText()),sex, LocalDate.now(),phoneNumberTf.getText(),
+                        cityTf.getText(),subcityTf.getText(),kebeleTf.getText(),houseNuberTf.getText(),startDate,endDate);
                 outPatient.addClincalNote(clinicalNote);
                 outPatient.addLabRequest(lab);
+
+                outPatient.setDocActives(true);
+                outPatient.setLabActives(true);
+                outPatient.setSecActives(true);
+                outPatient.setSecActives(true);
+                outPatient.setLabActives(true);
+
                 session.save(outPatient);
-            } else {
-            Patient patient = new Patient(firstNameTf.getText(),lastNameTf.getText(),Integer.parseInt(ageTf.getText()),sex, LocalDate.now(),phoneNumberTf.getText(),cityTf.getText(),subcityTf.getText(),kebeleTf.getText(),houseNuberTf.getText());
+                NewOutPatient.isAdd = false;
+            } else  {
+                Patient patient = new Patient(firstNameTf.getText(),lastNameTf.getText(),Integer.parseInt(ageTf.getText()),sex, LocalDate.now(),phoneNumberTf.getText(),cityTf.getText(),subcityTf.getText(),kebeleTf.getText(),houseNuberTf.getText());
                 patient.addClincalNote(clinicalNote);
                 patient.addLabRequest(lab);
+
+                patient.setDocActives(true);
+                patient.setLabActives(true);
+                patient.setSecActives(true);
+                patient.setSecActives(true);
+                patient.setLabActives(true);
+
                 session.save(patient);
             }
-
-            isout= false;
             session.getTransaction().commit();
         } finally {
             factory.close();
@@ -178,7 +192,11 @@ public class PatientRegistration implements Initializable{
 
     public void ConfirmationAction() throws IOException {
         new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-        saveNewPatient();
+        if(Warning.isOk) {
+            saveNewPatient();
+            WindowChangeController.closeWindow();
+            WindowChangeController.closeWindow();
+        }
 
     }
 
