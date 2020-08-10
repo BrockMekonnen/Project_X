@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -44,7 +45,7 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     private JFXButton activePatientBtn;
 
-    // ACTIVE PATIENT
+    /** ACTIVE PATIENT*/
     @FXML
     private AnchorPane ActivePatientPnl;
 
@@ -83,7 +84,7 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     private TableColumn<Patient, String> houseNoCol;
 
-    // PAYMENT
+    /** PAYMENT*/
     @FXML
     private AnchorPane paymentPnl;
 
@@ -99,7 +100,7 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     private TableColumn<Patient, Double> paymentCol;
 
-    // OUT PATIENT
+    /** OUT PATIENT*/
     @FXML
     private AnchorPane outPatientPnl;
 
@@ -145,7 +146,7 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     private TableColumn<Patient, String> houseNoOutCol;
 
-    // RECORD
+    /** RECORD*/
     @FXML
     private TableView<Patient> recordTable;
 
@@ -195,6 +196,30 @@ List<Patient> allPatientList = new DataLoader().loadPatientData();
 List<Patient> normalPatientList =new DataLoader().loadSpecificData("from Patient p where p.pType = Patient");
 List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p where p.pType = OutPatient");
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        profilePane.setVisible(false);
+        profileOpacityPane.setVisible(false);
+        opacityPane1.setVisible(false);
+        TransitionController.translateTransition(slidePane1, -600, 0.5);
+        TransitionController.translation(slidePane1,1,0,0.1);
+        opacityPane1.setOnMouseClicked(event -> {
+            translateTransitionBack(slidePane1,-600,1);
+        });
+
+        profileOpacityPane.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
+
+        exitBtn.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
+        displayPatients();
+        displayPayment();
+        displayRecords();
+    }
+
     void goToView(boolean active, boolean pay, boolean out, boolean record){
         ActivePatientPnl.setVisible(active);
         paymentPnl.setVisible(pay);
@@ -204,6 +229,120 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
 
     }
 
+
+
+    /**
+     * ROW CLICK HANDLER
+     * */
+    public void rowClickHandler( TableView<Patient> tableName) {
+        tableName.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
+    }
+
+    /**
+     * METHODS TO DISPLAY AND REFRESH TABLES
+     * */
+
+    // method to display the total payment of patient but it is not finished yet!
+    public void displayPayment() {
+        payPatientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        // display full name
+        fullNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>,ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(
+                    TableColumn.CellDataFeatures<Patient, String> p) {
+                return new SimpleStringProperty(p.getValue().getFirstName()
+                        + " " + p.getValue().getLastName());
+            }
+        });
+        ObservableList<Patient> patientsList = FXCollections.observableArrayList();
+        for(Patient tempPatent: normalPatientList){
+            patientsList.add(tempPatent);
+        }
+        paymentTable.setItems(patientsList);
+    }
+
+    //  method to display patient records
+    public void displayRecords() {
+        rowClickHandler(recordTable);
+        patientIdColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        fullNameColRec.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Patient, String> param) {
+                return new SimpleStringProperty(param.getValue().getFirstName() + " " + param.getValue().getLastName());
+            }
+        });
+        addedDateColRec.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        sexColRec.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        ageColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        cityColRec.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
+        ObservableList<Patient> recordList = FXCollections.observableArrayList();
+        for(Patient patient: allPatientList) {
+            recordList.add(patient);
+        }
+        recordTable.setItems(recordList);
+    }
+
+    // method to display the registered patients to the table
+    public  void displayPatients() {
+        rowClickHandler(mainTable);
+        // to display normal patient
+        patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+        sexCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        ageCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        addedDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        phoneNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
+        cityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
+        subCityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
+        kebeleCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
+        houseNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
+        ObservableList<Patient> normalPatientObservableList = FXCollections.observableArrayList();
+        for(Patient tempPatent: normalPatientList){
+            normalPatientObservableList.add(tempPatent);
+        }
+
+        mainTable.setItems(normalPatientObservableList);
+        rowClickHandler(outPatientTable);
+        // to display out patient
+        patientOutIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        firstNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+        lastNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+        sexOutCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        ageOutCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        addedDateOutCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        phoneNoOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
+        cityOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
+        subCityOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
+        kebeleOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
+        houseNoOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
+        startDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("startDate"));
+        endDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("endDate"));
+        ObservableList<Patient> outPatientObservableList = FXCollections.observableArrayList();
+        for(Patient tempPatent: outPatientList){
+            outPatientObservableList.add(tempPatent);
+        }
+
+        outPatientTable.setItems(outPatientObservableList);
+    }
+
+
+    /**
+     * HANDLE BUTTONS
+     * */
 
     @FXML
     void handleActivePatientButton(ActionEvent event) {
@@ -236,117 +375,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
         TransitionController.translation(slidePane1,0,1,0.1);
         TransitionController.translateTransition(slidePane1, 600, 1);
 
-    }
-//    method to refresh the table
-    public void refreshTable(){
-//        list.clear();
-        displayPatients();
-    }
-
-    // method to display the total payment of patient but it is not finished yet!
-    public void displayPayment() {
-
-        payPatientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
-        // display full name
-        fullNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>,ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(
-                    TableColumn.CellDataFeatures<Patient, String> p) {
-                return new SimpleStringProperty(p.getValue().getFirstName()
-                        + " " + p.getValue().getLastName());
-            }
-        });
-        ObservableList<Patient> patientsList = FXCollections.observableArrayList();
-        for(Patient tempPatent: normalPatientList){
-            patientsList.add(tempPatent);
-        }
-        paymentTable.setItems(patientsList);
-    }
-
-    public void displayRecords() {
-        patientIdColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
-        fullNameColRec.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Patient, String> param) {
-                return new SimpleStringProperty(param.getValue().getFirstName() + " " + param.getValue().getLastName());
-            }
-        });
-        addedDateColRec.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
-        sexColRec.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
-        ageColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
-        cityColRec.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
-        ObservableList<Patient> recordList = FXCollections.observableArrayList();
-        for(Patient patient: allPatientList) {
-            recordList.add(patient);
-        }
-        recordTable.setItems(recordList);
-    }
-
-    // method to display the registered patients to the table
-    public  void displayPatients() {
-        // to display normal patient
-        patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
-        sexCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
-        ageCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
-        addedDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
-        phoneNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
-        cityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
-        subCityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
-        kebeleCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
-        houseNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
-        ObservableList<Patient> normalPatientObservableList = FXCollections.observableArrayList();
-        for(Patient tempPatent: normalPatientList){
-            normalPatientObservableList.add(tempPatent);
-        }
-
-        mainTable.setItems(normalPatientObservableList);
-
-        // to display out patient
-        patientOutIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
-        firstNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
-        lastNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
-        sexOutCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
-        ageOutCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
-        addedDateOutCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
-        phoneNoOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
-        cityOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
-        subCityOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
-        kebeleOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
-        houseNoOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
-        startDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("startDate"));
-        endDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("endDate"));
-        ObservableList<Patient> outPatientObservableList = FXCollections.observableArrayList();
-        for(Patient tempPatent: outPatientList){
-            outPatientObservableList.add(tempPatent);
-        }
-
-        outPatientTable.setItems(outPatientObservableList);
-    }
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        profilePane.setVisible(false);
-        profileOpacityPane.setVisible(false);
-        opacityPane1.setVisible(false);
-        TransitionController.translateTransition(slidePane1, -600, 0.5);
-        TransitionController.translation(slidePane1,1,0,0.1);
-        opacityPane1.setOnMouseClicked(event -> {
-            translateTransitionBack(slidePane1,-600,1);
-        });
-
-        profileOpacityPane.setOnMouseClicked(event -> {
-            TransitionController.exitHandler(profilePane, profileOpacityPane);
-        });
-
-        exitBtn.setOnMouseClicked(event -> {
-            TransitionController.exitHandler(profilePane, profileOpacityPane);
-        });
-        displayPatients();
-        displayPayment();
-        displayRecords();
     }
 
     public void translateTransitionBack(AnchorPane pane, double move, double sec){

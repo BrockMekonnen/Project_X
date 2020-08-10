@@ -18,50 +18,50 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1300.0" stylesheets="@DoctorLaboratoryRequestForm.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorLaboratoryRequestForm">
    <children>
-      <AnchorPane layoutY="4.0" prefHeight="110.0" prefWidth="1300.0" style="-fx-border-color: #E1F5FE; -fx-border-width: 0 0 2 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutY="4.0" prefHeight="100.0" prefWidth="1300.0" style="-fx-border-color: #E1F5FE; -fx-border-width: 0 0 2 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="53.0" layoutY="62.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #E1F5FE;" text="Name">
+            <Label alignment="CENTER" layoutX="53.0" layoutY="50.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #E1F5FE;" text="Name">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="129.0" layoutY="62.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField fx:id="nameFld" editable="false" layoutX="129.0" layoutY="50.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="428.0" layoutY="62.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Age">
+            <Label alignment="CENTER" layoutX="428.0" layoutY="50.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Age">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="493.0" layoutY="62.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField fx:id="ageFld" editable="false" layoutX="493.0" layoutY="50.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="620.0" layoutY="62.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Sex">
+            <Label alignment="CENTER" layoutX="620.0" layoutY="50.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Sex">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="685.0" layoutY="62.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField fx:id="sexFld" editable="false" layoutX="685.0" layoutY="50.0" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
-            <Label alignment="CENTER" layoutX="848.0" layoutY="62.0" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #E1F5FE;" text="Date">
+            <Label alignment="CENTER" layoutX="810.0" layoutY="50.0" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: #E1F5FE;" text="Request Date">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="913.0" layoutY="62.0" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
+            <JFXTextField fx:id="dateFld" editable="false" layoutX="913.0" layoutY="50.0" prefHeight="31.0" prefWidth="202.0" style="-fx-background-color: #ffffff; -fx-border-color: #ffffff;" unFocusColor="TRANSPARENT">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXTextField>
          </children></AnchorPane>
-      <GridPane layoutX="575.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0">
+      <GridPane layoutX="575.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="112.0">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" maxWidth="250.0" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="8.0" prefWidth="262.0" />
@@ -84,7 +84,7 @@
                         <Insets top="19.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Blood Film " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="BloodFilm" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Blood Film " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="520.0" />
                      </StackPane.margin>
@@ -92,82 +92,82 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="WBC" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcWbc" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="WBC" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="440.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="LYM" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                  <JFXCheckBox fx:id="cbcLym" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="LYM" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
                      <StackPane.margin>
                         <Insets bottom="380.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MID" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcMid" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MID" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="320.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="GRA" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcGra" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="GRA" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="260.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBC" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcRbc" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBC" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="200.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HGB" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcHgb" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HGB" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="140.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCHC" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcMchc" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCHC" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="80.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCH" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcMch" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCH" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="20.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCV " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcMcv" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="MCV " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="40.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RDW-CV " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcRdwCv" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RDW-CV " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="100.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HCT" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcHct" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HCT" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="160.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PLT" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcPlt" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PLT" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="220.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PCT" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcPct" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PCT" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="280.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="P-LCR " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcPlcr" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="P-LCR " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="340.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="ESR" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cbcEsr" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="ESR" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="400.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="125.0" text="Blood Group Rh " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="BloodGroupRh" checkedColor="#01579b" prefHeight="30.0" prefWidth="125.0" text="Blood Group Rh " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets left="25.0" top="460.0" />
                      </StackPane.margin>
@@ -188,7 +188,7 @@
                         <Insets bottom="570.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXCheckBox fx:id="cbcSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#cbcSelectAll" prefHeight="32.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllCbc" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllCbc" prefHeight="32.0" prefWidth="26.0" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="500.0" left="121.0" />
                      </StackPane.margin>
@@ -207,22 +207,22 @@
                         <Insets top="520.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="STOOL TEST" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="stoolTest" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="STOOL TEST" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="505.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Occult Blood " textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                  <JFXCheckBox fx:id="occultBlood" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Occult Blood " textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
                      <StackPane.margin>
                         <Insets bottom="448.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Consistency" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="consistency" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Consistency" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="390.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="119.0" text="OVAL PARASITE " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="ovalParasite" checkedColor="#01579b" prefHeight="30.0" prefWidth="119.0" text="OVAL PARASITE " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="334.0" left="21.0" />
                      </StackPane.margin>
@@ -242,44 +242,44 @@
                         <Insets bottom="138.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="SGOT" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="sgot" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="SGOT" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="-43.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="SGPT" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="sgpt" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="SGPT" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="17.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="137.0" text="Alkaline Phosphate" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="alkalinePhosphate" checkedColor="#01579b" prefHeight="30.0" prefWidth="137.0" text="Alkaline Phosphate" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets left="36.0" top="81.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="124.0" text="Bilirubin (Total)" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="bilirubinTotal" checkedColor="#01579b" prefHeight="30.0" prefWidth="124.0" text="Bilirubin (Total)" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets left="24.0" top="141.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="120.0" text="Bilirubin (Direct)" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="bilirubinDirect" checkedColor="#01579b" prefHeight="30.0" prefWidth="120.0" text="Bilirubin (Direct)" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets left="21.0" top="198.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="BUN" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="bun" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="BUN" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="299.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Creatinine" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="creatinine" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Creatinine" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="351.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <Label prefHeight="30.0" prefWidth="174.0" text="PARASTOLGY" textFill="#01579b" underline="true">
+                  <Label prefHeight="30.0" prefWidth="133.0" text="PARASITOLOGY" textFill="#01579b" underline="true">
                      <StackPane.margin>
-                        <Insets bottom="557.0" />
+                        <Insets bottom="557.0" right="43.0" />
                      </StackPane.margin>
                      <font>
                         <Font name="System Bold" size="16.0" />
@@ -293,63 +293,63 @@
                         <Insets bottom="260.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label prefHeight="26.0" prefWidth="174.0" text="LST" textFill="#01579b" underline="true">
+                  <Label prefHeight="26.0" prefWidth="123.0" text="LST" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets bottom="89.0" />
+                        <Insets bottom="89.0" right="50.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label prefHeight="26.0" prefWidth="174.0" text="RST" textFill="#01579b" underline="true">
+                  <Label prefHeight="26.0" prefWidth="120.0" text="RST" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets top="252.0" />
+                        <Insets right="50.0" top="252.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Uric Acid" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="uricAcid" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Uric Acid" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="448.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <Label prefHeight="26.0" prefWidth="174.0" text="OTHER" textFill="#01579b" underline="true">
+                  <Label prefHeight="26.0" prefWidth="121.0" text="OTHER" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets top="398.0" />
+                        <Insets right="50.0" top="398.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Total Protein" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="totalProtein" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Total Protein" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="499.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Cholesterol " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="cholesterol" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Cholesterol " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="548.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="parastologySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#parastologySelectAll" prefHeight="32.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllParasitology" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllParasitology" prefHeight="32.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets bottom="557.0" left="140.0" />
+                        <Insets bottom="557.0" left="150.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="lstSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#lstSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllLst" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllLst" prefHeight="25.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets bottom="89.0" left="140.0" />
+                        <Insets bottom="89.0" left="150.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="rstSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#rstSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllRst" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllRst" prefHeight="30.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets left="140.0" top="252.0" />
+                        <Insets left="150.0" top="252.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="otherSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#otherSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllChemistryOther" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllOtherChemistry" prefHeight="30.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets left="140.0" top="398.0" />
+                        <Insets left="150.0" top="398.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
                </children>
@@ -364,72 +364,72 @@
                         <Insets top="38.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Color" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinColor" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Color" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="400.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Appearance" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                  <JFXCheckBox fx:id="urinAppearance" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Appearance" textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
                      <StackPane.margin>
                         <Insets bottom="340.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PH" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinPh" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PH" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="280.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PSG" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinPsg" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="PSG" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="220.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Protein" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinProtein" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Protein" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="160.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Glucose" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinGlucose" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Glucose" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="100.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Ketone" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinKetone" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Ketone" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="40.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Bilirubin" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinBilirubin" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Bilirubin" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="20.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Urobilinogen" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinUrobilinogen" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Urobilinogen" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="80.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Blood" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinBlood" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Blood" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="140.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Epit Cells " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinEpitCells" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Epit Cells " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="260.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="WBC" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinWbc" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="WBC" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="320.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBC" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinRbc" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBC" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="380.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Casts" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinCasts" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Casts" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="440.0" />
                      </StackPane.margin>
@@ -458,19 +458,19 @@
                         <Insets top="200.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Bacteria" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="urinBacteria" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Bacteria" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="500.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="dipisticSelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#dipisticSelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllDipistic" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllDipistic" prefHeight="30.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets bottom="460.0" left="140.0" />
+                        <Insets bottom="460.0" left="150.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="microscopySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#microscopySelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllMicroscopy" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllMicroscopy" prefHeight="30.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets left="140.0" top="200.0" />
+                        <Insets left="150.0" top="200.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
                </children>
@@ -485,37 +485,37 @@
                         <Insets bottom="288.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Widal II " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="seroWidall" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Widal II " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="440.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Well Felix " textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
+                  <JFXCheckBox fx:id="seroWellFelix" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Well Felix " textFill="#01579b" unCheckedColor="#01579b" StackPane.alignment="CENTER">
                      <StackPane.margin>
                         <Insets bottom="380.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HBSag " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="seroHbsag" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HBSag " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="320.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="CRP" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="seroCrp" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="CRP" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="260.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="ASO" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="seroAso" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="ASO" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="200.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="139.0" text="Rheumatoid Factor " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="seroRheumatoidFactor" checkedColor="#01579b" prefHeight="30.0" prefWidth="139.0" text="Rheumatoid Factor " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="140.0" left="38.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="H.Pylori Serum" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="seroHpyloriSerum" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="H.Pylori Serum" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="80.0" />
                      </StackPane.margin>
@@ -525,17 +525,17 @@
                         <Insets top="130.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="VDRL" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="seroVdrl" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="VDRL" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="500.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="H.Pylori Stool" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="bactHpyloriStool" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="H.Pylori Stool" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="100.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="KOH" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="bactKoh" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="KOH" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="160.0" />
                      </StackPane.margin>
@@ -543,22 +543,22 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Gram Stain" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="gramStain" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Gram Stain" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="280.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Wet Film" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="wetFilm" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="Wet Film" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="350.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="AFB" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="afb" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="AFB" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="420.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HIV/AIDS " textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="hivAids" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="HIV/AIDS " textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets top="490.0" />
                      </StackPane.margin>
@@ -582,14 +582,14 @@
                         <Insets top="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXCheckBox fx:id="serologySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#serologySelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllSerology" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllSerology" prefHeight="30.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets bottom="565.0" left="140.0" />
+                        <Insets bottom="565.0" left="150.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="bacterologySelectAll" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" onAction="#bacterologySelectAll" prefHeight="25.0" prefWidth="10.0" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="selectAllBacterology" alignment="CENTER" checkedColor="#01579b" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAllBacterology" prefHeight="30.0" prefWidth="30.0" unCheckedColor="#01579b">
                      <StackPane.margin>
-                        <Insets left="160.0" top="20.0" />
+                        <Insets left="180.0" top="20.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
                </children>
@@ -604,7 +604,7 @@
                         <Insets bottom="35.0" right="35.0" />
                      </StackPane.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="35.0" prefWidth="100.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="SEND" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="sendBtn" buttonType="RAISED" onAction="#handleSendButton" prefHeight="35.0" prefWidth="100.0" ripplerFill="#01579b" style="-fx-background-color: #E1F5FE;" stylesheets="@DoctorLaboratoryRequestForm.css" text="REQUEST" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="100.0" right="35.0" />
                      </StackPane.margin>
@@ -628,7 +628,7 @@
                   <FontAwesomeIconView fill="#01579b" glyphName="EXPAND" size="18" wrappingWidth="21.285715103149414" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+            <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleExitButton" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
                <graphic>
                   <MaterialDesignIconView fill="#01579b" glyphName="CLOSE" size="22" />
                </graphic>

@@ -73,8 +73,6 @@ public class DoctorPatientView implements Initializable{
 
         pnl_Scroll.getChildren().clear();
 
-        Node [] nodes = new Node[15];
-
         for(int i=0;i<list.size();i++){
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ClinicalNoteView.fxml"));
@@ -108,7 +106,7 @@ public class DoctorPatientView implements Initializable{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy");
         dateFld.setText(object.getDate().format(formatter));
         idFld.setText(String.valueOf(object.getPatientId()));
-        refreshNodes(object.getNotes());
+        refreshNodes(new DataLoader().loadClincalNotes(object));
 
     }
 
@@ -119,7 +117,7 @@ public class DoctorPatientView implements Initializable{
 
     @FXML
     void handleRequestAction(ActionEvent event) throws IOException {
-        new WindowChangeController().popupWindow(event, "../View/DoctorLaboratoryRequestForm.fxml");
+        new WindowChangeController().docLabRequestView(event, "../View/DoctorLaboratoryRequestForm.fxml");
     }
 
     @FXML

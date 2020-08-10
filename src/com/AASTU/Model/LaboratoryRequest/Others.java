@@ -8,7 +8,7 @@ public class Others {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "gramStain_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "gramStain_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "gramStain_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "gramStain_test", length = 20))
     })
     private TestProperty gramStain;
@@ -16,7 +16,7 @@ public class Others {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "wetFilm_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "wetFilm_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "wetFilm_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "wetFilm_test", length = 20))
     })
     private TestProperty wetFilm;
@@ -24,7 +24,7 @@ public class Others {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "afb_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "afb_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "afb_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "afb_test", length = 20))
     })
     private TestProperty afb;
@@ -32,7 +32,7 @@ public class Others {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "hivAids_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "hivAids_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "hivAids_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "hivAids_test", length = 20))
     })
     private TestProperty hivAids;
