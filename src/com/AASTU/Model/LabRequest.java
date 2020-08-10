@@ -3,6 +3,7 @@ package com.AASTU.Model;
 import com.AASTU.Model.LaboratoryRequest.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "labRequest")
@@ -10,7 +11,16 @@ public class LabRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String LabratoryTechnicianId;
+
+    @Column(name = "labTechnicianId")
+    private String labTechnicianId;
+
+    @Column(name = "physicianId")
+    private String physicianId;
+
+    @Column(name = "requestDate")
+    private LocalDate requestDate;
+
     private Parasitology parasitology;
     private Bacteriology bacterology;
     private Microscopy microscopy;
@@ -21,10 +31,12 @@ public class LabRequest {
     private Serology serology;
 
     public LabRequest(){
-
     }
 
-    public LabRequest(Parasitology parasitology, Bacteriology bacterology, Microscopy microscopy, Chemistry chemistry, Dipstick dipistic, Others others, Cbs cbs, Serology serology) {
+    public LabRequest(String labTechnicianId, String physicianId, LocalDate requestDate, Parasitology parasitology, Bacteriology bacterology, Microscopy microscopy, Chemistry chemistry, Dipstick dipistic, Others others, Cbs cbs, Serology serology) {
+        this.labTechnicianId = labTechnicianId;
+        this.physicianId = physicianId;
+        this.requestDate = requestDate;
         this.parasitology = parasitology;
         this.bacterology = bacterology;
         this.microscopy = microscopy;
@@ -35,20 +47,36 @@ public class LabRequest {
         this.serology = serology;
     }
 
+    public String getLabTechnicianId() {
+        return labTechnicianId;
+    }
+
+    public void setLabTechnicianId(String labTechnicianId) {
+        this.labTechnicianId = labTechnicianId;
+    }
+
+    public String getPhysicianId() {
+        return physicianId;
+    }
+
+    public void setPhysicianId(String physicianId) {
+        this.physicianId = physicianId;
+    }
+
+    public LocalDate getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(LocalDate requestDate) {
+        this.requestDate = requestDate;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getLabratoryTechnicianId() {
-        return LabratoryTechnicianId;
-    }
-
-    public void setLabratoryTechnicianId(String labratoryTechnicianId) {
-        LabratoryTechnicianId = labratoryTechnicianId;
     }
 
     public Parasitology getParasitology() {

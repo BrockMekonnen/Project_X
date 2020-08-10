@@ -140,9 +140,9 @@ public class PatientRegistration implements Initializable{
             Cbs obj7 = new Cbs(test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test);
             Serology obj8 = new Serology(test,test,test,test,test,test,test,test,test);
 
-            LabRequest lab = new LabRequest(obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8);
+            LabRequest lab = new LabRequest("labId","docId",LocalDate.now(),obj1,obj2,obj3,obj4,obj5,obj6,obj7,obj8);
 
-            ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"ggggg");
+            ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"ggggg","docId");
 
 
             if(cboGender.getValue().toString().equals("Male")){

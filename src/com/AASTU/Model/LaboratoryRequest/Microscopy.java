@@ -7,37 +7,37 @@ public class Microscopy {
 
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "EpitCells_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "EpitCells_price", length = 20)),
-            @AttributeOverride( name = "test", column = @Column(name = "EpitCells_test", length = 20))
+            @AttributeOverride( name = "value", column = @Column(name = "epitCells_value", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "epitCells_price_id", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "epitCells_test", length = 20))
     })
     private TestProperty epitCells;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "wbc_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "wbc_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "wbc_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "wbc_test", length = 20))
     })
     private TestProperty wbc;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "rbc_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "rbc_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "rbc_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "rbc_test", length = 20))
     })
     private TestProperty rbc;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "Casts_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "Casts_price", length = 20)),
-            @AttributeOverride( name = "test", column = @Column(name = "Casts_test", length = 20))
+            @AttributeOverride( name = "value", column = @Column(name = "casts_value", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "casts_price_id", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "casts_test", length = 20))
     })
     private TestProperty casts;
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "Bacteria_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "Bacteria_price", length = 20)),
-            @AttributeOverride( name = "test", column = @Column(name = "Bacteria_test", length = 20))
+            @AttributeOverride( name = "value", column = @Column(name = "bacteria_value", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "bacteria_price_id", length = 20)),
+            @AttributeOverride( name = "test", column = @Column(name = "bacteria_test", length = 20))
     })
     private TestProperty bacteria;
 

@@ -38,7 +38,7 @@ public class DataLoader {
         try{
             session.beginTransaction();
 
-            patientList = session.createQuery("from Patient").list();
+            patientList = session.createQuery("from Patient where patientStates = 1").list();
 
             session.getTransaction().commit();
         } finally {
@@ -48,6 +48,41 @@ public class DataLoader {
 
         return patientList;
     }
+    public List<Patient> loadPatientDataForDoctor(){
+        List<Patient> patientList;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            patientList = session.createQuery("from Patient where patientStates = 1 and docActives = 1").list();
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return patientList;
+    }
+
+
 
     public List<Patient> loadSpecificData(String SelectiveCommand){
         List<Patient> patientList;
@@ -147,6 +182,37 @@ public class DataLoader {
         }
 
         return labRequest;
+
+    }
+
+    public List<ClinicalNotes> loadClincalNotes(Patient tempPateint) {
+        List<ClinicalNotes> clinicalNotesList;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "from ClinicalNotes where patient_id = " + tempPateint.getPatientId();
+            clinicalNotesList = session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return clinicalNotesList;
 
     }
 

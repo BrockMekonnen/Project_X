@@ -29,7 +29,7 @@ public class Patient {
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "city")
-    private String City;
+    private String city;
     @Column(name = "sub_city")
     private String subcity;
     @Column(name = "kebele")
@@ -37,27 +37,126 @@ public class Patient {
     @Column(name = "house_number")
     private String houseNumber;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+    //********* new **********
+
+    @Column(name = "patientStates")
+    private boolean patientStates;
+
+    @Column(name = "docActives")
+    private boolean docActives;
+
+    @Column(name = "labActives")
+    private boolean labActives;
+
+    @Column(name = "secActievs")
+    private boolean secActives;
+
+    private boolean fromLab;
+
+    private boolean fromSec;
+
+    private boolean payed;
+
+    private boolean onWaiting;
+
+    private double payment;
+
+    //**********************
+
+    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name="patient_id")
     private List<ClinicalNotes> notes;
 
     @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name="patient_id")
     private List<LabRequest> requests;
+
     public Patient(){}
 
     public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber) {
-        this.patientId = patientId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.sex = sex;
         this.date = date;
         this.phoneNumber = phoneNumber;
-        City = city;
+        this.city = city;
         this.subcity = subcity;
         this.kebele = kebele;
         this.houseNumber = houseNumber;
+
+    }
+
+    public boolean isFromLab() {
+        return fromLab;
+    }
+
+    public void setFromLab(boolean fromLab) {
+        this.fromLab = fromLab;
+    }
+
+    public boolean isFromSec() {
+        return fromSec;
+    }
+
+    public void setFromSec(boolean fromSec) {
+        this.fromSec = fromSec;
+    }
+
+    public boolean isPayed() {
+        return payed;
+    }
+
+    public void setPayed(boolean payed) {
+        this.payed = payed;
+    }
+
+    public boolean isOnWaiting() {
+        return onWaiting;
+    }
+
+    public void setOnWaiting(boolean onWaiting) {
+        this.onWaiting = onWaiting;
+    }
+
+    public double getPayment() {
+        return payment;
+    }
+
+    public void setPayment(double payment) {
+        this.payment = payment;
+    }
+
+    public boolean isPatientStates() {
+        return patientStates;
+    }
+
+    public void setPatientStates(boolean patientStates) {
+        this.patientStates = patientStates;
+    }
+
+    public boolean isDocActives() {
+        return docActives;
+    }
+
+    public void setDocActives(boolean docActives) {
+        this.docActives = docActives;
+    }
+
+    public boolean isLabActives() {
+        return labActives;
+    }
+
+    public void setLabActives(boolean labActives) {
+        this.labActives = labActives;
+    }
+
+    public boolean isSecActives() {
+        return secActives;
+    }
+
+    public void setSecActives(boolean secActives) {
+        this.secActives = secActives;
     }
 
     public int getPatientId() {
@@ -113,11 +212,11 @@ public class Patient {
     }
 
     public String getCity() {
-        return City;
+        return this.city;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
     public String getSubcity() {
@@ -188,7 +287,7 @@ public class Patient {
                 ", sex=" + sex +
                 ", date=" + date +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", City='" + City + '\'' +
+                ", City='" + city + '\'' +
                 ", subcity='" + subcity + '\'' +
                 ", kebele='" + kebele + '\'' +
                 ", houseNumber='" + houseNumber + '\'' +

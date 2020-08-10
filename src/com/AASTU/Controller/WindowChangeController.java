@@ -140,6 +140,21 @@ public class WindowChangeController {
         windowCount++;
         temp.showAndWait();
     }
+    public void docLabRequestView(ActionEvent event, String fxml) throws IOException {
+        LabRequest labObject = new DataLoader().loadLabRequest(tempObject);
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        DoctorLaboratoryRequestForm view = loader.getController();
+        view.setData(tempObject);
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+    }
 
     public void warningPopup(String warnHeader, String warnBody, String imageUrl ) throws IOException {
 
