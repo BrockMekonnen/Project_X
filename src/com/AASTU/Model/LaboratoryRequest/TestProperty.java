@@ -8,13 +8,13 @@ public class TestProperty {
 
     private String value;
 
-    private double price;
+    private int priceId;
 
     private boolean test;
 
-    public TestProperty(String value, double price, boolean test) {
+    public TestProperty(String value, int priceId, boolean test) {
         this.value = value;
-        this.price = price;
+        this.priceId = priceId;
         this.test = test;
     }
     public TestProperty(){
@@ -29,12 +29,12 @@ public class TestProperty {
         this.value = value;
     }
 
-    public double getPrice() {
-        return price;
+    public int getPriceId() {
+        return priceId;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPriceId(int priceId) {
+        this.priceId = priceId;
     }
 
     public boolean isTest() {
@@ -43,14 +43,5 @@ public class TestProperty {
 
     public void setTest(boolean test) {
         this.test = test;
-    }
-
-    @Override
-    public String toString() {
-        return "TestProperty{" +
-                "value='" + value + '\'' +
-                ", price=" + price +
-                ", test=" + test +
-                '}';
     }
 }

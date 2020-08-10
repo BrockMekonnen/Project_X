@@ -8,7 +8,7 @@ public class Bacteriology {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "hpyloriStool_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "hpyloriStool_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "hpyloriStool_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "hpyloriStool_test", length = 20))
     })
     private TestProperty hpyloriStool;
@@ -16,7 +16,7 @@ public class Bacteriology {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "koh_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "koh_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "koh_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "koh_test", length = 20))
     })
 

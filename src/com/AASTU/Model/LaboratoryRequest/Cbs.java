@@ -8,119 +8,119 @@ public class Cbs {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_wbc_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_wbc_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_wbc_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_wbc_test", length = 20))
     })
     private TestProperty wbc;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_lym_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_lym_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_lym_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_lym_test", length = 20))
     })
     private TestProperty lym;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_mid_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_mid_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_mid_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_mid_test", length = 20))
     })
     private TestProperty mid;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_gra_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_gra_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_gra_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_gra_test", length = 20))
     })
     private TestProperty gra;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_rbc_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_rbc_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_rbc_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_rbc_test", length = 20))
     })
     private TestProperty rbc;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_hgb_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_hgb_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_hgb_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_hgb_test", length = 20))
     })
     private TestProperty hgb;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_mchc_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_mchc_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_mchc_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_mchc_test", length = 20))
     })
     private TestProperty mchc;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_mch_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_mch_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_mch_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_mch_test", length = 20))
     })
     private TestProperty mch;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_mcv_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_mcv_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_mcv_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_mcv_test", length = 20))
     })
     private TestProperty mcv;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_rdw_cv_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_rdw_cv_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_rdw_cv_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_rdw_cv_test", length = 20))
     })
     private TestProperty rdw_cv;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_hct_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_hct_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_hct_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_hct_test", length = 20))
     })
     private TestProperty hct;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_plt_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_plt_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_plt_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_plt_test", length = 20))
     })
     private TestProperty plt;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_pct_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_pct_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_pct_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_pct_test", length = 20))
     })
     private TestProperty pct;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_p_lcr_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_p_lcr_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_p_lcr_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_p_lcr_test", length = 20))
     })
     private TestProperty p_lcr;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_esr_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_esr_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_esr_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_esr_test", length = 20))
     })
     private TestProperty esr;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_bloodGroupRh_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_bloodGroupRh_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_bloodGroupRh_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_bloodGroupRh_test", length = 20))
     })
     private TestProperty bloodGroupRh;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "cbs_bloodFilm_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "cbs_bloodFilm_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "cbs_bloodFilm_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "cbs_bloodFilm_test", length = 20))
     })
     private TestProperty bloodFilm;

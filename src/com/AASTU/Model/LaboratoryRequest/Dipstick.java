@@ -8,7 +8,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "testColor_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "testColor_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "testColor_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "testColor_test", length = 20))
     })
     private TestProperty testColor;
@@ -16,7 +16,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "appearance_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "appearance_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "appearance_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "appearance_test", length = 20))
     })
     private TestProperty appearance;
@@ -24,7 +24,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "ph_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "ph_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "ph_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "ph_test", length = 20))
     })
     private TestProperty ph;
@@ -32,7 +32,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "psg_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "psg_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "psg_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "psg_test", length = 20))
     })
     private TestProperty psg;
@@ -40,7 +40,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "protein_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "protein_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "protein_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "protein_test", length = 20))
     })
     private TestProperty protein;
@@ -48,7 +48,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "glucose_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "glucose_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "glucose_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "glucose_test", length = 20))
     })
     private TestProperty glucose;
@@ -56,7 +56,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "ketone_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "ketone_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "ketone_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "ketone_test", length = 20))
     })
     private TestProperty ketone;
@@ -64,7 +64,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "bilrubin_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "bilrubin_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "bilrubin_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "bilrubin_test", length = 20))
     })
     private TestProperty bilrubin;
@@ -72,7 +72,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "urobilinogen_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "urobilinogen_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "urobilinogen_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "urobilinogen_test", length = 20))
     })
     private TestProperty urobilinogen;
@@ -80,7 +80,7 @@ public class Dipstick {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "blood_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "blood_price_id", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "blood_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "blood_test", length = 20))
     })
     private TestProperty blood;

@@ -8,63 +8,63 @@ public class Serology {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "vdrl_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "vdrl_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "vdrl_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "vdrl_test", length = 20))
     })
     private TestProperty vdrl;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "widal_II_h_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "widal_II_h_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "widal_II_h_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "widal_II_h_test", length = 20))
     })
     private TestProperty widal_II_h;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "widal_II_o_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "widal_II_o_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "widal_II_o_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "widal_II_o_test", length = 20))
     })
     private TestProperty widal_II_o;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "wellFelix_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "wellFelix_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "wellFelix_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "wellFelix_test", length = 20))
     })
     private TestProperty wellFelix;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "hbsag_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "hbsag_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "hbsag_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "hbsag_test", length = 20))
     })
     private TestProperty hbsag;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "crp_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "crp_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "crp_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "crp_test", length = 20))
     })
     private TestProperty crp;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "aso_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "aso_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "aso_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "aso_test", length = 20))
     })
     private TestProperty aso;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "rheumatoidFactor_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "rheumatoidFactor_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "rheumatoidFactor_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "rheumatoidFactor_test", length = 20))
     })
     private TestProperty rheumatoidFactor;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride( name = "value", column = @Column(name = "hpyloriSerum_value", length = 20)),
-            @AttributeOverride( name = "price", column = @Column(name = "hpyloriSerum_price", length = 20)),
+            @AttributeOverride( name = "priceId", column = @Column(name = "hpyloriSerum_price_id", length = 20)),
             @AttributeOverride( name = "test", column = @Column(name = "hpyloriSerum_test", length = 20))
     })
     private TestProperty hpyloriSerum;
