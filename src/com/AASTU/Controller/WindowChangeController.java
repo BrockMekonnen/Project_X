@@ -88,8 +88,8 @@ public class WindowChangeController {
 
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
-        LabToDocViewController view = loader.getController();
-        view.setWindow(obj,"../View/LabToDoc.fxml");
+        LabToDoc view = loader.getController(); // get the controller of DoctorPatientView
+        view.setObject(obj); // assign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
@@ -98,7 +98,6 @@ public class WindowChangeController {
         popupStage[windowCount] = temp;
         windowCount++;
         temp.showAndWait();
-//
 
     }
 

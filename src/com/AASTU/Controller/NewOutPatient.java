@@ -1,8 +1,10 @@
 package com.AASTU.Controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import java.io.IOException;
@@ -11,26 +13,32 @@ import java.util.ResourceBundle;
 
 public class NewOutPatient implements Initializable {
 
+    public static boolean isAdd;
+    @FXML
+    private JFXDatePicker startDate;
+
+    @FXML
+    private JFXDatePicker endDate;
 
     @FXML
     private JFXButton addBtn;
 
     @FXML
     private JFXButton btnCancel;
-
     @FXML
     void cancelWindow(ActionEvent event) {
         WindowChangeController.closeWindow();
+        isAdd = false;
     }
+
     @FXML
     void handleAddButton(ActionEvent event) throws IOException {
         new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
 
-        if(addBtn.isPressed()) {
-            PatientRegistration.isout = true;
-        }else if(btnCancel.isPressed()) {
-            PatientRegistration.isout = false;
-        }
+        PatientRegistration patientRegistration= new PatientRegistration();
+        patientRegistration.startDate = startDate.getValue();
+        patientRegistration.endDate = endDate.getValue();
+        isAdd = true;
     }
 
 
