@@ -87,11 +87,19 @@ public class Test {
             session.beginTransaction();
 
 
+
+//            session.save(patient);
+//            session.save(patient2);
+//            session.save(patient1);
+//            session.save(patient3);
+//            session.save(patient4);
+
             session.save(patient);
             session.save(patient2);
             session.save(patient1);
             session.save(patient3);
             session.save(patient4);
+
 //            session.save(laboratory);
 //            session.save(hpaylori);
 //            session.save(koh);

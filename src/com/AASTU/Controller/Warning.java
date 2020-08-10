@@ -44,8 +44,14 @@ public class Warning implements Initializable{
 
 
     @FXML
-    void handleCancelButton(ActionEvent event) {
+    boolean handleCancelButton(ActionEvent event) {
         WindowChangeController.closeWindow();
+
+        return false;
+    }
+
+    @FXML
+    boolean handleOkButton(ActionEvent event) {
         isOk = false;
     }
 
@@ -54,6 +60,7 @@ public class Warning implements Initializable{
         isOk = true;
         WindowChangeController.closeWindow();
         WindowChangeController.closeWindow();
+        return true;
     }
 
     @FXML
