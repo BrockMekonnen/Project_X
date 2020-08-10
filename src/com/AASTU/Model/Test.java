@@ -70,13 +70,8 @@ public class Test {
             Patient patient3 = new Patient("Biruk","Molla",44,'m',LocalDate.now(),"125465","city","cc","kk","5");
             Patient patient4 = new Patient("Biruk","Mekonnen",44,'m',LocalDate.now(),"985412","city","cc","kk","5");
 
-            ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"ggggg");
-            ClinicalNotes clinicalNote2 = new ClinicalNotes(LocalDate.now(),"hhhh");
-
-
             ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"this is for test!","docId");
             ClinicalNotes clinicalNote2 = new ClinicalNotes(LocalDate.now(),"this is for another test!!","docId");
-
 
             patient.addClincalNote(clinicalNote);
             patient.addClincalNote(clinicalNote2);
@@ -89,15 +84,10 @@ public class Test {
             patient3.setSecActives(true);
             patient4.setLabActives(true);
 
-
             session.beginTransaction();
 
 
 //            session.save(patient);
-
-//            session.save(record2);
-
-
 //            session.save(patient2);
 //            session.save(patient1);
 //            session.save(patient3);
