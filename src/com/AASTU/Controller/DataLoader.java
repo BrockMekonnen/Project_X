@@ -38,7 +38,7 @@ public class DataLoader {
         try{
             session.beginTransaction();
 
-            patientList = session.createQuery("from Patient where patientStates = 1").list();
+            patientList = session.createQuery("from Patient where patientStates = 0").list();
 
             session.getTransaction().commit();
         } finally {

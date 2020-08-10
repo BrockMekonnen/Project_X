@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class Warning implements Initializable{
 
-
+    public static boolean isOk;
     @FXML
     private JFXTextField warnHeaderFld = new JFXTextField();
 
@@ -46,11 +46,18 @@ public class Warning implements Initializable{
     @FXML
     boolean handleCancelButton(ActionEvent event) {
         WindowChangeController.closeWindow();
+
         return false;
     }
 
+//    @FXML
+//    boolean handleOkButton(ActionEvent event) {
+//        isOk = false;
+//    }
+
     @FXML
     boolean handleOkButton(ActionEvent event) {
+        isOk = true;
         WindowChangeController.closeWindow();
         WindowChangeController.closeWindow();
         return true;
