@@ -18,16 +18,16 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LoginController">
    <children>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="762.0" style="-fx-background-color: #01579b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="588.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="675.0" style="-fx-background-color: #01579b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="675.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="186.0" layoutY="330.0" prefHeight="90.0" prefWidth="450.0" text="Clinic Managment" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="186.0" AnchorPane.topAnchor="330.0">
+            <Label alignment="CENTER" layoutX="186.0" layoutY="330.0" prefHeight="90.0" prefWidth="450.0" text="Clinic Managment" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="330.0">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <StackPane layoutX="892.0" layoutY="157.0" prefHeight="750.0" prefWidth="588.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane layoutX="892.0" layoutY="157.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="675.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
                 <!--<FontAwesomeIcon iconName="USERS" layoutX="205.0" layoutY="156.0" size="47" />-->
                 <Text fill="#01579b" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="222.287109375" StackPane.alignment="CENTER">
@@ -35,15 +35,15 @@
                         <Font size="36.0" />
                     </font>
                <StackPane.margin>
-                  <Insets bottom="400.0" />
+                  <Insets bottom="500.0" />
                </StackPane.margin>
                 </Text>
-            <JFXTextField fx:id="userName" alignment="BASELINE_LEFT" focusColor="#0598ff" labelFloat="true" prefHeight="46.0" prefWidth="389.0" promptText="User Name/ID" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" StackPane.alignment="CENTER">
+            <JFXTextField fx:id="userName" alignment="BASELINE_LEFT" focusColor="#0598ff" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="300.0" promptText="User Name/ID" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" StackPane.alignment="CENTER">
                <font>
                   <Font size="13.0" />
                </font>
                <StackPane.margin>
-                  <Insets bottom="221.0" left="143.0" right="85.0" />
+                  <Insets bottom="221.0" left="180.0" right="170.0" />
                </StackPane.margin>
             </JFXTextField>
             <JFXButton buttonType="RAISED" onAction="#signIn" prefHeight="53.0" prefWidth="194.0" ripplerFill="WHITE" style="-fx-background-color: #01579b; -fx-background-radius: 50px;" text="Sign In" textFill="#f2eded">
@@ -51,7 +51,7 @@
                   <Font size="14.0" />
                </font>
                <StackPane.margin>
-                  <Insets top="150.0" />
+                  <Insets top="170.0" />
                </StackPane.margin>
             </JFXButton>
             <JFXButton onAction="#ToIdentificationWindow" prefHeight="45.0" prefWidth="130.0" style="-fx-border-color: #01579B; -fx-border-radius: 50px; -fx-background-radius: 50px;" text="Back" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
@@ -70,9 +70,9 @@
                   <Insets bottom="212.0" right="360.0" />
                </StackPane.margin>
             </FontAwesomeIconView>
-            <JFXPasswordField fx:id="password" focusColor="#0598ff" labelFloat="true" prefHeight="46.0" prefWidth="389.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" StackPane.alignment="CENTER">
+            <JFXPasswordField fx:id="password" focusColor="#0598ff" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" unFocusColor="WHITE" StackPane.alignment="CENTER">
                <StackPane.margin>
-                  <Insets bottom="50.0" left="143.0" right="85.0" />
+                  <Insets bottom="50.0" left="180.0" right="171.0" />
                </StackPane.margin>
                <font>
                   <Font size="13.0" />
