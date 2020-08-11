@@ -17,6 +17,8 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
@@ -26,6 +28,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 public class SecretaryWindowController implements Initializable {
@@ -226,7 +229,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
         outPatientPnl.setVisible(out);
         recordPnl.setVisible(record);
 
-
     }
 
 
@@ -234,12 +236,15 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
     /**
      * ROW CLICK HANDLER
      * */
+
     public void rowClickHandler( TableView<Patient> tableName) {
         tableName.setRowFactory(tv -> {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
                     Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
+//                    System.out.println(rowData);
+                    SecretaryPatientView.patientObj = rowData;
                     try {
                         new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
                     } catch (IOException e) {
@@ -251,12 +256,41 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
         });
     }
 
+    public void getCurrentPatientData(TableView<Patient> tableName){
+        tableName.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY)) {
+                int index = tableName.getSelectionModel().getSelectedIndex();
+                Patient person = tableName.getItems().get(index);
+                System.out.println(person);
+            }
+        });
+    }
+
+    // for payment Table
+    public void rowClickHandlerforPayment( TableView<Patient> tableName) {
+        tableName.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
+                    System.out.println(rowData);
+                    try {
+                        new WindowChangeController().totalPaymentView(event, "../View/PaymentWindow.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
+    }
     /**
      * METHODS TO DISPLAY AND REFRESH TABLES
      * */
 
     // method to display the total payment of patient but it is not finished yet!
     public void displayPayment() {
+//        rowClickHandlerforPayment(paymentTable);
         payPatientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         // display full name
         fullNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>,ObservableValue<String>>() {
@@ -297,6 +331,7 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
 
     // method to display the registered patients to the table
     public  void displayPatients() {
+//        getCurrentPatientData(mainTable);
         rowClickHandler(mainTable);
         // to display normal patient
         patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));

@@ -119,7 +119,22 @@ public class WindowChangeController {
         windowCount++;
         temp.showAndWait();
 
+    }
 
+    public void totalPaymentView(MouseEvent event,String fxml,Patient obj) throws IOException{
+        tempObject = obj;
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        PaymentController view1 = loader.getController(); // get the controller of SecretaryPatientView
+        view1.setObject(obj);  // sign some information from the object to the Scene
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
     }
     public void docLabResultView(ActionEvent event, String fxml) throws IOException {
         LabRequest labObject = new DataLoader().loadLabRequest(tempObject);
