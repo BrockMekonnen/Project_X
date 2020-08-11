@@ -196,7 +196,7 @@ public class SecretaryPatientView implements Initializable {
     void editAndSaveHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
-            new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save Your updates?", "warn_confirm.png");
+            new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
             updatePatientInfo(patientObj);
         }
         editBtn.setText("Save");
