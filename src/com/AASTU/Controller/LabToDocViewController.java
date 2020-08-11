@@ -35,11 +35,10 @@ public class LabToDocViewController implements Initializable {
     private JFXButton exitBtn;
 
     @FXML
-    private ScrollPane scrollPane;
-
+    private AnchorPane rootAnchor;
 
     @FXML
-    private AnchorPane rootAnchor;
+    private ScrollPane scrollPane;
 
 
 

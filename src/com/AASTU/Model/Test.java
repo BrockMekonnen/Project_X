@@ -94,11 +94,11 @@ public class Test {
 //            session.save(patient3);
 //            session.save(patient4);
 
-            session.save(patient);
-            session.save(patient2);
-            session.save(patient1);
-            session.save(patient3);
-            session.save(patient4);
+            List<Patient> patientList = session.createQuery("from Patient where patientStates = true").list();
+            for(Patient temp : patientList){
+                temp.setPatientStates(false);
+            }
+
 
 //            session.save(laboratory);
 //            session.save(hpaylori);
