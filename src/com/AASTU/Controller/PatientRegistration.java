@@ -109,6 +109,7 @@ public class PatientRegistration implements Initializable{
 
     private char sex;
 
+    // to check all text fields are get data
     public boolean validatUserInput() throws IOException {
         if(firstNameTf.getText().isEmpty() || lastNameTf.getText().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
                 ageTf.getText().isEmpty()|| phoneNumberTf.getText().isEmpty() || cityTf.getText().isEmpty() ||

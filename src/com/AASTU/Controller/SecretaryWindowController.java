@@ -243,7 +243,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
                     Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
-//                    System.out.println(rowData);
                     SecretaryPatientView.patientObj = rowData;
                     try {
                         new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
@@ -256,16 +255,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
         });
     }
 
-    public void getCurrentPatientData(TableView<Patient> tableName){
-        tableName.setOnMouseClicked((MouseEvent event) -> {
-            if (event.getButton().equals(MouseButton.PRIMARY)) {
-                int index = tableName.getSelectionModel().getSelectedIndex();
-                Patient person = tableName.getItems().get(index);
-                System.out.println(person);
-            }
-        });
-    }
-
     // for payment Table
     public void rowClickHandlerforPayment( TableView<Patient> tableName) {
         tableName.setRowFactory(tv -> {
@@ -273,7 +262,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
                     Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
-                    System.out.println(rowData);
                     try {
                         new WindowChangeController().totalPaymentView(event, "../View/PaymentWindow.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
                     } catch (IOException e) {
@@ -290,7 +278,7 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
 
     // method to display the total payment of patient but it is not finished yet!
     public void displayPayment() {
-//        rowClickHandlerforPayment(paymentTable);
+        rowClickHandlerforPayment(paymentTable);
         payPatientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         // display full name
         fullNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>,ObservableValue<String>>() {
@@ -331,7 +319,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p
 
     // method to display the registered patients to the table
     public  void displayPatients() {
-//        getCurrentPatientData(mainTable);
         rowClickHandler(mainTable);
         // to display normal patient
         patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));

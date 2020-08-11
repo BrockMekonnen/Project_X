@@ -143,7 +143,6 @@ public class SecretaryPatientView implements Initializable {
             patient.setSubcity(subcityTf.getText());
             patient.setKebele(kebeleTf.getText());
             patient.setHouseNumber(houseNoTf.getText());
-            System.out.println(patient);
 
             session.getTransaction().commit();
         } finally {
