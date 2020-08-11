@@ -192,9 +192,9 @@ public class SecretaryWindowController implements Initializable {
     private JFXTextField searchfield;
 
 // getting patient lists from database
-List<Patient> allPatientList = new DataLoader().loadPatientData();
-List<Patient> normalPatientList =new DataLoader().loadSpecificData("from Patient p where p.pType = Patient");
-List<Patient> outPatientList = new DataLoader().loadSpecificData("from Patient p where p.pType = OutPatient");
+List<Patient> allPatientList = new DataLoader().loadSpecificPatientData("from Patient");
+List<Patient> normalPatientList =new DataLoader().loadSpecificPatientData("from Patient p where p.pType = Patient");
+List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Patient p where p.pType = OutPatient");
 
 
     @Override
