@@ -51,14 +51,19 @@ public class Patient {
     @Column(name = "secActievs")
     private boolean secActives;
 
+    @Column(name = "fromLab")
     private boolean fromLab;
 
+    @Column(name = "fromSec")
     private boolean fromSec;
 
+    @Column(name = "payed")
     private boolean payed;
 
+    @Column(name = "onWaiting")
     private boolean onWaiting;
 
+    @Column(name = "payment")
     private double payment;
 
     //**********************

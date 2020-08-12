@@ -154,7 +154,7 @@ public class DoctorWindowController implements Initializable {
         columnRecordSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnRecordAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadPatientData();
+        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where patientStates=1");
         for(Patient temp: patientList){
             observableList.add(temp);
         }
@@ -310,7 +310,7 @@ public class DoctorWindowController implements Initializable {
         columnSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadPatientDataForDoctor(); // get list of data from the database
+        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where docActives = 1"); // get list of data from the database
         for(Patient temp: patientList){
             observableList.add(temp); // change each object from list to observableList
         }
