@@ -25,6 +25,12 @@ public class NewOutPatient implements Initializable {
 
     @FXML
     private JFXButton btnCancel;
+    public boolean validateUserInputForOut() {
+        if(startDate.getValue() == null || startDate.getValue() == null){
+            return false;
+        }
+        return true;
+    }
     @FXML
     void cancelWindow(ActionEvent event) {
         WindowChangeController.closeWindow();
@@ -33,12 +39,15 @@ public class NewOutPatient implements Initializable {
 
     @FXML
     void handleAddButton(ActionEvent event) throws IOException {
+        if(validateUserInputForOut()){
         new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
+            PatientRegistration patientRegistration= new PatientRegistration();
+            patientRegistration.startDate = startDate.getValue();
+            patientRegistration.endDate = endDate.getValue();
+            isAdd = true;
+        }
 
-        PatientRegistration patientRegistration= new PatientRegistration();
-        patientRegistration.startDate = startDate.getValue();
-        patientRegistration.endDate = endDate.getValue();
-        isAdd = true;
+
     }
 
 

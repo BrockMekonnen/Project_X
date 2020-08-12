@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
@@ -217,14 +216,6 @@
                         <Insets right="193.0" top="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXDatePicker fx:id="addedDateTf" defaultColor="#01579b" prefHeight="30.0" prefWidth="174.0" style="-fx-border-color: #01579b; -fx-background-color: #ffffff;" StackPane.alignment="TOP_RIGHT">
-                     <effect>
-                        <DropShadow color="#b3e5fc" />
-                     </effect>
-                     <StackPane.margin>
-                        <Insets right="20.0" top="20.0" />
-                     </StackPane.margin>
-                  </JFXDatePicker>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="70.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="ID" textFill="#01579b" StackPane.alignment="TOP_RIGHT">
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -292,6 +283,17 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </JFXCheckBox>
+                  <JFXTextField fx:id="patientAddedDateTF" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="173.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_RIGHT">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets right="20.0" top="20.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
                </children>
             </StackPane>
          </children>
