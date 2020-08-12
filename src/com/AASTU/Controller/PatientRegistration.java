@@ -102,7 +102,6 @@ public class PatientRegistration implements Initializable{
     public static LocalDate endDate;
 
     public void addNewPatient(){
-
     }
 
     private char sex;
