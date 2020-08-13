@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -47,7 +48,7 @@ public class DataLoader {
         return patientList;
     }
 
-    public List<DiseaseRecord> loadDiseaseData(){
+    public List<DiseaseRecord> loadDiseaseData(String command){
         List<DiseaseRecord> diseaseRecords;
 
         SessionFactory factory = new Configuration()
@@ -64,7 +65,7 @@ public class DataLoader {
 
             session.beginTransaction();
 
-            diseaseRecords = session.createQuery("from DiseaseRecord").list();
+            diseaseRecords = session.createQuery(command).list();
 
             session.getTransaction().commit();
 

@@ -103,8 +103,6 @@ public class PatientRegistration implements Initializable{
 
     public static LocalDate endDate;
 
-    public void addNewPatient(){
-    }
 
     private char sex;
 
@@ -133,23 +131,17 @@ public class PatientRegistration implements Initializable{
                 WindowChangeController.closeWindow();
             }
         }
-
-
     }
 
     @FXML
     void DiscardAction(ActionEvent event) throws IOException {
         WindowChangeController.closeWindow();
-
     }
 
     @FXML
     void addOutPatient(ActionEvent event) throws IOException {
         new WindowChangeController().popupWindow(event,"../View/NewOutPatient.fxml");
-
     }
-
-
 }
 
 

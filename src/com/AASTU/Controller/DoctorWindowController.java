@@ -27,6 +27,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -87,40 +88,40 @@ public class DoctorWindowController implements Initializable {
     private TableColumn<DiseaseRecord, String> columnDisease;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnless1;
+    private TableColumn<DiseaseRecord, Integer> columnless1;
 
     @FXML
-    private TableColumn<AgeScale, Integer> column1to4;
+    private TableColumn<DiseaseRecord, Integer> column1to4;
 
     @FXML
-    private TableColumn<AgeScale, Integer> column5to14;
+    private TableColumn<DiseaseRecord, Integer> column5to14;
 
     @FXML
-    private TableColumn<AgeScale, Integer> column14to29;
+    private TableColumn<DiseaseRecord, Integer> column14to29;
 
     @FXML
-    private TableColumn<AgeScale, Integer> column28to64;
+    private TableColumn<DiseaseRecord, Integer> column28to64;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnGreater63;
+    private TableColumn<DiseaseRecord, Integer> columnGreater63;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnFless1;
+    private TableColumn<DiseaseRecord, Integer> columnFless1;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnF1to4;
+    private TableColumn<DiseaseRecord, Integer> columnF1to4;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnF5to14;
+    private TableColumn<DiseaseRecord, Integer> columnF5to14;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnF14to29;
+    private TableColumn<DiseaseRecord, Integer> columnF14to29;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnF28to64;
+    private TableColumn<DiseaseRecord, Integer> columnF28to64;
 
     @FXML
-    private TableColumn<AgeScale, Integer> columnFgreater63;
+    private TableColumn<DiseaseRecord, Integer> columnFgreater63;
 
     @FXML
     private TableView<DiseaseRecord> diseaseTable;
@@ -162,130 +163,112 @@ public class DoctorWindowController implements Initializable {
     }
 
 
-    private void populateDiseaseTable(){
-        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData();
+    private void populateDiseaseTable(List<DiseaseRecord> diseaseRecordList){
         ObservableList<DiseaseRecord> observableList = FXCollections.observableArrayList();
 
-        for(DiseaseRecord temp: diseaseRecordList) {
-            columnDate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, LocalDate>, ObservableValue<LocalDate>>() {
-                @Override
-                public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<DiseaseRecord, LocalDate> param) {
-                    ObservableValue<LocalDate> dateObservableValue = new SimpleObjectProperty<>(temp.getDate());
-                    return dateObservableValue;
-                }
-            });
+        columnDate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, LocalDate>, ObservableValue<LocalDate>>() {
+            @Override
+            public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<DiseaseRecord, LocalDate> param) {
+                return param.getValue().getDate();
+            }
+        });
 
+        columnDisease.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<DiseaseRecord, String> param) {
+                return param.getValue().getDiseaseName();
+            }
+        });
 
-            columnDisease.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<DiseaseRecord, String> param) {
-                    ObservableValue<String> disease = new SimpleStringProperty(temp.getDiseaseName());
-                    return disease;
-                }
-            });
+        columnless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().mLess1ForTable();
+            }
+        });
 
+        column1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().M1to4ForTable();
+            }
+        });
 
-            columnless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getfLess1()).asObject();
-                    return obsInt;
-                }
-            });
+        column5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().M5to14ForTable();
+            }
+        });
 
-            column1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getM1to4()).asObject();
-                    return obsInt;
-                }
-            });
+        column14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().M15to29ForTable();
+            }
+        });
 
-            column5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getM5to14()).asObject();
-                    return obsInt;
-                }
-            });
+        column28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().M30to64ForTable();
+            }
+        });
 
-            column14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF15to29()).asObject();
-                    return obsInt;
-                }
-            });
+        columnGreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().mGreater65ForTable();
+            }
+        });
 
-            column28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getM30to64()).asObject();
-                    return obsInt;
-                }
-            });
+        columnFless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().fLess1ForTable();
+            }
+        });
 
-            columnGreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getmGreater65()).asObject();
-                    return obsInt;
-                }
-            });
+        columnF1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().F1to4ForTable();
+            }
+        });
 
-            columnFless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getfLess1()).asObject();
-                    return obsInt;
-                }
-            });
+        columnF5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().F5to14ForTable();
+            }
+        });
 
-            columnF1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF1to4()).asObject();
-                    return obsInt;
-                }
-            });
+        columnF14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().F15to29ForTable();
+            }
+        });
 
-            columnF5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF5to14()).asObject();
-                    return obsInt;
-                }
-            });
+        columnF28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().F30to64ForTable();
+            }
+        });
 
-            columnF14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF15to29()).asObject();
-                    return obsInt;
-                }
-            });
+        columnFgreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
+            @Override
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
+                return param.getValue().fGreater65ForTable();
+            }
+        });
 
-            columnF28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getF30to64()).asObject();
-                    return obsInt;
-                }
-            });
-
-            columnFgreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AgeScale, Integer>, ObservableValue<Integer>>() {
-                @Override
-                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<AgeScale, Integer> param) {
-                    ObservableValue<Integer> obsInt = new SimpleIntegerProperty(temp.getAge().getfGreater65()).asObject();
-                    return obsInt;
-                }
-            });
-
+        for(DiseaseRecord temp: diseaseRecordList){
             observableList.add(temp);
         }
+
         diseaseTable.setItems(observableList);
-
-
     }
 
     /* this function inserts data from the database to the pendingTable */
@@ -356,7 +339,33 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     void goToDisease(ActionEvent event) {
-        populateDiseaseTable();
+        handleTodayDiseaseButton(event);
+    }
+
+    @FXML
+    void handleTodayDiseaseButton(ActionEvent event) {
+        String command;
+        LocalDate date = LocalDate.now();
+        command = "from DiseaseRecord where date = " + DateTimeFormatter.BASIC_ISO_DATE.format(date);
+        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData(command);
+        populateDiseaseTable(diseaseRecordList);
+        goToView(true,false,false);
+    }
+
+    @FXML
+    void handleYestardayDiseaseButton(ActionEvent event) {
+        String command;
+        LocalDate date = LocalDate.now().minusDays(1);
+        command = "from DiseaseRecord where date = " + DateTimeFormatter.BASIC_ISO_DATE.format(date);
+        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData(command);
+        populateDiseaseTable(diseaseRecordList);
+        goToView(true,false,false);
+    }
+
+    @FXML
+    void handleAllDiseaseButton(ActionEvent event) {
+        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData("from DiseaseRecord");
+        populateDiseaseTable(diseaseRecordList);
         goToView(true,false,false);
     }
 

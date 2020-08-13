@@ -122,7 +122,7 @@ public class DoctorPatientView implements Initializable{
 
     @FXML
     void handleOutPatientButton(ActionEvent event) throws IOException {
-        new WindowChangeController().popupWindow(event, "../View/NewOutPatient.fxml");
+        new WindowChangeController().outPatientView(event, "../View/NewOutPatient.fxml");
     }
 
     @FXML

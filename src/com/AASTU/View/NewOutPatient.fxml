@@ -12,7 +12,7 @@
       <AnchorPane prefHeight="400.0" prefWidth="463.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 1;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
             <Label alignment="CENTER" layoutX="67.0" layoutY="108.0" prefHeight="31.0" prefWidth="57.0" style="-fx-background-color: #01579B;" text="ID" textFill="WHITE" />
-            <JFXTextField layoutX="146.0" layoutY="108.0" prefHeight="31.0" prefWidth="171.0" style="-fx-border-color: #01579B;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="idFld" editable="false" layoutX="146.0" layoutY="108.0" prefHeight="31.0" prefWidth="171.0" style="-fx-border-color: #01579B;" unFocusColor="WHITE" />
             <Label alignment="CENTER" layoutX="67.0" layoutY="169.0" prefHeight="31.0" prefWidth="57.0" style="-fx-background-color: #01579B;" text="Start" textFill="WHITE" />
             <Label alignment="CENTER" layoutX="67.0" layoutY="238.0" prefHeight="31.0" prefWidth="57.0" style="-fx-background-color: #01579B;" text="End" textFill="WHITE" />
             <JFXDatePicker fx:id="startDate" defaultColor="#01579b" layoutX="146.0" layoutY="169.0" prefHeight="31.0" prefWidth="171.0" style="-fx-border-color: #01579B;" />
