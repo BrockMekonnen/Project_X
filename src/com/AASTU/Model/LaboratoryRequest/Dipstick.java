@@ -99,6 +99,16 @@ public class Dipstick {
     }
 
     public Dipstick(){
+        this.testColor = new TestProperty("",50,false);
+        this.appearance = new TestProperty("",51,false);
+        this.ph = new TestProperty("",52,false);
+        this.psg = new TestProperty("",53,false);
+        this.protein = new TestProperty("",54,false);
+        this.glucose = new TestProperty("",55,false);
+        this.ketone = new TestProperty("",56,false);
+        this.bilrubin = new TestProperty("",57,false);
+        this.urobilinogen = new TestProperty("",58,false);
+        this.blood = new TestProperty("",59,false);
 
     }
 

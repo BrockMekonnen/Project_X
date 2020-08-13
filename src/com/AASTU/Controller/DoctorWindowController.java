@@ -289,7 +289,8 @@ public class DoctorWindowController implements Initializable {
     }
 
     /* this function inserts data from the database to the pendingTable */
-    private void populatePendingTable(){
+    private void populatePendingTable(String command){
+
         pendingTable.setRowFactory(tv -> {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
@@ -304,13 +305,14 @@ public class DoctorWindowController implements Initializable {
             });
             return row ;
         });
+
         columnId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         columnFirst.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
         columnLast.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
         columnSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where docActives = 1"); // get list of data from the database
+        List<Patient> patientList = new DataLoader().loadSpecificPatientData(command); // get list of data from the database
         for(Patient temp: patientList){
             observableList.add(temp); // change each object from list to observableList
         }
@@ -320,8 +322,21 @@ public class DoctorWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         transition();
+        populatePendingTable("from Patient where docActives = 1");
         goToPending();
 
+    }
+
+    @FXML
+    void handleCardButton(ActionEvent event) {
+        populatePendingTable("from Patient where docActives = 1 and fromSec = 1");
+        goToPending();
+    }
+
+    @FXML
+    void handleLabButton(ActionEvent event) {
+        populatePendingTable("from Patient where docActives = 1 and fromLab = 1");
+        goToPending();
     }
 
     private void goToView(boolean disease, boolean pending, boolean record){
@@ -332,14 +347,12 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     void goToPending(ActionEvent event) {
-        populatePendingTable();
+        populatePendingTable("from Patient where docActives = 1");
         goToView(false,true,false);
     }
-    void goToPending() {
-        populatePendingTable();
+    void goToPending(){
         goToView(false,true,false);
     }
-
 
     @FXML
     void goToDisease(ActionEvent event) {

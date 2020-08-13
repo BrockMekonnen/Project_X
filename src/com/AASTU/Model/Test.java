@@ -18,7 +18,6 @@ public class Test {
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
                                 .addAnnotatedClass(Patient.class)
-                                .addAnnotatedClass(OutPatient.class)
                                 .addAnnotatedClass(ClinicalNotes.class)
                                 .addAnnotatedClass(TestProperty.class)
                                 .addAnnotatedClass(Parasitology.class)
@@ -64,21 +63,21 @@ public class Test {
 
             DiseaseRecord record2=new DiseaseRecord(LocalDate.now(),"tiphoyid",new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6));
 
-            OutPatient patient = new OutPatient("Brock","Mk",44,'m',LocalDate.now(),"215487","city","cc","kk","5",LocalDate.now(),LocalDate.now());
-            Patient patient1 = new Patient("Brook","ML",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
-            Patient patient2 = new Patient("Aman","Ab",44,'m',LocalDate.now(),"326598","city","cc","kk","5");
-            Patient patient3 = new Patient("Biruk","Molla",44,'m',LocalDate.now(),"125465","city","cc","kk","5");
-            Patient patient4 = new Patient("Biruk","Mekonnen",44,'m',LocalDate.now(),"985412","city","cc","kk","5");
+
+            Patient patient1 = new Patient("Abrish","TD",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
+            Patient patient2 = new Patient("Alex","AD",44,'m',LocalDate.now(),"326598","city","cc","kk","5");
+            Patient patient3 = new Patient("Dagi","AB",44,'m',LocalDate.now(),"125465","city","cc","kk","5");
+            Patient patient4 = new Patient("Dagi","KB",44,'m',LocalDate.now(),"985412","city","cc","kk","5");
+            Patient patient5 = new Patient("Amani","AL",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
 
             ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"this is for test!","docId");
             ClinicalNotes clinicalNote2 = new ClinicalNotes(LocalDate.now(),"this is for another test!!","docId");
 
-            patient.addClincalNote(clinicalNote);
-            patient.addClincalNote(clinicalNote2);
-            patient.addLabRequest(lab);
-            patient.addLabRequest(lab2);
+            patient1.addClincalNote(clinicalNote);
+            patient1.addClincalNote(clinicalNote2);
+            patient1.addLabRequest(lab);
+            patient1.addLabRequest(lab2);
 
-            patient.setDocActives(true);
             patient1.setLabActives(true);
             patient2.setSecActives(true);
             patient3.setSecActives(true);
@@ -88,16 +87,21 @@ public class Test {
 
 
 
-//            session.save(patient);
+
 //            session.save(patient2);
 //            session.save(patient1);
 //            session.save(patient3);
 //            session.save(patient4);
 
-            List<Patient> patientList = session.createQuery("from Patient where patientStates = true").list();
-            for(Patient temp : patientList){
-                temp.setPatientStates(false);
-            }
+//            List<Patient> patientList = session.createQuery("from Patient where patientId = 1").list();
+//            List<Patient> patientList = session.createQuery("from Patient where patientId = 1").list();
+//            for(Patient temp : patientList){
+//                temp.setPatientStates(true);
+//            }
+            Patient obj = (Patient) session.load(Patient.class, 8);
+            obj.setSecActives(true);
+            obj.setOutPatinet(true);
+
 
 
 //            session.save(laboratory);
