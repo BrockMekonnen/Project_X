@@ -4,6 +4,7 @@ import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import sun.plugin.javascript.navig.AnchorArray;
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class LabToDocViewController implements Initializable {
 
@@ -40,11 +42,16 @@ public class LabToDocViewController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
+    public static Patient patient=new Patient();
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Editiablity();
+        exitBtn.setOnMouseClicked(event -> {
+            handleCloseButton();
+        });
     }
 
     public void Editiablity(){
@@ -56,12 +63,15 @@ public class LabToDocViewController implements Initializable {
 
     public void setWindow(Patient patient, String fxml){
         try{
+            this.patient=patient;
             FXMLLoader loader=new FXMLLoader(getClass().getResource(fxml));
             AnchorPane root=loader.load();
             LabToDoc contol=loader.getController();
             contol.VisibilityOfCheckBoxes();
+            contol.setObjectLabTestValue(patient);
             rootAnchor.getChildren().add(root);
             setObjectComponents(patient);
+            patient.setOnWaiting(true);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -77,4 +87,25 @@ public class LabToDocViewController implements Initializable {
 
     @FXML
     public void handleCloseButton(){WindowChangeController.closeWindow();}
+
+
+    @FXML
+    public void WaitingBtn(ActionEvent event){
+        try{
+        patient.setOnWaiting(true);
+        handleCloseButton();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void SendBtn(ActionEvent event){
+        try{
+            this.patient.setOnWaiting(false);
+            handleCloseButton();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

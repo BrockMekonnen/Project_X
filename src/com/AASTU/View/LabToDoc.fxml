@@ -66,7 +66,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="RBC_TF" layoutX="156.0" layoutY="246.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <JFXTextField fx:id="Hema_RBC_TF" layoutX="156.0" layoutY="246.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
                   <Label alignment="CENTER" layoutX="41.0" layoutY="278.0" prefHeight="27.0" prefWidth="115.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="HGB">
                      <font>
                         <Font size="13.0" />
@@ -388,19 +388,19 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <JFXTextField layoutX="156.0" layoutY="731.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <JFXTextField fx:id="Gram_Stain_TF" layoutX="156.0" layoutY="731.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
                   <Label alignment="CENTER" layoutX="41.0" layoutY="774.0" prefHeight="27.0" prefWidth="115.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Wet Film">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <JFXTextField layoutX="156.0" layoutY="774.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <JFXTextField fx:id="Wet_Film_TF" layoutX="156.0" layoutY="774.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
                   <Label alignment="CENTER" layoutX="41.0" layoutY="815.0" prefHeight="27.0" prefWidth="115.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="AFB">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <JFXTextField layoutX="156.0" layoutY="815.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
+                  <JFXTextField fx:id="AFB_TF" layoutX="156.0" layoutY="815.0" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" />
                   <Label alignment="CENTER" layoutX="41.0" layoutY="858.0" prefHeight="27.0" prefWidth="115.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="HIV/AIDS ">
                      <font>
                         <Font name="System Bold" size="14.0" />
@@ -418,8 +418,7 @@
                   <CheckBox fx:id="Wet_Film_CheckBox" layoutX="270.0" layoutY="772.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="AFB_CheckBox" layoutX="270.0" layoutY="813.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="HIV_AIDS_CheckBox" layoutX="270.0" layoutY="856.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="123.0" layoutX="28.0" layoutY="32.0" stroke="#01579b" strokeType="INSIDE" width="285.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-                  <Label layoutX="39.0" layoutY="33.0" prefHeight="25.0" prefWidth="181.0" text="OTHER" textFill="#01579b" underline="true">
+                  <Label layoutX="66.0" layoutY="704.0" prefHeight="25.0" prefWidth="181.0" text="OTHER" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
