@@ -106,6 +106,18 @@ public class Chemistry {
     }
 
     public Chemistry() {
+        this.fbs = new TestProperty("",61,false);
+        this.rbs = new TestProperty("",62,false);
+        this.sgot = new TestProperty("",63,false);
+        this.sgpt = new TestProperty("",64,false);
+        this.AlkalinePhosphate = new TestProperty("",65,false);
+        this.bilirubinTotal = new TestProperty("",66,false);
+        this.bilirubinDirect = new TestProperty("",67,false);
+        this.bun = new TestProperty("",68,false);
+        this.creatinine = new TestProperty("",69,false);
+        this.uricAcid = new TestProperty("",70,false);
+        this.totalProtein = new TestProperty("",71,false);
+        this.cholesterol = new TestProperty("",72,false);
     }
 
     public TestProperty getFbs() {

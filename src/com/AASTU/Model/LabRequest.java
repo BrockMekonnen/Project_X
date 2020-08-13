@@ -31,6 +31,19 @@ public class LabRequest {
     private Serology serology;
 
     public LabRequest(){
+        this.serology = new Serology();
+        this.cbs = new Cbs();
+        this.others = new Others();
+        this.dipistic = new Dipstick();
+        this.chemistry = new Chemistry();
+        this.microscopy = new Microscopy();
+        this.bacterology = new Bacteriology();
+        this.parasitology = new Parasitology();
+
+        this.requestDate = LocalDate.now();
+        this.physicianId = "";
+        this.labTechnicianId = "";
+
     }
 
     public LabRequest(String labTechnicianId, String physicianId, LocalDate requestDate, Parasitology parasitology, Bacteriology bacterology, Microscopy microscopy, Chemistry chemistry, Dipstick dipistic, Others others, Cbs cbs, Serology serology) {

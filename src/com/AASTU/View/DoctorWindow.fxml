@@ -316,7 +316,7 @@
           </AnchorPane>
       <AnchorPane layoutX="245.0" layoutY="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
          <children>
-              <AnchorPane fx:id="pendingPnl" prefHeight="641.0" prefWidth="1105.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+              <AnchorPane fx:id="pendingPnl" prefHeight="641.0" prefWidth="1105.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
                <children>
                   <TableView fx:id="pendingTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
                     <columns>
@@ -333,14 +333,14 @@
                   </TableView>
                   <Pane prefHeight="28.0" prefWidth="1103.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Card" />
-                        <JFXButton buttonType="RAISED" layoutX="151.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Lab" />
-                        <JFXButton buttonType="RAISED" layoutX="302.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                        <JFXButton buttonType="RAISED" onAction="#handleCardButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Card" />
+                        <JFXButton buttonType="RAISED" layoutX="151.0" onAction="#handleLabButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Lab" />
+                        <JFXButton buttonType="RAISED" layoutX="302.0" onAction="#goToPending" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
                      </children>
                   </Pane>
                </children>
               </AnchorPane>
-              <AnchorPane fx:id="diseasePnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+              <AnchorPane fx:id="diseasePnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane prefHeight="28.0" prefWidth="1103.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>

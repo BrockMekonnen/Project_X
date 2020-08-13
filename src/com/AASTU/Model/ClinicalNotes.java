@@ -17,9 +17,13 @@ public class ClinicalNotes {
     private String notes;
 
     //to identify The Doctor who writes the Clinical note or who treats the patient
+    @Column(name = "doctorId")
     private String DoctorId;
 
-    public ClinicalNotes() {}
+    public ClinicalNotes() {
+        date = LocalDate.now();
+        notes = "";
+    }
 
     public ClinicalNotes(LocalDate date, String notes, String doctorId) {
         this.date = date;
@@ -41,6 +45,14 @@ public class ClinicalNotes {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getDoctorId() {
+        return DoctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        DoctorId = doctorId;
     }
 
     @Override

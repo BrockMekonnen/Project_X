@@ -3,7 +3,6 @@ package com.AASTU.Controller;
 import com.AASTU.Model.ClinicalNotes;
 import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.LaboratoryRequest.*;
-import com.AASTU.Model.OutPatient;
 import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -115,7 +114,6 @@ public class SecretaryPatientView implements Initializable {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
-                .addAnnotatedClass(OutPatient.class)
                 .addAnnotatedClass(ClinicalNotes.class)
                 .addAnnotatedClass(TestProperty.class)
                 .addAnnotatedClass(Parasitology.class)

@@ -50,7 +50,11 @@ public class Microscopy {
     }
 
     public Microscopy(){
-
+        this.epitCells = new TestProperty("",41,false);
+        this.wbc = new TestProperty("",42,false);
+        this.rbc = new TestProperty("",43,false);
+        this.casts = new TestProperty("",44,false);
+        this.bacteria = new TestProperty("",45,false);
     }
 
     public TestProperty getEpitCells() {
