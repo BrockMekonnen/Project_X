@@ -88,8 +88,8 @@ public class DoctorPatientView implements Initializable{
     }
 
     @FXML
-    void handleButtonAction(ActionEvent event) throws IOException {
-        new WindowChangeController().popupWindow(event,"../View/ClinicalNoteAdd.fxml");
+    void handleAddNoteButton(ActionEvent event) throws IOException {
+        new WindowChangeController().clinicalNotesView(event,"../View/ClinicalNoteAdd.fxml");
     }
 
     /* this function accepts Patient Object and assign

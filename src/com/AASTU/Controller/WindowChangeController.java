@@ -22,6 +22,7 @@ public class WindowChangeController {
     private Stage stage;
     private static Stage popupStage[]= new Stage[5];
     private static int windowCount=0;
+
     private static Patient tempObject;
 
     private double width,height;
@@ -65,8 +66,42 @@ public class WindowChangeController {
         temp.showAndWait();
     }
 
-    /* this function accepts mouse event, string text and patient object
-     * and create a window that pops up with information inside of patient object */
+    public void outPatientView(ActionEvent event, String fxml) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        NewOutPatient view = loader.getController();
+
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.centerOnScreen();
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+    }
+
+    public void clinicalNotesView(ActionEvent event, String fxml) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        ClinicalNoteAdd view = loader.getController();
+        view.setPatient(tempObject);
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.centerOnScreen();
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+    }
+
+    /** this function accepts mouse event, string text and patient object
+     * and create a window that pops up with information inside of patient object **/
     public void popupWindow(MouseEvent event, String fxml, Patient obj) throws IOException {
         tempObject = obj;
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));

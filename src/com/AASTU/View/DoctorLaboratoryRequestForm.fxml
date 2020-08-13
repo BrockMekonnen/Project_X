@@ -232,12 +232,12 @@
                         <Insets top="179.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="FBS" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="fbs" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="FBS" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="195.0" />
                      </StackPane.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBS" textFill="#01579b" unCheckedColor="#01579b">
+                  <JFXCheckBox fx:id="rbs" checkedColor="#01579b" prefHeight="30.0" prefWidth="100.0" text="RBS" textFill="#01579b" unCheckedColor="#01579b">
                      <StackPane.margin>
                         <Insets bottom="138.0" />
                      </StackPane.margin>

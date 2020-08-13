@@ -19,7 +19,6 @@ public class DataLoader {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
-                .addAnnotatedClass(OutPatient.class)
                 .addAnnotatedClass(ClinicalNotes.class)
                 .addAnnotatedClass(TestProperty.class)
                 .addAnnotatedClass(Parasitology.class)

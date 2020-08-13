@@ -119,7 +119,7 @@
       </AnchorPane>
       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="481.0" prefWidth="1231.0" stylesheets="@DoctorPatientView.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="204.0">
          <content>
-            <VBox fx:id="pnl_Scroll" alignment="TOP_CENTER" maxHeight="600.0" maxWidth="-Infinity" prefHeight="541.0" prefWidth="1061.0" spacing="20.0" style="-fx-background-color: transparent;">
+            <VBox fx:id="pnl_Scroll" alignment="TOP_CENTER" maxHeight="600.0" maxWidth="-Infinity" prefHeight="552.0" prefWidth="1229.0" spacing="20.0" style="-fx-background-color: transparent;">
                <padding>
                   <Insets bottom="80.0" left="100.0" top="10.0" />
                </padding>
@@ -142,7 +142,7 @@
       </AnchorPane>
       <Pane prefHeight="60.0" prefWidth="773.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <children>
-            <JFXButton fx:id="btn_addNote" buttonType="RAISED" layoutX="294.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleButtonAction" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #f3f3f3e1; -fx-border-width: 2 2 2 2;" text="Add New Note" textFill="WHITE" />
+            <JFXButton fx:id="btn_addNote" buttonType="RAISED" layoutX="294.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleAddNoteButton" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #f3f3f3e1; -fx-border-width: 2 2 2 2;" text="Add New Note" textFill="WHITE" />
             <JFXButton buttonType="RAISED" layoutX="579.0" layoutY="11.0" onAction="#handleBackButton" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579Ba2; -fx-border-width: 2 2 2 2;" text="Cancel" textFill="#01579b" />
             <JFXButton buttonType="RAISED" layoutX="439.0" layoutY="11.0" onAction="#handleOutPatientButton" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #fafafae1; -fx-border-width: 2 2 2 2;" text="Add Out Patient" textFill="WHITE" />
             <JFXButton fx:id="requestBtn" buttonType="RAISED" layoutX="149.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleRequestAction" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #0277BD; -fx-border-color: #f3f3f3e1; -fx-border-width: 2 2 2 2;" text="Lab Request" textFill="WHITE" />

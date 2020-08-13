@@ -29,6 +29,8 @@ public class Bacteriology {
     }
 
     public Bacteriology() {
+        this.hpyloriStool = new TestProperty("",98,false);
+        this.koh = new TestProperty("",99,false);
     }
 
     public TestProperty getHpyloriStool() {

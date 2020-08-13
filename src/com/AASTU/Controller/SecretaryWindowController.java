@@ -196,8 +196,8 @@ public class SecretaryWindowController implements Initializable {
 
 // getting patient lists from database
 List<Patient> allPatientList = new DataLoader().loadSpecificPatientData("from Patient");
-List<Patient> normalPatientList =new DataLoader().loadSpecificPatientData("from Patient p where p.pType = Patient");
-List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Patient p where p.pType = OutPatient");
+List<Patient> normalPatientList =new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0 and patientStates = 1");
+List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Patient where patientStates = 1 and outPatient = 1");
 
 
     @Override

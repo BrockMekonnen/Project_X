@@ -7,11 +7,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "patient")
-@DiscriminatorColumn(name = "pType")
 public class Patient {
 
-    @Column(insertable = false, updatable = false)
-    private String pType;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
@@ -36,8 +33,6 @@ public class Patient {
     private String kebele;
     @Column(name = "house_number")
     private String houseNumber;
-
-    //********* new **********
 
     @Column(name = "patientStates")
     private boolean patientStates;
@@ -66,7 +61,14 @@ public class Patient {
     @Column(name = "payment")
     private double payment;
 
-    //**********************
+    @Column(name = "outPatient")
+    private boolean outPatinet;
+
+    @Column(name = "startDate")
+    private LocalDate startDate;
+
+    @Column(name = "endDate")
+    private LocalDate endDate;
 
     @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name="patient_id")
@@ -76,7 +78,32 @@ public class Patient {
     @JoinColumn(name="patient_id")
     private List<LabRequest> requests;
 
-    public Patient(){}
+    public Patient(){
+        this.firstName = null;
+        this.lastName = null;
+        this.age = 0;
+        this.sex = 0;
+        this.date = null;
+        this.phoneNumber = null;
+        this.city = null;
+        this.subcity = null;
+        this.kebele = null;
+        this.houseNumber = null;
+        this.patientStates = false;
+        this.docActives = false;
+        this.labActives = false;
+        this.secActives = false;
+        this.fromLab = false;
+        this.fromSec = false;
+        this.payed = false;
+        this.onWaiting = false;
+        this.payment = 0;
+        this.outPatinet = false;
+        this.startDate = null;
+        this.endDate = null;
+        this.notes = null;
+        this.requests = null;
+    }
 
     public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber) {
         this.firstName = firstName;
@@ -90,6 +117,30 @@ public class Patient {
         this.kebele = kebele;
         this.houseNumber = houseNumber;
 
+    }
+
+    public boolean isOutPatinet() {
+        return outPatinet;
+    }
+
+    public void setOutPatinet(boolean outPatinet) {
+        this.outPatinet = outPatinet;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public boolean isFromLab() {
