@@ -103,6 +103,7 @@ public class PatientRegistration implements Initializable{
 
     public static LocalDate endDate;
 
+
     private char sex;
 
     // to check all text fields are get data
