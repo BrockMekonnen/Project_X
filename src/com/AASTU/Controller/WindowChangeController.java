@@ -71,7 +71,7 @@ public class WindowChangeController {
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         NewOutPatient view = loader.getController();
-
+        view.setPatient(tempObject);
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
