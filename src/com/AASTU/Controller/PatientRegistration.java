@@ -117,9 +117,58 @@ public class PatientRegistration implements Initializable{
         return true;
     }
 
+    public void saveNewPatient() {
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try {
+
+            session.beginTransaction();
+
+            if (cboGender.getValue().toString().equals("Male")) {
+                sex = 'm';
+            } else if (cboGender.getValue().toString().equals("Female")) {
+                sex = 'f';
+            }
+            //this if condition is temporary and it is not finished
+            if (NewOutPatient.isAdd && Warning.isOk) {
+                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+                outPatient.setStartDate(startDate);
+                outPatient.setPatientStates(true);
+                outPatient.setEndDate(endDate);
+                outPatient.setOutPatinet(true);
+                session.save(outPatient);
+                NewOutPatient.isAdd = false;
+            } else {
+                Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+                patient.setOutPatinet(false);
+                patient.setPatientStates(true);
+                session.save(patient);
+            }
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cboCalender.getSelectionModel().select("E.C");
+        patientAddedDateTF.setText(LocalDate.now().format( DateTimeFormatter.ofPattern("dd/LLLL/yyyy")));
     }
 
 
@@ -127,8 +176,7 @@ public class PatientRegistration implements Initializable{
         if(validatUserInput()) {
             new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
             if(Warning.isOk) {
-                WindowChangeController.closeWindow();
-                WindowChangeController.closeWindow();
+                saveNewPatient();
             }
         }
     }

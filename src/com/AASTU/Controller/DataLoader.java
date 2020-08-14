@@ -144,5 +144,64 @@ public class DataLoader {
         return clinicalNotesList;
 
     }
+    public double prices(int id) {
+        Pricing price;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pricing.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            price = session.get(Pricing.class, id);
+            System.out.println(price);
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+
+        return price.getPrice();
+
+    }
+
+    public List<LabRequest> labRequest(Patient tempPateint) {
+        List<LabRequest>  labRequest;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            System.out.println(tempPateint.getPatientId());
+            labRequest = session.createQuery("from LabRequest where patient_id = " + tempPateint.getPatientId()).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return labRequest;
+
+    }
+
 
 }
