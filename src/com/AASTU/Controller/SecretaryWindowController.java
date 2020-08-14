@@ -239,7 +239,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
             if(labRequest.getBacterology().getKoh().isTest()){
                 price = new DataLoader().prices(labRequest.getBacterology().getKoh().getPriceId());
                 total += price;
-                System.out.println("Price" + price);
             }if(labRequest.getBacterology().getHpyloriStool().isTest()){
                 price = new DataLoader().prices(labRequest.getBacterology().getHpyloriStool().getPriceId());
                 total += price;
@@ -435,12 +434,8 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
             }if(labRequest.getOthers().getWetFilm().isTest()){
                 price = new DataLoader().prices(labRequest.getOthers().getWetFilm().getPriceId());
                 total += price;
-            } else {
-                total = 0.0;
             }
-
         }
-        System.out.println(total);
         return total;
     }
     /**

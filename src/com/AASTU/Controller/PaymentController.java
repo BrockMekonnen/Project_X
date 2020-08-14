@@ -25,7 +25,6 @@ public class PaymentController implements Initializable{
     private JFXButton cancelBtn;
 
     public void setObject(Patient obj){
-
         double totalPrice = new SecretaryWindowController().calcTotalPayment(obj);
         String total = Double.toString(totalPrice);
         totalPriceTf.setText(total + " ETB.");

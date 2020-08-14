@@ -145,7 +145,7 @@ public class DataLoader {
 
     }
     public double prices(int id) {
-        Pricing price;
+        Pricing price = null;
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -158,8 +158,12 @@ public class DataLoader {
         try {
 
             session.beginTransaction();
-            price = session.get(Pricing.class, id);
-            System.out.println(price);
+            try {
+                price = session.get(Pricing.class, id);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
             session.getTransaction().commit();
 
         } finally {

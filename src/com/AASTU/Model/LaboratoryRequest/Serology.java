@@ -82,15 +82,15 @@ public class Serology {
     }
 
     public Serology() {
-        this.vdrl = new TestProperty("",11,false);
-        this.widal_II_h = new TestProperty("",12,false);
-        this.widal_II_o = new TestProperty("",13,false);
-        this.wellFelix = new TestProperty("",14,false);
-        this.hbsag = new TestProperty("",15,false);
-        this.crp = new TestProperty("",16,false);
-        this.aso = new TestProperty("",17,false);
-        this.rheumatoidFactor = new TestProperty("",18,false);
-        this.hpyloriSerum = new TestProperty("",19,false);
+        this.vdrl = new TestProperty("",58,false);
+        this.widal_II_h = new TestProperty("",59,false);
+        this.widal_II_o = new TestProperty("",60,false);
+        this.wellFelix = new TestProperty("",61,false);
+        this.hbsag = new TestProperty("",62,false);
+        this.crp = new TestProperty("",63,false);
+        this.aso = new TestProperty("",64,false);
+        this.rheumatoidFactor = new TestProperty("",45,false);
+        this.hpyloriSerum = new TestProperty("",66,false);
     }
 
     public TestProperty getVdrl() {
