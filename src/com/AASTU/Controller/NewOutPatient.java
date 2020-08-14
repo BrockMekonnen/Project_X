@@ -34,7 +34,12 @@ public class NewOutPatient implements Initializable {
     private JFXTextField idFld;
 
     private Patient patient;
-
+    public boolean validateUserInputForOut() {
+        if(startDate.getValue() == null || endDate.getValue() == null){
+            return false;
+        }
+        return true;
+    }
     @FXML
     void cancelWindow(ActionEvent event) {
         WindowChangeController.closeWindow();
@@ -49,12 +54,22 @@ public class NewOutPatient implements Initializable {
     void handleAddButton(ActionEvent event) throws IOException {
         LocalDate startDate = this.startDate.getValue();
         LocalDate endDate = this.endDate.getValue();
-        new DataSaver().saveOutPatient(patient, startDate, endDate);
+        if(validateUserInputForOut()){
+            new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
+            PatientRegistration patientRegistration= new PatientRegistration();
+            patientRegistration.startDate = startDate;
+            patientRegistration.endDate = endDate;
+            if(patient != null){
+            new DataSaver().saveOutPatient(patient, startDate, endDate);
+            }
+            isAdd = true;
+        }
+
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        idFld.setDisable(true);
     }
 }

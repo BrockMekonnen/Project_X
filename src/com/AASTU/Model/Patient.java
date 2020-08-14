@@ -329,7 +329,6 @@ public class Patient {
         if (requests == null) {
             requests = new ArrayList<>();
         }
-
         requests.add(labRequest);
     }
 

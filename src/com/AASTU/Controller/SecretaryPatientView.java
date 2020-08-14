@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class SecretaryPatientView implements Initializable {
 
-    public static Patient patientObj;
+    private  Patient patientObj;
     @FXML
     private AnchorPane rootPane;
 
@@ -151,6 +151,7 @@ public class SecretaryPatientView implements Initializable {
     /* this function accepts Patient Object and assign
     * some values to the textField */
     public void setObject(Patient object){
+        patientObj = object;
         String sex = null;
         if(object.getSex() == 'm') {
             sex = "Male";
@@ -194,7 +195,7 @@ public class SecretaryPatientView implements Initializable {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
             new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
-            updatePatientInfo(patientObj);
+            updatePatientInfo(this.patientObj);
         }
         editBtn.setText("Save");
     }
