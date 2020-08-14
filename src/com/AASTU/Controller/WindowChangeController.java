@@ -2,6 +2,8 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.Patient;
+import com.AASTU.Model.Pricing;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -16,6 +18,7 @@ import javafx.stage.StageStyle;
 
 import javax.print.Doc;
 import java.io.IOException;
+import java.util.List;
 
 public class WindowChangeController {
 
@@ -156,7 +159,7 @@ public class WindowChangeController {
 
     }
 
-    public void totalPaymentView(MouseEvent event,String fxml,Patient obj) throws IOException{
+    public void totalPaymentView(MouseEvent event, String fxml, Patient obj) throws IOException{
         tempObject = obj;
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();

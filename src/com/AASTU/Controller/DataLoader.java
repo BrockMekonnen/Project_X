@@ -144,6 +144,7 @@ public class DataLoader {
         return clinicalNotesList;
 
     }
+    // this function return each testProperty price
     public double prices(int id) {
         Pricing price = null;
 
@@ -206,6 +207,36 @@ public class DataLoader {
         return labRequest;
 
     }
+    // this method return each pricing obj
+    public Pricing priceObj(int id) {
+        Pricing price = null;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pricing.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            try {
+                price = session.get(Pricing.class, id);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
 
 
+        return price;
+
+    }
 }

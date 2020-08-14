@@ -116,8 +116,8 @@ public class LaboratoryWindowController implements Initializable {
     //The Id of Laboratory Technician አሁን የገባው hahaha
     public static String LaboratoryId="12";
 
-     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 0"));
-     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 0"));
+     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 1"));
+     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 1"));
 
      //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
      ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+LaboratoryId));

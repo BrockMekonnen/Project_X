@@ -30,9 +30,9 @@
                <children>
                   <TableView fx:id="paymentDetailTable" prefHeight="426.0" prefWidth="1000.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="2.0">
                     <columns>
-                      <TableColumn prefWidth="84.0" text="no" />
-                      <TableColumn prefWidth="584.0" text="Test Type" />
-                        <TableColumn prefWidth="331.0" text="Price" />
+                      <TableColumn fx:id="testNoCol" prefWidth="84.0" text="no" />
+                      <TableColumn fx:id="testTypeCol" prefWidth="584.0" text="Test Type" />
+                        <TableColumn fx:id="pricecol" prefWidth="331.0" text="Price" />
                     </columns>
                      <effect>
                         <InnerShadow color="#8a7f7f" />
