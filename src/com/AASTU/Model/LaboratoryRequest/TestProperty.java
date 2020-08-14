@@ -12,7 +12,7 @@ public class TestProperty {
 
     private boolean test;
 
-    public TestProperty(String value, int priceId, boolean test) {
+    public TestProperty(String value, final int priceId, boolean test) {
         this.value = value;
         this.priceId = priceId;
         this.test = test;
