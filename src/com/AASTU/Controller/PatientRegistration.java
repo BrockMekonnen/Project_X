@@ -150,7 +150,7 @@ public class PatientRegistration implements Initializable{
                 outPatient.setPatientStatus(true);
 
                 outPatient.setEndDate(endDate);
-                outPatient.setPatientStates(true);
+                outPatient.setPatientStatus(true);
                 outPatient.setOutPatinet(true);
                 outPatient.setFromSec(true);
                 outPatient.setDocActives(true);
@@ -160,7 +160,7 @@ public class PatientRegistration implements Initializable{
                 Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 patient.setOutPatinet(false);
 
-                patient.setPatientStates(true);
+                patient.setPatientStatus(true);
                 patient.setFromSec(true);
                 patient.setDocActives(true);
 

@@ -262,19 +262,9 @@ public class DataLoader {
         session.beginTransaction();
         try {
             price = session.get(Pricing.class, id);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        session.getTransaction().commit();
-
-        return price;
-
-
-
             session.getTransaction().commit();
-
-        } finally {
+        }
+        finally {
             factory.close();
             session.close();
         }
