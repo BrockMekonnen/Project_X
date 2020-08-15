@@ -1,5 +1,5 @@
 package com.AASTU.Controller;
 
-public class ExceptionHandling {
+public class ExceptionHandler {
 
 }

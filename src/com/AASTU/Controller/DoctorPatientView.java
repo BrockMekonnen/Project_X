@@ -1,28 +1,20 @@
 package com.AASTU.Controller;
 
 import com.AASTU.Model.ClinicalNotes;
+import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.Patient;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -63,6 +55,8 @@ public class DoctorPatientView implements Initializable{
     @FXML
     private JFXTextField idFld;
 
+    private Patient patient;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -95,6 +89,7 @@ public class DoctorPatientView implements Initializable{
     /* this function accepts Patient Object and assign
      * some values to the textField */
     public void setObject(Patient object){
+        this.patient = object;
         nameFld.setText(object.getFirstName() + " " + object.getLastName());
         ageFld.setText(( String.valueOf(object.getAge())));
         sexFld.setText(String.valueOf(object.getSex()));
@@ -137,6 +132,33 @@ public class DoctorPatientView implements Initializable{
 
     @FXML
     void handleMaxButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleCloseCaseButton(ActionEvent event) {
+        DataSaver saver = new DataSaver();
+
+        patient.setDocActives(false);
+        patient.setPatientStatus(false);
+        patient.setFromSec(false);
+        patient.setFromLab(false);
+
+        LabRequest request = new DataLoader().loadLabRequest(patient);
+        if(request != null){
+            request.setViewable(false);
+            saver.saveEditedLabResult(request, false);
+        }
+
+        ClinicalNotes note = new DataLoader().loadClinicalNote(patient);
+        if(note != null){
+            saver.saveEditedClinicalNote(note.getNoteId(), false);
+        }
+
+        saver.saveEditedPatient(patient);
+
+        System.out.println(patient.isDocActives());
+        System.out.println(patient.isPatientStatus());
 
     }
 }

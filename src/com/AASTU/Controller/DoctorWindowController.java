@@ -3,6 +3,7 @@ package com.AASTU.Controller;
 import com.AASTU.Model.AgeScale;
 import com.AASTU.Model.DiseaseRecord;
 import com.AASTU.Model.Patient;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -147,6 +148,9 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private TableColumn<Patient, LocalDate> columnRecordDate;
 
+    @FXML
+    private JFXButton allDiseaseBtn;
+
     private void populateRecordTable(){
         columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         columnRecordDate.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
@@ -155,7 +159,7 @@ public class DoctorWindowController implements Initializable {
         columnRecordSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnRecordAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where patientStates=1");
+        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0");
         for(Patient temp: patientList){
             observableList.add(temp);
         }
@@ -305,7 +309,7 @@ public class DoctorWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         transition();
-        populatePendingTable("from Patient where docActives = 0");
+        populatePendingTable("from Patient where docActives = 1");
         goToPending();
 
     }

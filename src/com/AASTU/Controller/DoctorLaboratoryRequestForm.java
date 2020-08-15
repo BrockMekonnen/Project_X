@@ -426,6 +426,13 @@ public class DoctorLaboratoryRequestForm implements Initializable {
 
         new DataSaver().saveLabResult(patient, labRequest);
 
+        patient.setSecActives(true);
+        patient.setDocActives(false);
+        patient.setFromSec(false);
+        patient.setPayed(false);
+
+        new DataSaver().saveEditedPatient(patient);
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

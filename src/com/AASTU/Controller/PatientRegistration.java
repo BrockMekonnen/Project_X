@@ -1,13 +1,11 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Main;
 import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
 import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -148,6 +146,9 @@ public class PatientRegistration implements Initializable{
             if (NewOutPatient.isAdd && Warning.isOk) {
                 Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 outPatient.setStartDate(startDate);
+
+                outPatient.setPatientStatus(true);
+
                 outPatient.setEndDate(endDate);
                 outPatient.setPatientStates(true);
                 outPatient.setOutPatinet(true);
@@ -158,9 +159,13 @@ public class PatientRegistration implements Initializable{
             } else {
                 Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 patient.setOutPatinet(false);
+
                 patient.setPatientStates(true);
                 patient.setFromSec(true);
                 patient.setDocActives(true);
+
+                patient.setPatientStatus(true);
+
                 session.save(patient);
             }
             session.getTransaction().commit();

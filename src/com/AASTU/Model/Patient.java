@@ -13,29 +13,39 @@ public class Patient {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private int patientId;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "age")
     private int age;
+
     @Column(name = "sex")
     private char sex;
+
     @Column(name = "added_date")
     private LocalDate date;
+
     @Column(name = "phone_number")
     private String phoneNumber;
+
     @Column(name = "city")
     private String city;
+
     @Column(name = "sub_city")
     private String subcity;
+
     @Column(name = "kebele")
     private String kebele;
+
     @Column(name = "house_number")
     private String houseNumber;
 
-    @Column(name = "patientStates")
-    private boolean patientStates;
+    @Column(name = "patientStatus")
+    private boolean patientStatus;
 
     @Column(name = "docActives")
     private boolean docActives;
@@ -89,7 +99,7 @@ public class Patient {
         this.subcity = null;
         this.kebele = null;
         this.houseNumber = null;
-        this.patientStates = false;
+        this.patientStatus = false;
         this.docActives = false;
         this.labActives = false;
         this.secActives = false;
@@ -183,12 +193,12 @@ public class Patient {
         this.payment = payment;
     }
 
-    public boolean isPatientStates() {
-        return patientStates;
+    public boolean isPatientStatus() {
+        return patientStatus;
     }
 
-    public void setPatientStates(boolean patientStates) {
-        this.patientStates = patientStates;
+    public void setPatientStatus(boolean patientStatus) {
+        this.patientStatus = patientStatus;
     }
 
     public boolean isDocActives() {
