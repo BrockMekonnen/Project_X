@@ -45,10 +45,10 @@ public class Others {
     }
 
     public Others() {
-        this.gramStain = new TestProperty("",31,false);
-        this.wetFilm = new TestProperty("",32,false);
-        this.afb = new TestProperty("",33,false);
-        this.hivAids = new TestProperty("",34,false);
+        this.gramStain = new TestProperty("",47,false);
+        this.wetFilm = new TestProperty("",48,false);
+        this.afb = new TestProperty("",49,false);
+        this.hivAids = new TestProperty("",50,false);
     }
 
     public TestProperty getGramStain() {

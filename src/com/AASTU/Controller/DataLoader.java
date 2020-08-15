@@ -145,8 +145,9 @@ public class DataLoader {
         return clinicalNotesList;
 
     }
+    // this function return each testProperty price
     public double prices(int id) {
-        Pricing price;
+        Pricing price = null;
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -159,8 +160,12 @@ public class DataLoader {
         try {
 
             session.beginTransaction();
-            price = session.get(Pricing.class, id);
-            System.out.println(price);
+            try {
+                price = session.get(Pricing.class, id);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
             session.getTransaction().commit();
 
         } finally {
@@ -203,6 +208,32 @@ public class DataLoader {
         return labRequest;
 
     }
+    // this method return each pricing obj
+    public Pricing priceObj(int id) {
+        Pricing price = null;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pricing.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            try {
+                price = session.get(Pricing.class, id);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+            session.getTransaction().commit();
+          
+            return price;
+
+    }
 
 
     public Patient loadSinglePatinetObject(Patient patient){
@@ -233,12 +264,14 @@ public class DataLoader {
             obj = (Patient) session.load(Patient.class, id);
 
             session.getTransaction().commit();
+
         } finally {
             factory.close();
             session.close();
         }
         return obj;
     }
+      
     public ArrayList<String> loadDiseaseType(){
 
         ArrayList<String> list = new ArrayList<String>();

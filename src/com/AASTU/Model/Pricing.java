@@ -11,11 +11,27 @@ public class Pricing {
     @Column(name = "Price")
     private double price;
 
+    @Column(name = "Test_name")
+    private String testName;
+
+    
+
+    public Pricing(double price, String testName) {
+
 
     public Pricing() {}
 
     public Pricing(double price) {
         this.price = price;
+        this.testName = testName;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
     }
 
     public int getPriceId() {
@@ -39,6 +55,7 @@ public class Pricing {
         return "Pricing{" +
                 "priceId=" + priceId +
                 ", price=" + price +
+                ", testName='" + testName + '\'' +
                 '}';
     }
 }

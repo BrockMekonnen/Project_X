@@ -312,7 +312,7 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     void handleCardButton(ActionEvent event) {
-        populatePendingTable("from Patient where docActives = 0 and fromSec = 0");
+        populatePendingTable("from Patient where docActives = 1 and fromSec = 1");
         goToPending();
     }
 
