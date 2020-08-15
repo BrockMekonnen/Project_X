@@ -45,6 +45,39 @@ public class DataSaver {
         }
     }
 
+    public void saveEditedLabResult(LabRequest request, boolean viewable){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            int id = request.getId();
+
+            LabRequest obj = (LabRequest) session.load(LabRequest.class, id);
+            obj.setViewable(viewable);
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
     public void saveClinicalNote(Patient patient, ClinicalNotes note){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -77,6 +110,7 @@ public class DataSaver {
             session.close();
         }
     }
+
 
     public void saveOutPatient(Patient patient, LocalDate startDate, LocalDate endDate){
         SessionFactory factory = new Configuration()
@@ -112,6 +146,61 @@ public class DataSaver {
         }
     }
 
+    public void saveEditedPatient(Patient patient){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            int id = patient.getPatientId();
+
+            Patient obj = (Patient) session.load(Patient.class, id);
+
+            obj.setFirstName(patient.getFirstName());
+            obj.setLastName(patient.getLastName());
+            obj.setAge(patient.getAge());
+            obj.setSex(patient.getSex());
+            obj.setDate(patient.getDate());
+            obj.setPhoneNumber(patient.getPhoneNumber());
+            obj.setCity(patient.getCity());
+            obj.setSubcity(patient.getSubcity());
+            obj.setKebele(patient.getKebele());
+            obj.setHouseNumber(patient.getHouseNumber());
+            obj.setPatientStatus(patient.isPatientStatus());
+            obj.setDocActives(patient.isDocActives());
+            obj.setLabActives(patient.isLabActives());
+            obj.setSecActives(patient.isSecActives());
+            obj.setFromLab(patient.isFromLab());
+            obj.setFromSec(patient.isFromSec());
+            obj.setPayed(patient.isPayed());
+            obj.setOnWaiting(patient.isOnWaiting());
+            obj.setPayment(patient.getPayment());
+            obj.setOutPatinet(patient.isOutPatinet());
+            obj.setStartDate(patient.getStartDate());
+            obj.setEndDate(patient.getEndDate());
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
     public void saveEditedClinicalNote(int id, String note){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -135,6 +224,37 @@ public class DataSaver {
 
             ClinicalNotes obj = (ClinicalNotes) session.load(ClinicalNotes.class, id);
             obj.setNotes(note);
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void saveEditedClinicalNote(int id, boolean editable){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            ClinicalNotes obj = (ClinicalNotes) session.load(ClinicalNotes.class, id);
+            obj.setEditable(editable);
 
             session.getTransaction().commit();
         } finally {
