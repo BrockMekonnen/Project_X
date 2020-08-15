@@ -220,18 +220,20 @@ public class DataLoader {
 
         Session session = factory.getCurrentSession();
 
+
+
+        session.beginTransaction();
         try {
+            price = session.get(Pricing.class, id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-            session.beginTransaction();
-            try {
-                price = session.get(Pricing.class, id);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+        session.getTransaction().commit();
 
-            session.getTransaction().commit();
-          
-            return price;
+        return price;
+
+
 
     }
 

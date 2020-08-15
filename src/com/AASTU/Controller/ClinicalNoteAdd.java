@@ -32,6 +32,7 @@ public class ClinicalNoteAdd implements Initializable{
     @FXML
     private JFXTextArea textArea;
 
+
     private List<ClinicalNotes> clinicalNotesList;
     private Patient patient;
 

@@ -3,6 +3,7 @@ package com.AASTU.Controller;
 import com.AASTU.Model.AgeScale;
 import com.AASTU.Model.DiseaseRecord;
 import com.AASTU.Model.Patient;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -146,6 +147,9 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     private TableColumn<Patient, LocalDate> columnRecordDate;
+
+    @FXML
+    private JFXButton allDiseaseBtn;
 
     private void populateRecordTable(){
         columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
@@ -305,7 +309,7 @@ public class DoctorWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         transition();
-        populatePendingTable("from Patient where docActives = 0");
+        populatePendingTable("from Patient where docActives = 1");
         goToPending();
 
     }

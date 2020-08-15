@@ -124,7 +124,7 @@
                 </JFXButton>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <AnchorPane fx:id="profileOpacityPane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000020;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
           <AnchorPane fx:id="profilePane" prefHeight="619.0" prefWidth="480.0" style="-fx-background-color: #E1F5FE; -fx-background-radius: 20px;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="109.0">
               <children>
             <Pane prefHeight="52.0" prefWidth="510.0" style="-fx-background-radius: 20 20 0 0; -fx-background-color: #01579B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -346,7 +346,7 @@
                      <children>
                         <JFXButton buttonType="RAISED" onAction="#handleTodayDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Today" />
                         <JFXButton buttonType="RAISED" layoutX="151.0" onAction="#handleYestardayDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yestarday" />
-                        <JFXButton buttonType="RAISED" layoutX="302.0" onAction="#handleAllDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                        <JFXButton fx:id="allDiseaseBtn" buttonType="RAISED" layoutX="302.0" onAction="#handleAllDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
                      </children>
                   </Pane>
                   <TableView fx:id="diseaseTable" layoutY="36.0" prefHeight="608.0" prefWidth="1103.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
