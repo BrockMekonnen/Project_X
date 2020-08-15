@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name= "pricing")
 public class Pricing {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int priceId;
     @Column(name = "Price")
     private double price;
@@ -17,14 +17,13 @@ public class Pricing {
     
 
     public Pricing(double price, String testName) {
+        this.price = price;
+        this.testName = testName;
+    }
 
 
     public Pricing() {}
 
-    public Pricing(double price) {
-        this.price = price;
-        this.testName = testName;
-    }
 
     public String getTestName() {
         return testName;
