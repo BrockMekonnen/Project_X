@@ -567,7 +567,9 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
         });
         ObservableList<Patient> patientsList = FXCollections.observableArrayList();
         for(Patient tempPatent: allPatientList){
+            if(tempPatent.isPayed()){
             patientsList.add(tempPatent);
+            }
         }
         paymentTable.setItems(patientsList);
     }
