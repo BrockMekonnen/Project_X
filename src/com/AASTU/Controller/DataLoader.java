@@ -145,6 +145,43 @@ public class DataLoader {
         return clinicalNotesList;
 
     }
+
+    public ClinicalNotes loadClinicalNote(Patient object){
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        List<ClinicalNotes> clinicalNotesList;
+        ClinicalNotes note = null;
+        try {
+
+            session.beginTransaction();
+            String quiry = "from ClinicalNotes where patient_id = " + object.getPatientId();
+            clinicalNotesList = session.createQuery(quiry).list();
+
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        for(ClinicalNotes temp: clinicalNotesList){
+            if(temp.isEditable()){
+                note = temp;
+            }
+        }
+        return  note;
+    }
+
     // this function return each testProperty price
     public double prices(int id) {
         Pricing price = null;
