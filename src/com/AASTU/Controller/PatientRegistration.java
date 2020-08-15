@@ -148,15 +148,19 @@ public class PatientRegistration implements Initializable{
             if (NewOutPatient.isAdd && Warning.isOk) {
                 Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 outPatient.setStartDate(startDate);
-                outPatient.setPatientStates(true);
                 outPatient.setEndDate(endDate);
+                outPatient.setPatientStates(true);
                 outPatient.setOutPatinet(true);
+                outPatient.setFromSec(true);
+                outPatient.setDocActives(true);
                 session.save(outPatient);
                 NewOutPatient.isAdd = false;
             } else {
                 Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 patient.setOutPatinet(false);
                 patient.setPatientStates(true);
+                patient.setFromSec(true);
+                patient.setDocActives(true);
                 session.save(patient);
             }
             session.getTransaction().commit();

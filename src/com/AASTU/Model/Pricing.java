@@ -16,12 +16,10 @@ public class Pricing {
 
     
 
-    public Pricing(double price, String testName) {
-
 
     public Pricing() {}
 
-    public Pricing(double price) {
+    public Pricing(double price, String testName) {
         this.price = price;
         this.testName = testName;
     }

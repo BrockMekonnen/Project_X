@@ -150,7 +150,11 @@ public class SecretaryPatientView implements Initializable {
     }
     /* this function accepts Patient Object and assign
     * some values to the textField */
-    public void setObject(Patient object){
+    public void setObject(Patient object, boolean visiblity){
+        if(!visiblity){
+        activateBtn.setVisible(visiblity);
+        editBtn.setTranslateX(100);
+        }
         patientObj = object;
         String sex = null;
         if(object.getSex() == 'm') {
@@ -178,7 +182,34 @@ public class SecretaryPatientView implements Initializable {
      * */
     @FXML
     void activateBtnHandler(ActionEvent event) {
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
 
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            Patient activePatient = session.get(Patient.class, patientObj.getPatientId());
+            activePatient.setDocActives(true);
+            activePatient.setFromSec(true);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
     }
 
     @FXML
