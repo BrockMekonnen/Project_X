@@ -272,6 +272,15 @@ public class DataLoader {
 
 
 
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+            return price;
+
+
     }
 
 

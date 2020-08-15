@@ -16,13 +16,17 @@ public class Pricing {
 
     
 
+
+
+    public Pricing() {}
+
     public Pricing(double price, String testName) {
         this.price = price;
         this.testName = testName;
     }
 
 
-    public Pricing() {}
+    
 
 
     public String getTestName() {

@@ -17,23 +17,26 @@ public class Test {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-
-                                .addAnnotatedClass(Pricing.class)
                                 .addAnnotatedClass(DiseaseType.class)
-                                .addAnnotatedClass(Patient.class)
-                                .addAnnotatedClass(ClinicalNotes.class)
-                                .addAnnotatedClass(TestProperty.class)
-                                .addAnnotatedClass(Parasitology.class)
-                                .addAnnotatedClass(Bacteriology.class)
-                                .addAnnotatedClass(Microscopy.class)
-                                .addAnnotatedClass(Chemistry.class)
-                                .addAnnotatedClass(Dipstick.class)
-                                .addAnnotatedClass(Others.class)
-                                .addAnnotatedClass(Cbs.class)
-                                .addAnnotatedClass(Serology.class)
-                                .addAnnotatedClass(LabRequest.class)
-                                .addAnnotatedClass(DiseaseRecord.class)
-                                .addAnnotatedClass(AgeScale.class)
+
+                               .addAnnotatedClass(Pricing.class)
+                               .addAnnotatedClass(DiseaseType.class)
+                               .addAnnotatedClass(Patient.class)
+                               .addAnnotatedClass(ClinicalNotes.class)
+                               .addAnnotatedClass(TestProperty.class)
+                               .addAnnotatedClass(Parasitology.class)
+                               .addAnnotatedClass(Bacteriology.class)
+                               .addAnnotatedClass(Microscopy.class)
+                               .addAnnotatedClass(Chemistry.class)
+                               .addAnnotatedClass(Dipstick.class)
+                               .addAnnotatedClass(Others.class)
+                               .addAnnotatedClass(Cbs.class)
+                               .addAnnotatedClass(Serology.class)
+                               .addAnnotatedClass(LabRequest.class)
+                               .addAnnotatedClass(DiseaseRecord.class)
+
+                              .addAnnotatedClass(AgeScale.class)
+
 
                                 .buildSessionFactory();
 
@@ -41,6 +44,7 @@ public class Test {
 
         try{
             session.beginTransaction();
+
 
 //            Laboratory laboratory = new Laboratory(111,"test", "fff",  LocalDate.now(),"123",12,3,2,4,"+2517777777","city","subcity","kebele");
 

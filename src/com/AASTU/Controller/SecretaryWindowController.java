@@ -513,14 +513,14 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
      * ROW CLICK HANDLER
      * */
 
-    public void rowClickHandler( TableView<Patient> tableName) {
+    public void rowClickHandler( TableView<Patient> tableName, boolean toActive) {
         tableName.setRowFactory(tv -> {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
                     Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
                     try {
-                        new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                        new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData, toActive); // created new object of WindowChangeController and called popup ( with Patient object)
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -567,14 +567,16 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
         });
         ObservableList<Patient> patientsList = FXCollections.observableArrayList();
         for(Patient tempPatent: allPatientList){
+            if(tempPatent.isPayed()){
             patientsList.add(tempPatent);
+            }
         }
         paymentTable.setItems(patientsList);
     }
 
     //  method to display patient records
     public void displayRecords() {
-        rowClickHandler(recordTable);
+        rowClickHandler(recordTable,false);
         patientIdColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         fullNameColRec.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>, ObservableValue<String>>() {
             @Override
@@ -595,7 +597,7 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
 
     // method to display the registered patients to the table
     public  void displayPatients() {
-        rowClickHandler(mainTable);
+        rowClickHandler(mainTable, true);
         // to display normal patient
         patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
@@ -614,7 +616,7 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
         }
 
         mainTable.setItems(normalPatientObservableList);
-        rowClickHandler(outPatientTable);
+        rowClickHandler(outPatientTable,true);
         // to display out patient
         patientOutIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         firstNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
