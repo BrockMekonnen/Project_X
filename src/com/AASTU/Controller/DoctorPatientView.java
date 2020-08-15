@@ -67,7 +67,6 @@ public class DoctorPatientView implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
     }
     private void refreshNodes(List<ClinicalNotes> list){
 
@@ -78,6 +77,7 @@ public class DoctorPatientView implements Initializable{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ClinicalNoteView.fxml"));
                 AnchorPane root = loader.load();
                 ClinicalNoteView loadData = loader.getController();
+                loadData.isEditVisible(list.get(i).isEditable());
                 loadData.setText(list.get(i).getNotes());
                 loadData.setDate(list.get(i).getDate());
                 pnl_Scroll.getChildren().add(root);
