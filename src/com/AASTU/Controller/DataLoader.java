@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -229,14 +230,75 @@ public class DataLoader {
             }
 
             session.getTransaction().commit();
+          
+            return price;
+
+    }
+
+
+    public Patient loadSinglePatinetObject(Patient patient){
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        Patient obj;
+        try{
+            session.beginTransaction();
+
+            int id = patient.getPatientId();
+
+            obj = (Patient) session.load(Patient.class, id);
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return obj;
+    }
+      
+    public ArrayList<String> loadDiseaseType(){
+
+        ArrayList<String> list = new ArrayList<String>();
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(DiseaseType.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "select name from DiseaseType";
+            list = (ArrayList<String>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
 
         } finally {
             factory.close();
             session.close();
         }
 
-
-        return price;
-
+        return list;
     }
+
 }

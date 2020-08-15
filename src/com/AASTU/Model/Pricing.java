@@ -14,9 +14,14 @@ public class Pricing {
     @Column(name = "Test_name")
     private String testName;
 
-    public  Pricing(){};
+    
 
     public Pricing(double price, String testName) {
+
+
+    public Pricing() {}
+
+    public Pricing(double price) {
         this.price = price;
         this.testName = testName;
     }

@@ -111,4 +111,35 @@ public class DataSaver {
             session.close();
         }
     }
+
+    public void saveEditedClinicalNote(int id, String note){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            ClinicalNotes obj = (ClinicalNotes) session.load(ClinicalNotes.class, id);
+            obj.setNotes(note);
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
 }
