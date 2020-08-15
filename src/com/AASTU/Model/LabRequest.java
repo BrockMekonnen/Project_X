@@ -155,5 +155,23 @@ public class LabRequest {
     public void setSerology(Serology serology) {
         this.serology = serology;
     }
+
+    @Override
+    public String toString() {
+        return "LabRequest{" +
+                "id=" + id +
+                ", labTechnicianId='" + labTechnicianId + '\'' +
+                ", physicianId='" + physicianId + '\'' +
+                ", requestDate=" + requestDate +
+                ", parasitology=" + parasitology +
+                ", bacterology=" + bacterology +
+                ", microscopy=" + microscopy +
+                ", chemistry=" + chemistry +
+                ", dipistic=" + dipistic +
+                ", others=" + others +
+                ", cbs=" + cbs +
+                ", serology=" + serology +
+                '}';
+    }
 }
 

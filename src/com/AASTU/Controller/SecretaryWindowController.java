@@ -231,8 +231,218 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
 
     }
 
+    // method to calculate the total payment
+    public double calcTotalPayment(Patient obj){
+        double total=0, price;
+        List<LabRequest> labObject = new DataLoader().labRequest(obj);
+        for(LabRequest labRequest: labObject){
+            if(labRequest.getBacterology().getKoh().isTest()){
+                price = new DataLoader().prices(labRequest.getBacterology().getKoh().getPriceId());
+                total += price;
+                System.out.println("Price" + price);
+            }if(labRequest.getBacterology().getHpyloriStool().isTest()){
+                price = new DataLoader().prices(labRequest.getBacterology().getHpyloriStool().getPriceId());
+                total += price;
+            }if(labRequest.getParasitology().getConsistency1().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getConsistency1().getPriceId());
+                total += price;
+            }if(labRequest.getParasitology().getConsistency2().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getConsistency2().getPriceId());
+                total += price;
+            }if(labRequest.getParasitology().getOccultBlood().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOccultBlood().getPriceId());
+                total += price;
+            }if(labRequest.getParasitology().getOvalParasite1().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOvalParasite1().getPriceId());
+                total += price;
+            }if(labRequest.getParasitology().getOvalParasite2().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOvalParasite2().getPriceId());
+                total += price;
+            }if(labRequest.getParasitology().getOvalParasite3().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOvalParasite3().getPriceId());
+                total += price;
+            }if(labRequest.getParasitology().getStoolTest().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getStoolTest().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getBloodFilm().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getBloodFilm().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getBloodGroupRh().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getBloodGroupRh().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getEsr().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getEsr().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getGra().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getGra().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getHct().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getHct().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getHgb().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getHgb().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getLym().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getLym().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getMch().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMch().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getMchc().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMchc().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getMcv().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMcv().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getMid().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMid().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getP_lcr().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getP_lcr().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getPct().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getPct().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getPlt().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getPlt().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getRbc().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getRbc().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getRdw_cv().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getRdw_cv().getPriceId());
+                total += price;
+            }if(labRequest.getCbs().getWbc().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getWbc().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getAlkalinePhosphate().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getAlkalinePhosphate().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getBilirubinDirect().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getBilirubinDirect().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getBilirubinTotal().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getBilirubinTotal().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getBun().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getBun().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getCholesterol().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getCholesterol().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getCreatinine().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getCreatinine().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getFbs().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getFbs().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getRbs().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getRbs().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getSgot().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getSgot().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getSgpt().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getSgpt().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getTotalProtein().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getTotalProtein().getPriceId());
+                total += price;
+            }if(labRequest.getChemistry().getUricAcid().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getUricAcid().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getAppearance().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getAppearance().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getBilrubin().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getBilrubin().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getBlood().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getBlood().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getGlucose().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getGlucose().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getKetone().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getKetone().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getPh().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getPh().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getProtein().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getProtein().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getPsg().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getPsg().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getTestColor().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getTestColor().getPriceId());
+                total += price;
+            }if(labRequest.getDipistic().getUrobilinogen().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getUrobilinogen().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getAso().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getAso().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getCrp().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getCrp().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getHbsag().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getHbsag().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getHpyloriSerum().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getHpyloriSerum().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getRheumatoidFactor().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getRheumatoidFactor().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getVdrl().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getVdrl().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getWellFelix().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getWellFelix().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getWidal_II_h().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getWidal_II_h().getPriceId());
+                total += price;
+            }if(labRequest.getSerology().getWidal_II_o().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getWidal_II_o().getPriceId());
+                total += price;
+            }if(labRequest.getMicroscopy().getBacteria().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getBacteria().getPriceId());
+                total += price;
+            }if(labRequest.getMicroscopy().getCasts().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getCasts().getPriceId());
+                total += price;
+            }if(labRequest.getMicroscopy().getEpitCells().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getEpitCells().getPriceId());
+                total += price;
+            }if(labRequest.getMicroscopy().getRbc().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getRbc().getPriceId());
+                total += price;
+            }if(labRequest.getMicroscopy().getWbc().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getWbc().getPriceId());
+                total += price;
+            }if(labRequest.getOthers().getAfb().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getAfb().getPriceId());
+                total += price;
+            }if(labRequest.getOthers().getGramStain().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getGramStain().getPriceId());
+                total += price;
+            }if(labRequest.getOthers().getHivAids().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getHivAids().getPriceId());
+                total += price;
+            }if(labRequest.getOthers().getWetFilm().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getWetFilm().getPriceId());
+                total += price;
+            } else {
+                total = 0.0;
+            }
 
-
+        }
+        System.out.println(total);
+        return total;
+    }
     /**
      * ROW CLICK HANDLER
      * */
@@ -243,7 +453,6 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
                     Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
-                    SecretaryPatientView.patientObj = rowData;
                     try {
                         new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
                     } catch (IOException e) {
@@ -290,7 +499,7 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
             }
         });
         ObservableList<Patient> patientsList = FXCollections.observableArrayList();
-        for(Patient tempPatent: normalPatientList){
+        for(Patient tempPatent: allPatientList){
             patientsList.add(tempPatent);
         }
         paymentTable.setItems(patientsList);

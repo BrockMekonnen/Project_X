@@ -11,7 +11,9 @@ public class Pricing {
     @Column(name = "Price")
     private double price;
 
+
     public Pricing() {}
+
     public Pricing(double price) {
         this.price = price;
     }
@@ -30,5 +32,13 @@ public class Pricing {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Pricing{" +
+                "priceId=" + priceId +
+                ", price=" + price +
+                '}';
     }
 }

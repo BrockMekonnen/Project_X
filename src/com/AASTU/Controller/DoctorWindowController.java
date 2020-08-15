@@ -305,14 +305,14 @@ public class DoctorWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         transition();
-        populatePendingTable("from Patient where docActives = 1");
+        populatePendingTable("from Patient where docActives = 0");
         goToPending();
 
     }
 
     @FXML
     void handleCardButton(ActionEvent event) {
-        populatePendingTable("from Patient where docActives = 1 and fromSec = 1");
+        populatePendingTable("from Patient where docActives = 0 and fromSec = 0");
         goToPending();
     }
 

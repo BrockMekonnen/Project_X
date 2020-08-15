@@ -144,7 +144,7 @@ public class WindowChangeController {
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         SecretaryPatientView view1 = loader.getController(); // get the controller of SecretaryPatientView
-        view1.setObject(obj);  // sign some information from the object to the Scene
+        view1.setObject(tempObject);  // sign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
@@ -161,7 +161,7 @@ public class WindowChangeController {
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         PaymentController view1 = loader.getController(); // get the controller of SecretaryPatientView
-        view1.setObject(obj);  // sign some information from the object to the Scene
+        view1.setObject(tempObject);  // sign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
