@@ -48,9 +48,9 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="EXPAND" size="18" wrappingWidth="21.285715103149414" />
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="exitBtn"  contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
                     <graphic>
-                        <MaterialDesignIconView  fill="#01579b" glyphName="CLOSE" size="22" text="" />
+                        <MaterialDesignIconView fill="#01579b" glyphName="CLOSE" size="22" text="" />
                     </graphic>
                 </JFXButton>
             </children>
@@ -60,13 +60,7 @@
           <AnchorPane fx:id="rootAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="1200.0" prefWidth="1200.0" />
         </content>
       </ScrollPane>
-      <Pane prefHeight="113.0" prefWidth="468.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="3.0">
-         <children>
-                  <JFXButton fx:id="SendBTN" buttonType="RAISED" layoutX="-1.0" layoutY="31.0" onAction="#SendBtn" prefHeight="38.0" prefWidth="120.0" ripplerFill="#01579b" style="-fx-background-color: #FFFFFF; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Send" textFill="#01579b" />
-            <JFXButton fx:id="WaitingBTN" buttonType="RAISED" layoutX="146.0" layoutY="30.0" onAction="#WaitingBtn" prefHeight="38.0" prefWidth="120.0" ripplerFill="#29b6f6" style="-fx-background-color: #FFFFFF; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Waiting" textFill="#01579b" />
-                  <JFXButton buttonType="RAISED" layoutX="290.0" layoutY="29.0" onAction="#handleCloseButton" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #039BE5; -fx-border-width: 1 1 1 1;" text="Close" textFill="#01579b" />
-         </children>
-      </Pane>
+      <Pane prefHeight="113.0" prefWidth="468.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="3.0" />
     </children>
     <effect>
         <DropShadow blurType="GAUSSIAN" />

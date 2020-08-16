@@ -5,10 +5,14 @@ import com.AASTU.Model.LaboratoryRequest.*;
 import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.corba.se.spi.monitoring.LongMonitoredAttributeBase;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 
+import javax.xml.crypto.Data;
+import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -358,7 +362,7 @@ public class LabToDoc implements Initializable {
     private CheckBox FBS_CheckBox;
 
     @FXML
-    private CheckBox RBS_CheckBox;
+    private CheckBox RBS_CheckBox,Bun_CheckBox;
 
     @FXML
     private CheckBox SGOT_CheckBox;
@@ -390,485 +394,241 @@ public class LabToDoc implements Initializable {
     @FXML
     private CheckBox HIV_AIDS_CheckBox;
 
-    public Bacteriology bacteriology=new Bacteriology();
-    Cbs cbs=new Cbs();
-    Chemistry chemistry=new Chemistry();
-    Dipstick dipstick=new Dipstick();
-    Microscopy microscopy=new Microscopy();
-    Others others=new Others();
-    Parasitology parasitology=new Parasitology();
-    Serology serology=new Serology();
+    private LabRequest labRequest;
+
+    private Patient patient;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
-    public void VisibilityOfCheckBoxes(){
-        WBCcheckBox.setVisible(false);
-        LYMCheckBox.setVisible(false);
-        GRACheckBox.setVisible(false);
-        MIDCheckBox.setVisible(false);
-        RBCCheckBox.setVisible(false);
-        HGBCheckBox.setVisible(false);
-        MCHCCheckBox.setVisible(false);
-        MCHCCheckBox.setVisible(false);
-        MCVCheckBox.setVisible(false);
-        RDW_CVCheckBox.setVisible(false);
-        HCTCheckBox.setVisible(false);
-        PLTCheckBox.setVisible(false);
-        PCTCheckBox.setVisible(false);
-        P_LCRCheckBox.setVisible(false);
-        ESRCheckBox.setVisible(false);
-        Blood_GroupCheckBox.setVisible(false);
-        Blood_FilmCheckBox.setVisible(false);
-        VDRLCheckBox.setVisible(false);
-        Widal_II_H_CheckBox.setVisible(false);
-        O_CheckBox.setVisible(false);
-        Well_Felix_CheckBox.setVisible(false);
-        HBSag_CheckBox.setVisible(false);
-        CRP_CheckBox.setVisible(false);
-        ASO_CheckBox.setVisible(false);
-        Rheumatoid_Factor_CheckBox.setVisible(false);
-        H_Pylori_Serum_CheckBox.setVisible(false);
-        Bacteria_CheckBox.setVisible(false);
-        Casts_CheckBox.setVisible(false);
-        H_Pylori_Stool_CheckBox.setVisible(false);
-        KOH_CheckBox.setVisible(false);
-        UricAcid_CheckBox.setVisible(false);
-        Color_CheckBox.setVisible(false);
-        Apperance_CheckBox.setVisible(false);
-        PH_CheckBox.setVisible(false);
-        PSGCheckBox.setVisible(false);
-        Protein_CheckBox.setVisible(false);
-        Glucose_CheckBox.setVisible(false);
-        Ketone_CheckBox.setVisible(false);
-        Bilirubin_CheckBox.setVisible(false);
-        Urology_CheckBox.setVisible(false);
-        MicroRBC_CheckBox.setVisible(false);
-        EpitCell_CheckBox.setVisible(false);
-        MicroWBC_CheckBox.setVisible(false);
-        CholestrolCheckBox.setVisible(false);
-        TotalProtein_CheckBox.setVisible(false);
-        Blood_CheckBox.setVisible(false);
-        StoolTest_CheckBox.setVisible(false);
-        OccultBlood_CheckBox.setVisible(false);
-        Consistency_CheckBox.setVisible(false);
-        Oval_Paraiste_CheckBox.setVisible(false);
-        FBS_CheckBox.setVisible(false);
-        RBS_CheckBox.setVisible(false);
-        SGOT_CheckBox.setVisible(false);
-        SGPT_CheckBox.setVisible(false);
-        Alkaline_Phosphate_CheckBox.setVisible(false);
-        Bilirubin_Total_CheckBox.setVisible(false);
-        Bilirubin_Direct_CheckBox.setVisible(false);
-        Creatinine_CheckBox.setVisible(false);
-        Gram_Stain_CheckBox.setVisible(false);
-        Wet_Film_CheckBox.setVisible(false);
-        AFB_CheckBox.setVisible(false);
-        HIV_AIDS_CheckBox.setVisible(false);
-        MCHCheckBox.setVisible(false);
+
+    public void VisibilityOfCheckBoxes(Patient patient){
+        this.patient=patient;
+        labRequest=new DataLoader().loadLabRequest(patient);
+        WBCcheckBox.setVisible(labRequest.getCbs().getWbc().isTest());
+        WBCcheckBox.setSelected(true);
+        LYMCheckBox.setVisible(labRequest.getCbs().getLym().isTest());
+        LYMCheckBox.setSelected(true);
+        GRACheckBox.setVisible(labRequest.getCbs().getGra().isTest());
+        GRACheckBox.setSelected(true);
+        MIDCheckBox.setVisible(labRequest.getCbs().getMid().isTest());
+        MIDCheckBox.setSelected(true);
+        RBCCheckBox.setVisible(labRequest.getCbs().getRbc().isTest());
+        RBCCheckBox.setSelected(true);
+        HGBCheckBox.setVisible(labRequest.getCbs().getHgb().isTest());
+        HGBCheckBox.setSelected(true);
+        MCHCCheckBox.setVisible(labRequest.getCbs().getMchc().isTest());
+        MCHCCheckBox.setSelected(true);
+        MCVCheckBox.setVisible(labRequest.getCbs().getMcv().isTest());
+        MCVCheckBox.setSelected(true);
+        RDW_CVCheckBox.setVisible(labRequest.getCbs().getRdw_cv().isTest());
+        RDW_CVCheckBox.setSelected(true);
+        HCTCheckBox.setVisible(labRequest.getCbs().getHct().isTest());
+        HCTCheckBox.setSelected(true);
+        PLTCheckBox.setVisible(labRequest.getCbs().getPlt().isTest());
+        PLTCheckBox.setSelected(true);
+        PCTCheckBox.setVisible(labRequest.getCbs().getPct().isTest());
+        PCTCheckBox.setSelected(true);
+        P_LCRCheckBox.setVisible(labRequest.getCbs().getP_lcr().isTest());
+        P_LCRCheckBox.setSelected(true);
+        ESRCheckBox.setVisible(labRequest.getCbs().getEsr().isTest());
+        ESRCheckBox.setSelected(true);
+        Blood_GroupCheckBox.setVisible(labRequest.getCbs().getBloodGroupRh().isTest());
+        Blood_GroupCheckBox.setSelected(true);
+        Blood_FilmCheckBox.setVisible(labRequest.getCbs().getBloodFilm().isTest());
+        Blood_FilmCheckBox.setSelected(true);
+        VDRLCheckBox.setVisible(labRequest.getSerology().getVdrl().isTest());
+        VDRLCheckBox.setSelected(true);
+        Widal_II_H_CheckBox.setVisible(labRequest.getSerology().getWidal_II_h().isTest());
+        Widal_II_H_CheckBox.setSelected(true);
+        O_CheckBox.setVisible(labRequest.getSerology().getWidal_II_o().isTest());
+        O_CheckBox.setSelected(true);
+        Well_Felix_CheckBox.setVisible(labRequest.getSerology().getWellFelix().isTest());
+        Well_Felix_CheckBox.setSelected(true);
+        HBSag_CheckBox.setVisible(labRequest.getSerology().getHbsag().isTest());
+        HBSag_CheckBox.setSelected(true);
+        CRP_CheckBox.setVisible(labRequest.getSerology().getCrp().isTest());
+        CRP_CheckBox.setSelected(true);
+        ASO_CheckBox.setVisible(labRequest.getSerology().getAso().isTest());
+        ASO_CheckBox.setSelected(true);
+        Rheumatoid_Factor_CheckBox.setVisible(labRequest.getSerology().getRheumatoidFactor().isTest());
+        Rheumatoid_Factor_CheckBox.setSelected(true);
+        H_Pylori_Serum_CheckBox.setVisible(labRequest.getSerology().getHpyloriSerum().isTest());
+        H_Pylori_Serum_CheckBox.setSelected(true);
+        Bacteria_CheckBox.setVisible(labRequest.getMicroscopy().getBacteria().isTest());
+        Bacteria_CheckBox.setSelected(true);
+        Casts_CheckBox.setVisible(labRequest.getMicroscopy().getCasts().isTest());
+        Casts_CheckBox.setSelected(true);
+        H_Pylori_Stool_CheckBox.setVisible(labRequest.getBacterology().getHpyloriStool().isTest());
+        H_Pylori_Stool_CheckBox.setSelected(true);
+        KOH_CheckBox.setVisible(labRequest.getBacterology().getKoh().isTest());
+        KOH_CheckBox.setSelected(true);
+        UricAcid_CheckBox.setVisible(labRequest.getChemistry().getUricAcid().isTest());
+        UricAcid_CheckBox.setSelected(true);
+        Color_CheckBox.setVisible(labRequest.getDipistic().getTestColor().isTest());
+        Color_CheckBox.setSelected(true);
+        Apperance_CheckBox.setVisible(labRequest.getDipistic().getAppearance().isTest());
+        Apperance_CheckBox.setSelected(true);
+        PH_CheckBox.setVisible(labRequest.getDipistic().getPh().isTest());
+        PH_CheckBox.setSelected(true);
+        PSGCheckBox.setVisible(labRequest.getDipistic().getPsg().isTest());
+        PSGCheckBox.setSelected(true);
+        Protein_CheckBox.setVisible(labRequest.getDipistic().getProtein().isTest());
+        Protein_CheckBox.setSelected(true);
+        Glucose_CheckBox.setVisible(labRequest.getDipistic().getGlucose().isTest());
+        Glucose_CheckBox.setSelected(true);
+        Ketone_CheckBox.setVisible(labRequest.getDipistic().getKetone().isTest());
+        Ketone_CheckBox.setSelected(true);
+        Bilirubin_CheckBox.setVisible(labRequest.getDipistic().getBilrubin().isTest());
+        Bilirubin_CheckBox.setSelected(true);
+        Urology_CheckBox.setVisible(labRequest.getDipistic().getUrobilinogen().isTest());
+        Urology_CheckBox.setSelected(true);
+        MicroRBC_CheckBox.setVisible(labRequest.getMicroscopy().getRbc().isTest());
+        MicroRBC_CheckBox.setSelected(true);
+        EpitCell_CheckBox.setVisible(labRequest.getMicroscopy().getEpitCells().isTest());
+        EpitCell_CheckBox.setSelected(true);
+        MicroWBC_CheckBox.setVisible(labRequest.getMicroscopy().getWbc().isTest());
+        MicroWBC_CheckBox.setSelected(true);
+        CholestrolCheckBox.setVisible(labRequest.getChemistry().getCholesterol().isTest());
+        CholestrolCheckBox.setSelected(true);
+        TotalProtein_CheckBox.setVisible(labRequest.getChemistry().getTotalProtein().isTest());
+        TotalProtein_CheckBox.setSelected(true);
+        Blood_CheckBox.setVisible(labRequest.getDipistic().getBlood().isTest());
+        Blood_CheckBox.setSelected(true);
+        StoolTest_CheckBox.setVisible(labRequest.getParasitology().getStoolTest().isTest());
+        StoolTest_CheckBox.setSelected(true);
+        OccultBlood_CheckBox.setVisible(labRequest.getParasitology().getOccultBlood().isTest());
+        OccultBlood_CheckBox.setSelected(true);
+        Consistency_CheckBox.setVisible(labRequest.getParasitology().getConsistency1().isTest());
+        Consistency_CheckBox.setSelected(true);
+        Oval_Paraiste_CheckBox.setVisible(labRequest.getParasitology().getOvalParasite1().isTest());
+        Oval_Paraiste_CheckBox.setSelected(true);
+        FBS_CheckBox.setVisible(labRequest.getChemistry().getFbs().isTest());
+        FBS_CheckBox.setSelected(true);
+        RBS_CheckBox.setVisible(labRequest.getChemistry().getRbs().isTest());
+        RBS_CheckBox.setSelected(true);
+        SGOT_CheckBox.setVisible(labRequest.getChemistry().getSgot().isTest());
+        SGOT_CheckBox.setSelected(true);
+        SGPT_CheckBox.setVisible(labRequest.getChemistry().getSgpt().isTest());
+        SGPT_CheckBox.setSelected(true);
+        Alkaline_Phosphate_CheckBox.setVisible(labRequest.getChemistry().getAlkalinePhosphate().isTest());
+        Alkaline_Phosphate_CheckBox.setSelected(true);
+        Bilirubin_Total_CheckBox.setVisible(labRequest.getChemistry().getBilirubinTotal().isTest());
+        Bilirubin_Total_CheckBox.setSelected(true);
+        Bilirubin_Direct_CheckBox.setVisible(labRequest.getChemistry().getBilirubinDirect().isTest());
+        Bilirubin_CheckBox.setSelected(true);
+        Creatinine_CheckBox.setVisible(labRequest.getChemistry().getCreatinine().isTest());
+        Creatinine_CheckBox.setSelected(true);
+        Gram_Stain_CheckBox.setVisible(labRequest.getOthers().getGramStain().isTest());
+        Gram_Stain_CheckBox.setSelected(true);
+        Wet_Film_CheckBox.setVisible(labRequest.getOthers().getWetFilm().isTest());
+        Wet_Film_CheckBox.setSelected(true);
+        AFB_CheckBox.setVisible(labRequest.getOthers().getAfb().isTest());
+        AFB_CheckBox.setSelected(true);
+        HIV_AIDS_CheckBox.setVisible(labRequest.getOthers().getHivAids().isTest());
+        HIV_AIDS_CheckBox.setSelected(true);
+        MCHCheckBox.setVisible(labRequest.getCbs().getMchc().isTest());
+        MCHCCheckBox.setSelected(true);
+        Bun_CheckBox.setVisible(labRequest.getChemistry().getBun().isTest());
+        Bun_CheckBox.setSelected(true);
+    }
+    @FXML
+    public void send(ActionEvent e){
+        setObjectLabTestValue(e,this.patient,false,true,false);
+        WindowChangeController.closeWindow();
+
     }
 
-    public void setObjectLabTestValue(Patient patient){
-        if(!Hema_HBC_TF.getText().isEmpty()){
-            cbs.setWbc(new TestProperty(Hema_HBC_TF.getText(),30,true));
-        }
-        else{
-            cbs.setWbc(new TestProperty(" ",0,false));
-        }
-        if(!LYMTF.getText().isEmpty()){
-            cbs.setLym(new TestProperty(LYMTF.getText(),30,true));
-        }else{
-            cbs.setLym(new TestProperty(" ",0,false));
-        }
-        if(!GRA_TF.getText().isEmpty()){
-            cbs.setGra(new TestProperty(GRA_TF.getText(),30,true));
-        }else{
-            cbs.setGra(new TestProperty(" ",0,false));
-        }
+    @FXML
+    public void wait(ActionEvent e){
+        setObjectLabTestValue(e,this.patient,true,false,true);
+        WindowChangeController.closeWindow();
+    }
 
-        if(!MID_TF.getText().isEmpty()){
-            cbs.setMid(new TestProperty(MID_TF.getText(),30,true));
-        }else{
-            cbs.setMid(new TestProperty(" ",0,false));
-        }
-        if(!Hema_RBC_TF.getText().isEmpty()){
-            cbs.setRbc(new TestProperty(Hema_RBC_TF.getText(),30,true));
-        }else{
-            cbs.setRbc(new TestProperty(" ",0,false));
-        }
-        if(!HGB_TF.getText().isEmpty()){
-            cbs.setHgb(new TestProperty(HGB_TF.getText(),30,true));
-        }else{
-            cbs.setHgb(new TestProperty(" ",0,false));
-        }
-        if(!MCHC_TF.getText().isEmpty()){
-            cbs.setMchc(new TestProperty(MCHC_TF.getText(),30,true));
-        }else{
-            cbs.setMchc(new TestProperty(" ",0,false));
-        }
-        if(!MCH_TF.getText().isEmpty()){
-            cbs.setMch(new TestProperty(MCH_TF.getText(),30,true));
-        }else{
-            cbs.setMch(new TestProperty(" ",0,false));
-        }
-        if(!MCB_TF.getText().isEmpty()){
-            cbs.setMcv(new TestProperty(MCB_TF.getText(),30,true));
-        }else{
-            cbs.setMcv(new TestProperty(" ",0,false));
-        }
-        if(!RDW_CY_TF.getText().isEmpty()){
-            cbs.setRdw_cv(new TestProperty(RDW_CY_TF.getText(),30,true));
-        }else{
-            cbs.setRdw_cv(new TestProperty(" ",0,false));
-        }
-        if(!HCT_TF.getText().isEmpty()){
-            cbs.setHct(new TestProperty(HCT_TF.getText(),30,true));
-        }else{
-            cbs.setLym(new TestProperty(" ",0,false));
-        }
-        if(!PLT_TF.getText().isEmpty()){
-            cbs.setPlt(new TestProperty(PLT_TF.getText(),30,true));
-        }else{
-            cbs.setPlt(new TestProperty(" ",0,false));
-        }
-        if(!PCT_TF.getText().isEmpty()){
-            cbs.setPct(new TestProperty(PCT_TF.getText(),30,true));
-        }else{
-            cbs.setPct(new TestProperty(" ",0,false));
-        }
-        if(!P_LCT_TF.getText().isEmpty()){
-            cbs.setP_lcr(new TestProperty(P_LCT_TF.getText(),30,true));
-        }else{
-            cbs.setP_lcr(new TestProperty(" ",0,false));
-        }
-        if(!ESR_TF.getText().isEmpty()){
-            cbs.setEsr(new TestProperty(ESR_TF.getText(),30,true));
-        }else{
-            cbs.setEsr(new TestProperty(" ",0,false));
-        }
-        if(!Blood_Group_TF.getText().isEmpty()){
-            cbs.setBloodGroupRh(new TestProperty(Blood_Group_TF.getText(),30,true));
-        }else{
-            cbs.setBloodGroupRh(new TestProperty(" ",0,false));
-        }
-        if(!Blood_Film_TF.getText().isEmpty()){
-            cbs.setBloodFilm(new TestProperty(Blood_Film_TF.getText(),30,true));
-        }else{
-            cbs.setBloodFilm(new TestProperty(" ",0,false));
+    @FXML
+    public void cancel(ActionEvent e){
+        WindowChangeController.closeWindow();
+    }
+
+    public void setObjectLabTestValue(ActionEvent event, Patient patient, boolean waiting, boolean docActive, boolean labActive){
+
+        labRequest.getCbs().getLym().setValue(LYMTF.getText());
+        labRequest.getCbs().getGra().setValue(GRA_TF.getText());
+        labRequest.getCbs().getMid().setValue(MID_TF.getText());
+        labRequest.getCbs().getRbc().setValue(Hema_RBC_TF.getText());
+        labRequest.getCbs().getHgb().setValue(HGB_TF.getText());
+        labRequest.getCbs().getMchc().setValue(MCHC_TF.getText());
+        labRequest.getCbs().getMch().setValue(MCHC_TF.getText());
+        labRequest.getCbs().getMcv().setValue(MCB_TF.getText());
+        labRequest.getCbs().getRdw_cv().setValue(RDW_CY_TF.getText());
+        labRequest.getCbs().getHct().setValue(HCT_TF.getText());
+        labRequest.getCbs().getPlt().setValue(PLT_TF.getText());
+        labRequest.getCbs().getPct().setValue(PCT_TF.getText());
+        labRequest.getCbs().getP_lcr().setValue(P_LCT_TF.getText());
+        labRequest.getCbs().getEsr().setValue(ESR_TF.getText());
+        labRequest.getCbs().getBloodGroupRh().setValue(Blood_Group_TF.getText());
+        labRequest.getCbs().getBloodFilm().setValue(Blood_Group_TF.getText());
+        labRequest.getParasitology().getOccultBlood().setValue(OCCULT_BLOOD_TF.getText());
+        labRequest.getParasitology().getConsistency1().setValue(CONSISTENCY_TF1.getText());
+        labRequest.getParasitology().getConsistency2().setValue(CONSISTENCY_TF2.getText());
+        labRequest.getParasitology().getOvalParasite1().setValue(OVAL_PARASITE_TF1.getText());
+        labRequest.getParasitology().getOvalParasite2().setValue(OVAL_PARASITE_TF2.getText());
+        labRequest.getParasitology().getOvalParasite3().setValue(OVAL_PARASITE_TF3.getText());
+        labRequest.getDipistic().getTestColor().setValue(DIPISTIC_COLOR_TF.getText());
+        labRequest.getDipistic().getAppearance().setValue(APPERANCE_TF.getText());
+        labRequest.getDipistic().getPh().setValue(PH_TF.getText());
+        labRequest.getDipistic().getPsg().setValue(PSG_TF.getText());
+        labRequest.getDipistic().getProtein().setValue(PROTEIN_TF.getText());
+        labRequest.getDipistic().getKetone().setValue(KETONE_TF.getText());
+        labRequest.getDipistic().getBilrubin().setValue(BILIRUBIN_TF.getText());
+        labRequest.getDipistic().getUrobilinogen().setValue(UROBILINOGEN_TF.getText());
+        labRequest.getDipistic().getBlood().setValue(BLOOD_TF.getText());
 
 
+        labRequest.getMicroscopy().getEpitCells().setValue(EPIT_CELLS_TF.getText());
+        labRequest.getMicroscopy().getWbc().setValue(WBC_TF.getText());
+        labRequest.getMicroscopy().getRbc().setValue(RBC_TF.getText());
+        labRequest.getMicroscopy().getCasts().setValue(CASTS_TF.getText());
+        labRequest.getMicroscopy().getBacteria().setValue(BACTERIA_TF.getText());
 
+        labRequest.getChemistry().getFbs().setValue(FSB_TF.getText());
+        labRequest.getChemistry().getRbs().setValue(RBS_TF.getText());
+        labRequest.getChemistry().getSgot().setValue(SGOP_TF.getText());
+        labRequest.getChemistry().getSgpt().setValue(SGPT_TF.getText());
+        labRequest.getChemistry().getAlkalinePhosphate().setValue(ALKALINE_PHOSPHATE_TF.getText());
+        labRequest.getChemistry().getBilirubinTotal().setValue(BILIRUBIN_TOTAL_TF.getText());
+        labRequest.getChemistry().getBilirubinDirect().setValue(BILIRUBIN_DIRECT_TF.getText());
+        labRequest.getChemistry().getBun().setValue(BUN_TF.getText());
+        labRequest.getChemistry().getCreatinine().setValue(CREATININE_TF.getText());
+        labRequest.getChemistry().getUricAcid().setValue(URIC_ACID_TF.getText());
+        labRequest.getChemistry().getTotalProtein().setValue(TOTAL_PROTEIN_TF.getText());
+        labRequest.getChemistry().getCholesterol().setValue(CHOLESTEROEL_TF.getText());
 
-        }
-        if(!STOOL_TEST_TF.getText().isEmpty()){
-            parasitology.setStoolTest(new TestProperty(STOOL_TEST_TF.getText(),0,true));
-        }
-        else{
-            parasitology.setStoolTest(new TestProperty(" ",0,false));
-        }
-        if(!OCCULT_BLOOD_TF.getText().isEmpty()){
-            parasitology.setOccultBlood(new TestProperty(OCCULT_BLOOD_TF.getText(),30,true));
-        }
-        else{
-            parasitology.setOccultBlood(new TestProperty(" ",0,false));
-        }
-        if(!CONSISTENCY_TF1.getText().isEmpty()){
-            parasitology.setConsistency1(new TestProperty(CONSISTENCY_TF1.getText(),30,true));
-        }
-        else{
-            parasitology.setConsistency1(new TestProperty(" ",0,false));
-        }
-        if(!CONSISTENCY_TF2.getText().isEmpty()){
-            parasitology.setConsistency2(new TestProperty(CONSISTENCY_TF2.getText(),30,true));
-        }
-        else{
-            parasitology.setConsistency2(new TestProperty(" ",0,false));
-        }
-        if(!OVAL_PARASITE_TF1.getText().isEmpty()){
-            parasitology.setOvalParasite1(new TestProperty(OVAL_PARASITE_TF1.getText(),0,true));
-        }
-        else{
-            parasitology.setOvalParasite1(new TestProperty(" ",0,false));
-        }
-        if(!OVAL_PARASITE_TF2.getText().isEmpty()){
-            parasitology.setOvalParasite2(new TestProperty(OVAL_PARASITE_TF2.getText(),0,true));
-        }
-        else{
-            parasitology.setOvalParasite2(new TestProperty(" ",0,false));
-        }
-        if(!OVAL_PARASITE_TF3.getText().isEmpty()){
-            parasitology.setOvalParasite3(new TestProperty(OVAL_PARASITE_TF3.getText(),0,true));
-        }
-        else{
-            parasitology.setOvalParasite3(new TestProperty(" ",0,false));
-        }
+        labRequest.getSerology().getVdrl().setValue(cbo_vdrl.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getWidal_II_h().setValue(cbo_h.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getWidal_II_o().setValue(cbo_o.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getWellFelix().setValue(cbo_felix.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getHbsag().setValue(cbo_hbs.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getCrp().setValue(cbo_crp.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getAso().setValue(cbo_aso.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getRheumatoidFactor().setValue(cbo_rhe.getSelectionModel().getSelectedItem());
+        labRequest.getSerology().getHpyloriSerum().setValue(cbo_serum.getSelectionModel().getSelectedItem());
 
+        labRequest.getBacterology().getHpyloriStool().setValue(H_PYLORI_STOOL_TF.getText());
+        labRequest.getBacterology().getKoh().setValue(KOH_TF.getText());
 
+        labRequest.getOthers().getAfb().setValue(AFB_TF.getText());
+        labRequest.getOthers().getWetFilm().setValue(Wet_Film_TF.getText());
+        labRequest.getOthers().getGramStain().setValue(Gram_Stain_TF.getText());
+        labRequest.getOthers().getHivAids().setValue(cbo_aids.getSelectionModel().getSelectedItem());
 
-        if(!DIPISTIC_COLOR_TF.getText().isEmpty()){
-            dipstick.setTestColor(new TestProperty(DIPISTIC_COLOR_TF.getText(),0,true));
-        }else {
-            dipstick.setTestColor(new TestProperty(" ",0,false));
-        }
-        if(!APPERANCE_TF.getText().isEmpty()){
-            dipstick.setAppearance(new TestProperty(APPERANCE_TF.getText(),0,true));
-        }else {
-            dipstick.setAppearance(new TestProperty(" ",0,false));
-        }
-        if(!PH_TF.getText().isEmpty()){
-            dipstick.setPh(new TestProperty(PH_TF.getText(),0,true));
-        }else {
-            dipstick.setPh(new TestProperty(" ",0,false));
-        }
-        if(!PSG_TF.getText().isEmpty()){
-            dipstick.setPsg(new TestProperty(PSG_TF.getText(),0,true));
-        }else {
-            dipstick.setPsg(new TestProperty(" ",0,false));
-        }
-        if(!PROTEIN_TF.getText().isEmpty()){
-            dipstick.setProtein(new TestProperty(PROTEIN_TF.getText(),0,true));
-        }else {
-            dipstick.setProtein(new TestProperty(" ",0,false));
-        }
-        if(!GLUCOSE_TF.getText().isEmpty()){
-            dipstick.setGlucose(new TestProperty(GLUCOSE_TF.getText(),0,true));
-        }else {
-            dipstick.setGlucose(new TestProperty(" ",0,false));
-        }
-        if(!KETONE_TF.getText().isEmpty()){
-            dipstick.setKetone(new TestProperty(KETONE_TF.getText(),0,true));
-        }else {
-            dipstick.setKetone(new TestProperty(" ",0,false));
-        }
-        if(!BILIRUBIN_TF.getText().isEmpty()){
-            dipstick.setBilrubin(new TestProperty(BILIRUBIN_TF.getText(),0,true));
-        }else {
-            dipstick.setBilrubin(new TestProperty(" ",0,false));
-        }
-        if(!UROBILINOGEN_TF.getText().isEmpty()){
-            dipstick.setUrobilinogen(new TestProperty(UROBILINOGEN_TF.getText(),0,true));
-        }else {
-            dipstick.setUrobilinogen(new TestProperty(" ",0,false));
-        }
-        if(!BLOOD_TF.getText().isEmpty()){
-            dipstick.setBlood(new TestProperty(BLOOD_TF.getText(),0,true));
-        }else {
-            dipstick.setBlood(new TestProperty(" ",0,false));
-        }
+        new DataSaver().saveLabResult(patient,labRequest);
 
+        patient.setOnWaiting(waiting);
+        patient.setDocActives(docActive);
+        patient.setLabActives(labActive);
 
-
-        if(!EPIT_CELLS_TF.getText().isEmpty()){
-            microscopy.setEpitCells(new TestProperty(EPIT_CELLS_TF.getText(),0,true));
-        }
-        else {
-            microscopy.setEpitCells(new TestProperty(" ",0,false));
-        }
-        if(WBC_TF.getText().isEmpty()){
-            microscopy.setWbc(new TestProperty(WBC_TF.getText(),0,true));
-        }
-        else{
-            microscopy.setWbc(new TestProperty(" ",0,false));
-        }
-        if(!RBC_TF.getText().isEmpty()){
-            microscopy.setRbc(new TestProperty(RBC_TF.getText(),0,true));
-        }
-        else {
-            microscopy.setRbc(new TestProperty(" ",0,false));
-        }
-        if(!CASTS_TF.getText().isEmpty()){
-            microscopy.setCasts(new TestProperty(CASTS_TF.getText(),0,true));
-        }
-        else {
-            microscopy.setCasts(new TestProperty(" ",0,false));
-        }
-        if(!BACTERIA_TF.getText().isEmpty()){
-            microscopy.setBacteria(new TestProperty(BACTERIA_TF.getText(),0,true));
-        }
-        else {
-            microscopy.setBacteria(new TestProperty(" ",0,false));
-        }
-
-
-
-        if(!FSB_TF.getText().isEmpty()){
-            chemistry.setFbs(new TestProperty(FSB_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setFbs(new TestProperty(" ",0,false));
-        }
-        if(!RBS_TF.getText().isEmpty()){
-            chemistry.setRbs(new TestProperty(RBS_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setRbs(new TestProperty(" ",0,false));
-        }
-        if(!SGOP_TF.getText().isEmpty()){
-            chemistry.setSgot(new TestProperty(SGOP_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setSgot(new TestProperty(" ",0,false));
-        }
-        if(!SGPT_TF.getText().isEmpty()){
-            chemistry.setSgpt(new TestProperty(SGPT_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setSgpt(new TestProperty(" ",0,false));
-        }
-        if(!ALKALINE_PHOSPHATE_TF.getText().isEmpty()){
-            chemistry.setAlkalinePhosphate(new TestProperty(ALKALINE_PHOSPHATE_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setAlkalinePhosphate(new TestProperty(" ",0,false));
-        }
-        if(!BILIRUBIN_TOTAL_TF.getText().isEmpty()){
-            chemistry.setBilirubinTotal(new TestProperty(BILIRUBIN_TOTAL_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setBilirubinTotal(new TestProperty(" ",0,false));
-        }
-        if(!BILIRUBIN_DIRECT_TF.getText().isEmpty()){
-            chemistry.setBilirubinDirect(new TestProperty(BILIRUBIN_DIRECT_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setBilirubinDirect(new TestProperty(" ",0,false));
-        }
-        if(!BUN_TF.getText().isEmpty()){
-            chemistry.setBun(new TestProperty(BUN_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setBun(new TestProperty(" ",0,false));
-        }
-        if(!CREATININE_TF.getText().isEmpty()){
-            chemistry.setCreatinine(new TestProperty(CREATININE_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setCreatinine(new TestProperty(" ",0,false));
-        }
-        if(!URIC_ACID_TF.getText().isEmpty()){
-            chemistry.setUricAcid(new TestProperty(URIC_ACID_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setUricAcid(new TestProperty(" ",0,false));
-        }
-        if(!TOTAL_PROTEIN_TF.getText().isEmpty()){
-            chemistry.setTotalProtein(new TestProperty(TOTAL_PROTEIN_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setTotalProtein(new TestProperty(" ",0,false));
-        }
-        if(!CHOLESTEROEL_TF.getText().isEmpty()){
-            chemistry.setCholesterol(new TestProperty(CHOLESTEROEL_TF.getText(),0,true));
-        }
-        else {
-            chemistry.setCholesterol(new TestProperty(" ",0,false));
-        }
-
-
-
-
-        if(!cbo_vdrl.getSelectionModel().isEmpty()){
-            serology.setVdrl(new TestProperty(cbo_vdrl.getSelectionModel().getSelectedItem().toString(),0,true));
-        }
-        else {
-            serology.setVdrl(new TestProperty(" ",0,false));
-        }
-        if(!cbo_h.getSelectionModel().isEmpty()){
-            serology.setWidal_II_h(new TestProperty(cbo_h.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setWidal_II_h(new TestProperty(" ",0,false));
-        }
-        if(!cbo_o.getSelectionModel().isEmpty()){
-            serology.setWidal_II_o(new TestProperty(cbo_o.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setWidal_II_o(new TestProperty(" ",0,false));
-        }
-        if(!cbo_felix.getSelectionModel().isEmpty()){
-            serology.setWellFelix(new TestProperty(cbo_felix.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setWellFelix(new TestProperty(" ",0,false));
-        }
-        if(!cbo_hbs.getSelectionModel().isEmpty()){
-            serology.setHbsag(new TestProperty(cbo_hbs.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setHbsag(new TestProperty(" ",0,false));
-        }
-        if(!cbo_crp.getSelectionModel().isEmpty()){
-            serology.setCrp(new TestProperty(cbo_crp.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setCrp(new TestProperty(" ",0,false));
-        }
-        if(!cbo_aso.getSelectionModel().isEmpty()){
-            serology.setAso(new TestProperty(cbo_aso.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setAso(new TestProperty(" ",0,false));
-        }
-        if(!cbo_rhe.getSelectionModel().isEmpty()){
-            serology.setRheumatoidFactor(new TestProperty(cbo_rhe.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setRheumatoidFactor(new TestProperty(" ",0,false));
-        }
-        if(!cbo_serum.getSelectionModel().isEmpty()){
-            serology.setHpyloriSerum(new TestProperty(cbo_serum.getSelectionModel().getSelectedItem(),0,true));
-        }
-        else {
-            serology.setHpyloriSerum(new TestProperty(" ",0,false));
-        }
-
-
-
-
-
-        if(!H_PYLORI_STOOL_TF.getText().isEmpty()){
-            bacteriology.setHpyloriStool(new TestProperty(H_PYLORI_STOOL_TF.getText(),0,true));
-        }
-        else {
-            bacteriology.setHpyloriStool(new TestProperty(" ",0,false));
-        }
-        if(!KOH_TF.getText().isEmpty()){
-            bacteriology.setKoh(new TestProperty(KOH_TF.getText(),0,true));
-        }
-        else {
-            bacteriology.setKoh(new TestProperty(" ",0,false));
-        }
-
-
-
-
-        if(!AFB_TF.getText().isEmpty()){
-            others.setAfb(new TestProperty(AFB_TF.getText(),0,true));
-        }
-        else {
-            others.setAfb(new TestProperty(" ",0,false));
-        }
-        if(!Wet_Film_TF.getText().isEmpty()){
-            others.setWetFilm(new TestProperty(Wet_Film_TF.getText(),0,true));
-        }
-        else {
-            others.setAfb(new TestProperty(" ",0,false));
-        }
-        if(!Gram_Stain_TF.getText().isEmpty()){
-            others.setGramStain(new TestProperty(Gram_Stain_TF.getText(),0,true));
-        }
-        else {
-            others.setAfb(new TestProperty(" ",0,false));
-        }
-        if(!cbo_aids.getSelectionModel().isEmpty()) {
-            others.setHivAids(new TestProperty(cbo_aids.getSelectionModel().getSelectedItem(), 0, true));
-        }
-        else{
-            others.setHivAids(new TestProperty(" ",0,false));
-        }
-
-//        LabRequest labRequest=new LabRequest(LaboratoryWindowController.LaboratoryId,"id", LocalDate.now(),parasitology,bacteriology,microscopy,chemistry,dipstick,others,cbs,serology);
-//        patient.addLabRequest(labRequest);
+        new DataSaver().saveEditedPatient(patient);
     }
 
 }

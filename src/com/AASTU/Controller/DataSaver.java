@@ -2,6 +2,7 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.ClinicalNotes;
 import com.AASTU.Model.LabRequest;
+import com.AASTU.Model.Laboratory;
 import com.AASTU.Model.LaboratoryRequest.*;
 import com.AASTU.Model.Patient;
 import org.hibernate.Session;
@@ -9,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class DataSaver {
 
@@ -31,13 +33,13 @@ public class DataSaver {
 
         Session session = factory.getCurrentSession();
         try{
+            List<LabRequest> labRequestList;
             session.beginTransaction();
-
-            int id = patient.getPatientId();
-
-            Patient obj = (Patient) session.load(Patient.class, id);
-            obj.addLabRequest(result);
-
+//            String quiry = "from LabRequest where patient_id = " + patient.getPatientId()+"and viewable=0";
+//            labRequestList = session.createQuery(quiry).list();
+//            LabRequest obj = (LabRequest) session.load(LabRequest.class, patient.getPatientId());
+//            obj=result;
+            session.update(result);
             session.getTransaction().commit();
         } finally {
             factory.close();
@@ -110,7 +112,6 @@ public class DataSaver {
             session.close();
         }
     }
-
 
     public void saveOutPatient(Patient patient, LocalDate startDate, LocalDate endDate){
         SessionFactory factory = new Configuration()
