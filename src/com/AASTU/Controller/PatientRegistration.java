@@ -177,6 +177,7 @@ public class PatientRegistration implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cboCalender.getSelectionModel().select("E.C");
+        patientAddedDateTF.setDisable(true);
         patientAddedDateTF.setText(LocalDate.now().format( DateTimeFormatter.ofPattern("dd/LLLL/yyyy")));
     }
 

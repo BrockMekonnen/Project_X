@@ -557,14 +557,8 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
         rowClickHandlerforPayment(paymentTable);
         payPatientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         // display full name
-        fullNameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>,ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(
-                    TableColumn.CellDataFeatures<Patient, String> p) {
-                return new SimpleStringProperty(p.getValue().getFirstName()
-                        + " " + p.getValue().getLastName());
-            }
-        });
+        fullNameCol.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getFirstName()
+                + " " + p.getValue().getLastName()));
         ObservableList<Patient> patientsList = FXCollections.observableArrayList();
         for(Patient tempPatent: allPatientList){
             if(tempPatent.isPayed()){

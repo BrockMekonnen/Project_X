@@ -2,8 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -18,228 +18,190 @@
         <AnchorPane fx:id="pnlInner" layoutX="160.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="980.0" stylesheets="@CommenRegistration.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="lblTitle" alignment="CENTER" layoutX="290.0" layoutY="23.0" prefHeight="45.0" prefWidth="441.0" stylesheets="@CommenRegistration.css" text="New Laboratory Technician Registration Form" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="249.0" />
-                <StackPane layoutX="103.0" layoutY="99.0" prefHeight="529.0" prefWidth="815.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="99.0">
-                    <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="81.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Last Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <StackPane.margin>
-                                <Insets left="69.0" top="150.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </Label>
-                        <JFXTextField fx:id="LabTechSecondName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <StackPane.margin>
-                                <Insets left="150.0" top="150.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="First Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <StackPane.margin>
-                                <Insets left="69.0" top="100.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </Label>
-                        <JFXTextField fx:id="LabTechFirstName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <StackPane.margin>
-                                <Insets left="150.0" top="100.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </JFXTextField>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Gender" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <StackPane.margin>
-                                <Insets left="69.0" top="210.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="110.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Working Hours" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <StackPane.margin>
-                                <Insets left="69.0" top="270.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="71.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Date" textFill="#01579b" StackPane.alignment="TOP_RIGHT">
-                            <StackPane.margin>
-                                <Insets right="193.0" top="20.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </Label>
-                        <JFXDatePicker fx:id="LabTechDate" defaultColor="#01579b" prefHeight="30.0" prefWidth="174.0" style="-fx-border-color: #01579b; -fx-background-color: #ffffff;" StackPane.alignment="TOP_RIGHT">
-                            <StackPane.margin>
-                                <Insets right="20.0" top="20.0" />
-                            </StackPane.margin>
-                            <effect>
-                                <DropShadow color="#b3e5fc" />
-                            </effect>
-                        </JFXDatePicker>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="58.0" style="-fx-border-color: #01579B; -fx-border-width: 1 1 1 1;" text="To" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <StackPane.margin>
-                                <Insets left="287.0" top="270.0" />
-                            </StackPane.margin>
-                        </Label>
-                        <JFXTextField fx:id="LabTechstartWorkingHour" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="49.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 1;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <StackPane.margin>
-                                <Insets left="178.0" top="270.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                        <JFXComboBox fx:id="GenderCombo" prefHeight="30.0" prefWidth="143.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <items>
-                                <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="Male" />
-                                    <String fx:value="Female" />
-                                </FXCollections>
-                            </items>
-                            <StackPane.margin>
-                                <Insets left="150.0" top="210.0" />
-                            </StackPane.margin>
-                        </JFXComboBox>
-                        <JFXComboBox fx:id="cboTime" focusColor="BLACK" prefHeight="30.0" prefWidth="60.0" stylesheets="@CommenRegistration.css" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <items>
-                                <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="am" />
-                                    <String fx:value="pm" />
-                                </FXCollections>
-                            </items>
-                            <StackPane.margin>
-                                <Insets left="227.0" top="270.0" />
-                            </StackPane.margin>
-                        </JFXComboBox>
-                        <JFXTextField fx:id="LabTechEndWorkingHour" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="49.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 0 1 0;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <StackPane.margin>
-                                <Insets left="345.0" top="270.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                        <JFXComboBox fx:id="cboTime1" focusColor="BLACK" prefHeight="30.0" prefWidth="65.0" stylesheets="@CommenRegistration.css" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <items>
-                                <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="am" />
-                                    <String fx:value="pm" />
-                                </FXCollections>
-                            </items>
-                            <StackPane.margin>
-                                <Insets left="394.0" top="270.0" />
-                            </StackPane.margin>
-                        </JFXComboBox>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Phone Number" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets left="69.0" top="330.0" />
-                            </StackPane.margin>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="39.0" style="-fx-border-color: #01579B; -fx-border-width: 1 0 1 1; -fx-background-color: #ffffff;" text="+251" StackPane.alignment="TOP_LEFT">
-                            <StackPane.margin>
-                                <Insets left="178.0" top="330.0" />
-                            </StackPane.margin>
-                        </Label>
-                        <JFXTextField fx:id="LaboTechPhoneNumber" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 1 1 0;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets left="217.0" top="330.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Address" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets left="69.0" top="390.0" />
-                            </StackPane.margin>
-                        </Label>
-                        <JFXTextField fx:id="LabTchCityAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="City" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets left="180.0" top="390.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                        <JFXTextField fx:id="LabTechSucCityAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Subcity" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets left="180.0" top="430.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                        <JFXTextField fx:id="LabTechKebeleAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Kebele" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets left="180.0" top="470.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                        <JFXButton fx:id="btnConfirm" buttonType="RAISED" onAction="#handleConfirmButton" prefHeight="44.0" prefWidth="126.0" text="Confirm" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
-                            <StackPane.margin>
-                                <Insets bottom="30.0" right="170.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </JFXButton>
-                        <JFXButton fx:id="btnDiscard" buttonType="RAISED" onAction="#handleDiscardButton" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
-                            <StackPane.margin>
-                                <Insets bottom="30.0" right="10.0" />
-                            </StackPane.margin>
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                        </JFXButton>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="70.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="ID" textFill="#01579b" StackPane.alignment="TOP_RIGHT">
-                            <font>
-                                <Font name="System Bold" size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets right="193.0" top="60.0" />
-                            </StackPane.margin>
-                        </Label>
-                        <JFXTextField fx:id="LabTechId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="173.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_RIGHT">
-                            <effect>
-                                <DropShadow color="#29b6f6" />
-                            </effect>
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                            <StackPane.margin>
-                                <Insets right="20.0" top="60.0" />
-                            </StackPane.margin>
-                        </JFXTextField>
-                    </children>
-                </StackPane>
+            <StackPane prefHeight="602.0" prefWidth="1035.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="86.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="First Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="69.0" top="100.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="firstNameTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <StackPane.margin>
+                        <Insets left="150.0" top="100.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Gender" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="69.0" top="210.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="110.0" style="-fx-border-color: #01579B; -fx-border-width: 2 2 2 2;" text="Working Hours" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="69.0" top="270.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="addedTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="179.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets right="-817.0" top="-525.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="58.0" text="To" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="287.0" top="270.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXComboBox fx:id="cboGender" prefHeight="30.0" prefWidth="143.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Male" />
+                           <String fx:value="Female" />
+                        </FXCollections>
+                     </items>
+                     <StackPane.margin>
+                        <Insets left="150.0" top="210.0" />
+                     </StackPane.margin>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Phone Number" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="69.0" top="330.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="39.0" style="-fx-border-color: #01579B; -fx-border-width: 1 0 1 1; -fx-background-color: #ffffff;" text="+251" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="178.0" top="330.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField fx:id="phoneTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 1 1 0;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="217.0" top="330.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Address" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="69.0" top="390.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField fx:id="cityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="City" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="180.0" top="390.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="subCityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Subcity" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="180.0" top="430.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="kebeleTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Kebele" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="180.0" top="470.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXButton fx:id="btnConfirm" buttonType="RAISED" onAction="#handleConfirmButton" prefHeight="44.0" prefWidth="126.0" text="Confirm" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="30.0" right="170.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnDiscard" buttonType="RAISED" onAction="#handleDiscardBtn" prefHeight="44.0" prefWidth="126.0" text="Discard" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                     <StackPane.margin>
+                        <Insets bottom="30.0" right="10.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="71.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Date" textFill="#01579b" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="193.0" top="20.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Last Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="69.0" top="150.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField fx:id="lastNameTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                     <effect>
+                        <DropShadow color="#29b6f6" />
+                     </effect>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="150.0" top="150.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
+                  <JFXTimePicker fx:id="endTimePk" defaultColor="#01579b" prefHeight="31.0" prefWidth="115.0" promptText="end time">
+                     <StackPane.margin>
+                        <Insets left="-229.0" top="-26.0" />
+                     </StackPane.margin>
+                  </JFXTimePicker>
+                  <JFXTimePicker fx:id="startTimePk" defaultColor="#01579b" prefHeight="21.0" prefWidth="115.0" promptText="start time">
+                     <StackPane.margin>
+                        <Insets left="-551.0" top="-26.0" />
+                     </StackPane.margin>
+                  </JFXTimePicker>
+               </children>
+            </StackPane>
             </children>
         </AnchorPane>
     </children>
