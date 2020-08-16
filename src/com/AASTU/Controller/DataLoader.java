@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -47,7 +49,7 @@ public class DataLoader {
         return patientList;
     }
 
-    public List<DiseaseRecord> loadDiseaseData(){
+    public List<DiseaseRecord> loadDiseaseData(String command){
         List<DiseaseRecord> diseaseRecords;
 
         SessionFactory factory = new Configuration()
@@ -64,7 +66,7 @@ public class DataLoader {
 
             session.beginTransaction();
 
-            diseaseRecords = session.createQuery("from DiseaseRecord").list();
+            diseaseRecords = session.createQuery(command).list();
 
             session.getTransaction().commit();
 
@@ -142,6 +144,199 @@ public class DataLoader {
 
         return clinicalNotesList;
 
+    }
+
+    public ClinicalNotes loadClinicalNote(Patient object){
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        List<ClinicalNotes> clinicalNotesList;
+        ClinicalNotes note = null;
+        try {
+
+            session.beginTransaction();
+            String quiry = "from ClinicalNotes where patient_id = " + object.getPatientId();
+            clinicalNotesList = session.createQuery(quiry).list();
+
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        for(ClinicalNotes temp: clinicalNotesList){
+            if(temp.isEditable()){
+                note = temp;
+            }
+        }
+        return  note;
+    }
+
+    // this function return each testProperty price
+    public double prices(int id) {
+        Pricing price = null;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pricing.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            try {
+                price = session.get(Pricing.class, id);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+
+        return price.getPrice();
+
+    }
+
+    public List<LabRequest> labRequest(Patient tempPateint) {
+        List<LabRequest>  labRequest;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            System.out.println(tempPateint.getPatientId());
+            labRequest = session.createQuery("from LabRequest where patient_id = " + tempPateint.getPatientId()).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return labRequest;
+
+    }
+    // this method return each pricing obj
+    public Pricing priceObj(int id) {
+        Pricing price = null;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pricing.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+
+
+        session.beginTransaction();
+        try {
+            price = session.get(Pricing.class, id);
+            session.getTransaction().commit();
+        }
+        finally {
+            factory.close();
+            session.close();
+        }
+            return price;
+
+
+    }
+
+
+    public Patient loadSinglePatinetObject(Patient patient){
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        Patient obj;
+        try{
+            session.beginTransaction();
+
+            int id = patient.getPatientId();
+
+            obj = (Patient) session.load(Patient.class, id);
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return obj;
+    }
+      
+    public ArrayList<String> loadDiseaseType(){
+
+        ArrayList<String> list = new ArrayList<String>();
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(DiseaseType.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "select name from DiseaseType";
+            list = (ArrayList<String>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return list;
     }
 
 }

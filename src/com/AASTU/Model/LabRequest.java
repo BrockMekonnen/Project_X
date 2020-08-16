@@ -21,6 +21,9 @@ public class LabRequest {
     @Column(name = "requestDate")
     private LocalDate requestDate;
 
+    @Column(name = "viewable")
+    private boolean viewable;
+
     private Parasitology parasitology;
     private Bacteriology bacterology;
     private Microscopy microscopy;
@@ -43,7 +46,7 @@ public class LabRequest {
         this.requestDate = LocalDate.now();
         this.physicianId = "";
         this.labTechnicianId = "";
-
+        this.viewable = true;
     }
 
     public LabRequest(String labTechnicianId, String physicianId, LocalDate requestDate, Parasitology parasitology, Bacteriology bacterology, Microscopy microscopy, Chemistry chemistry, Dipstick dipistic, Others others, Cbs cbs, Serology serology) {
@@ -58,6 +61,14 @@ public class LabRequest {
         this.others = others;
         this.cbs = cbs;
         this.serology = serology;
+    }
+
+    public boolean isViewable() {
+        return viewable;
+    }
+
+    public void setViewable(boolean viewable) {
+        this.viewable = viewable;
     }
 
     public String getLabTechnicianId() {
@@ -154,6 +165,24 @@ public class LabRequest {
 
     public void setSerology(Serology serology) {
         this.serology = serology;
+    }
+
+    @Override
+    public String toString() {
+        return "LabRequest{" +
+                "id=" + id +
+                ", labTechnicianId='" + labTechnicianId + '\'' +
+                ", physicianId='" + physicianId + '\'' +
+                ", requestDate=" + requestDate +
+                ", parasitology=" + parasitology +
+                ", bacterology=" + bacterology +
+                ", microscopy=" + microscopy +
+                ", chemistry=" + chemistry +
+                ", dipistic=" + dipistic +
+                ", others=" + others +
+                ", cbs=" + cbs +
+                ", serology=" + serology +
+                '}';
     }
 }
 

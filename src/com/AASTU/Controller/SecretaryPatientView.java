@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class SecretaryPatientView implements Initializable {
 
-    public static Patient patientObj;
+    private  Patient patientObj;
     @FXML
     private AnchorPane rootPane;
 
@@ -150,7 +150,12 @@ public class SecretaryPatientView implements Initializable {
     }
     /* this function accepts Patient Object and assign
     * some values to the textField */
-    public void setObject(Patient object){
+    public void setObject(Patient object, boolean visiblity){
+        if(!visiblity){
+        activateBtn.setVisible(visiblity);
+        editBtn.setTranslateX(100);
+        }
+        patientObj = object;
         String sex = null;
         if(object.getSex() == 'm') {
             sex = "Male";
@@ -177,7 +182,34 @@ public class SecretaryPatientView implements Initializable {
      * */
     @FXML
     void activateBtnHandler(ActionEvent event) {
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
 
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            Patient activePatient = session.get(Patient.class, patientObj.getPatientId());
+            activePatient.setDocActives(true);
+            activePatient.setFromSec(true);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
     }
 
     @FXML
@@ -194,7 +226,7 @@ public class SecretaryPatientView implements Initializable {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
             new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
-            updatePatientInfo(patientObj);
+            updatePatientInfo(this.patientObj);
         }
         editBtn.setText("Save");
     }

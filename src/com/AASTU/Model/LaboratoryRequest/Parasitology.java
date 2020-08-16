@@ -66,13 +66,13 @@ public class Parasitology {
     }
 
     public Parasitology() {
-        this.stoolTest = new TestProperty("",20,false);
-        this.occultBlood = new TestProperty("",21,false);
-        this.consistency1 = new TestProperty("",22,false);
-        this.consistency2 = new TestProperty("",23,false);
-        this.ovalParasite1 = new TestProperty("",24,false);
-        this.ovalParasite2 = new TestProperty("",25,false);
-        this.ovalParasite3 = new TestProperty("",26,false);
+        this.stoolTest = new TestProperty("",51,false);
+        this.occultBlood = new TestProperty("",52,false);
+        this.consistency1 = new TestProperty("",53,false);
+        this.consistency2 = new TestProperty("",54,false);
+        this.ovalParasite1 = new TestProperty("",55,false);
+        this.ovalParasite2 = new TestProperty("",56,false);
+        this.ovalParasite3 = new TestProperty("",57,false);
     }
 
 

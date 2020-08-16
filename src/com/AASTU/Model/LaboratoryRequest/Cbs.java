@@ -126,23 +126,23 @@ public class Cbs {
     private TestProperty bloodFilm;
 
     public Cbs(){
-        this.wbc = new TestProperty("",81,false);
-        this.lym = new TestProperty("",82,false);
-        this.mid = new TestProperty("",83,false);
-        this.gra = new TestProperty("",84,false);
-        this.rbc = new TestProperty("",85,false);
-        this.hgb = new TestProperty("",86,false);
-        this.mchc = new TestProperty("",87,false);
-        this.mch = new TestProperty("",88,false);
-        this.mcv = new TestProperty("",89,false);
-        this.rdw_cv = new TestProperty("",90,false);
-        this.hct = new TestProperty("",91,false);
-        this.plt = new TestProperty("",92,false);
-        this.pct = new TestProperty("",92,false);
-        this.p_lcr = new TestProperty("",94,false);
-        this.esr = new TestProperty("",95,false);
-        this.bloodGroupRh = new TestProperty("",96,false);
-        this.bloodFilm = new TestProperty("",97,false);
+        this.wbc = new TestProperty("",3,false);
+        this.lym = new TestProperty("",4,false);
+        this.mid = new TestProperty("",5,false);
+        this.gra = new TestProperty("",6,false);
+        this.rbc = new TestProperty("",7,false);
+        this.hgb = new TestProperty("",8,false);
+        this.mchc = new TestProperty("",9,false);
+        this.mch = new TestProperty("",10,false);
+        this.mcv = new TestProperty("",11,false);
+        this.rdw_cv = new TestProperty("",12,false);
+        this.hct = new TestProperty("",13,false);
+        this.plt = new TestProperty("",14,false);
+        this.pct = new TestProperty("",15,false);
+        this.p_lcr = new TestProperty("",16,false);
+        this.esr = new TestProperty("",17,false);
+        this.bloodGroupRh = new TestProperty("",18,false);
+        this.bloodFilm = new TestProperty("",19,false);
     }
 
     public Cbs(TestProperty wbc, TestProperty lym, TestProperty mid, TestProperty gra, TestProperty rbc, TestProperty hgb, TestProperty mchc, TestProperty mch, TestProperty mcv, TestProperty rdw_cv, TestProperty hct, TestProperty plt, TestProperty pct, TestProperty p_lcr, TestProperty esr, TestProperty bloodGroupRh, TestProperty bloodFilm) {

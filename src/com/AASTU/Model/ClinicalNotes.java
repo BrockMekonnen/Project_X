@@ -20,15 +20,31 @@ public class ClinicalNotes {
     @Column(name = "doctorId")
     private String DoctorId;
 
+    @Column(name = "editable")
+    private boolean editable;
+
     public ClinicalNotes() {
         date = LocalDate.now();
         notes = "";
+        editable = true;
     }
 
     public ClinicalNotes(LocalDate date, String notes, String doctorId) {
         this.date = date;
         this.notes = notes;
         DoctorId = doctorId;
+    }
+
+    public int getNoteId() {
+        return noteId;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public LocalDate getDate() {

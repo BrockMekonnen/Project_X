@@ -6,13 +6,35 @@ import javax.persistence.*;
 @Table(name= "pricing")
 public class Pricing {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int priceId;
     @Column(name = "Price")
     private double price;
 
-    public Pricing(double price) {
+    @Column(name = "Test_name")
+    private String testName;
+
+    
+
+
+
+    public Pricing() {}
+
+    public Pricing(double price, String testName) {
         this.price = price;
+        this.testName = testName;
+    }
+
+
+    
+
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
     }
 
     public int getPriceId() {
@@ -29,5 +51,14 @@ public class Pricing {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Pricing{" +
+                "priceId=" + priceId +
+                ", price=" + price +
+                ", testName='" + testName + '\'' +
+                '}';
     }
 }

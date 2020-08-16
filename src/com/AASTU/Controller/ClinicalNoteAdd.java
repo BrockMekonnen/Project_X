@@ -5,24 +5,35 @@ import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.javafx.scene.control.skin.TextFieldSkin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.textfield.TextFields;
 
 public class ClinicalNoteAdd implements Initializable{
     @FXML
     private JFXTextField dateFld;
 
     @FXML
+    private JFXButton addBtn;
+
+    @FXML
+    private TextField diseaseFld;
+
+    @FXML
     private JFXTextArea textArea;
 
+
+    private List<ClinicalNotes> clinicalNotesList;
     private Patient patient;
 
     @FXML
@@ -32,19 +43,55 @@ public class ClinicalNoteAdd implements Initializable{
 
     void setPatient(Patient patient){
         this.patient = patient;
+        clinicalNotesList = new DataLoader().loadClincalNotes(patient);
+        boolean check = false;
+        int position=0;
+        for(int i=0; i<clinicalNotesList.size(); i++){ // Search for editable Clinical Note and if found get its position
+            if(clinicalNotesList.get(i).isEditable()){
+                check = true;
+                position = i; // get its position
+            }
+        }
+        if(check){
+            dateFld.setText(String.valueOf(clinicalNotesList.get(position).getDate()));
+            textArea.setText(clinicalNotesList.get(position).getNotes());
+            addBtn.setText("Save");
+
+        }
+        else
+        dateFld.setText(String.valueOf(LocalDate.now()));
+
     }
 
     @FXML
     void handleSaveButton(ActionEvent event) {
-        ClinicalNotes note = new ClinicalNotes();
-        note.setDate(LocalDate.now());
-        note.setNotes(textArea.getText());
+        boolean check = false;
+        int position=0;
+        for(int i=0; i<clinicalNotesList.size(); i++){ // Search for editable Clinical Note and if found get its position
+            if(clinicalNotesList.get(i).isEditable()){
+                check = true;
+                position = i; // get its position
+            }
+        }
 
-        new DataSaver().saveClinicalNote(this.patient, note);
+        if(check){
+            String note = textArea.getText();
+            int id = clinicalNotesList.get(position).getNoteId(); // using the position get its id
+            new DataSaver().saveEditedClinicalNote(id, note); // save the note
+        }
+        else {
+            ClinicalNotes note = new ClinicalNotes();
+            note.setDate(LocalDate.now());
+            note.setNotes(textArea.getText());
+
+            new DataSaver().saveClinicalNote(this.patient, note);
+        }
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dateFld.setText(String.valueOf(LocalDate.now()));
+        ArrayList<String> diseaseNames = new DataLoader().loadDiseaseType();
+        TextFields.bindAutoCompletion(diseaseFld, diseaseNames);
     }
 }

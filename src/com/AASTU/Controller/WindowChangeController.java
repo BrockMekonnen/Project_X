@@ -2,6 +2,8 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.Patient;
+import com.AASTU.Model.Pricing;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -16,6 +18,7 @@ import javafx.stage.StageStyle;
 
 import javax.print.Doc;
 import java.io.IOException;
+import java.util.List;
 
 public class WindowChangeController {
 
@@ -71,7 +74,7 @@ public class WindowChangeController {
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         NewOutPatient view = loader.getController();
-
+        view.setPatient(tempObject);
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
@@ -139,12 +142,12 @@ public class WindowChangeController {
 
     /** this function accepts mouse event, string text and patient object
      * and create a window that pops up with information inside of patient object */
-    public void secretaryPatientView(MouseEvent event,String fxml,Patient obj) throws IOException {
+    public void secretaryPatientView(MouseEvent event,String fxml,Patient obj, boolean vis) throws IOException {
         tempObject = obj;
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         SecretaryPatientView view1 = loader.getController(); // get the controller of SecretaryPatientView
-        view1.setObject(obj);  // sign some information from the object to the Scene
+        view1.setObject(tempObject,vis);  // sign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
@@ -156,12 +159,12 @@ public class WindowChangeController {
 
     }
 
-    public void totalPaymentView(MouseEvent event,String fxml,Patient obj) throws IOException{
+    public void totalPaymentView(MouseEvent event, String fxml, Patient obj) throws IOException{
         tempObject = obj;
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         PaymentController view1 = loader.getController(); // get the controller of SecretaryPatientView
-        view1.setObject(obj);  // sign some information from the object to the Scene
+        view1.setObject(tempObject);  // sign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);
