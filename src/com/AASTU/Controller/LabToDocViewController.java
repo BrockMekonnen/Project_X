@@ -87,24 +87,4 @@ public class LabToDocViewController implements Initializable {
     @FXML
     public void handleCloseButton(){WindowChangeController.closeWindow();}
 
-
-    @FXML
-    public void WaitingBtn(ActionEvent event){
-        try{
-            new LabToDoc().setObjectLabTestValue(this.patient,true,false,true);
-        handleCloseButton();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void SendBtn(ActionEvent event){
-        try{
-            new LabToDoc().setObjectLabTestValue(this.patient,false,true,false);
-            handleCloseButton();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }

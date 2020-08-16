@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
@@ -381,7 +382,7 @@
                   <CheckBox fx:id="Creatinine_CheckBox" layoutX="261.0" layoutY="968.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                </children>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="971.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
                <children>
                   <Label alignment="CENTER" layoutX="41.0" layoutY="731.0" prefHeight="27.0" prefWidth="115.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Gram Stain">
                      <font>
@@ -578,6 +579,9 @@
                   <CheckBox fx:id="ASO_CheckBox" layoutX="270.0" layoutY="423.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="Rheumatoid_Factor_CheckBox" layoutX="270.0" layoutY="455.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="H_Pylori_Serum_CheckBox" layoutX="270.0" layoutY="487.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
+                  <JFXButton buttonType="RAISED" layoutX="16.0" layoutY="995.0" onAction="#send" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Send" />
+                  <JFXButton buttonType="RAISED" layoutX="123.0" layoutY="993.0" onAction="#wait" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Waiting" />
+                  <JFXButton buttonType="RAISED" layoutX="225.0" layoutY="994.0" onAction="#cancel" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Cancel" />
                </children>
             </AnchorPane>
          </children>

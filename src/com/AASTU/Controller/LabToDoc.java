@@ -6,11 +6,13 @@ import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.sun.corba.se.spi.monitoring.LongMonitoredAttributeBase;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 
 import javax.xml.crypto.Data;
+import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -530,9 +532,25 @@ public class LabToDoc implements Initializable {
         Bun_CheckBox.setVisible(labRequest.getChemistry().getBun().isTest());
         Bun_CheckBox.setSelected(true);
     }
+    @FXML
+    public void send(ActionEvent e){
+        setObjectLabTestValue(e,this.patient,false,true,false);
+        WindowChangeController.closeWindow();
 
-    public void setObjectLabTestValue(Patient patient,boolean waiting,boolean docActive,boolean labActive){
+    }
 
+    @FXML
+    public void wait(ActionEvent e){
+        setObjectLabTestValue(e,this.patient,true,false,true);
+        WindowChangeController.closeWindow();
+    }
+
+    @FXML
+    public void cancel(ActionEvent e){
+        WindowChangeController.closeWindow();
+    }
+
+    public void setObjectLabTestValue(ActionEvent event, Patient patient, boolean waiting, boolean docActive, boolean labActive){
 
         labRequest.getCbs().getLym().setValue(LYMTF.getText());
         labRequest.getCbs().getGra().setValue(GRA_TF.getText());

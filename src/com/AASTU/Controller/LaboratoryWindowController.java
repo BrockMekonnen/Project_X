@@ -141,7 +141,7 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     void handlePendingButton(ActionEvent event) {
         //some Specification will be done here to access only Pending Patients
-        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 1 and OnWaiting = 0"));
+        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 0 and OnWaiting = 0"));
         SearchField();
         goToView(false,true,false,false);
         pendingPnl.toFront();
