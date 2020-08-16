@@ -15,6 +15,65 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class DataLoader {
 
+    public List<Doctor> loadDoctorsData(){
+        List<Doctor> doctorsList;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Doctor.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            doctorsList = session.createQuery("from Doctor").list();
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return doctorsList;
+    }
+
+    public List<Laboratory> loadLaboratoriestData(){
+        List<Laboratory> laboratoryList;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            laboratoryList = session.createQuery("from Laboratory").list();
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return laboratoryList;
+    }
+
+    public List<Secretary> loadSecretariesData(){
+        List<Secretary> secretaryList;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Secretary.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            secretaryList = session.createQuery("from Secretary").list();
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return secretaryList;
+    }
     public List<Patient> loadSpecificPatientData(String SelectiveCommand){
         List<Patient> patientList;
 
@@ -245,7 +304,7 @@ public class DataLoader {
         return labRequest;
 
     }
-    // this method return each pricing obj
+    // this method return one pricing obj at a time
     public Pricing priceObj(int id) {
         Pricing price = null;
 
@@ -273,6 +332,32 @@ public class DataLoader {
 
     }
 
+    public List<Pricing> loadPricing() {
+        List<Pricing>  pricings;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(Pricing.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            pricings = session.createQuery("from Pricing").list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return pricings;
+
+    }
 
     public Patient loadSinglePatinetObject(Patient patient){
 

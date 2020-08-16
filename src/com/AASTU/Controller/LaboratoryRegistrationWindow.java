@@ -1,38 +1,112 @@
 package com.AASTU.Controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
+import com.AASTU.Model.Doctor;
+import com.AASTU.Model.Laboratory;
+import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class LaboratoryRegistrationWindow implements Initializable {
 
+    @FXML
+    private AnchorPane rootPane;
+
+    @FXML
+    private AnchorPane pnlInner;
+
+    @FXML
+    private Label lblTitle;
+
+    @FXML
+    private JFXTextField firstNameTf;
+
+    @FXML
+    private JFXTextField addedTf;
+
+    @FXML
+    private JFXComboBox<?> cboGender;
+
+    @FXML
+    private JFXTextField phoneTf;
+
+    @FXML
+    private JFXTextField cityTf;
+
+    @FXML
+    private JFXTextField subCityTf;
+
+    @FXML
+    private JFXTextField kebeleTf;
+
+    @FXML
+    private JFXButton btnConfirm;
+
+    @FXML
+    private JFXButton btnDiscard;
+
+    @FXML
+    private JFXTextField lastNameTf;
+
+    @FXML
+    private JFXTimePicker endTimePk;
+
+    @FXML
+    private JFXTimePicker startTimePk;
+
+    private char sex;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-
-    }
-    @FXML
-    void handleDiscardButton(ActionEvent event) {
-        WindowChangeController.closeWindow();
+        addedTf.setDisable(true);
+        addedTf.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/LLLL/yyyy")));
     }
 
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
         new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
+        saveNewLaboratory();
     }
 
+    @FXML
+    void handleDiscardBtn(ActionEvent event) {
+        WindowChangeController.closeWindow();
+    }
+    public void saveNewLaboratory(){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
 
+        Session session = factory.getCurrentSession();
+        try {
+            session.beginTransaction();
 
+            if (cboGender.getValue().toString().equals("Male")) {
+                sex = 'm';
+            } else if (cboGender.getValue().toString().equals("Female")) {
+                sex = 'f';
+            }
+            //this if condition is temporary and it is not finished
+            Laboratory laboratory = new Laboratory(firstNameTf.getText(),lastNameTf.getText(), LocalDate.now(),"pasword", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            session.save(laboratory);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
 
 }

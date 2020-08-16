@@ -1,21 +1,20 @@
 package com.AASTU.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Entity
 @Table(name="Secretary")
 public class Secretary {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "secretary_id")
     private int secretaryId;
 
     @Column(name = "first_name")
     private String firstName;
-
 
     @Column(name = "last_name")
     private String lastName;
@@ -27,45 +26,39 @@ public class Secretary {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "start_hour")
-    private int workingHourStartHour;
+    @Column(name = "start_time")
+    private LocalTime workingStartTime;
 
-    @Column(name = "start_minute")
-    private int workingHourStartMin;
+    @Column(name = "end_time")
+    private LocalTime workingEndTime;
 
-    @Column(name = "end_hour")
-    private int workingHourEndHour;
-
-    @Column(name = "end_minute")
-    private int workingHourEndMin;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "city")
-    private String City;
+    private String city;
 
     @Column(name = "sub_city")
-    private String Subcity;
+    private String cubcity;
 
     @Column(name = "kebele")
     private String kebele;
 
-    public Secretary(int secretaryId, String firstName, String lastName, LocalDate addedDate, String password, int workingHourStartHour, int workingHourStartMin, int workingHourEndHour, int workingHourEndMin, String phoneNumber, String city, String subcity, String kebele) {
-        this.secretaryId = secretaryId;
+    public Secretary(String firstName, String lastName, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String cubcity, String kebele) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.addedDate = addedDate;
         this.password = password;
-        this.workingHourStartHour = workingHourStartHour;
-        this.workingHourStartMin = workingHourStartMin;
-        this.workingHourEndHour = workingHourEndHour;
-        this.workingHourEndMin = workingHourEndMin;
+        this.workingStartTime = workingStartTime;
+        this.workingEndTime = workingEndTime;
         this.phoneNumber = phoneNumber;
-        City = city;
-        Subcity = subcity;
+        this.city = city;
+        this.cubcity = cubcity;
         this.kebele = kebele;
     }
+
+    public Secretary(){}
 
     public int getSecretaryId() {
         return secretaryId;
@@ -107,36 +100,28 @@ public class Secretary {
         this.password = password;
     }
 
-    public int getWorkingHourStartHour() {
-        return workingHourStartHour;
+    public LocalTime getWorkingStartTime() {
+        return workingStartTime;
     }
 
-    public void setWorkingHourStartHour(int workingHourStartHour) {
-        this.workingHourStartHour = workingHourStartHour;
+    public void setWorkingStartTime(LocalTime workingStartTime) {
+        this.workingStartTime = workingStartTime;
     }
 
-    public int getWorkingHourStartMin() {
-        return workingHourStartMin;
+    public LocalTime getWorkingEndTime() {
+        return workingEndTime;
     }
 
-    public void setWorkingHourStartMin(int workingHourStartMin) {
-        this.workingHourStartMin = workingHourStartMin;
+    public void setWorkingEndTime(LocalTime workingEndTime) {
+        this.workingEndTime = workingEndTime;
     }
 
-    public int getWorkingHourEndHour() {
-        return workingHourEndHour;
+    public String getCubcity() {
+        return cubcity;
     }
 
-    public void setWorkingHourEndHour(int workingHourEndHour) {
-        this.workingHourEndHour = workingHourEndHour;
-    }
-
-    public int getWorkingHourEndMin() {
-        return workingHourEndMin;
-    }
-
-    public void setWorkingHourEndMin(int workingHourEndMin) {
-        this.workingHourEndMin = workingHourEndMin;
+    public void setCubcity(String cubcity) {
+        this.cubcity = cubcity;
     }
 
     public String getPhoneNumber() {
@@ -148,19 +133,11 @@ public class Secretary {
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
-    }
-
-    public String getSubcity() {
-        return Subcity;
-    }
-
-    public void setSubcity(String subcity) {
-        Subcity = subcity;
+        this.city = city;
     }
 
     public String getKebele() {
