@@ -48,7 +48,7 @@
                         <FontAwesomeIconView fill="#01579b" glyphName="EXPAND" size="18" wrappingWidth="21.285715103149414" />
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="exitBtn"  contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                <JFXButton fx:id="exitBtn" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="48.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
                     <graphic>
                         <MaterialDesignIconView  fill="#01579b" glyphName="CLOSE" size="22" text="" />
                     </graphic>

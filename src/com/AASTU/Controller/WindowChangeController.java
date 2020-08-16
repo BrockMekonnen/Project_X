@@ -123,7 +123,6 @@ public class WindowChangeController {
     }
     public void popupWindow1(MouseEvent event,String fxml,Patient obj) throws IOException{
 
-
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         LabToDocViewController view = loader.getController(); // get the controller of DoctorPatientView

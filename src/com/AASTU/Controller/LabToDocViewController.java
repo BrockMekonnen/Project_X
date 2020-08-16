@@ -42,7 +42,7 @@ public class LabToDocViewController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
-    public static Patient patient=new Patient();
+    private Patient patient=new Patient();
 
 
 
@@ -67,8 +67,7 @@ public class LabToDocViewController implements Initializable {
             FXMLLoader loader=new FXMLLoader(getClass().getResource(fxml));
             AnchorPane root=loader.load();
             LabToDoc contol=loader.getController();
-            contol.VisibilityOfCheckBoxes();
-            contol.setObjectLabTestValue(patient);
+            contol.VisibilityOfCheckBoxes(this.patient);
             rootAnchor.getChildren().add(root);
             setObjectComponents(patient);
             patient.setOnWaiting(true);
@@ -92,7 +91,7 @@ public class LabToDocViewController implements Initializable {
     @FXML
     public void WaitingBtn(ActionEvent event){
         try{
-        patient.setOnWaiting(true);
+            new LabToDoc().setObjectLabTestValue(this.patient,true,false,true);
         handleCloseButton();
         } catch (Exception e){
             e.printStackTrace();
@@ -102,7 +101,7 @@ public class LabToDocViewController implements Initializable {
     @FXML
     public void SendBtn(ActionEvent event){
         try{
-            this.patient.setOnWaiting(false);
+            new LabToDoc().setObjectLabTestValue(this.patient,false,true,false);
             handleCloseButton();
         } catch (Exception e){
             e.printStackTrace();

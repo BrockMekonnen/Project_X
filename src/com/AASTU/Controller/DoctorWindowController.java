@@ -334,7 +334,7 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     void goToPending(ActionEvent event) {
-        populatePendingTable("from Patient where docActives = 1");
+        populatePendingTable("from Patient where docActives = 0");
         goToView(false,true,false);
     }
     void goToPending(){

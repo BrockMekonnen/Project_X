@@ -377,7 +377,7 @@
                   <CheckBox fx:id="Alkaline_Phosphate_CheckBox" layoutX="261.0" layoutY="818.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="Bilirubin_Total_CheckBox" layoutX="261.0" layoutY="850.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="Bilirubin_Direct_CheckBox" layoutX="261.0" layoutY="882.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
-                  <CheckBox layoutX="261.0" layoutY="936.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
+                  <CheckBox fx:id="Bun_CheckBox" layoutX="261.0" layoutY="936.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="Creatinine_CheckBox" layoutX="261.0" layoutY="968.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                </children>
             </AnchorPane>
