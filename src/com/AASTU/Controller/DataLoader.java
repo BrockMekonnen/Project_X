@@ -163,11 +163,13 @@ public class DataLoader {
             factory.close();
             session.close();
         }
-        LabRequest labRequest;
+        LabRequest labRequest=null;
         if(labRequestList.size() != 0){
-            labRequest = labRequestList.get(labRequestList.size() - 1);
-        } else {
-            labRequest = null;
+            for(int i=0;i<labRequestList.size();i++){
+                if(labRequestList.get(i).isViewable()){
+                    labRequest = labRequestList.get(i);
+                }
+            }
         }
 
         return labRequest;
