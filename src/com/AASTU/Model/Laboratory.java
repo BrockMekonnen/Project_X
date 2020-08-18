@@ -18,6 +18,9 @@ public class Laboratory {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "sex")
+    private char sex;
+
     @Column(name = "added_date")
     private LocalDate addedDate;
 
@@ -42,9 +45,10 @@ public class Laboratory {
     @Column(name = "kebele")
     private String kebele;
 
-    public Laboratory(String firstName, String lastName, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String subcity, String kebele) {
+    public Laboratory(String firstName, String lastName, char sex, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String subcity, String kebele) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.sex = sex;
         this.addedDate = addedDate;
         this.password = password;
         this.workingStartTime = workingStartTime;
@@ -143,5 +147,31 @@ public class Laboratory {
 
     public void setKebele(String kebele) {
         this.kebele = kebele;
+    }
+
+    public char getSex() {
+        return sex;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "Laboratory{" +
+                "laboratoryId=" + laboratoryId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", sex=" + sex +
+                ", addedDate=" + addedDate +
+                ", password='" + password + '\'' +
+                ", workingStartTime=" + workingStartTime +
+                ", workingEndTime=" + workingEndTime +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", city='" + city + '\'' +
+                ", subcity='" + subcity + '\'' +
+                ", kebele='" + kebele + '\'' +
+                '}';
     }
 }

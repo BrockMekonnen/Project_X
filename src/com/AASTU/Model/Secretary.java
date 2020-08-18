@@ -19,6 +19,9 @@ public class Secretary {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "sex")
+    private char sex;
+
     @Column(name = "added_date")
     private LocalDate addedDate;
 
@@ -40,21 +43,22 @@ public class Secretary {
     private String city;
 
     @Column(name = "sub_city")
-    private String cubcity;
+    private String subcity;
 
     @Column(name = "kebele")
     private String kebele;
 
-    public Secretary(String firstName, String lastName, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String cubcity, String kebele) {
+    public Secretary(String firstName, String lastName, char sex, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String subcity, String kebele) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.sex = sex;
         this.addedDate = addedDate;
         this.password = password;
         this.workingStartTime = workingStartTime;
         this.workingEndTime = workingEndTime;
         this.phoneNumber = phoneNumber;
         this.city = city;
-        this.cubcity = cubcity;
+        this.subcity = subcity;
         this.kebele = kebele;
     }
 
@@ -82,6 +86,14 @@ public class Secretary {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public char getSex() {
+        return sex;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
     }
 
     public LocalDate getAddedDate() {
@@ -116,14 +128,6 @@ public class Secretary {
         this.workingEndTime = workingEndTime;
     }
 
-    public String getCubcity() {
-        return cubcity;
-    }
-
-    public void setCubcity(String cubcity) {
-        this.cubcity = cubcity;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -140,11 +144,37 @@ public class Secretary {
         this.city = city;
     }
 
+    public String getSubcity() {
+        return subcity;
+    }
+
+    public void setSubcity(String subcity) {
+        this.subcity = subcity;
+    }
+
     public String getKebele() {
         return kebele;
     }
 
     public void setKebele(String kebele) {
         this.kebele = kebele;
+    }
+
+    @Override
+    public String toString() {
+        return "Secretary{" +
+                "secretaryId=" + secretaryId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", sex=" + sex +
+                ", addedDate=" + addedDate +
+                ", password='" + password + '\'' +
+                ", workingStartTime=" + workingStartTime +
+                ", workingEndTime=" + workingEndTime +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", city='" + city + '\'' +
+                ", subcity='" + subcity + '\'' +
+                ", kebele='" + kebele + '\'' +
+                '}';
     }
 }
