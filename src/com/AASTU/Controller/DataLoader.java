@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.print.Doc;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,63 @@ public class DataLoader {
         return laboratoryList;
     }
 
+    public Laboratory loadSingleLaboratory(WorkActivity work){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+        Laboratory laboratory;
+        try {
+            session.beginTransaction();
+            laboratory =(Laboratory) session.load(Laboratory.class,work.getLabTechnicianId());
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return laboratory;
+    }
+
+    public Secretary loadSingleSecretary(WorkActivity work){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Secretary.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+        Secretary secretary;
+        try {
+            session.beginTransaction();
+            secretary= session.load(Secretary.class,work.getSecretaryId());
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return secretary;
+    }
+
+    public Doctor loadsingleDoctor(WorkActivity work){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+        Doctor Doctor;
+        try {
+            session.beginTransaction();
+            Doctor = (Doctor)session.load(Doctor.class,work.getDoctorId());
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return Doctor;
+    }
+
     public List<Secretary> loadSecretariesData(){
         List<Secretary> secretaryList;
         SessionFactory factory = new Configuration()
@@ -74,6 +132,7 @@ public class DataLoader {
 
         return secretaryList;
     }
+
     public List<Patient> loadSpecificPatientData(String SelectiveCommand){
         List<Patient> patientList;
 
@@ -91,6 +150,7 @@ public class DataLoader {
                 .addAnnotatedClass(Cbs.class)
                 .addAnnotatedClass(Serology.class)
                 .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(WorkActivity.class)
                 .buildSessionFactory();
 
         Session session = factory.getCurrentSession();
@@ -396,6 +456,39 @@ public class DataLoader {
         }
         return obj;
     }
+
+
+    public Patient loadSinglePatinetObject(WorkActivity work){
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        Patient obj;
+        try{
+            session.beginTransaction();
+            obj = (Patient) session.load(Patient.class, work.getPatientId());
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return obj;
+    }
       
     public ArrayList<String> loadDiseaseType(){
 
@@ -424,6 +517,59 @@ public class DataLoader {
         }
 
         return list;
+    }
+
+    public WorkActivity SpecificloadActivity(String SelectiveCommand, int patientid){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(WorkActivity.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        WorkActivity activity1=new WorkActivity();
+        try {
+
+            List<WorkActivity> activity;
+            session.beginTransaction();
+//            String quiry = "select name from WorkActivity where patient_id=id";
+            activity = session.createQuery(SelectiveCommand).list();
+            for(WorkActivity activity2:activity){
+                if(activity2.getPatientId()==patientid)
+                    return activity2;
+            }
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+return null;
+    }
+
+    public List<WorkActivity> loadActivity(){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(WorkActivity.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        List<WorkActivity> activity;
+        try {
+            session.beginTransaction();
+            activity = session.createQuery("from WorkActivity").list();
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return activity;
     }
 
 }
