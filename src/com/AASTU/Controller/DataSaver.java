@@ -33,13 +33,39 @@ public class DataSaver {
 
         Session session = factory.getCurrentSession();
         try{
-            List<LabRequest> labRequestList;
             session.beginTransaction();
-//            String quiry = "from LabRequest where patient_id = " + patient.getPatientId()+"and viewable=0";
-//            labRequestList = session.createQuery(quiry).list();
-//            LabRequest obj = (LabRequest) session.load(LabRequest.class, patient.getPatientId());
-//            obj=result;
-            session.update(result);
+            Patient obj = (Patient) session.load(Patient.class, patient.getPatientId());
+            obj.addLabRequest(result);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void updateLabresult(Patient patient,LabRequest result,int LabId){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+           session.beginTransaction();
+           LabRequest request=(LabRequest) session.load(LabRequest.class,LabId);
+           request=result;
+            session.update(request);
             session.getTransaction().commit();
         } finally {
             factory.close();
@@ -194,7 +220,7 @@ public class DataSaver {
             obj.setOutPatinet(patient.isOutPatinet());
             obj.setStartDate(patient.getStartDate());
             obj.setEndDate(patient.getEndDate());
-
+            session.update(obj);
             session.getTransaction().commit();
         } finally {
             factory.close();

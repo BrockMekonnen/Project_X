@@ -259,6 +259,8 @@ public class ManagerWindow implements Initializable {
     /**
      * Laboratory
      * */
+
+
     @FXML
     public void deleteLaboratoryBtn(ActionEvent event) {
         deleteLaboratory();
@@ -400,6 +402,8 @@ public class ManagerWindow implements Initializable {
         }
         secretaryTable1.setItems(secretaryObservableList);
     }
+
+
     private void deleteSecretary() {
         doctorTable.setEditable(true);
         Secretary secretary = secretaryTable1.getSelectionModel().getSelectedItem();
@@ -435,8 +439,6 @@ public class ManagerWindow implements Initializable {
     void editPriceBtn(ActionEvent event) {
         editSaveBtn.setText("Save");
     }
-
-
 
 
     private void displayPrice(){
@@ -691,13 +693,6 @@ public class ManagerWindow implements Initializable {
         pnl_line_work.setVisible(line);
     }
 
-    @FXML
-    void CloseBTN(ActionEvent event){
-        int i= JOptionPane.showConfirmDialog(null,"Do you want to Exit the system","Attention",JOptionPane.YES_NO_OPTION);
-        if(i== JOptionPane.YES_OPTION){
-            System.exit(0);
-            Platform.exit();}
-    }
 
 }
 

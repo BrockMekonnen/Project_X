@@ -116,12 +116,12 @@ public class LaboratoryWindowController implements Initializable {
     //The Id of Laboratory Technician አሁን የገባው hahaha
     public static String LaboratoryId="12";
 
-     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 0"));
+     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
      ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
 
      //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
      ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+LaboratoryId));
-     ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 1 and onWaiting=1"));
+     ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
     void goToView(boolean active, boolean pending, boolean record, boolean waiting){
         pendingPnl.setVisible(pending);
         waitingPnl.setVisible(waiting);
@@ -141,7 +141,7 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     void handlePendingButton(ActionEvent event) {
         //some Specification will be done here to access only Pending Patients
-        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and OnWaiting = 0"));
+        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 "));
         SearchField();
         goToView(false,true,false,false);
         pendingPnl.toFront();
@@ -228,24 +228,7 @@ public class LaboratoryWindowController implements Initializable {
         PendingPhoneNumbelCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
         PendingCitycol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
         PendingPatientTableView.setItems(PendingPatientList);
-//        ActivePatientTableView.setRowFactory(tv -> {
-//            TableRow<Patient> row = new TableRow<>(); // get the row
-//            row.setOnMouseClicked(event -> {
-//                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
-//                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
-//                    try {
-//
-//                        new WindowChangeController().popupWindow1(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
-//
-////                         new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
-//
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//            return row ;
-//        });
+
         /**Active Patient Table List Operation**/
         ActiveKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
         ActiveSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
