@@ -2,37 +2,28 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.*;
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.util.Callback;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -178,53 +169,8 @@ public class ManagerWindow implements Initializable {
     private AnchorPane pnl_sec;
 
     @FXML
-    private AnchorPane pnl_analysis_patient;
-
-    @FXML
-    private AnchorPane pnl_analysis_income;
-
-    @FXML
-    private AnchorPane pnl_disease_record;
-
-    @FXML
     private AnchorPane pnl_work_record;
 
-
-    @FXML
-    private AnchorPane pnl_pie;
-
-    @FXML
-    private AnchorPane pnl_bar;
-
-    @FXML
-    private AnchorPane pnl_line;
-
-    @FXML
-    private AnchorPane pnl_table;
-
-    @FXML
-    private AnchorPane pnl_pie_income;
-
-    @FXML
-    private AnchorPane pnl_bar_income;
-
-    @FXML
-    private AnchorPane pnl_line_income;
-
-    @FXML
-    private AnchorPane pnl_table_income;
-
-    @FXML
-    private AnchorPane pnl_pie_disease;
-
-    @FXML
-    private AnchorPane pnl_bar_disease;
-
-    @FXML
-    private AnchorPane pnl_line_disease;
-
-    @FXML
-    private AnchorPane pnl_table_disease;
 
     @FXML
     private AnchorPane pnl_pie_work;
@@ -246,6 +192,15 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     private ImageView exitBtn;
+
+    @FXML
+    private BorderPane pnl_analysis_income;
+
+    @FXML
+    private BorderPane pnl_analysis_patient;
+
+    @FXML
+    private BorderPane pnl_analysis_disease;
 
     // doctor Lists
     List<Doctor> doctorList = new DataLoader().loadDoctorsData();
@@ -437,8 +392,6 @@ public class ManagerWindow implements Initializable {
     }
 
 
-
-
     private void displayPrice(){
         testIdCol.setCellValueFactory(new PropertyValueFactory<Pricing, Integer>("priceId"));
         testNameCol.setCellValueFactory(new PropertyValueFactory<Pricing,String>("testName"));
@@ -504,156 +457,65 @@ public class ManagerWindow implements Initializable {
             new WindowChangeController().signOut(event,"../view/Login.fxml");
     }
 
+    private void changeInnerWindow(boolean docWindow, boolean labWindow, boolean secWindow, boolean incomeWindow, boolean patient, boolean disease, boolean work, boolean pricing){
+        pnl_doctors.setVisible(docWindow);
+        pnl_lab.setVisible(labWindow);
+        pnl_sec.setVisible(secWindow);
+        pnl_analysis_income.setVisible(incomeWindow);
+        pnl_analysis_patient.setVisible(patient);
+        pnl_analysis_disease.setVisible(disease);
+        pnl_work_record.setVisible(work);
+        pnl_price.setVisible(pricing);
+
+    }
+
     @FXML
-    void handleButtonAction(ActionEvent event) {
+    void handleButtonAction(ActionEvent event) throws IOException {
         if(event.getSource() == btn_doctors){
-            pnl_doctors.setVisible(true);
-            pnl_doctors.toFront();
+            changeInnerWindow(true,false,false,false,false,false,false,false);
+        }
+        else if(event.getSource() == btn_lab){
+            changeInnerWindow(false,true,false,false,false,false,false,false);
 
-        } else if(event.getSource() == btn_lab){
-            pnl_lab.setVisible(true);
-            pnl_lab.toFront();
+        }
+        else if(event.getSource() == btn_secretaries){
+            changeInnerWindow(false,false,true,false,false,false,false, false);
 
-        } else if(event.getSource() == btn_secretaries){
-            pnl_sec.setVisible(true);
-            pnl_sec.toFront();
+        }
+        else if(event.getSource() == btn_ana_Income){
+            changeInnerWindow(false,false,false,true,false,false,false,false);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/IncomeAnalysis.fxml"));
+            AnchorPane root = loader.load();
+            pnl_analysis_income.setCenter(root);
 
-        } else if(event.getSource() == btn_analysis_patient){
-            pnl_analysis_patient.setVisible(true);
-            pnl_analysis_patient.toFront();
-            gotoTableView();
+        }
+        else if(event.getSource() == btn_analysis_patient){
+            changeInnerWindow(false,false,false,false,true,false,false,false);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/PatientAnalysis.fxml"));
+            AnchorPane root = loader.load();
+            pnl_analysis_patient.setCenter(root);
 
+        }
+        else if(event.getSource() == btn_disease_record){
+            changeInnerWindow(false,false,false,false,false,true,false,false);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/DiseaseRecord.fxml"));
+            AnchorPane root = loader.load();
+            pnl_analysis_disease.setCenter(root);
 
-        } else if(event.getSource() == btn_ana_Income){
-            pnl_analysis_income.setVisible(true);
-            pnl_analysis_income.toFront();
-            gotoTableViewIncome();
-
-        } else if(event.getSource() == btn_disease_record){
-            pnl_disease_record.setVisible(true);
-            pnl_disease_record.toFront();
-            gotoTableViewDisease();
-
-        } else if(event.getSource() == btn_work_record){
-            pnl_work_record.setVisible(true);
-            pnl_work_record.toFront();
+        }
+        else if(event.getSource() == btn_work_record){
+            changeInnerWindow(false,false,false,false,false,false,true,false);
             gotoTableViewWork();
 
-        } else if(event.getSource() == pricingBtn){
-            pnl_price.setVisible(true);
-            pnl_price.toFront();
+        }
+        else if(event.getSource() == pricingBtn){
+            changeInnerWindow(false,false,false,false,false,false,false,true);
         }
     }
 
-    @FXML
-    void gotoTableView(){
-        pnl_table.setVisible(true);
-        pnl_table.toFront();
-    }
-    @FXML
-    void goToTableView(ActionEvent event){
-        goToView(false,false, false, true);
-        pnl_table.toFront();
-
-    }
-    @FXML
-    void goToBarChartView(ActionEvent event){
-        goToView(false, false, true, false);
-        pnl_bar.toFront();
-
-    }
-    @FXML
-    void goToPieChartView(ActionEvent event){
-        goToView(false, true, false, false);
-        pnl_pie.toFront();
-
-    }
-    @FXML
-    void goToLineChartView(ActionEvent event){
-        goToView(true, false , false , false);
-        pnl_line.toFront();
-    }
-
-    private void goToView(boolean line, boolean pie, boolean bar, boolean table){
-        pnl_table.setVisible(table);
-        pnl_pie.setVisible(pie);
-        pnl_line.setVisible(line);
-        pnl_bar.setVisible(bar);
-    }
 
 
-    @FXML
-    void gotoTableViewIncome(){
-        pnl_table_income.setVisible(true);
-        pnl_table_income.toFront();
-    }
-    @FXML
-    void goToTableViewIncome(ActionEvent event){
-        goToIncome(true, false, false, false);
-        pnl_table_income.toFront();
 
-    }
-    @FXML
-    void goToBarChartViewIncome(ActionEvent event){
-        goToIncome(false, false, true, false);
-        pnl_bar_income.toFront();
-
-    }
-    @FXML
-    void goToPieChartViewIncome(ActionEvent event){
-        goToIncome(false, true, false, false);
-        pnl_pie_income.toFront();
-
-    }
-    @FXML
-    void goToLineChartViewIncome(ActionEvent event){
-        goToIncome(false, false, false, true);
-        pnl_line_income.toFront();
-    }
-
-    private void goToIncome(boolean table, boolean pie, boolean bar, boolean line){
-        pnl_table_income.setVisible(table);
-        pnl_pie_income.setVisible(pie);
-        pnl_bar_income.setVisible(bar);
-        pnl_line_income.setVisible(line);
-    }
-
-
-    @FXML
-    void gotoTableViewDisease(){
-        pnl_table_disease.setVisible(true);
-        pnl_table_disease.toFront();
-    }
-    @FXML
-    void goToTableViewDisease(ActionEvent event){
-        goToDisease(true, false, false , false);
-        pnl_table_disease.toFront();
-
-    }
-    @FXML
-    void goToBarChartViewDisease(ActionEvent event){
-        goToDisease(false, false, true, false);
-        pnl_bar_disease.toFront();
-
-    }
-    @FXML
-    void goToPieChartViewDisease(ActionEvent event){
-        goToDisease(false, true, false, false);
-        pnl_pie_disease.toFront();
-
-    }
-    @FXML
-    void goToLineChartViewDisease(ActionEvent event){
-        goToDisease(false, false, false, true);
-        pnl_line_disease.toFront();
-    }
-
-    private void goToDisease(boolean table, boolean pie, boolean bar, boolean line){
-        pnl_table_disease.setVisible(table);
-        pnl_pie_disease.setVisible(pie);
-        pnl_bar_disease.setVisible(bar);
-        pnl_line_disease.setVisible(line);
-    }
 
     @FXML
     void gotoTableViewWork(){
@@ -691,13 +553,6 @@ public class ManagerWindow implements Initializable {
         pnl_line_work.setVisible(line);
     }
 
-    @FXML
-    void CloseBTN(ActionEvent event){
-        int i= JOptionPane.showConfirmDialog(null,"Do you want to Exit the system","Attention",JOptionPane.YES_NO_OPTION);
-        if(i== JOptionPane.YES_OPTION){
-            System.exit(0);
-            Platform.exit();}
-    }
 
 }
 

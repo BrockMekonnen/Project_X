@@ -2,13 +2,10 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -425,5 +422,169 @@ public class DataLoader {
 
         return list;
     }
+
+    public List<PatientAnalysis> loadPatientAnalysisDate(int year, int month){
+
+        List<PatientAnalysis> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(PatientAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "from PatientAnalysis where extract(YEAR FROM date) = " + year + " and extract(MONTH FROM date) = " + month;
+            list = (ArrayList<PatientAnalysis>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
+
+    public List<PatientAnalysis> loadAllPatientAnalysisData(){
+
+        List<PatientAnalysis> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(PatientAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "from PatientAnalysis";
+            list = (ArrayList<PatientAnalysis>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
+
+    public ArrayList<Integer> loadPatientAnalysisYearOnly(){
+
+        ArrayList<Integer> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(PatientAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "select DISTINCT extract(YEAR from date) from PatientAnalysis";
+            list = (ArrayList<Integer>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
+
+
+    public List<IncomeAnalysis> loadIncomeAnalaysisData(int year, int month){
+
+        List<IncomeAnalysis> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(IncomeAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "from IncomeAnalysis where extract(YEAR FROM date) = " + year + " and extract(MONTH FROM date) = " + month;
+            list = (ArrayList<IncomeAnalysis>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
+
+    public List<IncomeAnalysis> loadAllIncomeAnalysisData(){
+
+        List<IncomeAnalysis> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(IncomeAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "from IncomeAnalysis";
+            list = (ArrayList<IncomeAnalysis>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
+
+    public ArrayList<Integer> loadIncomeAnalysisYearOnly(){
+
+        ArrayList<Integer> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(IncomeAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            String quiry = "select DISTINCT extract(YEAR from date) from IncomeAnalysis";
+            list = (ArrayList<Integer>) session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
+
 
 }

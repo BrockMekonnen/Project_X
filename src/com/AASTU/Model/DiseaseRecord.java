@@ -80,13 +80,15 @@ public class DiseaseRecord {
     public ReadOnlyObjectWrapper<Integer> M15to29ForTable() {
         return new ReadOnlyObjectWrapper<>(age.getM15to29());
     }
+
     public ReadOnlyObjectWrapper<Integer> M30to64ForTable() {
         return new ReadOnlyObjectWrapper<>(age.getM30to64());
     }
+
     public ReadOnlyObjectWrapper<Integer> mGreater65ForTable() {
         return new ReadOnlyObjectWrapper<>(age.getmGreater65());
     }
-    /////////
+
     public ReadOnlyObjectWrapper<Integer> fLess1ForTable() {
         return new ReadOnlyObjectWrapper<Integer>(age.getfLess1());
     }
