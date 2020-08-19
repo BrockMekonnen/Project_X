@@ -426,7 +426,7 @@ public class DoctorLaboratoryRequestForm implements Initializable {
 
         new DataSaver().saveLabResult(patient, labRequest);
 
-        patient.setSecActives(true);
+        patient.setSecActives(false);
         patient.setDocActives(false);
         patient.setFromSec(false);
         patient.setPayed(false);
@@ -434,6 +434,7 @@ public class DoctorLaboratoryRequestForm implements Initializable {
         new DataSaver().saveEditedPatient(patient);
 
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

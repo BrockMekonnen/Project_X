@@ -534,14 +534,14 @@ public class LabToDoc implements Initializable {
     }
     @FXML
     public void send(ActionEvent e){
-        setObjectLabTestValue(e,this.patient,false,true,false);
+        setObjectLabTestValue(e,this.patient,false,true,false,true,true);
         WindowChangeController.closeWindow();
 
     }
 
     @FXML
     public void wait(ActionEvent e){
-        setObjectLabTestValue(e,this.patient,true,false,true);
+        setObjectLabTestValue(e,this.patient,true,false,true,true,false);
         WindowChangeController.closeWindow();
     }
 
@@ -550,7 +550,7 @@ public class LabToDoc implements Initializable {
         WindowChangeController.closeWindow();
     }
 
-    public void setObjectLabTestValue(ActionEvent event, Patient patient, boolean waiting, boolean docActive, boolean labActive){
+    public void setObjectLabTestValue(ActionEvent event, Patient patient, boolean waiting, boolean docActive, boolean labActive,boolean fromLab,boolean secActive){
 
         labRequest.getCbs().getLym().setValue(LYMTF.getText());
         labRequest.getCbs().getGra().setValue(GRA_TF.getText());
@@ -622,11 +622,13 @@ public class LabToDoc implements Initializable {
         labRequest.getOthers().getGramStain().setValue(Gram_Stain_TF.getText());
         labRequest.getOthers().getHivAids().setValue(cbo_aids.getSelectionModel().getSelectedItem());
 
-        new DataSaver().saveLabResult(patient,labRequest);
+        new DataSaver().updateLabresult(patient,labRequest,labRequest.getId());
 
         patient.setOnWaiting(waiting);
         patient.setDocActives(docActive);
         patient.setLabActives(labActive);
+        patient.setFromLab(fromLab);
+        patient.setSecActives(secActive);
 
         new DataSaver().saveEditedPatient(patient);
     }

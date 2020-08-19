@@ -3,6 +3,7 @@ package com.AASTU.Controller;
 import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.Patient;
 import com.AASTU.Model.Pricing;
+import com.AASTU.Model.WorkActivity;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +54,25 @@ public class WindowChangeController {
         double y = stage.widthProperty().doubleValue();
         width = x;
         height = y;
+    }
+    public void popupWindow0(MouseEvent event,String fxml, WorkActivity work){
+        try{
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        ActivityWindowController controller=loader.getController();
+        controller.setComponents(work);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+    }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void popupWindow(ActionEvent event, String fxml) throws IOException {

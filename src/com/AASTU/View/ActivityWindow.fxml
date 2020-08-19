@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="rootPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@CommenDSL.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.ActivityWindowController">
+    <children>
+
+        <AnchorPane prefHeight="45.0" prefWidth="1600.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <JFXButton fx:id="navBtn" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="27.0" layoutY="24.0"  prefHeight="53.0" prefWidth="52.0" text="Icon" textFill="WHITE" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="24.0">
+                    <ripplerFill>
+                        <LinearGradient endX="0.24285714285714288" endY="0.4380952380952381" startX="0.6857142857142857" startY="0.6857142857142857">
+                            <stops>
+                                <Stop color="WHITE" />
+                                <Stop color="#04afff" offset="1.0" />
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                </JFXButton>
+                <Label id="lbl_title" alignment="CENTER" layoutX="541.0" layoutY="10.0" prefHeight="57.0" prefWidth="269.0" stylesheets="@CommenDSL.css" text="Activity Detail" textFill="WHITE" AnchorPane.leftAnchor="541.0" AnchorPane.rightAnchor="540.0" />
+            <JFXButton fx:id="canelBtn" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="1276.0" layoutY="2.0" onAction="#cancelAction" prefHeight="53.0" prefWidth="68.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Resource/icons8_cancel_32px_4.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="opacityPane1" opacity="0.16" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label layoutX="64.0" layoutY="168.0" prefHeight="36.0" prefWidth="149.0" text="Patient Name :" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="445.0" layoutY="168.0" prefHeight="36.0" prefWidth="149.0" text="Doctor Name :" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="DoctorName" layoutX="594.0" layoutY="168.0" prefHeight="36.0" prefWidth="179.0" text=" " textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="767.0" layoutY="168.0" prefHeight="36.0" prefWidth="217.0" text="Labratory Tech. Name:" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="962.0" layoutY="73.0" prefHeight="36.0" prefWidth="68.0" text="Date :" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="1030.0" layoutY="77.0" prefHeight="36.0" prefWidth="202.0" text=" " />
+      <Label fx:id="PatientName" layoutX="213.0" layoutY="168.0" prefHeight="36.0" prefWidth="202.0" text=" " textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabratoryTechName" layoutX="984.0" layoutY="168.0" prefHeight="36.0" prefWidth="202.0" text=" " textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="DetailTA" layoutX="191.0" layoutY="291.0" prefHeight="424.0" prefWidth="963.0" style="-fx-background-color: #04afff; -fx-border-color: #000;" />
+      <Label layoutX="191.0" layoutY="255.0" prefHeight="36.0" prefWidth="94.0" text="Activity :-" textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="18.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
