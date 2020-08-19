@@ -1,6 +1,7 @@
 package com.AASTU.Controller;
 
 import com.AASTU.Model.*;
+import com.AASTU.Model.LaboratoryRequest.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
@@ -22,16 +23,56 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
 public class SecretaryWindowController implements Initializable {
+
+    public static Secretary currentSecretary;
+    // profile
+    @FXML
+    private JFXTextField firstNameTf;
+
+    @FXML
+    private JFXTextField phonTf;
+
+    @FXML
+    private JFXTextField lastNameTf;
+
+    @FXML
+    private JFXTextField genderTf;
+
+    @FXML
+    private JFXTextField startHrTf;
+
+    @FXML
+    private JFXTextField endHrTf;
+
+    @FXML
+    private JFXTextField kebeleTf;
+
+    @FXML
+    private JFXTextField cityTf;
+
+    @FXML
+    private JFXTextField subcityTf;
+
+    @FXML
+    private JFXTextField passwordTf;
+    @FXML
+    private JFXButton editBtn;
+
+
 
     @FXML
     private AnchorPane rootPane;
@@ -197,11 +238,65 @@ public class SecretaryWindowController implements Initializable {
     public int SecretaryId=12;
 
 // getting patient lists from database
-List<Patient> allPatientList = new DataLoader().loadSpecificPatientData("from Patient");
+List<Patient> allPatientList = new DataLoader().loadSpecificPatientData("from Patient where secActives = 1");
 List<Patient> normalPatientList =new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0 and patientStatus = 1");
 List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 1 and outPatient = 1");
+List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient where payed = 0 and secActives = 1");
 
+    // profile handler
+    private void textFieldStatus(boolean status) {
+        firstNameTf.setEditable(status);
+        lastNameTf.setEditable(status);
+        passwordTf.setEditable(status);
+        genderTf.setEditable(status);
+        cityTf.setEditable(status);
+        subcityTf.setEditable(status);
+        kebeleTf.setEditable(status);
+        phonTf.setEditable(status);
+        startHrTf.setEditable(false);
+        endHrTf.setEditable(false);
+    }
 
+    @FXML
+    void cancelProHandler(ActionEvent event) {
+
+    }
+    @FXML
+    void editProHandler(ActionEvent event) {
+        textFieldStatus(true);
+        if(editBtn.getText().equals("save")){
+         editProfile();
+        }
+        editBtn.setText("Save");
+
+    }
+
+    public void editProfile(){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Secretary.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            Secretary secretary = session.get(Secretary.class, currentSecretary.getSecretaryId());
+            secretary.setFirstName(firstNameTf.getText());
+            secretary.setLastName(lastNameTf.getText());
+            secretary.setPassword(passwordTf.getText());
+            secretary.setSex(genderTf.getText().toLowerCase().charAt(0));
+            secretary.setPhoneNumber(phonTf.getText());
+            secretary.setCity(cityTf.getText());
+            secretary.setSubcity(subcityTf.getText());
+            secretary.setKebele(kebeleTf.getText());
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         profilePane.setVisible(false);
@@ -223,6 +318,7 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
         displayPatients();
         displayPayment();
         displayRecords();
+        displayProfile();
     }
 
     void goToView(boolean active, boolean pay, boolean out, boolean record){
@@ -550,6 +646,26 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
             return row ;
         });
     }
+
+    public void displayProfile(){
+        textFieldStatus(false);
+        String sex = null;
+        if(currentSecretary.getSex() == 'm') {
+            sex = "Male";
+        }else if(currentSecretary.getSex() == 'f'){
+            sex = "Female";
+        }
+        firstNameTf.setText(currentSecretary.getFirstName());
+        lastNameTf.setText(currentSecretary.getLastName());
+        genderTf.setText(sex);
+        passwordTf.setText(currentSecretary.getPassword());
+        startHrTf.setText(currentSecretary.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        endHrTf.setText(currentSecretary.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        phonTf.setText(currentSecretary.getPhoneNumber());
+        cityTf.setText(currentSecretary.getCity());
+        subcityTf.setText(currentSecretary.getSubcity());
+        kebeleTf.setText(currentSecretary.getKebele());
+    }
     /**
      * METHODS TO DISPLAY AND REFRESH TABLES
      * */
@@ -562,10 +678,8 @@ List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Pa
         fullNameCol.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getFirstName()
                 + " " + p.getValue().getLastName()));
         ObservableList<Patient> patientsList = FXCollections.observableArrayList();
-        for(Patient tempPatent: allPatientList){
-            if(tempPatent.isPayed()){
+        for(Patient tempPatent: payers){
             patientsList.add(tempPatent);
-            }
         }
         paymentTable.setItems(patientsList);
     }

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import javax.print.Doc;
 import java.time.LocalDate;
@@ -55,6 +56,29 @@ public class DataLoader {
 
         return laboratoryList;
     }
+    public Laboratory laboratoryObj(String password, String userName){
+        Laboratory laboratory;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Laboratory where password = :password and first_name = :name");
+            query.setParameter("password", password);
+            query.setParameter("name", userName);
+            laboratory = (Laboratory) query.uniqueResult();
+                      session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return laboratory;
+    }
 
     public Laboratory loadSingleLaboratory(WorkActivity work){
         SessionFactory factory = new Configuration()
@@ -66,6 +90,7 @@ public class DataLoader {
         try {
             session.beginTransaction();
             laboratory =(Laboratory) session.load(Laboratory.class,work.getLabTechnicianId());
+
             session.getTransaction().commit();
         }finally {
             factory.close();
@@ -74,6 +99,30 @@ public class DataLoader {
 
         return laboratory;
     }
+
+    public Doctor doctorObj(String password, String userName){
+        Doctor doctor;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Doctor.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Doctor where password = :password and first_name = :name");
+            query.setParameter("password", password);
+            query.setParameter("name", userName);
+            doctor = (Doctor) query.uniqueResult();
+            
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+        return doctor;
+    }
+
 
     public Secretary loadSingleSecretary(WorkActivity work){
         SessionFactory factory = new Configuration()
@@ -85,15 +134,41 @@ public class DataLoader {
         try {
             session.beginTransaction();
             secretary= session.load(Secretary.class,work.getSecretaryId());
+
             session.getTransaction().commit();
         }finally {
             factory.close();
             session.close();
         }
+          return secretary;
+    }
 
+
+
+
+    public Secretary secretaryObj(String password, String userName){
+        Secretary secretary;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Secretary.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Secretary where password = :password and first_name = :name");
+            query.setParameter("password", password);
+            query.setParameter("name", userName);
+            secretary = (Secretary) query.uniqueResult();
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
         return secretary;
     }
 
+  
     public Doctor loadsingleDoctor(WorkActivity work){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -104,14 +179,15 @@ public class DataLoader {
         try {
             session.beginTransaction();
             Doctor = (Doctor)session.load(Doctor.class,work.getDoctorId());
+
             session.getTransaction().commit();
         }finally {
             factory.close();
             session.close();
         }
-
         return Doctor;
     }
+
 
     public List<Secretary> loadSecretariesData(){
         List<Secretary> secretaryList;
