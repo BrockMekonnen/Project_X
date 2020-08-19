@@ -188,6 +188,8 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private JFXButton allDiseaseBtn;
 
+    public int DoctorId=22;
+
     private void populateRecordTable(){
         columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         columnRecordDate.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
