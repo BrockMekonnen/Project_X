@@ -100,7 +100,7 @@ public class LaboratoryRegistrationWindow implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Laboratory laboratory = new Laboratory(firstNameTf.getText(),lastNameTf.getText(), LocalDate.now(),"pasword", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Laboratory laboratory = new Laboratory(firstNameTf.getText(),lastNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(laboratory);
             session.getTransaction().commit();
         } finally {
