@@ -78,7 +78,7 @@ public class SecretaryRegistration implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Secretary secretary = new Secretary(firstNameTf.getText(),lastNameTf.getText(), LocalDate.now(),"pasword", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Secretary secretary = new Secretary(firstNameTf.getText(),lastNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(secretary);
             session.getTransaction().commit();
         } finally {

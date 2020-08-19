@@ -53,7 +53,7 @@ public class Patient {
     @Column(name = "labActives")
     private boolean labActives;
 
-    @Column(name = "secActievs")
+    @Column(name = "secActives")
     private boolean secActives;
 
     @Column(name = "fromLab")

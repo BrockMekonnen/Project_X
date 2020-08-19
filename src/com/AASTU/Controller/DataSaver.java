@@ -1,16 +1,13 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Model.ClinicalNotes;
-import com.AASTU.Model.LabRequest;
-import com.AASTU.Model.Laboratory;
+import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
-import com.AASTU.Model.Patient;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
 
 public class DataSaver {
 
@@ -33,14 +30,41 @@ public class DataSaver {
 
         Session session = factory.getCurrentSession();
         try{
-            List<LabRequest> labRequestList;
             session.beginTransaction();
-//            String quiry = "from LabRequest where patient_id = " + patient.getPatientId()+"and viewable=0";
-//            labRequestList = session.createQuery(quiry).list();
-//            LabRequest obj = (LabRequest) session.load(LabRequest.class, patient.getPatientId());
-//            obj=result;
-            session.update(result);
+            Patient obj = (Patient) session.load(Patient.class, patient.getPatientId());
+            obj.addLabRequest(result);
             session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void updateLabresult(Patient patient,LabRequest result,int LabId){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+                .addAnnotatedClass(TestProperty.class)
+                .addAnnotatedClass(Parasitology.class)
+                .addAnnotatedClass(Bacteriology.class)
+                .addAnnotatedClass(Microscopy.class)
+                .addAnnotatedClass(Chemistry.class)
+                .addAnnotatedClass(Dipstick.class)
+                .addAnnotatedClass(Others.class)
+                .addAnnotatedClass(Cbs.class)
+                .addAnnotatedClass(Serology.class)
+                .addAnnotatedClass(LabRequest.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+           session.beginTransaction();
+           LabRequest request=(LabRequest) session.load(LabRequest.class,LabId);
+           request=result;
+            session.update(request);
+            session.getTransaction().commit();
+            updateActivity(patient.getPatientId()," Send Patient's Labratory Result to Doctor",2,LocalDate.now(),new LaboratoryWindowController().LaboratoryId);
         } finally {
             factory.close();
             session.close();
@@ -105,8 +129,8 @@ public class DataSaver {
 
             Patient obj = (Patient) session.load(Patient.class, id);
             obj.addClincalNote(note);
-
             session.getTransaction().commit();
+
         } finally {
             factory.close();
             session.close();
@@ -194,7 +218,7 @@ public class DataSaver {
             obj.setOutPatinet(patient.isOutPatinet());
             obj.setStartDate(patient.getStartDate());
             obj.setEndDate(patient.getEndDate());
-
+            session.update(obj);
             session.getTransaction().commit();
         } finally {
             factory.close();
@@ -257,6 +281,89 @@ public class DataSaver {
             ClinicalNotes obj = (ClinicalNotes) session.load(ClinicalNotes.class, id);
             obj.setEditable(editable);
 
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void saveActivity(WorkActivity activity){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(WorkActivity.class)
+                .buildSessionFactory();
+        Session session=factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+            session.save(activity);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void Activity(String activity,int Secretaryid,int PatientId){
+        WorkActivity activity1=new WorkActivity();
+        activity1.setActivity_day(LocalDate.now());
+        activity1.setActivity(Secretaryid+": "+activity+"\n");
+        activity1.setSecretaryId(Secretaryid);
+        activity1.setPatientId(PatientId);
+        saveActivity(activity1);
+
+    }
+
+    public void updateActivity(int patientid,String Activity,int identify,LocalDate date1,int id){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(WorkActivity.class)
+                .buildSessionFactory();
+        Session session=factory.getCurrentSession();
+        try{
+            boolean check=false;
+            session.beginTransaction();
+            WorkActivity obj1=new DataLoader().SpecificloadActivity("from WorkActivity where date ="+ DateTimeFormatter.BASIC_ISO_DATE.format(date1),patientid);
+            if(obj1!=null){
+            WorkActivity obj=session.load(WorkActivity.class,obj1.getActivityId());
+            if(identify==1){
+            obj.setActivity(obj.getActivity()+Activity);
+            obj.setDoctorId(new DoctorWindowController().DoctorId);
+            session.update(obj);
+            }
+            else if(identify==2){
+                obj.setActivity(obj.getActivity()+Activity);
+                obj.setLabTechnicianId(new LaboratoryWindowController().LaboratoryId);
+                session.update(obj);
+            }
+            session.getTransaction().commit();}
+            else saveOther(Activity,identify,id,date1,patientid);
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void saveOther(String activity,int identify,int id,LocalDate date,int Patientid){
+        WorkActivity obj=new WorkActivity();
+        obj.setActivity(activity);
+        obj.setActivity_day(date);
+        obj.setPatientId(Patientid);
+        if(identify==1){
+            obj.setDoctorId(id);
+        }
+        else if(identify==2)
+            obj.setLabTechnicianId(id);
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(WorkActivity.class)
+                .buildSessionFactory();
+        Session session=factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            session.save(obj);
             session.getTransaction().commit();
         } finally {
             factory.close();

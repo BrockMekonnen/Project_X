@@ -1,7 +1,9 @@
 package com.AASTU.Controller;
 
 import com.AASTU.Main;
+import com.AASTU.Model.Laboratory;
 import com.AASTU.Model.Patient;
+import com.AASTU.Model.Secretary;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -20,13 +22,53 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 public class LaboratoryWindowController implements Initializable {
+
+    public static Laboratory currentLaboratory;
+    // profile
+    @FXML
+    private JFXTextField firstNameTf;
+
+    @FXML
+    private JFXTextField phonTf;
+
+    @FXML
+    private JFXTextField lastNameTf;
+
+    @FXML
+    private JFXTextField genderTf;
+
+    @FXML
+    private JFXTextField srartHrTf;
+
+    @FXML
+    private JFXTextField endHrTf;
+
+    @FXML
+    private JFXTextField kebeleTf;
+
+    @FXML
+    private JFXTextField cityTf;
+
+    @FXML
+    private JFXTextField subcityTf;
+
+    @FXML
+    private JFXTextField passwordTf;
+
+    @FXML
+    private JFXButton editBtn;
+
 
     @FXML
     public TableView<Patient> PendingPatientTableView,WaitingPatientTableView,ActivePatientTableView,RecordedPatientTableView;
@@ -114,14 +156,14 @@ public class LaboratoryWindowController implements Initializable {
     private AnchorPane recordPnl;
 
     //The Id of Laboratory Technician አሁን የገባው hahaha
-    public static String LaboratoryId="12";
+    public static int LaboratoryId=10;
 
-     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 0"));
-     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 1"));
+     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 0"));
+     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
 
      //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
      ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+LaboratoryId));
-     ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 1 and onWaiting=1"));
+     ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
     void goToView(boolean active, boolean pending, boolean record, boolean waiting){
         pendingPnl.setVisible(pending);
         waitingPnl.setVisible(waiting);
@@ -141,7 +183,7 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     void handlePendingButton(ActionEvent event) {
         //some Specification will be done here to access only Pending Patients
-        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 0 and OnWaiting = 0"));
+        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 "));
         SearchField();
         goToView(false,true,false,false);
         pendingPnl.toFront();
@@ -159,10 +201,85 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     void handleWaitingButton(ActionEvent event) {
         //some specification wil be done here to access only waiting Patients from the whole lists
-        WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where docActives = 1 and onWaiting = 1"));
+        WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
         SearchField();
         goToView(false,false, false,true);
         waitingPnl.toFront();
+    }
+
+    // profile Handler
+
+    private void textFieldStatus(boolean status) {
+        firstNameTf.setEditable(status);
+        lastNameTf.setEditable(status);
+        passwordTf.setEditable(status);
+        genderTf.setEditable(status);
+        cityTf.setEditable(status);
+        subcityTf.setEditable(status);
+        kebeleTf.setEditable(status);
+        phonTf.setEditable(status);
+        srartHrTf.setEditable(false);
+        endHrTf.setEditable(false);
+
+    }
+    public void displayProfile(){
+        textFieldStatus(false);
+        String sex = null;
+        if(currentLaboratory.getSex() == 'm') {
+            sex = "Male";
+        }else if(currentLaboratory.getSex() == 'f'){
+            sex = "Female";
+        }
+        firstNameTf.setText(currentLaboratory.getFirstName());
+        lastNameTf.setText(currentLaboratory.getLastName());
+        genderTf.setText(sex);
+        passwordTf.setText(currentLaboratory.getPassword());
+        srartHrTf.setText(currentLaboratory.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        endHrTf.setText(currentLaboratory.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        phonTf.setText(currentLaboratory.getPhoneNumber());
+        cityTf.setText(currentLaboratory.getCity());
+        subcityTf.setText(currentLaboratory.getSubcity());
+        kebeleTf.setText(currentLaboratory.getKebele());
+    }
+    @FXML
+    void canceProlHandler(ActionEvent event) {
+
+    }
+
+    @FXML
+    void editProHandler(ActionEvent event) {
+        textFieldStatus(true);
+        if(editBtn.getText().equals("save")){
+            editProfile();
+        }
+        editBtn.setText("Save");
+    }
+
+    public void editProfile(){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            Laboratory laboratory = session.get(Laboratory .class, currentLaboratory.getLaboratoryId());
+            laboratory.setFirstName(firstNameTf.getText());
+            laboratory.setLastName(lastNameTf.getText());
+            laboratory.setPassword(passwordTf.getText());
+            laboratory.setSex(genderTf.getText().toLowerCase().charAt(0));
+            laboratory.setPhoneNumber(phonTf.getText());
+            laboratory.setCity(cityTf.getText());
+            laboratory.setSubcity(subcityTf.getText());
+            laboratory.setKebele(kebeleTf.getText());
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
     }
 
     @Override
@@ -173,6 +290,7 @@ public class LaboratoryWindowController implements Initializable {
         TableOperation();
         //Used for text field searching
         SearchField();
+        displayProfile();
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         coverPane.setVisible(false);
@@ -228,24 +346,7 @@ public class LaboratoryWindowController implements Initializable {
         PendingPhoneNumbelCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
         PendingCitycol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
         PendingPatientTableView.setItems(PendingPatientList);
-//        ActivePatientTableView.setRowFactory(tv -> {
-//            TableRow<Patient> row = new TableRow<>(); // get the row
-//            row.setOnMouseClicked(event -> {
-//                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
-//                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
-//                    try {
-//
-//                        new WindowChangeController().popupWindow1(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
-//
-////                         new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
-//
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//            return row ;
-//        });
+
         /**Active Patient Table List Operation**/
         ActiveKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
         ActiveSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));

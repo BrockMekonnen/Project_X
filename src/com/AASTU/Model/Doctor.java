@@ -18,6 +18,9 @@ public class Doctor {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "sex")
+    private char sex;
+
     @Column(name = "added_date")
     private LocalDate addedDate;
 
@@ -43,9 +46,10 @@ public class Doctor {
     @Column(name = "kebele")
     private String kebele;
 
-    public Doctor(String firstName, String lastName, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String subcity, String kebele) {
+    public Doctor(String firstName, String lastName, char sex, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String subcity, String kebele) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.sex = sex;
         this.addedDate = addedDate;
         this.password = password;
         this.workingStartTime = workingStartTime;
@@ -56,7 +60,16 @@ public class Doctor {
         this.kebele = kebele;
     }
 
+
     public Doctor(){}
+
+    public char getSex() {
+        return sex;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
 
     public int getDoctorID() {
         return doctorID;
@@ -152,6 +165,7 @@ public class Doctor {
                 "doctorID=" + doctorID +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", sex=" + sex +
                 ", addedDate=" + addedDate +
                 ", password='" + password + '\'' +
                 ", workingStartTime=" + workingStartTime +

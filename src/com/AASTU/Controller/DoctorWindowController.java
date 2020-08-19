@@ -1,10 +1,9 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Model.AgeScale;
-import com.AASTU.Model.DiseaseRecord;
-import com.AASTU.Model.Patient;
+import com.AASTU.Model.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -23,6 +22,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 
 import java.io.IOException;
@@ -33,6 +35,44 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class DoctorWindowController implements Initializable {
+
+    public static Doctor currentDoctor;
+    // profile
+    @FXML
+    private ImageView exitBtn;
+
+    @FXML
+    private JFXTextField firstNameTf;
+
+    @FXML
+    private JFXTextField phonTf;
+
+    @FXML
+    private JFXTextField lastNameTf;
+
+    @FXML
+    private JFXTextField genderTf;
+
+    @FXML
+    private JFXTextField startHrTf;
+
+    @FXML
+    private JFXTextField endHrTf;
+
+    @FXML
+    private JFXTextField kebeleTf;
+
+    @FXML
+    private JFXTextField cityTf;
+
+    @FXML
+    private JFXTextField subCityTf;
+
+    @FXML
+    private JFXTextField passwordTf;
+
+    @FXML
+    private JFXButton editBtn;
 
     @FXML
     public AnchorPane profilePane;
@@ -60,9 +100,6 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     private JFXComboBox<?> comboTimeEnd;
-
-    @FXML
-    private ImageView exitBtn;
 
     @FXML
     private TableView<Patient> pendingTable;
@@ -150,6 +187,8 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     private JFXButton allDiseaseBtn;
+
+    public int DoctorId=22;
 
     private void populateRecordTable(){
         columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
@@ -305,12 +344,86 @@ public class DoctorWindowController implements Initializable {
         }
         pendingTable.setItems(observableList);
     }
+    // profile handler
+    private void textFieldStatus(boolean status) {
+        firstNameTf.setEditable(status);
+        lastNameTf.setEditable(status);
+        passwordTf.setEditable(status);
+        genderTf.setEditable(status);
+        cityTf.setEditable(status);
+        subCityTf.setEditable(status);
+        kebeleTf.setEditable(status);
+        phonTf.setEditable(status);
+        startHrTf.setEditable(false);
+        endHrTf.setEditable(false);
+    }
+
+    public void displayProfile(){
+        textFieldStatus(false);
+        String sex = null;
+        if(currentDoctor.getSex() == 'm') {
+            sex = "Male";
+        }else if(currentDoctor.getSex() == 'f'){
+            sex = "Female";
+        }
+        firstNameTf.setText(currentDoctor.getFirstName());
+        lastNameTf.setText(currentDoctor.getLastName());
+        passwordTf.setText(currentDoctor.getPassword());
+        genderTf.setText(sex);
+        startHrTf.setText(currentDoctor.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        endHrTf.setText(currentDoctor.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        phonTf.setText(currentDoctor.getPhoneNumber());
+        cityTf.setText(currentDoctor.getCity());
+        subCityTf.setText(currentDoctor.getSubcity());
+        kebeleTf.setText(currentDoctor.getKebele());
+    }
+
+    @FXML
+    void cancelProHandler(ActionEvent event) {
+
+    }
+    @FXML
+    void editProHandler(ActionEvent event) {
+        textFieldStatus(true);
+        if(editBtn.getText().equals("save")){
+            editProfile();
+        }
+        editBtn.setText("Save");
+
+    }
+    public void editProfile(){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Doctor.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            Doctor doctor = session.get(Doctor.class, currentDoctor.getDoctorID());
+            doctor.setFirstName(firstNameTf.getText());
+            doctor.setLastName(lastNameTf.getText());
+            doctor.setPassword(passwordTf.getText());
+//            secretary.setSex(sexTf.getText().toLowerCase().charAt(0));
+            doctor.setPhoneNumber(phonTf.getText());
+            doctor.setCity(cityTf.getText());
+            doctor.setSubcity(subCityTf.getText());
+            doctor.setKebele(kebeleTf.getText());
+
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         transition();
         populatePendingTable("from Patient where docActives = 1");
         goToPending();
+        displayProfile();
 
     }
 
