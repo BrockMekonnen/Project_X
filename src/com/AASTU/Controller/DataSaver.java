@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 import static com.AASTU.Controller.LaboratoryWindowController.currentLaboratory;
 
 public class DataSaver {
-
     public void saveLabResult(Patient patient, LabRequest result){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -66,13 +65,12 @@ public class DataSaver {
             request=result;
             session.update(request);
             session.getTransaction().commit();
-            updateActivity(patient.getPatientId(),LaboratoryWindowController.currentLaboratory.getFirstName()+" "+LaboratoryWindowController.currentLaboratory.getLastName()+" Send Patient's Labratory Result to Doctor",2,LocalDate.now(),currentLaboratory.getLaboratoryId());
+            updateActivity(patient.getPatientId(),LaboratoryWindowController.currentLaboratory.getFirstName()+" "+LaboratoryWindowController.currentLaboratory.getLastName()+" Send Patient's Laboratory Result to Doctor",2,LocalDate.now(),currentLaboratory.getLaboratoryId());
         } finally {
             factory.close();
             session.close();
         }
     }
-
 
     public void saveEditedLabResult(LabRequest request, boolean viewable){
         SessionFactory factory = new Configuration()
