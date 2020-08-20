@@ -326,18 +326,18 @@ public class DataSaver {
             session.beginTransaction();
             WorkActivity obj1=new DataLoader().SpecificloadActivity("from WorkActivity where date ="+ DateTimeFormatter.BASIC_ISO_DATE.format(date1),patientid);
             if(obj1!=null){
-            WorkActivity obj=session.load(WorkActivity.class,obj1.getActivityId());
-            if(identify==1){
-            obj.setActivity(obj.getActivity()+Activity);
-            obj.setDoctorId(new DoctorWindowController().DoctorId);
-            session.update(obj);
-            }
-            else if(identify==2){
-                obj.setActivity(obj.getActivity()+Activity);
-                obj.setLabTechnicianId(new LaboratoryWindowController().LaboratoryId);
-                session.update(obj);
-            }
-            session.getTransaction().commit();}
+                WorkActivity obj=session.load(WorkActivity.class,obj1.getActivityId());
+                if(identify==1){
+                    obj.setActivity(obj.getActivity()+Activity);
+                    obj.setDoctorId(new DoctorWindowController().currentDoctor.getDoctorID());
+                    session.update(obj);
+                }
+                else if(identify==2){
+                    obj.setActivity(obj.getActivity()+Activity);
+                    obj.setLabTechnicianId(new LaboratoryWindowController().currentLaboratory.getLaboratoryId());
+                    session.update(obj);
+                }
+                session.getTransaction().commit();}
             else saveOther(Activity,identify,id,date1,patientid);
         } finally {
             factory.close();
