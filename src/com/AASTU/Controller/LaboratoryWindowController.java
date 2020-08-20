@@ -158,7 +158,7 @@ public class LaboratoryWindowController implements Initializable {
     //The Id of Laboratory Technician አሁን የገባው hahaha
 //    public static int LaboratoryId=currentLaboratory.getLaboratoryId();
 
-    ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
+    ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
 
     //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
@@ -176,6 +176,7 @@ public class LaboratoryWindowController implements Initializable {
         //some specification will be done here to access Active Patients only
         ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives=1"));
         SearchField();
+        TableOperation();
         goToView(true,false,false,false);
         activePnl.toFront();
     }
@@ -185,6 +186,7 @@ public class LaboratoryWindowController implements Initializable {
         //some Specification will be done here to access only Pending Patients
         PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 "));
         SearchField();
+        TableOperation();
         goToView(false,true,false,false);
         pendingPnl.toFront();
     }
@@ -194,6 +196,7 @@ public class LaboratoryWindowController implements Initializable {
         //Some specification will be done here To Access Patients that are treated by Specific Laboratory Technician
         RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
         SearchField();
+        TableOperation();
         goToView(false,false,true,false);
         recordPnl.toFront();
     }
@@ -203,6 +206,7 @@ public class LaboratoryWindowController implements Initializable {
         //some specification wil be done here to access only waiting Patients from the whole lists
         WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
         SearchField();
+        TableOperation();
         goToView(false,false, false,true);
         waitingPnl.toFront();
     }

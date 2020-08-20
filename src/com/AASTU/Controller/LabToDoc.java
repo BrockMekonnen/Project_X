@@ -531,18 +531,18 @@ public class LabToDoc implements Initializable {
         MCHCCheckBox.setSelected(true);
         Bun_CheckBox.setVisible(labRequest.getChemistry().getBun().isTest());
         Bun_CheckBox.setSelected(true);
+        MCHCheckBox.setSelected(true);
+
     }
     @FXML
     public void send(ActionEvent e){
-        setObjectLabTestValue(e,this.patient,false,true,false,true,true);
-        WindowChangeController.closeWindow();
+        setObjectLabTestValue(this.patient,false,true,false,true,true);
 
     }
 
     @FXML
     public void wait(ActionEvent e){
-        setObjectLabTestValue(e,this.patient,true,false,true,true,false);
-        WindowChangeController.closeWindow();
+        setObjectLabTestValue(this.patient,true,false,true,true,false);
     }
 
     @FXML
@@ -550,27 +550,107 @@ public class LabToDoc implements Initializable {
         WindowChangeController.closeWindow();
     }
 
-    public void setObjectLabTestValue(ActionEvent event, Patient patient, boolean waiting, boolean docActive, boolean labActive,boolean fromLab,boolean secActive){
+    public void setObjectLabTestValue( Patient patient, boolean waiting, boolean docActive, boolean labActive,boolean fromLab,boolean secActive){
 
+        boolean check=true;
+
+        if(labRequest.getCbs().getLym().isTest() && (LYMTF.getText().isEmpty() || LYMTF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getLym().setValue(LYMTF.getText());
+        if(labRequest.getCbs().getGra().isTest() && (GRA_TF.getText().isEmpty() || GRA_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getGra().setValue(GRA_TF.getText());
+
+        if(labRequest.getCbs().getMid().isTest() && (MID_TF.getText().isEmpty() || MID_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getMid().setValue(MID_TF.getText());
+
+        if(labRequest.getCbs().getRbc().isTest() && (Hema_RBC_TF.getText().isEmpty() || Hema_RBC_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getRbc().setValue(Hema_RBC_TF.getText());
+
+        if(labRequest.getCbs().getHgb().isTest() && (HGB_TF.getText().isEmpty() || HGB_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getHgb().setValue(HGB_TF.getText());
+
+
+        if(labRequest.getCbs().getMchc().isTest() && (MCHC_TF.getText().isEmpty() || MCHC_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getMchc().setValue(MCHC_TF.getText());
-        labRequest.getCbs().getMch().setValue(MCHC_TF.getText());
+
+        if(labRequest.getCbs().getMch().isTest() && (MCH_TF.getText().isEmpty() || MCH_TF.getText().equals(" ")))
+            check=false;
+        labRequest.getCbs().getMch().setValue(MCH_TF.getText());
+
+        if(labRequest.getCbs().getMcv().isTest() && (MCB_TF.getText().isEmpty() || MCB_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getMcv().setValue(MCB_TF.getText());
+
+        if(labRequest.getCbs().getRdw_cv().isTest() && (RDW_CY_TF.getText().isEmpty() || RDW_CY_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getRdw_cv().setValue(RDW_CY_TF.getText());
+
+        if(labRequest.getCbs().getHct().isTest() && (HCT_TF.getText().isEmpty() || HCT_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getHct().setValue(HCT_TF.getText());
+
+        if(labRequest.getCbs().getPlt().isTest() && (PLT_TF.getText().isEmpty() || PLT_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getPlt().setValue(PLT_TF.getText());
+
+        if(labRequest.getCbs().getPct().isTest() && (PCT_TF.getText().isEmpty() || PCT_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getPct().setValue(PCT_TF.getText());
+
+        if(labRequest.getCbs().getP_lcr().isTest() && (P_LCT_TF.getText().isEmpty() || P_LCT_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getP_lcr().setValue(P_LCT_TF.getText());
+
+        if(labRequest.getCbs().getEsr().isTest() && (ESR_TF.getText().isEmpty() || ESR_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getEsr().setValue(ESR_TF.getText());
+
+        if(labRequest.getCbs().getBloodGroupRh().isTest() && (Blood_Group_TF.getText().isEmpty() || Blood_Group_TF.getText().equals(" ")))
+            check=false;
         labRequest.getCbs().getBloodGroupRh().setValue(Blood_Group_TF.getText());
-        labRequest.getCbs().getBloodFilm().setValue(Blood_Group_TF.getText());
+        if(labRequest.getCbs().getBloodFilm().isTest() && (Blood_Film_TF.getText().isEmpty() || Blood_Film_TF.getText().equals(" ")))
+            check=false;
+        labRequest.getCbs().getBloodFilm().setValue(Blood_Film_TF.getText());
+        if(labRequest.getParasitology().getOccultBlood().isTest() && (OCCULT_BLOOD_TF.getText().isEmpty() || OCCULT_BLOOD_TF.getText().equals(" ")))
+            check=false;
         labRequest.getParasitology().getOccultBlood().setValue(OCCULT_BLOOD_TF.getText());
+        if(labRequest.getParasitology().getConsistency1().isTest() && (CONSISTENCY_TF1.getText().isEmpty() || CONSISTENCY_TF1.getText().equals(" ")))
+            check=false;
         labRequest.getParasitology().getConsistency1().setValue(CONSISTENCY_TF1.getText());
+        if(labRequest.getParasitology().getConsistency2().isTest() && (CONSISTENCY_TF2.getText().isEmpty() || CONSISTENCY_TF2.getText().equals(" ")))
+            check=false;
         labRequest.getParasitology().getConsistency2().setValue(CONSISTENCY_TF2.getText());
+        if(labRequest.getParasitology().getOvalParasite1().isTest() && (CONSISTENCY_TF2.getText().isEmpty() || CONSISTENCY_TF2.getText().equals(" ")))
+            check=false;
+        if(labRequest.getParasitology().getOvalParasite1().isTest() && (OVAL_PARASITE_TF1.getText().isEmpty() || OVAL_PARASITE_TF1.getText().equals(" ")))
+            check=false;
+        if(labRequest.getParasitology().getOvalParasite2().isTest() && (OVAL_PARASITE_TF2.getText().isEmpty() || OVAL_PARASITE_TF2.getText().equals(" ")))
+            check=false;
+        if(labRequest.getParasitology().getOvalParasite3().isTest() && (OVAL_PARASITE_TF3.getText().isEmpty() || OVAL_PARASITE_TF3.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getTestColor().isTest() && (DIPISTIC_COLOR_TF.getText().isEmpty() || DIPISTIC_COLOR_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getAppearance().isTest() && (APPERANCE_TF.getText().isEmpty() || APPERANCE_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getPh().isTest() && (PH_TF.getText().isEmpty() || PH_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getPsg().isTest() && (PSG_TF.getText().isEmpty() || PSG_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getProtein().isTest() && (PROTEIN_TF.getText().isEmpty() || PROTEIN_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getKetone().isTest() && (PROTEIN_TF.getText().isEmpty() || PROTEIN_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getBilrubin().isTest() && (BILIRUBIN_TF.getText().isEmpty() || BILIRUBIN_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getUrobilinogen().isTest() && (UROBILINOGEN_TF.getText().isEmpty() || UROBILINOGEN_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getBlood().isTest() && (BLOOD_TF.getText().isEmpty() || BLOOD_TF.getText().equals(" ")))
+            check=false;
         labRequest.getParasitology().getOvalParasite1().setValue(OVAL_PARASITE_TF1.getText());
         labRequest.getParasitology().getOvalParasite2().setValue(OVAL_PARASITE_TF2.getText());
         labRequest.getParasitology().getOvalParasite3().setValue(OVAL_PARASITE_TF3.getText());
@@ -585,12 +665,45 @@ public class LabToDoc implements Initializable {
         labRequest.getDipistic().getBlood().setValue(BLOOD_TF.getText());
 
 
+        if(labRequest.getMicroscopy().getEpitCells().isTest() && (EPIT_CELLS_TF.getText().isEmpty() || EPIT_CELLS_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getMicroscopy().getWbc().isTest() && (WBC_TF.getText().isEmpty() || WBC_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getMicroscopy().getRbc().isTest() && (RBC_TF.getText().isEmpty() || RBC_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getMicroscopy().getCasts().isTest() && (CASTS_TF.getText().isEmpty() || CASTS_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getMicroscopy().getBacteria().isTest() && (BACTERIA_TF.getText().isEmpty() || BACTERIA_TF.getText().equals(" ")))
+            check=false;
         labRequest.getMicroscopy().getEpitCells().setValue(EPIT_CELLS_TF.getText());
         labRequest.getMicroscopy().getWbc().setValue(WBC_TF.getText());
         labRequest.getMicroscopy().getRbc().setValue(RBC_TF.getText());
         labRequest.getMicroscopy().getCasts().setValue(CASTS_TF.getText());
         labRequest.getMicroscopy().getBacteria().setValue(BACTERIA_TF.getText());
-
+        if(labRequest.getChemistry().getFbs().isTest() && (FSB_TF.getText().isEmpty() || FSB_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getRbs().isTest() && (RBS_TF.getText().isEmpty() || RBS_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getSgot().isTest() && (SGOP_TF.getText().isEmpty() || SGOP_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getSgpt().isTest() && (SGPT_TF.getText().isEmpty() || SGPT_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getAlkalinePhosphate().isTest() && (ALKALINE_PHOSPHATE_TF.getText().isEmpty() || ALKALINE_PHOSPHATE_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getBilirubinTotal().isTest() && (BILIRUBIN_TOTAL_TF.getText().isEmpty() || BILIRUBIN_TOTAL_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getBilirubinDirect().isTest() && (BILIRUBIN_DIRECT_TF.getText().isEmpty() || BILIRUBIN_DIRECT_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getBun().isTest() && (BUN_TF.getText().isEmpty() || BUN_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getCreatinine().isTest() && (CREATININE_TF.getText().isEmpty() || CREATININE_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getUricAcid().isTest() && (URIC_ACID_TF.getText().isEmpty() || URIC_ACID_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getTotalProtein().isTest() && (TOTAL_PROTEIN_TF.getText().isEmpty() || TOTAL_PROTEIN_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getChemistry().getCholesterol().isTest() && (CHOLESTEROEL_TF.getText().isEmpty() || CHOLESTEROEL_TF.getText().equals(" ")))
+            check=false;
         labRequest.getChemistry().getFbs().setValue(FSB_TF.getText());
         labRequest.getChemistry().getRbs().setValue(RBS_TF.getText());
         labRequest.getChemistry().getSgot().setValue(SGOP_TF.getText());
@@ -603,7 +716,24 @@ public class LabToDoc implements Initializable {
         labRequest.getChemistry().getUricAcid().setValue(URIC_ACID_TF.getText());
         labRequest.getChemistry().getTotalProtein().setValue(TOTAL_PROTEIN_TF.getText());
         labRequest.getChemistry().getCholesterol().setValue(CHOLESTEROEL_TF.getText());
-
+        if(labRequest.getSerology().getVdrl().isTest() && cbo_vdrl.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getWidal_II_h().isTest() && cbo_h.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getWidal_II_o().isTest() && cbo_o.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getWellFelix().isTest() && cbo_felix.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getHbsag().isTest() && cbo_hbs.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getCrp().isTest() && cbo_crp.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getAso().isTest() && cbo_aso.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getRheumatoidFactor().isTest() && cbo_rhe.getSelectionModel().isEmpty())
+            check=false;
+        if(labRequest.getSerology().getHpyloriSerum().isTest() && cbo_serum.getSelectionModel().isEmpty())
+            check=false;
         labRequest.getSerology().getVdrl().setValue(cbo_vdrl.getSelectionModel().getSelectedItem());
         labRequest.getSerology().getWidal_II_h().setValue(cbo_h.getSelectionModel().getSelectedItem());
         labRequest.getSerology().getWidal_II_o().setValue(cbo_o.getSelectionModel().getSelectedItem());
@@ -613,24 +743,46 @@ public class LabToDoc implements Initializable {
         labRequest.getSerology().getAso().setValue(cbo_aso.getSelectionModel().getSelectedItem());
         labRequest.getSerology().getRheumatoidFactor().setValue(cbo_rhe.getSelectionModel().getSelectedItem());
         labRequest.getSerology().getHpyloriSerum().setValue(cbo_serum.getSelectionModel().getSelectedItem());
-
+        if(labRequest.getBacterology().getHpyloriStool().isTest() && (H_PYLORI_STOOL_TF.getText().isEmpty() || H_PYLORI_STOOL_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getBacterology().getKoh().isTest() && (KOH_TF.getText().isEmpty() || KOH_TF.getText().equals(" ")))
+            check=false;
         labRequest.getBacterology().getHpyloriStool().setValue(H_PYLORI_STOOL_TF.getText());
         labRequest.getBacterology().getKoh().setValue(KOH_TF.getText());
-
+        if(labRequest.getOthers().getAfb().isTest() && (AFB_TF.getText().isEmpty() || AFB_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getOthers().getWetFilm().isTest() && (Wet_Film_TF.getText().isEmpty() || Wet_Film_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getOthers().getGramStain().isTest() && (Gram_Stain_TF.getText().isEmpty() || Gram_Stain_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getOthers().getHivAids().isTest() && cbo_aids.getSelectionModel().isEmpty())
+            check=false;
         labRequest.getOthers().getAfb().setValue(AFB_TF.getText());
         labRequest.getOthers().getWetFilm().setValue(Wet_Film_TF.getText());
         labRequest.getOthers().getGramStain().setValue(Gram_Stain_TF.getText());
         labRequest.getOthers().getHivAids().setValue(cbo_aids.getSelectionModel().getSelectedItem());
 
-        new DataSaver().updateLabresult(patient,labRequest,labRequest.getId());
+        if(waiting)
+            check=true;
 
+        if(check){
+
+        new DataSaver().updateLabresult(patient,labRequest,labRequest.getId());
         patient.setOnWaiting(waiting);
         patient.setDocActives(docActive);
         patient.setLabActives(labActive);
         patient.setFromLab(fromLab);
         patient.setSecActives(secActive);
-
         new DataSaver().saveEditedPatient(patient);
+            WindowChangeController.closeWindow();
+    }
+    else {
+            try {
+                new WindowChangeController().warningPopup("Attention", "Please fill Doctors Check Point", "warn_exclamation.png");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
 }
