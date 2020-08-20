@@ -23,6 +23,9 @@ public class ActivityWindowController implements Initializable {
     private Label DoctorName;
 
     @FXML
+    private Label Data;
+
+    @FXML
     private Label PatientName;
 
     @FXML
@@ -43,6 +46,7 @@ public class ActivityWindowController implements Initializable {
     }
     public void setComponents(WorkActivity work){
 
+        Data.setText(work.getActivity_day().toString());
         DetailTA.setText(work.getActivity());
         if(work.getPatientId()==0)
             PatientName.setText("No Patient Data");

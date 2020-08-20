@@ -63,7 +63,10 @@
                 <Font name="Georgia Bold" size="18.0" />
             </font>
         </Label>
-        <Label layoutX="1030.0" layoutY="77.0" prefHeight="36.0" prefWidth="202.0" text=" " />
+        <Label fx:id="Data" layoutX="1030.0" layoutY="77.0" prefHeight="36.0" prefWidth="202.0" text=" " textFill="WHITE">
+         <font>
+            <Font name="Georgia Bold" size="18.0" />
+         </font></Label>
         <Label fx:id="PatientName" layoutX="213.0" layoutY="168.0" prefHeight="36.0" prefWidth="202.0" text=" " textFill="WHITE">
             <font>
                 <Font name="Georgia" size="18.0" />
