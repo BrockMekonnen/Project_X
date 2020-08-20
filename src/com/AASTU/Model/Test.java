@@ -4,10 +4,13 @@ package com.AASTU.Model;
 import com.AASTU.Controller.DataLoader;
 import com.AASTU.Model.LaboratoryRequest.*;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,24 +22,24 @@ public class Test {
                                 .configure("hibernate.cfg.xml")
                                 .addAnnotatedClass(DiseaseType.class)
 
-                               .addAnnotatedClass(Pricing.class)
-                               .addAnnotatedClass(DiseaseType.class)
-                               .addAnnotatedClass(Patient.class)
-                               .addAnnotatedClass(ClinicalNotes.class)
-                               .addAnnotatedClass(TestProperty.class)
-                               .addAnnotatedClass(Parasitology.class)
-                               .addAnnotatedClass(Bacteriology.class)
-                               .addAnnotatedClass(Microscopy.class)
-                               .addAnnotatedClass(Chemistry.class)
-                               .addAnnotatedClass(Dipstick.class)
-                               .addAnnotatedClass(Others.class)
-                               .addAnnotatedClass(Cbs.class)
-                               .addAnnotatedClass(Serology.class)
-                               .addAnnotatedClass(LabRequest.class)
-                               .addAnnotatedClass(DiseaseRecord.class)
-
-                              .addAnnotatedClass(AgeScale.class)
-
+                                .addAnnotatedClass(Pricing.class)
+                                .addAnnotatedClass(DiseaseType.class)
+                                .addAnnotatedClass(Patient.class)
+                                .addAnnotatedClass(ClinicalNotes.class)
+                                .addAnnotatedClass(TestProperty.class)
+                                .addAnnotatedClass(Parasitology.class)
+                                .addAnnotatedClass(Bacteriology.class)
+                                .addAnnotatedClass(Microscopy.class)
+                                .addAnnotatedClass(Chemistry.class)
+                                .addAnnotatedClass(Dipstick.class)
+                                .addAnnotatedClass(Others.class)
+                                .addAnnotatedClass(Cbs.class)
+                                .addAnnotatedClass(Serology.class)
+                                .addAnnotatedClass(LabRequest.class)
+                                .addAnnotatedClass(IncomeAnalysis.class)
+                                .addAnnotatedClass(DiseaseRecord.class)
+                                .addAnnotatedClass(PatientAnalysis.class)
+                                .addAnnotatedClass(AgeScale.class)
 
                                 .buildSessionFactory();
 
@@ -75,11 +78,11 @@ public class Test {
 //
 //
 
-            Patient patient1 = new Patient("Abrish","TD",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
-            Patient patient2 = new Patient("Alex","AD",44,'m',LocalDate.now(),"326598","city","cc","kk","5");
-            Patient patient3 = new Patient("Dagi","AB",44,'m',LocalDate.now(),"125465","city","cc","kk","5");
-            Patient patient4 = new Patient("Dagi","KB",44,'m',LocalDate.now(),"985412","city","cc","kk","5");
-            Patient patient5 = new Patient("Amani","AL",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
+//            Patient patient1 = new Patient("Abrish","TD",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
+//            Patient patient2 = new Patient("Alex","AD",44,'m',LocalDate.now(),"326598","city","cc","kk","5");
+//            Patient patient3 = new Patient("Dagi","AB",44,'m',LocalDate.now(),"125465","city","cc","kk","5");
+//            Patient patient4 = new Patient("Dagi","KB",44,'m',LocalDate.now(),"985412","city","cc","kk","5");
+//            Patient patient5 = new Patient("Amani","AL",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
 
 //
 //            ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"this is for test!","docId");
@@ -100,12 +103,19 @@ public class Test {
 //            session.save(patient5);
 
 
-            List<Patient> patientList = session.createQuery("from Patient where patientStatus = 1").list();
-            for(Patient temp : patientList){
-                temp.setDocActives(true);
+//            List<Patient> patientList = session.createQuery("from Patient where patientStatus = 1").list();
+//            for(Patient temp : patientList){
+//                temp.setDocActives(true);
+//            }
+
+            List<IncomeAnalysis> list = new ArrayList<>();
+
+            for(int i=0, j=5000; i<19; i++){
+                list.add(i,new IncomeAnalysis(LocalDate.of(2020,8,i+1), j-=70));
             }
-
-
+            for(IncomeAnalysis temp: list){
+                session.save(temp);
+            }
 
 
             session.getTransaction().commit();
@@ -114,6 +124,7 @@ public class Test {
             factory.close();
             session.close();
         }
+
     }
 
 }
