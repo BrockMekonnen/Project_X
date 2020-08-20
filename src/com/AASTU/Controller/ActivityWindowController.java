@@ -44,6 +44,7 @@ public class ActivityWindowController implements Initializable {
         WindowChangeController.closeWindow();
 
     }
+
     public void setComponents(WorkActivity work){
 
         Data.setText(work.getActivity_day().toString());
