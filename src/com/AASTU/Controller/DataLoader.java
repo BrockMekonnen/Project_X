@@ -540,7 +540,6 @@ public class DataLoader {
         return obj;
     }
 
-
     public Patient loadSinglePatinetObject(WorkActivity work){
 
         SessionFactory factory = new Configuration()
@@ -563,7 +562,11 @@ public class DataLoader {
         Patient obj;
         try{
             session.beginTransaction();
-            obj = (Patient) session.load(Patient.class, work.getPatientId());
+            int id=work.getPatientId();
+            obj = (Patient)session.load(Patient.class,id);
+            if(obj!=null)
+                System.out.println(obj.getFirstName());
+            else System.out.println("this is null Value");
             session.getTransaction().commit();
 
         } finally {
