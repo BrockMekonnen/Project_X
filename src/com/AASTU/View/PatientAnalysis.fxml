@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="patientAnalysisPnl" prefHeight="622.0" prefWidth="1350.0" stylesheets="@InnerManagerStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.PatientAnalysisController">
+   <children>
+      <AnchorPane fx:id="barPane" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BarChart fx:id="barChart" layoutX="76.0" title="Total Patients Per Day" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <xAxis>
+                <CategoryAxis fx:id="barX" label="Day of the Month" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="barY" label="Total Number" side="LEFT" />
+              </yAxis>
+            </BarChart>
+            <HBox alignment="TOP_RIGHT" prefHeight="80.0" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <JFXButton fx:id="lineChartBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToLineChart" prefHeight="38.0" prefWidth="120.0" text="Line Chart">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="tableViewBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToTableView" prefHeight="38.0" prefWidth="120.0" text="Table View">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets left="30.0" right="80.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="80.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="560.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="60.0" style="-fx-background-color: #B3E5FC;" text="Month" />
+                  <JFXComboBox fx:id="comboBoxMonth" onAction="#handleMonthCombo" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" unFocusColor="#81d4fa">
+                     <HBox.margin>
+                        <Insets left="-30.0" />
+                     </HBox.margin>
+                  </JFXComboBox>
+                  <Label alignment="CENTER" prefHeight="34.0" prefWidth="61.0" style="-fx-background-color: #B3E5FC;" text="Year" />
+                  <JFXComboBox fx:id="barChartCombo" onAction="#handleYearCombo" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: #ffffff;" unFocusColor="#81d4fa">
+                     <HBox.margin>
+                        <Insets left="-30.0" />
+                     </HBox.margin>
+                  </JFXComboBox>
+               </children>
+               <padding>
+                  <Insets left="40.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="LinePane" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <LineChart fx:id="lineChart" title="Total Patients Per Day" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <xAxis>
+                <CategoryAxis fx:id="chartX" label="Day of The Month" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="chartY" label="Total Number" side="LEFT" />
+              </yAxis>
+               <padding>
+                  <Insets bottom="10.0" top="20.0" />
+               </padding>
+            </LineChart>
+            <HBox alignment="TOP_RIGHT" prefHeight="80.0" spacing="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <JFXButton fx:id="barChartBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToBarChart" prefHeight="38.0" prefWidth="120.0" text="Bar Chart">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="tableViewBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToTableView" prefHeight="38.0" prefWidth="120.0" text="Table View">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets right="80.0" top="10.0" />
+               </padding>
+            </HBox>
+            <VBox prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXComboBox fx:id="comboBox" focusColor="#01579b" onAction="#handleComboBox" prefHeight="34.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" unFocusColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXComboBox>
+                  <JFXCheckBox fx:id="checkJanuary" checkedColor="#01579b" onAction="#handleJanuary" text="January" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkFebruary" checkedColor="#01579b" onAction="#handleFebruary" text="February" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkMarch" checkedColor="#01579b" onAction="#handleMarch" text="March" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkApril" checkedColor="#01579b" onAction="#handleApril" text="April" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkMay" checkedColor="#01579b" onAction="#handleMay" text="May" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkJune" checkedColor="#01579b" onAction="#handleJune" text="June" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkJuly" checkedColor="#01579b" onAction="#handleJuly" text="July" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkAugust" checkedColor="#01579b" onAction="#handleAugust" text="August" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkSeptember" checkedColor="#01579b" onAction="#handleSeptember" text="September" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkOctober" checkedColor="#01579b" onAction="#handleOctober" text="October" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkNovember" checkedColor="#01579b" onAction="#handleNovember" text="November" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+                  <JFXCheckBox fx:id="checkDecember" checkedColor="#01579b" onAction="#handleDecember" text="December" textFill="#01579b" unCheckedColor="#03a9f4">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXCheckBox>
+               </children>
+               <padding>
+                  <Insets left="50.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tablePane" layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn prefWidth="40.0" />
+                  <TableColumn fx:id="dateCol" prefWidth="341.0" text="Date" />
+                  <TableColumn fx:id="patientNumberCol" prefWidth="407.0" text="Number of Patients" />
+              </columns>
+            </TableView>
+            <HBox alignment="TOP_RIGHT" layoutX="871.0" prefHeight="80.0" prefWidth="479.0" spacing="60.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="870.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <JFXButton fx:id="barChartBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToBarChart" prefHeight="38.0" prefWidth="120.0" text="Bar Chart">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="lineChartBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#goToLineChart" prefHeight="38.0" prefWidth="120.0" text="Line Chart">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets right="80.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

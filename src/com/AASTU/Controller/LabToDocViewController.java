@@ -39,9 +39,6 @@ public class LabToDocViewController implements Initializable {
     @FXML
     private AnchorPane rootAnchor;
 
-    @FXML
-    private ScrollPane scrollPane;
-
     private Patient patient=new Patient();
 
 
