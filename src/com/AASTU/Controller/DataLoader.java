@@ -56,6 +56,7 @@ public class DataLoader {
 
         return laboratoryList;
     }
+
     public Laboratory laboratoryObj(String password, String userName){
         Laboratory laboratory;
         SessionFactory factory = new Configuration()
@@ -636,10 +637,10 @@ public class DataLoader {
             session.beginTransaction();
 //            String quiry = "select name from WorkActivity where patient_id=id";
             activity = session.createQuery(SelectiveCommand).list();
-            for(WorkActivity activity2:activity){
-                if(activity2.getPatientId()==patientid)
+            for(WorkActivity activity2:activity) {
+                if (activity2.getPatientId() == patientid)
                     return activity2;
-            
+            }
             session.getTransaction().commit();
 
         } finally {

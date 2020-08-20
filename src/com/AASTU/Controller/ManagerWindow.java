@@ -12,11 +12,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.Parent;
 
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -563,36 +565,8 @@ public class ManagerWindow implements Initializable {
         pnl_table_work.setVisible(true);
         pnl_table_work.toFront();
     }
-    @FXML
-    void goToTableViewWork(ActionEvent event){
-        goToWork(true, false, false, false);
-        pnl_table_work.toFront();
 
-    }
-    @FXML
-    void goToBarChartViewWork(ActionEvent event){
-        goToWork(false, false, true, false);
-        pnl_bar_work.toFront();
 
-    }
-    @FXML
-    void goToPieChartViewWork(ActionEvent event){
-        goToWork(false,true,false,false);
-        pnl_pie_work.toFront();
-
-    }
-    @FXML
-    void goToLineChartViewWork(ActionEvent event){
-        goToWork(false, false, false, true);
-        pnl_line_work.toFront();
-    }
-
-    private void goToWork(boolean table, boolean pie, boolean bar, boolean line){
-        pnl_table_work.setVisible(table);
-        pnl_pie_work.setVisible(pie);
-        pnl_bar_work.setVisible(bar);
-        pnl_line_work.setVisible(line);
-    }
 
 
     public void TableOperation(){
