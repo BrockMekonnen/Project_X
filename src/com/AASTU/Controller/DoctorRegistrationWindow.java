@@ -80,7 +80,7 @@ public class DoctorRegistrationWindow implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Doctor doctor = new Doctor(firstNameTf.getText(),lastNameTf.getText(),LocalDate.now(),"pasword", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Doctor doctor = new Doctor(firstNameTf.getText(),lastNameTf.getText(),sex,LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(doctor);
             session.getTransaction().commit();
         } finally {

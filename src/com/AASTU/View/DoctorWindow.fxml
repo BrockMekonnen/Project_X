@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -24,6 +21,93 @@
 
 <AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@CommenDSL.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.DoctorWindowController">
     <children>
+      <AnchorPane layoutX="245.0" layoutY="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+         <children>
+              <AnchorPane fx:id="pendingPnl" prefHeight="641.0" prefWidth="1105.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="pendingTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                    <columns>
+                        <TableColumn prefWidth="23.0" />
+                      <TableColumn fx:id="columnId" prefWidth="191.0" text="Patient ID" />
+                      <TableColumn fx:id="columnFirst" prefWidth="268.0" text="First Name" />
+                        <TableColumn fx:id="columnLast" prefWidth="288.0" text="Last Name" />
+                        <TableColumn fx:id="columnSex" prefWidth="164.0" text="Sex" />
+                        <TableColumn fx:id="columnAge" prefWidth="107.0" text="Age" />
+                    </columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </TableView>
+                  <Pane prefHeight="28.0" prefWidth="1103.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" onAction="#handleCardButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Card" />
+                        <JFXButton buttonType="RAISED" layoutX="151.0" onAction="#handleLabButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Lab" />
+                        <JFXButton buttonType="RAISED" layoutX="302.0" onAction="#goToPending" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                     </children>
+                  </Pane>
+               </children>
+              </AnchorPane>
+              <AnchorPane fx:id="diseasePnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="28.0" prefWidth="1103.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" onAction="#handleTodayDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Today" />
+                        <JFXButton buttonType="RAISED" layoutX="151.0" onAction="#handleYestardayDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yestarday" />
+                        <JFXButton fx:id="allDiseaseBtn" buttonType="RAISED" layoutX="302.0" onAction="#handleAllDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                     </children>
+                  </Pane>
+                  <TableView fx:id="diseaseTable" layoutY="36.0" prefHeight="608.0" prefWidth="1103.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
+                    <columns>
+                        <TableColumn prefWidth="22.0" />
+                      <TableColumn fx:id="columnDate" prefWidth="185.0" text="Date" />
+                      <TableColumn fx:id="columnDisease" prefWidth="198.0" text="Disease" />
+                        <TableColumn fx:id="columnless1" prefWidth="90.0" text="m &lt; 1" />
+                        <TableColumn fx:id="column1to4" prefWidth="90.0" text="1 &lt; m &lt; 4" />
+                        <TableColumn fx:id="column5to14" prefWidth="90.0" text="5 &lt; m &lt;14" />
+                        <TableColumn fx:id="column14to29" prefWidth="90.0" text="14 &lt; m &lt; 29" />
+                        <TableColumn fx:id="column28to64" prefWidth="90.0" text="28&lt; m &lt;64" />
+                        <TableColumn fx:id="columnGreater63" prefWidth="90.0" text="63 &lt; m" />
+                        <TableColumn fx:id="columnFless1" prefWidth="90.0" text="f &lt; 1" />
+                        <TableColumn fx:id="columnF1to4" prefWidth="90.0" text="1&lt; f &lt;4" />
+                        <TableColumn fx:id="columnF5to14" prefWidth="90.0" text="5&lt; f &lt;14" />
+                        <TableColumn fx:id="columnF14to29" prefWidth="90.0" text="14&lt; f &lt;29" />
+                        <TableColumn fx:id="columnF28to64" prefWidth="90.0" text="28&lt; f &lt;64" />
+                        <TableColumn fx:id="columnFgreater63" prefWidth="90.0" text="63 &lt; f" />
+                    </columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </TableView>
+               </children>
+              </AnchorPane>
+            <AnchorPane fx:id="recordPnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="recordTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                    <columns>
+                      <TableColumn prefWidth="22.0" />
+                      <TableColumn fx:id="columnRecordId" prefWidth="161.0" text="Patient ID" />
+                        <TableColumn fx:id="columnRecordDate" prefWidth="248.0" text="Date" />
+                        <TableColumn fx:id="columnRecordFirst" prefWidth="215.0" text="First Name" />
+                        <TableColumn fx:id="columnRecordLast" prefWidth="208.0" text="Last Name" />
+                        <TableColumn fx:id="columnRecordSex" prefWidth="104.0" text="Sex" />
+                        <TableColumn fx:id="columnRecordAge" prefWidth="101.0" text="Age" />
+                    </columns>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </TableView>
+                  <Pane prefHeight="27.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yesterday" />
+                        <JFXButton buttonType="RAISED" layoutX="151.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Week" />
+                        <JFXButton buttonType="RAISED" layoutX="302.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Month" />
+                        <JFXButton buttonType="RAISED" layoutX="453.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
         <AnchorPane layoutX="-1.0" layoutY="109.0" prefHeight="791.0" prefWidth="245.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="109.0">
             <children>
                 <JFXButton fx:id="pendingBtn" buttonType="RAISED" layoutX="34.0" layoutY="50.0" onAction="#goToPending" prefHeight="52.0" prefWidth="190.0" ripplerFill="#039be5" style="-fx-background-color: #ffffff; -fx-background-radius: 50px;" text="Pending Patients" textFill="#01579b">
@@ -141,265 +225,164 @@
                   </Label>
                </children>
             </Pane>
-            <StackPane layoutX="42.0" layoutY="90.0" prefHeight="539.0" prefWidth="421.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="90.0">
+            <StackPane prefHeight="574.0" prefWidth="435.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="62.0">
                <children>
-                        <Label prefHeight="25.0" prefWidth="110.0" text="First Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="First Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
                         <Insets right="100.0" top="30.0" />
                      </StackPane.margin>
-                        </Label>
-                        <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                  </Label>
+                  <JFXTextField fx:id="firstNameTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="110.0" top="30.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                        <Label prefHeight="25.0" prefWidth="110.0" text="Last Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Last Name" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
                         <Insets right="100.0" top="80.0" />
                      </StackPane.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="89.0" text="Kebeke" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="89.0" text="Kebeke" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
-                        <Insets left="50.0" top="400.0" />
+                        <Insets left="50.0" top="470.0" />
                      </StackPane.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="110.0" text="Gender" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  </Label>
+                  <Label prefHeight="35.0" prefWidth="110.0" text="Gender" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
-                        <Insets right="100.0" top="130.0" />
+                        <Insets right="100.0" top="195.0" />
                      </StackPane.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="110.0" text="Working Hour" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Working Hour" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
-                        <Insets top="180.0" />
+                        <Insets top="255.0" />
                      </StackPane.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="110.0" text="Phone number" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Phone number" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
-                        <Insets top="232.0" />
+                        <Insets top="302.0" />
                      </StackPane.margin>
-                        </Label>
-                        <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                  </Label>
+                  <JFXTextField fx:id="phonTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="151.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="150.0" top="232.0" />
+                        <Insets left="115.0" top="302.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                        <Label prefHeight="25.0" prefWidth="110.0" text="Address" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Address" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
-                        <Insets left="3.0" top="283.0" />
+                        <Insets left="3.0" top="343.0" />
                      </StackPane.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="89.0" text="Subcity" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
+                  </Label>
+                  <Label prefHeight="25.0" prefWidth="89.0" text="Subcity" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                      <StackPane.margin>
-                        <Insets left="50.0" top="360.0" />
+                        <Insets left="50.0" top="430.0" />
                      </StackPane.margin>
-                        </Label>
-                        <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                  </Label>
+                  <JFXTextField fx:id="lastNameTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="110.0" top="80.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXComboBox prefHeight="25.0" prefWidth="96.0" style="-fx-border-color: #01579B; -fx-border-width: 0 0 1 0; -fx-background-color: #ffffff;" unFocusColor="WHITE" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="genderTf" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="126.0" style="-fx-background-color: #ffffff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="110.0" top="130.0" />
-                     </StackPane.margin>
-                  </JFXComboBox>
-                  <JFXTextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="40.0" promptText="00:00" style="-fx-background-color: #ffffff;" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="110.0" top="180.0" />
+                        <Insets left="110.0" top="195.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXComboBox fx:id="comboTime" prefHeight="25.0" prefWidth="60.0" StackPane.alignment="TOP_LEFT">
-                      <items>
-                          <FXCollections fx:factory="observableArrayList">
-                              <String fx:value="am" />
-                              <String fx:value="pm" />
-                          </FXCollections>
-                      </items>
+                  <JFXTextField fx:id="startHrTf" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="97.0" style="-fx-background-color: #ffffff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="150.0" top="180.0" />
-                     </StackPane.margin>
-                  </JFXComboBox>
-                  <JFXTextField alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="40.0" promptText="00:00" style="-fx-background-color: #ffffff;" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="255.0" top="180.0" />
+                        <Insets left="110.0" top="250.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXComboBox fx:id="comboTimeEnd" prefHeight="25.0" prefWidth="60.0" StackPane.alignment="TOP_LEFT">
-                      <items>
-                          <FXCollections fx:factory="observableArrayList">
-                              <String fx:value="am" />
-                              <String fx:value="pm" />
-                          </FXCollections>
-                      </items>
+                  <JFXTextField fx:id="endHrTf" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="83.0" style="-fx-background-color: #ffffff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="295.0" top="180.0" />
+                        <Insets left="255.0" top="250.0" />
                      </StackPane.margin>
-                  </JFXComboBox>
-                  <Label prefHeight="25.0" prefWidth="30.0" text="+251" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="114.0" top="232.0" />
-                     </StackPane.margin>
-                  </Label>
+                  </JFXTextField>
                   <Label prefHeight="25.0" prefWidth="110.0" text="City" textFill="#01579b" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font size="16.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="50.0" top="320.0" />
+                        <Insets left="50.0" top="390.0" />
                      </StackPane.margin>
                   </Label>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="kebeleTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="120.0" top="400.0" />
+                        <Insets left="120.0" top="470.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="cityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="120.0" top="320.0" />
+                        <Insets left="120.0" top="390.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXTextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                  <JFXTextField fx:id="subCityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="120.0" top="360.0" />
+                        <Insets left="120.0" top="430.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXButton buttonType="RAISED" prefHeight="33.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" text="Cancel" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="cancelBtn" buttonType="RAISED" onAction="#cancelProHandler" prefHeight="33.0" prefWidth="120.0" ripplerFill="WHITE" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" text="Cancel" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="20.0" right="20.0" />
                      </StackPane.margin>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #01579B;" text="Save" textFill="WHITE" StackPane.alignment="BOTTOM_RIGHT">
+                  <JFXButton fx:id="editBtn" buttonType="RAISED" onAction="#editProHandler" prefHeight="33.0" prefWidth="120.0" style="-fx-background-color: #01579B;" text="Edit" textFill="WHITE" StackPane.alignment="BOTTOM_RIGHT">
                      <StackPane.margin>
                         <Insets bottom="20.0" right="160.0" />
                      </StackPane.margin>
                   </JFXButton>
                   <Line endX="143.0" startX="-100.0" stroke="#01579b" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets top="308.0" />
+                        <Insets top="378.0" />
                      </StackPane.margin>
                   </Line>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="35.0" text="To" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="35.0" text="To" textFill="#01579b" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font size="16.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="215.0" top="180.0" />
+                        <Insets left="215.0" top="250.0" />
                      </StackPane.margin>
                   </Label>
+                  <Label prefHeight="25.0" prefWidth="110.0" text="Password" textFill="#01579b" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="140.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <JFXTextField fx:id="passwordTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="110.0" top="140.0" />
+                     </StackPane.margin>
+                  </JFXTextField>
                </children>
             </StackPane>
               </children>
           </AnchorPane>
-      <AnchorPane layoutX="245.0" layoutY="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
-         <children>
-              <AnchorPane fx:id="pendingPnl" prefHeight="641.0" prefWidth="1105.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <TableView fx:id="pendingTable" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
-                    <columns>
-                        <TableColumn prefWidth="23.0" />
-                      <TableColumn fx:id="columnId" prefWidth="191.0" text="Patient ID" />
-                      <TableColumn fx:id="columnFirst" prefWidth="268.0" text="First Name" />
-                        <TableColumn fx:id="columnLast" prefWidth="288.0" text="Last Name" />
-                        <TableColumn fx:id="columnSex" prefWidth="164.0" text="Sex" />
-                        <TableColumn fx:id="columnAge" prefWidth="107.0" text="Age" />
-                    </columns>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
-                  </TableView>
-                  <Pane prefHeight="28.0" prefWidth="1103.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <JFXButton buttonType="RAISED" onAction="#handleCardButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Card" />
-                        <JFXButton buttonType="RAISED" layoutX="151.0" onAction="#handleLabButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Lab" />
-                        <JFXButton buttonType="RAISED" layoutX="302.0" onAction="#goToPending" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
-                     </children>
-                  </Pane>
-               </children>
-              </AnchorPane>
-              <AnchorPane fx:id="diseasePnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Pane prefHeight="28.0" prefWidth="1103.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <JFXButton buttonType="RAISED" onAction="#handleTodayDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Today" />
-                        <JFXButton buttonType="RAISED" layoutX="151.0" onAction="#handleYestardayDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yestarday" />
-                        <JFXButton fx:id="allDiseaseBtn" buttonType="RAISED" layoutX="302.0" onAction="#handleAllDiseaseButton" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
-                     </children>
-                  </Pane>
-                  <TableView fx:id="diseaseTable" layoutY="36.0" prefHeight="608.0" prefWidth="1103.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
-                    <columns>
-                        <TableColumn prefWidth="22.0" />
-                      <TableColumn fx:id="columnDate" prefWidth="185.0" text="Date" />
-                      <TableColumn fx:id="columnDisease" prefWidth="198.0" text="Disease" />
-                        <TableColumn fx:id="columnless1" prefWidth="90.0" text="m &lt; 1" />
-                        <TableColumn fx:id="column1to4" prefWidth="90.0" text="1 &lt; m &lt; 4" />
-                        <TableColumn fx:id="column5to14" prefWidth="90.0" text="5 &lt; m &lt;14" />
-                        <TableColumn fx:id="column14to29" prefWidth="90.0" text="14 &lt; m &lt; 29" />
-                        <TableColumn fx:id="column28to64" prefWidth="90.0" text="28&lt; m &lt;64" />
-                        <TableColumn fx:id="columnGreater63" prefWidth="90.0" text="63 &lt; m" />
-                        <TableColumn fx:id="columnFless1" prefWidth="90.0" text="f &lt; 1" />
-                        <TableColumn fx:id="columnF1to4" prefWidth="90.0" text="1&lt; f &lt;4" />
-                        <TableColumn fx:id="columnF5to14" prefWidth="90.0" text="5&lt; f &lt;14" />
-                        <TableColumn fx:id="columnF14to29" prefWidth="90.0" text="14&lt; f &lt;29" />
-                        <TableColumn fx:id="columnF28to64" prefWidth="90.0" text="28&lt; f &lt;64" />
-                        <TableColumn fx:id="columnFgreater63" prefWidth="90.0" text="63 &lt; f" />
-                    </columns>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
-                  </TableView>
-               </children>
-              </AnchorPane>
-            <AnchorPane fx:id="recordPnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <TableView fx:id="recordTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
-                    <columns>
-                      <TableColumn prefWidth="22.0" />
-                      <TableColumn fx:id="columnRecordId" prefWidth="161.0" text="Patient ID" />
-                        <TableColumn fx:id="columnRecordDate" prefWidth="248.0" text="Date" />
-                        <TableColumn fx:id="columnRecordFirst" prefWidth="215.0" text="First Name" />
-                        <TableColumn fx:id="columnRecordLast" prefWidth="208.0" text="Last Name" />
-                        <TableColumn fx:id="columnRecordSex" prefWidth="104.0" text="Sex" />
-                        <TableColumn fx:id="columnRecordAge" prefWidth="101.0" text="Age" />
-                    </columns>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
-                  </TableView>
-                  <Pane prefHeight="27.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yesterday" />
-                        <JFXButton buttonType="RAISED" layoutX="151.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Week" />
-                        <JFXButton buttonType="RAISED" layoutX="302.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Month" />
-                        <JFXButton buttonType="RAISED" layoutX="453.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
-                     </children>
-                  </Pane>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
     </children>
 </AnchorPane>

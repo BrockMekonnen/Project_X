@@ -2,6 +2,9 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.*;
 import com.jfoenix.controls.JFXButton;
+
+import com.sun.xml.internal.ws.api.pipe.FiberContextSwitchInterceptor;
+
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
@@ -9,25 +12,32 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
 import javafx.scene.Parent;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+
 import javafx.util.Duration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+
+import javax.persistence.criteria.CriteriaBuilder;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -125,6 +135,30 @@ public class ManagerWindow implements Initializable {
     @FXML
     private TableColumn<Secretary, LocalTime> secEndHrCol11;
 
+    /**Work Table*/
+    @FXML
+    private TableView<WorkActivity> workTableView;
+
+    @FXML
+    private TableColumn<WorkActivity,Integer> ActiveCol;
+
+    @FXML
+    private TableColumn<WorkActivity, LocalDate> DateCol;
+
+    @FXML
+    private TableColumn<WorkActivity, Integer> PatientIdCol;
+
+    @FXML
+    private TableColumn<WorkActivity, Integer> SecretaryIdCol;
+
+    @FXML
+    private TableColumn<WorkActivity, Integer> DotorIdCol;
+
+    @FXML
+    private TableColumn<WorkActivity, Integer> LabIdCol;
+
+    @FXML
+    private TableColumn<WorkActivity, String> ActivityCol;
 
     @FXML
     public AnchorPane profilePane;
@@ -214,6 +248,10 @@ public class ManagerWindow implements Initializable {
     /**
      * Laboratory
      * */
+
+    ObservableList<WorkActivity> list=FXCollections.observableArrayList(new DataLoader().loadActivity());
+
+
     @FXML
     public void deleteLaboratoryBtn(ActionEvent event) {
         deleteLaboratory();
@@ -355,6 +393,8 @@ public class ManagerWindow implements Initializable {
         }
         secretaryTable1.setItems(secretaryObservableList);
     }
+
+
     private void deleteSecretary() {
         doctorTable.setEditable(true);
         Secretary secretary = secretaryTable1.getSelectionModel().getSelectedItem();
@@ -407,6 +447,7 @@ public class ManagerWindow implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        TableOperation();
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         opacityPane.setVisible(false);
@@ -552,6 +593,37 @@ public class ManagerWindow implements Initializable {
         pnl_bar_work.setVisible(bar);
         pnl_line_work.setVisible(line);
     }
+
+
+    public void TableOperation(){
+        list=FXCollections.observableArrayList(new DataLoader().loadActivity());
+        ActiveCol.setCellValueFactory(new PropertyValueFactory<WorkActivity,Integer>("ActivityId"));
+        DateCol.setCellValueFactory(new PropertyValueFactory<WorkActivity,LocalDate>("Activity_day"));
+        PatientIdCol.setCellValueFactory(new PropertyValueFactory<WorkActivity,Integer>("PatientId"));
+        SecretaryIdCol.setCellValueFactory(new PropertyValueFactory<WorkActivity,Integer>("SecretaryId"));
+        DotorIdCol.setCellValueFactory(new PropertyValueFactory<WorkActivity,Integer>("DoctorId"));
+        LabIdCol.setCellValueFactory(new PropertyValueFactory<WorkActivity,Integer>("LabTechnicianId"));
+        ActivityCol.setCellValueFactory(new PropertyValueFactory<WorkActivity,String>("Activity"));
+        workTableView.setItems(list);
+        workTableView.setRowFactory(tv -> {
+            TableRow<WorkActivity> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    WorkActivity rowData = workTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    try {
+
+                        new WindowChangeController().popupWindow0(event, "../View/ActivityWindow.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+//                         new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
+    }
+
 
 
 }
