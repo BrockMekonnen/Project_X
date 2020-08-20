@@ -169,24 +169,27 @@ public class DataLoader {
         return secretary;
     }
 
-  
+
     public Doctor loadsingleDoctor(WorkActivity work){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Laboratory.class)
+                .addAnnotatedClass(Doctor.class)
                 .buildSessionFactory();
         Session session = factory.getCurrentSession();
-        Doctor Doctor;
+        Doctor doctor;
         try {
             session.beginTransaction();
-            Doctor = (Doctor)session.load(Doctor.class,work.getDoctorId());
-
+            int id=work.getDoctorId();
+            doctor = (Doctor)session.load(Doctor.class,id);
+            if(doctor!=null)
+                System.out.println(doctor.getFirstName());
+            else System.out.println("this is null Value");
             session.getTransaction().commit();
         }finally {
             factory.close();
             session.close();
         }
-        return Doctor;
+        return doctor;
     }
 
 
