@@ -90,8 +90,11 @@ public class DataLoader {
         Laboratory laboratory;
         try {
             session.beginTransaction();
-            laboratory =(Laboratory) session.load(Laboratory.class,work.getLabTechnicianId());
-
+            int id=work.getLabTechnicianId();
+            laboratory =(Laboratory) session.load(Laboratory.class,id);
+            if(laboratory!=null)
+                System.out.println(laboratory.getFirstName());
+            else System.out.println("this is null Value");
             session.getTransaction().commit();
         }finally {
             factory.close();
