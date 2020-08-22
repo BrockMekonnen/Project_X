@@ -688,11 +688,6 @@ public class DataLoader {
     }
 
 
-  
-  
-
-
-
     public ArrayList<Integer> loadPatientAnalysisYearOnly(){
 
         ArrayList<Integer> list = new ArrayList<>();
@@ -829,6 +824,32 @@ public class DataLoader {
         return list;
     }
 
+    public List<String> loadMonthDiseaseNameData(int year, int month){
+        List<String> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(DiseaseRecord.class)
+                .addAnnotatedClass(AgeScale.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+
+            session.beginTransaction();
+            String quiry = "select DISTINCT diseaseName from DiseaseRecord where extract(YEAR FROM date) = " + year + " and extract(MONTH FROM date) = " + month;
+            list = session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
 
 
 }
