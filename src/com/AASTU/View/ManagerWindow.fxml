@@ -2,13 +2,11 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -100,13 +98,14 @@
                         <TableColumn fx:id="labAddedDateCol1" prefWidth="220.0" text="Added Date" />
                         <TableColumn fx:id="labStartHrCol1" prefWidth="190.0" text="start Hour" />
                         <TableColumn fx:id="labEndHrCol1" prefWidth="207.0" text="end Hour" />
+                        <TableColumn fx:id="labUserNameCol" prefWidth="207.0" text="User Name" />
+                        <TableColumn fx:id="labPasswordCol" prefWidth="207.0" text="Passoword" />
                      </columns>
                   </TableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <JFXButton buttonType="RAISED" layoutX="1124.0" layoutY="36.0" onAction="#deleteLaboratoryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="86.0" />
-                        <JFXButton buttonType="RAISED" layoutX="675.0" layoutY="36.0" onAction="#addLaboratoryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="535.0" />
-                        <JFXButton buttonType="RAISED" layoutX="897.0" layoutY="36.0" onAction="#editLaboratoryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="313.0" />
+                        <JFXButton buttonType="RAISED" layoutX="675.0" layoutY="36.0" onAction="#addLaboratoryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="300.0" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
@@ -120,13 +119,14 @@
                         <TableColumn fx:id="addedDateCol" prefWidth="220.0" text="Added Date" />
                         <TableColumn fx:id="startHrCol" prefWidth="190.0" text="start Hour" />
                         <TableColumn fx:id="endHrCol" prefWidth="207.0" text="end Hour" />
+                        <TableColumn fx:id="docUserNameCol" prefWidth="207.0" text="User Name" />
+                        <TableColumn fx:id="docPasswordCol" prefWidth="207.0" text="Password" />
                     </columns>
                   </TableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <JFXButton fx:id="deleteBtn" buttonType="RAISED" layoutX="1124.0" layoutY="36.0" onAction="#deleteDoctorBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="86.0" />
-                        <JFXButton fx:id="addBtn" buttonType="RAISED" layoutX="675.0" layoutY="36.0" onAction="#addDoctorBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="535.0" />
-                        <JFXButton fx:id="editBtn" buttonType="RAISED" layoutX="897.0" layoutY="36.0" onAction="#editDoctorBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="313.0" />
+                        <JFXButton fx:id="addBtn" buttonType="RAISED" layoutX="675.0" layoutY="36.0" onAction="#addDoctorBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="300.0" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
@@ -140,13 +140,14 @@
                         <TableColumn fx:id="secAddedDateCol11" prefWidth="220.0" text="Added Date" />
                         <TableColumn fx:id="secStartHrCol11" prefWidth="190.0" text="start Hour" />
                         <TableColumn fx:id="secEndHrCol11" prefWidth="207.0" text="end Hour" />
+                        <TableColumn fx:id="secUserNameCol" prefWidth="207.0" text="User Name" />
+                        <TableColumn fx:id="secPasswordCol" prefWidth="207.0" text="Password" />
                      </columns>
                   </TableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <JFXButton buttonType="RAISED" layoutX="1124.0" layoutY="36.0" onAction="#deleteSecretaryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="86.0" />
-                        <JFXButton buttonType="RAISED" layoutX="675.0" layoutY="36.0" onAction="#addSecretaryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="535.0" />
-                        <JFXButton buttonType="RAISED" layoutX="897.0" layoutY="36.0" onAction="#editSecretaryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Edit" textFill="WHITE" AnchorPane.rightAnchor="313.0" />
+                        <JFXButton buttonType="RAISED" layoutX="675.0" layoutY="36.0" onAction="#addSecretaryBtn" prefHeight="42.0" prefWidth="140.0" ripplerFill="WHITE" style="-fx-background-color: #01579b;" text="Add" textFill="WHITE" AnchorPane.rightAnchor="300.0" />
                      </children>
                   </AnchorPane>
                </children>

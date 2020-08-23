@@ -6,11 +6,13 @@ import com.AASTU.Model.Pricing;
 import com.AASTU.Model.WorkActivity;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
@@ -55,6 +57,22 @@ public class WindowChangeController {
         width = x;
         height = y;
     }
+
+    public void changeWindow1(KeyEvent event, String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent pane = loader.load();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setWidth(width);
+        stage.setHeight(height);
+        Scene loginScene =  new Scene(pane,width,height);
+        stage.setScene(loginScene);
+        stage.show();
+        double x =  stage.widthProperty().doubleValue();
+        double y = stage.widthProperty().doubleValue();
+        width = x;
+        height = y;
+    }
+
     public void popupWindow0(MouseEvent event,String fxml, WorkActivity work){
         try{
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));

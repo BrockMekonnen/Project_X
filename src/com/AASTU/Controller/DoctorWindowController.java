@@ -62,13 +62,10 @@ public class DoctorWindowController implements Initializable {
     private JFXTextField endHrTf;
 
     @FXML
-    private JFXTextField kebeleTf;
-
-    @FXML
     private JFXTextField cityTf;
 
     @FXML
-    private JFXTextField subCityTf;
+    private JFXTextField proUserNameTf;
 
     @FXML
     private JFXTextField passwordTf;
@@ -353,8 +350,7 @@ public class DoctorWindowController implements Initializable {
         passwordTf.setEditable(status);
         genderTf.setEditable(status);
         cityTf.setEditable(status);
-        subCityTf.setEditable(status);
-        kebeleTf.setEditable(status);
+        proUserNameTf.setEditable(status);
         phonTf.setEditable(status);
         startHrTf.setEditable(false);
         endHrTf.setEditable(false);
@@ -376,24 +372,27 @@ public class DoctorWindowController implements Initializable {
         endHrTf.setText(currentDoctor.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
         phonTf.setText(currentDoctor.getPhoneNumber());
         cityTf.setText(currentDoctor.getCity());
-        subCityTf.setText(currentDoctor.getSubcity());
-        kebeleTf.setText(currentDoctor.getKebele());
+        proUserNameTf.setText(currentDoctor.getUserName());
     }
 
     @FXML
     void cancelProHandler(ActionEvent event) {
 
     }
+
     @FXML
-    void editProHandler(ActionEvent event) {
+    void editProHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
-        if(editBtn.getText().equals("save")){
+        if(editBtn.getText().equals("Save")){
+            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+            if(Warning.isOk){
             editProfile();
+            }
         }
         editBtn.setText("Save");
 
     }
-    public void editProfile(){
+    public void editProfile() throws IOException {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Doctor.class)
@@ -407,12 +406,10 @@ public class DoctorWindowController implements Initializable {
             doctor.setFirstName(firstNameTf.getText());
             doctor.setLastName(lastNameTf.getText());
             doctor.setPassword(passwordTf.getText());
-//            secretary.setSex(sexTf.getText().toLowerCase().charAt(0));
+            doctor.setSex(genderTf.getText().toLowerCase().charAt(0));
             doctor.setPhoneNumber(phonTf.getText());
             doctor.setCity(cityTf.getText());
-            doctor.setSubcity(subCityTf.getText());
-            doctor.setKebele(kebeleTf.getText());
-
+            doctor.setUserName(proUserNameTf.getText());
             session.getTransaction().commit();
         } finally {
             factory.close();
@@ -522,7 +519,10 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().signOut(event,"../view/Login.fxml");
+        new WindowChangeController().warningPopup("Checking", "Are you sure to Sign Out?", "warn_confirm.png");
+        if(Warning.isOk){
+          new WindowChangeController().signOut(event,"../view/Login.fxml");
+        }
     }
 
     private void transition(){
