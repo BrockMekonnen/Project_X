@@ -63,6 +63,9 @@ public class NewOutPatient implements Initializable {
             new DataSaver().saveOutPatient(patient, startDate, endDate);
             }
             isAdd = true;
+        }else {
+            new WindowChangeController().warningPopup("Validate Fields", "Please Fill the Date First! ","warn_confirm.png");
+
         }
 
     }

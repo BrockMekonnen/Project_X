@@ -20,26 +20,26 @@ public class Test {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-                                .addAnnotatedClass(DiseaseType.class)
-
                                 .addAnnotatedClass(Pricing.class)
-                                .addAnnotatedClass(DiseaseType.class)
-                                .addAnnotatedClass(Patient.class)
-                                .addAnnotatedClass(ClinicalNotes.class)
-                                .addAnnotatedClass(TestProperty.class)
-                                .addAnnotatedClass(Parasitology.class)
-                                .addAnnotatedClass(Bacteriology.class)
-                                .addAnnotatedClass(Microscopy.class)
-                                .addAnnotatedClass(Chemistry.class)
-                                .addAnnotatedClass(Dipstick.class)
-                                .addAnnotatedClass(Others.class)
-                                .addAnnotatedClass(Cbs.class)
-                                .addAnnotatedClass(Serology.class)
-                                .addAnnotatedClass(LabRequest.class)
-                                .addAnnotatedClass(IncomeAnalysis.class)
-                                .addAnnotatedClass(DiseaseRecord.class)
-                                .addAnnotatedClass(PatientAnalysis.class)
-                                .addAnnotatedClass(AgeScale.class)
+
+//                                .addAnnotatedClass(Pricing.class)
+//                                .addAnnotatedClass(DiseaseType.class)
+//                                .addAnnotatedClass(Patient.class)
+//                                .addAnnotatedClass(ClinicalNotes.class)
+//                                .addAnnotatedClass(TestProperty.class)
+//                                .addAnnotatedClass(Parasitology.class)
+//                                .addAnnotatedClass(Bacteriology.class)
+//                                .addAnnotatedClass(Microscopy.class)
+//                                .addAnnotatedClass(Chemistry.class)
+//                                .addAnnotatedClass(Dipstick.class)
+//                                .addAnnotatedClass(Others.class)
+//                                .addAnnotatedClass(Cbs.class)
+//                                .addAnnotatedClass(Serology.class)
+//                                .addAnnotatedClass(LabRequest.class)
+//                                .addAnnotatedClass(IncomeAnalysis.class)
+//                                .addAnnotatedClass(DiseaseRecord.class)
+//                                .addAnnotatedClass(PatientAnalysis.class)
+//                                .addAnnotatedClass(AgeScale.class)
 
                                 .buildSessionFactory();
 
@@ -108,17 +108,18 @@ public class Test {
 //                temp.setDocActives(true);
 //            }
 
-            List<IncomeAnalysis> list = new ArrayList<>();
+//            List<IncomeAnalysis> list = new ArrayList<>();
+//
+//            for(int i=0, j=5000; i<19; i++){
+//                list.add(i,new IncomeAnalysis(LocalDate.of(2020,8,i+1), j-=70));
+//            }
+//            for(IncomeAnalysis temp: list){
+//                session.save(temp);
+//            }
 
-            for(int i=0, j=5000; i<19; i++){
-                list.add(i,new IncomeAnalysis(LocalDate.of(2020,8,i+1), j-=70));
-            }
-            for(IncomeAnalysis temp: list){
-                session.save(temp);
-            }
-
-
-            session.getTransaction().commit();
+//            Pricing pricing = new Pricing(20,"Card");
+//                session.save(pricing);
+//            session.getTransaction().commit();
 
         } finally {
             factory.close();

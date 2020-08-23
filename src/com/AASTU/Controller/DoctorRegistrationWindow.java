@@ -60,10 +60,24 @@ public class DoctorRegistrationWindow implements Initializable {
 
     @FXML
     private JFXTimePicker startTimePk;
+    @FXML
+    private JFXTextField userNameTf;
+
     private char sex;
 
+    // to check all text fields are get data
+    public boolean validatUserInput() throws IOException {
+        if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
+                lastNameTf.getText().trim().isEmpty() || userNameTf.getText().isEmpty()|| userNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
+                startTimePk.getValue() == null|| startTimePk.getValue() == null ||endTimePk.getValue() == null ||
+                endTimePk.getValue()== null|| cityTf.getText().isEmpty() || cityTf.getText().trim().isEmpty() ||
+                subCityTf.getText().isEmpty() || subCityTf.getText().trim().isEmpty() || kebeleTf.getText().isEmpty() ||
+                kebeleTf.getText().trim().isEmpty()|| phoneTf.getText().isEmpty() || phoneTf.getText().trim().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
     private void saveNewDoctor(){
-
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Doctor.class)
@@ -80,7 +94,7 @@ public class DoctorRegistrationWindow implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Doctor doctor = new Doctor(firstNameTf.getText(),lastNameTf.getText(),sex,LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Doctor doctor = new Doctor(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex,LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(doctor);
             session.getTransaction().commit();
         } finally {
@@ -88,6 +102,7 @@ public class DoctorRegistrationWindow implements Initializable {
             session.close();
         }
     }
+
     @FXML
     void handleDiscardBtn(ActionEvent event) {
         WindowChangeController.closeWindow();
@@ -95,8 +110,28 @@ public class DoctorRegistrationWindow implements Initializable {
 
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
-        new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-        saveNewDoctor();
+        boolean userNameCheck = new DataLoader().doctorUserNameExist(userNameTf.getText());
+        System.out.println(userNameCheck);
+        if(validatUserInput()){
+            if(ExceptionHandler.isLetter(firstNameTf.getText()) && ExceptionHandler.isLetter(lastNameTf.getText())&& ExceptionHandler.ValidatePhone(phoneTf.getText()) &&
+              ExceptionHandler.isLetter(cityTf.getText()) && ExceptionHandler.validateNum(kebeleTf.getText())){
+                if(!userNameCheck){
+                  new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
+                 if(Warning.isOk){
+                    saveNewDoctor();
+                    WindowChangeController.closeWindow();
+                     NotificationController.savedNotification("Doctor Added","Registered Successfully ","warn_confirm.png");
+                 }
+               }else {
+                    new WindowChangeController().warningPopup("Saving Error", "The User Name is Already Used!!","warn_confirm.png");
+                }
+            } else {
+                new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
+            }
+        }else {
+            new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+
+        }
     }
 
     @Override

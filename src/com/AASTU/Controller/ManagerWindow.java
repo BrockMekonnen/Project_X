@@ -69,6 +69,12 @@ public class ManagerWindow implements Initializable {
     @FXML
     private TableColumn<Doctor, LocalTime> endHrCol;
 
+    @FXML
+    private TableColumn<Doctor, String> docUserNameCol;
+
+    @FXML
+    private TableColumn<Doctor, String> docPasswordCol;
+
     /**
      * price Table
      * */
@@ -113,6 +119,13 @@ public class ManagerWindow implements Initializable {
     @FXML
     private TableColumn<Laboratory, LocalTime> labEndHrCol1;
 
+    @FXML
+    private TableColumn<Laboratory, String> labUserNameCol;
+
+    @FXML
+    private TableColumn<Laboratory, String> labPasswordCol;
+
+
     /**
      * Secretary Table
      * */
@@ -136,6 +149,13 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     private TableColumn<Secretary, LocalTime> secEndHrCol11;
+
+    @FXML
+    private TableColumn<Secretary, String> secUserNameCol;
+
+    @FXML
+    private TableColumn<Secretary, String> secPasswordCol;
+
 
     /**Work Table*/
     @FXML
@@ -255,7 +275,7 @@ public class ManagerWindow implements Initializable {
 
 
     @FXML
-    public void deleteLaboratoryBtn(ActionEvent event) {
+    public void deleteLaboratoryBtn(ActionEvent event) throws IOException {
         deleteLaboratory();
     }
 
@@ -277,6 +297,8 @@ public class ManagerWindow implements Initializable {
         labAddedDateCol1.setCellValueFactory(new PropertyValueFactory<Laboratory, LocalDate>("addedDate"));
         labStartHrCol1.setCellValueFactory(new PropertyValueFactory<Laboratory,LocalTime>("workingStartTime"));
         labEndHrCol1.setCellValueFactory(new PropertyValueFactory<Laboratory, LocalTime>("workingEndTime"));
+        labUserNameCol.setCellValueFactory(new PropertyValueFactory<Laboratory,String>("userName"));
+        labPasswordCol.setCellValueFactory(new PropertyValueFactory<Laboratory, String>("password"));
 
         ObservableList<Laboratory> laboratoryObservableList = FXCollections.observableArrayList();
         for(Laboratory doctor: laboratoriesList){
@@ -285,24 +307,30 @@ public class ManagerWindow implements Initializable {
         laboratoryTable.setItems(laboratoryObservableList);
     }
 
-    private void deleteLaboratory() {
+    private void deleteLaboratory() throws IOException {
         laboratoryTable.setEditable(true);
         Laboratory laboratory = laboratoryTable.getSelectionModel().getSelectedItem();
         if (laboratory != null) {
-            doctorTable.getItems().remove(laboratory);
-            SessionFactory factory = new Configuration()
-                    .configure("hibernate.cfg.xml")
-                    .addAnnotatedClass(Laboratory.class)
-                    .buildSessionFactory();
-            Session session = factory.getCurrentSession();
-            try {
-                session.beginTransaction();
-                session.delete(laboratory);
-                session.getTransaction().commit();
-            } finally {
-                factory.close();
-                session.close();
+            new WindowChangeController().warningPopup("Check Deleting", "Are You Sure To delete?","warn_confirm.png");
+            if(Warning.isOk) {
+                laboratoryTable.getItems().remove(laboratory);
+                SessionFactory factory = new Configuration()
+                        .configure("hibernate.cfg.xml")
+                        .addAnnotatedClass(Laboratory.class)
+                        .buildSessionFactory();
+                Session session = factory.getCurrentSession();
+                try {
+                    session.beginTransaction();
+                    session.delete(laboratory);
+                    session.getTransaction().commit();
+                } finally {
+                    factory.close();
+                    session.close();
+                }
+                NotificationController.deletedNotification("Laboratories deleted","deleted Successfully","warn_delete.png");
             }
+        }else {
+            new WindowChangeController().warningPopup("No selection", "There is no Selected Person", "warn_confirm.png");
         }
     }
 
@@ -318,6 +346,8 @@ public class ManagerWindow implements Initializable {
         addedDateCol.setCellValueFactory(new PropertyValueFactory<Doctor, LocalDate>("addedDate"));
         startHrCol.setCellValueFactory(new PropertyValueFactory<Doctor,LocalTime>("workingStartTime"));
         endHrCol.setCellValueFactory(new PropertyValueFactory<Doctor, LocalTime>("workingEndTime"));
+        docUserNameCol.setCellValueFactory(new PropertyValueFactory<Doctor,String>("userName"));
+        docPasswordCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("password"));
 
         ObservableList<Doctor> patientsList = FXCollections.observableArrayList();
         for(Doctor doctor: doctorList){
@@ -325,26 +355,33 @@ public class ManagerWindow implements Initializable {
         }
             doctorTable.setItems(patientsList);
     }
-    private void deleteDoctor() {
+    private void deleteDoctor() throws IOException {
         doctorTable.setEditable(true);
         Doctor doctor = doctorTable.getSelectionModel().getSelectedItem();
         if (doctor != null) {
-            doctorTable.getItems().remove(doctor);
-            SessionFactory factory = new Configuration()
-                    .configure("hibernate.cfg.xml")
-                    .addAnnotatedClass(Doctor.class)
-                    .buildSessionFactory();
+            new WindowChangeController().warningPopup("Check Deleting", "Are You Sure To delete?","warn_confirm.png");
+            if(Warning.isOk){
+                doctorTable.getItems().remove(doctor);
+                SessionFactory factory = new Configuration()
+                        .configure("hibernate.cfg.xml")
+                        .addAnnotatedClass(Doctor.class)
+                        .buildSessionFactory();
 
-            Session session = factory.getCurrentSession();
-            try {
+                Session session = factory.getCurrentSession();
+                try {
 
-                session.beginTransaction();
-                session.delete(doctor);
-                session.getTransaction().commit();
-            } finally {
-                factory.close();
-                session.close();
+                    session.beginTransaction();
+                    session.delete(doctor);
+                    session.getTransaction().commit();
+                } finally {
+                    factory.close();
+                    session.close();
+                }
+                NotificationController.deletedNotification("Doctor deleted","deleted Successfully","warn_delete.png");
             }
+        } else {
+
+            new WindowChangeController().warningPopup("No selection", "There is no Selected Person", "warn_confirm.png");
         }
     }
 
@@ -360,7 +397,8 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     public void deleteDoctorBtn(ActionEvent event) throws IOException {
-        deleteDoctor();
+         deleteDoctor();
+
     }
     /**
      * Secretary
@@ -373,7 +411,7 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     public void deleteSecretaryBtn(ActionEvent event) throws IOException {
-    deleteSecretary();
+        deleteSecretary();
     }
 
     @FXML
@@ -388,6 +426,8 @@ public class ManagerWindow implements Initializable {
         secAddedDateCol11.setCellValueFactory(new PropertyValueFactory<Secretary, LocalDate>("addedDate"));
         secStartHrCol11.setCellValueFactory(new PropertyValueFactory<Secretary,LocalTime>("workingStartTime"));
         secEndHrCol11.setCellValueFactory(new PropertyValueFactory<Secretary, LocalTime>("workingEndTime"));
+        secUserNameCol.setCellValueFactory(new PropertyValueFactory<Secretary,String>("userName"));
+        secPasswordCol.setCellValueFactory(new PropertyValueFactory<Secretary,String>("password"));
 
         ObservableList<Secretary> secretaryObservableList = FXCollections.observableArrayList();
         for(Secretary secretary: secretaryList){
@@ -397,26 +437,33 @@ public class ManagerWindow implements Initializable {
     }
 
 
-    private void deleteSecretary() {
+    private void deleteSecretary() throws IOException {
         doctorTable.setEditable(true);
         Secretary secretary = secretaryTable1.getSelectionModel().getSelectedItem();
         if (secretary != null) {
-            doctorTable.getItems().remove(secretary);
-            SessionFactory factory = new Configuration()
-                    .configure("hibernate.cfg.xml")
-                    .addAnnotatedClass(Secretary.class)
-                    .buildSessionFactory();
+            new WindowChangeController().warningPopup("Check Deleting", "Are You Sure To delete?","warn_confirm.png");
+            if(Warning.isOk){
+                secretaryTable1.getItems().remove(secretary);
+                SessionFactory factory = new Configuration()
+                        .configure("hibernate.cfg.xml")
+                        .addAnnotatedClass(Secretary.class)
+                        .buildSessionFactory();
 
-            Session session = factory.getCurrentSession();
-            try {
+                Session session = factory.getCurrentSession();
+                try {
 
-                session.beginTransaction();
-                session.delete(secretary);
-                session.getTransaction().commit();
-            } finally {
-                factory.close();
-                session.close();
+                    session.beginTransaction();
+                    session.delete(secretary);
+                    session.getTransaction().commit();
+                } finally {
+                    factory.close();
+                    session.close();
+                }
             }
+            NotificationController.deletedNotification("Secretaries deleted","deleted Successfully","warn_delete.png");
+
+        }else {
+            new WindowChangeController().warningPopup("No selection", "There is no Selected Person", "warn_confirm.png");
         }
     }
 
@@ -497,7 +544,10 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
+        new WindowChangeController().warningPopup("Checking", "Are you sure to Sign Out?", "warn_confirm.png");
+        if (Warning.isOk) {
             new WindowChangeController().signOut(event,"../view/Login.fxml");
+       }
     }
 
     private void changeInnerWindow(boolean docWindow, boolean labWindow, boolean secWindow, boolean incomeWindow, boolean patient, boolean disease, boolean work, boolean pricing){

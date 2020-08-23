@@ -19,6 +19,9 @@ public class Secretary {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "user_name")
+    private String userName;
+
     @Column(name = "sex")
     private char sex;
 
@@ -48,9 +51,10 @@ public class Secretary {
     @Column(name = "kebele")
     private String kebele;
 
-    public Secretary(String firstName, String lastName, char sex, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String subcity, String kebele) {
+    public Secretary(String firstName, String lastName, String userName, char sex, LocalDate addedDate, String password, LocalTime workingStartTime, LocalTime workingEndTime, String phoneNumber, String city, String subcity, String kebele) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
         this.sex = sex;
         this.addedDate = addedDate;
         this.password = password;
@@ -160,12 +164,21 @@ public class Secretary {
         this.kebele = kebele;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public String toString() {
         return "Secretary{" +
                 "secretaryId=" + secretaryId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
                 ", sex=" + sex +
                 ", addedDate=" + addedDate +
                 ", password='" + password + '\'' +

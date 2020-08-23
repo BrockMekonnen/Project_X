@@ -59,13 +59,10 @@ public class SecretaryWindowController implements Initializable {
     private JFXTextField endHrTf;
 
     @FXML
-    private JFXTextField kebeleTf;
-
-    @FXML
     private JFXTextField cityTf;
 
     @FXML
-    private JFXTextField subcityTf;
+    private JFXTextField proUserNameTf;
 
     @FXML
     private JFXTextField passwordTf;
@@ -250,8 +247,7 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
         passwordTf.setEditable(status);
         genderTf.setEditable(status);
         cityTf.setEditable(status);
-        subcityTf.setEditable(status);
-        kebeleTf.setEditable(status);
+        proUserNameTf.setEditable(status);
         phonTf.setEditable(status);
         startHrTf.setEditable(false);
         endHrTf.setEditable(false);
@@ -262,10 +258,13 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
 
     }
     @FXML
-    void editProHandler(ActionEvent event) {
+    void editProHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
-        if(editBtn.getText().equals("save")){
-         editProfile();
+        if(editBtn.getText().equals("Save")){
+            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+            if(Warning.isOk){
+                editProfile();
+            }
         }
         editBtn.setText("Save");
 
@@ -288,8 +287,7 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
             secretary.setSex(genderTf.getText().toLowerCase().charAt(0));
             secretary.setPhoneNumber(phonTf.getText());
             secretary.setCity(cityTf.getText());
-            secretary.setSubcity(subcityTf.getText());
-            secretary.setKebele(kebeleTf.getText());
+            secretary.setUserName(proUserNameTf.getText());
 
             session.getTransaction().commit();
         } finally {
@@ -336,6 +334,7 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
 
     // method to calculate the total payment
     public double calcTotalPayment(Patient obj){
+//        double total=new DataLoader().prices(308);
         double total=0, price;
         List<LabRequest> labObject = new DataLoader().labRequest(obj);
         for(LabRequest labRequest: labObject){
@@ -663,8 +662,7 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
         endHrTf.setText(currentSecretary.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
         phonTf.setText(currentSecretary.getPhoneNumber());
         cityTf.setText(currentSecretary.getCity());
-        subcityTf.setText(currentSecretary.getSubcity());
-        kebeleTf.setText(currentSecretary.getKebele());
+        proUserNameTf.setText(currentSecretary.getUserName());
     }
     /**
      * METHODS TO DISPLAY AND REFRESH TABLES
@@ -808,7 +806,10 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().signOut(event, "../view/Login.fxml");
+        new WindowChangeController().warningPopup("Checking", "Are you sure to Sign Out?", "warn_confirm.png");
+        if (Warning.isOk) {
+            new WindowChangeController().signOut(event, "../view/Login.fxml");
+        }
     }
 
     @FXML

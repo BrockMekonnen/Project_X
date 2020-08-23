@@ -17,6 +17,75 @@ import java.util.List;
 @SuppressWarnings("ALL")
 public class DataLoader {
 
+    public boolean doctorUserNameExist(String userName){
+        Doctor doctor;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Doctor.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Doctor where user_name = :name");
+            query.setParameter("name", userName);
+            doctor = (Doctor) query.uniqueResult();
+            if(doctor != null){
+                return true;
+            } else {
+                return false;
+            }
+        }finally {
+            factory.close();
+            session.close();
+        }
+    }
+    public boolean laboratoriestUserNameExist(String userName){
+        Laboratory laboratory;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Laboratory where user_name = :name");
+            query.setParameter("name", userName);
+            laboratory = (Laboratory) query.uniqueResult();
+            if(laboratory != null){
+                return true;
+            } else {
+                return false;
+            }
+        }finally {
+            factory.close();
+            session.close();
+        }
+    }
+    public boolean secretaryUserNameExist(String userName){
+        Secretary secretary;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Secretary.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            Query query = session.createQuery("from Secretary where user_name = :name");
+            query.setParameter("name", userName);
+            secretary = (Secretary) query.uniqueResult();
+            if(secretary != null){
+                return true;
+            } else {
+                return false;
+            }
+        }finally {
+            factory.close();
+            session.close();
+        }
+    }
     public List<Doctor> loadDoctorsData(){
         List<Doctor> doctorsList;
         SessionFactory factory = new Configuration()
@@ -68,7 +137,7 @@ public class DataLoader {
 
         try {
             session.beginTransaction();
-            Query query = session.createQuery("from Laboratory where password = :password and first_name = :name");
+            Query query = session.createQuery("from Laboratory where password = :password and user_name = :name");
             query.setParameter("password", password);
             query.setParameter("name", userName);
             laboratory = (Laboratory) query.uniqueResult();
@@ -111,7 +180,7 @@ public class DataLoader {
 
         try {
             session.beginTransaction();
-            Query query = session.createQuery("from Doctor where password = :password and first_name = :name");
+            Query query = session.createQuery("from Doctor where password = :password and user_name = :name");
             query.setParameter("password", password);
             query.setParameter("name", userName);
             doctor = (Doctor) query.uniqueResult();
@@ -157,7 +226,7 @@ public class DataLoader {
 
         try {
             session.beginTransaction();
-            Query query = session.createQuery("from Secretary where password = :password and first_name = :name");
+            Query query = session.createQuery("from Secretary where password = :password and user_name = :name");
             query.setParameter("password", password);
             query.setParameter("name", userName);
             secretary = (Secretary) query.uniqueResult();
