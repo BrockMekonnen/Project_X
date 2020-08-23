@@ -607,9 +607,6 @@ public class ManagerWindow implements Initializable {
     }
 
 
-
-
-
     @FXML
     void gotoTableViewWork(){
         pnl_table_work.setVisible(true);

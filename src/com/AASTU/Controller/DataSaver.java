@@ -9,8 +9,9 @@ import org.hibernate.cfg.Configuration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DataSaver {
+import static com.AASTU.Controller.LaboratoryWindowController.currentLaboratory;
 
+public class DataSaver {
     public void saveLabResult(Patient patient, LabRequest result){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -59,12 +60,12 @@ public class DataSaver {
 
         Session session = factory.getCurrentSession();
         try{
-           session.beginTransaction();
-           LabRequest request=(LabRequest) session.load(LabRequest.class,LabId);
-           request=result;
+            session.beginTransaction();
+            LabRequest request=(LabRequest) session.load(LabRequest.class,LabId);
+            request=result;
             session.update(request);
             session.getTransaction().commit();
-            updateActivity(patient.getPatientId()," Send Patient's Labratory Result to Doctor",2,LocalDate.now(),new LaboratoryWindowController().LaboratoryId);
+            updateActivity(patient.getPatientId(),LaboratoryWindowController.currentLaboratory.getFirstName()+" "+LaboratoryWindowController.currentLaboratory.getLastName()+" Send Patient's Laboratory Result to Doctor",2,LocalDate.now(),currentLaboratory.getLaboratoryId());
         } finally {
             factory.close();
             session.close();
@@ -325,18 +326,18 @@ public class DataSaver {
             session.beginTransaction();
             WorkActivity obj1=new DataLoader().SpecificloadActivity("from WorkActivity where date ="+ DateTimeFormatter.BASIC_ISO_DATE.format(date1),patientid);
             if(obj1!=null){
-            WorkActivity obj=session.load(WorkActivity.class,obj1.getActivityId());
-            if(identify==1){
-            obj.setActivity(obj.getActivity()+Activity);
-            obj.setDoctorId(new DoctorWindowController().DoctorId);
-            session.update(obj);
-            }
-            else if(identify==2){
-                obj.setActivity(obj.getActivity()+Activity);
-                obj.setLabTechnicianId(new LaboratoryWindowController().LaboratoryId);
-                session.update(obj);
-            }
-            session.getTransaction().commit();}
+                WorkActivity obj=session.load(WorkActivity.class,obj1.getActivityId());
+                if(identify==1){
+                    obj.setActivity(obj.getActivity()+Activity);
+                    obj.setDoctorId(new DoctorWindowController().currentDoctor.getDoctorID());
+                    session.update(obj);
+                }
+                else if(identify==2){
+                    obj.setActivity(obj.getActivity()+Activity);
+                    obj.setLabTechnicianId(new LaboratoryWindowController().currentLaboratory.getLaboratoryId());
+                    session.update(obj);
+                }
+                session.getTransaction().commit();}
             else saveOther(Activity,identify,id,date1,patientid);
         } finally {
             factory.close();

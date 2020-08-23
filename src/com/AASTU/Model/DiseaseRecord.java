@@ -45,6 +45,7 @@ public class DiseaseRecord {
         return new SimpleObjectProperty<LocalDate>(this.date);
     }
 
+
     public void setDate(LocalDate date) {
         this.date = date;
     }
@@ -52,6 +53,8 @@ public class DiseaseRecord {
     public SimpleStringProperty getDiseaseName() {
         return new SimpleStringProperty(this.diseaseName);
     }
+
+    public String getDiseaseNameForPie(){ return diseaseName;}
 
     public void setDiseaseName(String diseaseName) {
         this.diseaseName = diseaseName;

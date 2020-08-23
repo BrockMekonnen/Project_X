@@ -1,5 +1,8 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Model.Doctor;
+import com.AASTU.Model.Laboratory;
+import com.AASTU.Model.Patient;
 import com.AASTU.Model.WorkActivity;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -20,6 +23,9 @@ public class ActivityWindowController implements Initializable {
     private Label DoctorName;
 
     @FXML
+    private Label Data;
+
+    @FXML
     private Label PatientName;
 
     @FXML
@@ -38,12 +44,28 @@ public class ActivityWindowController implements Initializable {
         WindowChangeController.closeWindow();
 
     }
+
     public void setComponents(WorkActivity work){
-        // to access the name we have to register doctor,secretary and lab technician in the database first
+
+        Data.setText(work.getActivity_day().toString());
         DetailTA.setText(work.getActivity());
-        PatientName.setText(new DataLoader().loadSinglePatinetObject(work).getFirstName()+" "+new DataLoader().loadSinglePatinetObject(work).getLastName());
-        DoctorName.setText(new DataLoader().loadsingleDoctor(work).getFirstName()+" "+new DataLoader().loadsingleDoctor(work).getLastName());
-        LabratoryTechName.setText(new DataLoader().loadSingleLaboratory(work).getFirstName()+" "+new DataLoader().loadSingleLaboratory(work).getLastName());
+        if(work.getPatientId()==0)
+            PatientName.setText("No Patient Data");
+        else{
+            Patient p=new DataLoader().loadSinglePatinetObject(work);
+            PatientName.setText(p.getFirstName()+" "+p.getLastName());}
+
+        if(work.getDoctorId()==0)
+            DoctorName.setText("No Doctor Activity");
+        else{
+            Doctor d=new DataLoader().loadsingleDoctor(work);
+            DoctorName.setText(d.getFirstName()+" "+d.getLastName());}
+
+        if(work.getLabTechnicianId()==0)
+            LabratoryTechName.setText("No Laboratory Data");
+        else{
+            Laboratory l=new DataLoader().loadSingleLaboratory(work);
+            LabratoryTechName.setText(l.getFirstName()+" "+l.getLastName()); }
     }
 
 

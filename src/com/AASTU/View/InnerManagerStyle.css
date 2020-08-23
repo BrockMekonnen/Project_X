@@ -7,3 +7,12 @@
     -fx-background-color: #01579B;
     -fx-text-fill: white;
 }
+
+.jfx-date-picker .jfx-text-field{
+    -fx-background-color: #ffffff;
+    -jfx-unfocus-color: #B3E5FC;
+}
+.jfx-combo-box{
+    -fx-background-color: #ffffff;
+    -jfx-unfocus-color: #B3E5FC;
+}

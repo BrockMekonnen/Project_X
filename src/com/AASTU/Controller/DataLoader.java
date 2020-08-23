@@ -159,8 +159,11 @@ public class DataLoader {
         Laboratory laboratory;
         try {
             session.beginTransaction();
-            laboratory =(Laboratory) session.load(Laboratory.class,work.getLabTechnicianId());
-
+            int id=work.getLabTechnicianId();
+            laboratory =(Laboratory) session.load(Laboratory.class,id);
+            if(laboratory!=null)
+                System.out.println(laboratory.getFirstName());
+            else System.out.println("this is null Value");
             session.getTransaction().commit();
         }finally {
             factory.close();
@@ -238,24 +241,27 @@ public class DataLoader {
         return secretary;
     }
 
-  
+
     public Doctor loadsingleDoctor(WorkActivity work){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Laboratory.class)
+                .addAnnotatedClass(Doctor.class)
                 .buildSessionFactory();
         Session session = factory.getCurrentSession();
-        Doctor Doctor;
+        Doctor doctor;
         try {
             session.beginTransaction();
-            Doctor = (Doctor)session.load(Doctor.class,work.getDoctorId());
-
+            int id=work.getDoctorId();
+            doctor = (Doctor)session.load(Doctor.class,id);
+            if(doctor!=null)
+                System.out.println(doctor.getFirstName());
+            else System.out.println("this is null Value");
             session.getTransaction().commit();
         }finally {
             factory.close();
             session.close();
         }
-        return Doctor;
+        return doctor;
     }
 
 
@@ -603,7 +609,6 @@ public class DataLoader {
         return obj;
     }
 
-
     public Patient loadSinglePatinetObject(WorkActivity work){
 
         SessionFactory factory = new Configuration()
@@ -626,7 +631,11 @@ public class DataLoader {
         Patient obj;
         try{
             session.beginTransaction();
-            obj = (Patient) session.load(Patient.class, work.getPatientId());
+            int id=work.getPatientId();
+            obj = (Patient)session.load(Patient.class,id);
+            if(obj!=null)
+                System.out.println(obj.getFirstName());
+            else System.out.println("this is null Value");
             session.getTransaction().commit();
 
         } finally {
@@ -746,11 +755,6 @@ public class DataLoader {
           
         return list;
     }
-
-
-  
-  
-
 
 
     public ArrayList<Integer> loadPatientAnalysisYearOnly(){
@@ -889,6 +893,32 @@ public class DataLoader {
         return list;
     }
 
+    public List<String> loadMonthDiseaseNameData(int year, int month){
+        List<String> list = new ArrayList<>();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(DiseaseRecord.class)
+                .addAnnotatedClass(AgeScale.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+
+            session.beginTransaction();
+            String quiry = "select DISTINCT diseaseName from DiseaseRecord where extract(YEAR FROM date) = " + year + " and extract(MONTH FROM date) = " + month;
+            list = session.createQuery(quiry).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+        return list;
+    }
 
 
 }
