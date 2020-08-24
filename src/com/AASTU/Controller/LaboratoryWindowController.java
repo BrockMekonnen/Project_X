@@ -155,15 +155,15 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private AnchorPane recordPnl;
 
-    //The Id of Laboratory Technician አሁን የገባው hahaha
-//    public static int LaboratoryId=currentLaboratory.getLaboratoryId();
-
     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-    ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
 
+    ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
     //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
+
     ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
+
     ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
+
     void goToView(boolean active, boolean pending, boolean record, boolean waiting){
         pendingPnl.setVisible(pending);
         waitingPnl.setVisible(waiting);
@@ -174,7 +174,7 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     void handleActiveButton(ActionEvent event) {
         //some specification will be done here to access Active Patients only
-        ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives=1"));
+        ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
         SearchField();
         TableOperation();
         goToView(true,false,false,false);
@@ -184,7 +184,7 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     void handlePendingButton(ActionEvent event) {
         //some Specification will be done here to access only Pending Patients
-        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 "));
+        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
         SearchField();
         TableOperation();
         goToView(false,true,false,false);
@@ -211,8 +211,6 @@ public class LaboratoryWindowController implements Initializable {
         waitingPnl.toFront();
     }
 
-    // profile Handler
-
     private void textFieldStatus(boolean status) {
         firstNameTf.setEditable(status);
         lastNameTf.setEditable(status);
@@ -226,6 +224,7 @@ public class LaboratoryWindowController implements Initializable {
         endHrTf.setEditable(false);
 
     }
+
     public void displayProfile(){
         textFieldStatus(false);
         String sex = null;
@@ -245,6 +244,7 @@ public class LaboratoryWindowController implements Initializable {
         subcityTf.setText(currentLaboratory.getSubcity());
         kebeleTf.setText(currentLaboratory.getKebele());
     }
+
     @FXML
     void canceProlHandler(ActionEvent event) {
 
@@ -379,7 +379,7 @@ public class LaboratoryWindowController implements Initializable {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
-                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    Patient rowData = WaitingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
                     try {
 
                         new WindowChangeController().popupWindow1(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
@@ -486,7 +486,6 @@ public class LaboratoryWindowController implements Initializable {
         profileOpacityPane.setVisible(true);
         profilePane.setVisible(true);
     }
-
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {

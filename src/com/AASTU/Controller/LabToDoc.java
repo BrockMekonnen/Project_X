@@ -20,151 +20,151 @@ import java.util.ResourceBundle;
 public class LabToDoc implements Initializable {
 
     @FXML
-    private JFXTextField Hema_HBC_TF,Wet_Film_TF;
+    public JFXTextField Hema_HBC_TF,Wet_Film_TF;
 
     @FXML
-    private JFXTextField LYMTF,AFB_TF;
+    public JFXTextField LYMTF,AFB_TF;
 
     @FXML
-    private JFXTextField GRA_TF;
+    public JFXTextField GRA_TF;
 
     @FXML
-    private JFXTextField MID_TF;
+    public JFXTextField MID_TF;
 
     @FXML
-    private JFXTextField Hema_RBC_TF,RBC_TF;
+    public JFXTextField Hema_RBC_TF,RBC_TF;
 
     @FXML
-    private JFXTextField HGB_TF;
+    public JFXTextField HGB_TF;
 
     @FXML
-    private JFXTextField MCHC_TF;
+    public JFXTextField MCHC_TF;
 
     @FXML
     private JFXTextField MCH_TF;
 
     @FXML
-    private JFXTextField MCB_TF;
+    public JFXTextField MCB_TF;
 
     @FXML
-    private JFXTextField RDW_CY_TF;
+    public JFXTextField RDW_CY_TF;
 
     @FXML
-    private JFXTextField HCT_TF;
+    public JFXTextField HCT_TF;
 
     @FXML
-    private JFXTextField PLT_TF;
+    public JFXTextField PLT_TF;
 
     @FXML
-    private JFXTextField PCT_TF;
+    public JFXTextField PCT_TF;
 
     @FXML
-    private JFXTextField P_LCT_TF;
+    public JFXTextField P_LCT_TF;
 
     @FXML
-    private JFXTextField ESR_TF;
+    public JFXTextField ESR_TF;
 
     @FXML
-    private JFXTextField Blood_Group_TF;
+    public JFXTextField Blood_Group_TF;
 
     @FXML
-    private JFXTextField Blood_Film_TF;
+    public JFXTextField Blood_Film_TF;
 
     @FXML
-    private JFXTextField STOOL_TEST_TF;
+    public JFXTextField STOOL_TEST_TF;
 
     @FXML
-    private JFXTextField OCCULT_BLOOD_TF;
+    public JFXTextField OCCULT_BLOOD_TF;
 
     @FXML
-    private JFXTextField CONSISTENCY_TF1;
+    public JFXTextField CONSISTENCY_TF1;
 
     @FXML
-    private JFXTextField CONSISTENCY_TF2;
+    public JFXTextField CONSISTENCY_TF2;
 
     @FXML
-    private JFXTextField OVAL_PARASITE_TF1;
+    public JFXTextField OVAL_PARASITE_TF1;
 
     @FXML
-    private JFXTextField OVAL_PARASITE_TF2;
+    public JFXTextField OVAL_PARASITE_TF2;
 
     @FXML
-    private JFXTextField OVAL_PARASITE_TF3;
+    public JFXTextField OVAL_PARASITE_TF3;
 
     @FXML
-    private JFXTextField DIPISTIC_COLOR_TF;
+    public JFXTextField DIPISTIC_COLOR_TF;
 
     @FXML
-    private JFXTextField APPERANCE_TF;
+    public JFXTextField APPERANCE_TF;
 
     @FXML
-    private JFXTextField PH_TF;
+    public JFXTextField PH_TF;
 
     @FXML
-    private JFXTextField PSG_TF;
+    public JFXTextField PSG_TF;
 
     @FXML
-    private JFXTextField PROTEIN_TF;
+    public JFXTextField PROTEIN_TF;
 
     @FXML
-    private JFXTextField GLUCOSE_TF;
+    public JFXTextField GLUCOSE_TF;
 
     @FXML
-    private JFXTextField KETONE_TF;
+    public JFXTextField KETONE_TF;
 
     @FXML
-    private JFXTextField BILIRUBIN_TF;
+    public JFXTextField BILIRUBIN_TF;
 
     @FXML
-    private JFXTextField UROBILINOGEN_TF;
+    public JFXTextField UROBILINOGEN_TF;
 
     @FXML
-    private JFXTextField BLOOD_TF;
+    public JFXTextField BLOOD_TF;
 
     @FXML
-    private JFXTextField EPIT_CELLS_TF;
+    public JFXTextField EPIT_CELLS_TF;
 
     @FXML
-    private JFXTextField WBC_TF;
+    public JFXTextField WBC_TF;
 
     @FXML
-    private JFXTextField CASTS_TF;
+    public JFXTextField CASTS_TF;
 
     @FXML
-    private JFXTextField BACTERIA_TF;
+    public JFXTextField BACTERIA_TF;
 
     @FXML
-    private JFXTextField FSB_TF;
+    public JFXTextField FSB_TF;
 
     @FXML
-    private JFXTextField RBS_TF;
+    public JFXTextField RBS_TF;
 
     @FXML
-    private JFXTextField SGOP_TF;
+    public JFXTextField SGOP_TF;
 
     @FXML
-    private JFXTextField SGPT_TF;
+    public JFXTextField SGPT_TF;
 
     @FXML
-    private JFXTextField ALKALINE_PHOSPHATE_TF;
+    public JFXTextField ALKALINE_PHOSPHATE_TF;
 
     @FXML
-    private JFXTextField BILIRUBIN_TOTAL_TF;
+    public JFXTextField BILIRUBIN_TOTAL_TF;
 
     @FXML
-    private JFXTextField BILIRUBIN_DIRECT_TF;
+    public JFXTextField BILIRUBIN_DIRECT_TF;
 
     @FXML
-    private JFXTextField BUN_TF;
+    public JFXTextField BUN_TF;
 
     @FXML
-    private JFXTextField CREATININE_TF;
+    public JFXTextField CREATININE_TF;
 
     @FXML
-    private JFXTextField URIC_ACID_TF;
+    public JFXTextField URIC_ACID_TF;
 
     @FXML
-    private JFXTextField TOTAL_PROTEIN_TF;
+    public JFXTextField TOTAL_PROTEIN_TF;
 
     @FXML
     private JFXTextField CHOLESTEROEL_TF;
@@ -532,17 +532,20 @@ public class LabToDoc implements Initializable {
         Bun_CheckBox.setVisible(labRequest.getChemistry().getBun().isTest());
         Bun_CheckBox.setSelected(true);
         MCHCheckBox.setSelected(true);
-
+        if(patient.isOnWaiting()) {
+            exceptionForWaiting(labRequest);
+        }
     }
+
     @FXML
     public void send(ActionEvent e){
-        setObjectLabTestValue(this.patient,false,true,false,true,true);
+        setObjectLabTestValue(patient,false,true,false,true,true);
 
     }
 
     @FXML
     public void wait(ActionEvent e){
-        setObjectLabTestValue(this.patient,true,false,true,true,false);
+        setObjectLabTestValue(patient,true,false,true,true,false);
     }
 
     @FXML
@@ -785,4 +788,150 @@ public class LabToDoc implements Initializable {
         }
     }
 
-}
+    public void exceptionForWaiting(LabRequest labRequest){
+
+        if(!labRequest.getCbs().getLym().getValue().isEmpty())
+            LYMTF.setText(String.valueOf(labRequest.getCbs().getLym().getValue()));
+        if(!labRequest.getCbs().getGra().getValue().isEmpty())
+            GRA_TF.setText(String.valueOf(labRequest.getCbs().getGra().getValue()));
+        if(!labRequest.getCbs().getMid().getValue().isEmpty())
+            MID_TF.setText(String.valueOf(labRequest.getCbs().getMid().getValue()));
+        if(!labRequest.getCbs().getRbc().getValue().isEmpty())
+            Hema_RBC_TF.setText(String.valueOf(labRequest.getCbs().getRbc().getValue()));
+        if(!labRequest.getCbs().getHgb().getValue().isEmpty())
+            HGB_TF.setText(String.valueOf(labRequest.getCbs().getHgb().getValue()));
+        if(!labRequest.getCbs().getMchc().getValue().isEmpty())
+           MCHC_TF.setText(labRequest.getCbs().getMchc().getValue());
+
+        if(!labRequest.getCbs().getMcv().getValue().isEmpty())
+            MCB_TF.setText(String.valueOf(labRequest.getCbs().getMcv().getValue()));
+        if(!labRequest.getCbs().getHct().getValue().isEmpty())
+            HCT_TF.setText(String.valueOf(labRequest.getCbs().getHct().getValue()));
+
+        if(!labRequest.getCbs().getPct().getValue().isEmpty())
+            PCT_TF.setText(String.valueOf(labRequest.getCbs().getPct().getValue()));
+        if(!labRequest.getCbs().getP_lcr().getValue().isEmpty())
+            P_LCT_TF.setText(String.valueOf(labRequest.getCbs().getP_lcr().getValue()));
+
+        if(!labRequest.getCbs().getEsr().getValue().isEmpty())
+            ESR_TF.setText(String.valueOf(labRequest.getCbs().getEsr().getValue()));
+        if(!labRequest.getCbs().getBloodGroupRh().getValue().isEmpty())
+            Blood_Group_TF.setText(String.valueOf(labRequest.getCbs().getBloodGroupRh().getValue()));
+
+        if(!labRequest.getCbs().getBloodFilm().getValue().isEmpty())
+            Blood_Film_TF.setText(String.valueOf(labRequest.getCbs().getBloodFilm().getValue()));
+        if(!labRequest.getParasitology().getOccultBlood().getValue().isEmpty())
+            OCCULT_BLOOD_TF.setText(String.valueOf(labRequest.getParasitology().getOccultBlood().getValue()));
+
+
+        if(!labRequest.getParasitology().getConsistency1().getValue().isEmpty())
+            CONSISTENCY_TF1.setText(String.valueOf(labRequest.getParasitology().getConsistency1().getValue()));
+        if(!labRequest.getParasitology().getConsistency2().getValue().isEmpty())
+            CONSISTENCY_TF2.setText(String.valueOf(labRequest.getParasitology().getConsistency2().getValue()));
+        if(!labRequest.getParasitology().getOvalParasite1().getValue().isEmpty())
+            OVAL_PARASITE_TF1.setText(String.valueOf(labRequest.getParasitology().getOvalParasite1().getValue()));
+
+        if(!labRequest.getParasitology().getOvalParasite2().getValue().isEmpty())
+            OVAL_PARASITE_TF2.setText(String.valueOf(labRequest.getParasitology().getOvalParasite2().getValue()));
+
+        if(!labRequest.getParasitology().getOvalParasite3().getValue().isEmpty())
+            OVAL_PARASITE_TF3.setText(String.valueOf(labRequest.getParasitology().getOvalParasite3().getValue()));
+
+
+        if(!labRequest.getDipistic().getTestColor().getValue().isEmpty())
+           DIPISTIC_COLOR_TF.setText(String.valueOf(labRequest.getDipistic().getTestColor().getValue()));
+        if(!labRequest.getDipistic().getAppearance().getValue().isEmpty())
+            APPERANCE_TF.setText(String.valueOf(labRequest.getDipistic().getAppearance().getValue()));
+        if(!labRequest.getDipistic().getPh().getValue().isEmpty())
+            PH_TF.setText(String.valueOf(labRequest.getDipistic().getPh().getValue()));
+        if(!labRequest.getDipistic().getPsg().getValue().isEmpty())
+            PSG_TF.setText(String.valueOf(labRequest.getDipistic().getPsg().getValue()));
+        if(!labRequest.getDipistic().getProtein().getValue().isEmpty())
+            PROTEIN_TF.setText(String.valueOf(labRequest.getDipistic().getProtein().getValue()));
+        if(!labRequest.getDipistic().getKetone().getValue().isEmpty())
+            KETONE_TF.setText(String.valueOf(labRequest.getDipistic().getKetone().getValue()));
+        if(!labRequest.getDipistic().getUrobilinogen().getValue().isEmpty())
+           UROBILINOGEN_TF.setText(String.valueOf(labRequest.getDipistic().getUrobilinogen().getValue()));
+
+
+        if(!labRequest.getDipistic().getBlood().getValue().isEmpty())
+            BLOOD_TF.setText(String.valueOf(labRequest.getDipistic().getBlood().getValue()));
+        if(!labRequest.getMicroscopy().getWbc().getValue().isEmpty())
+            WBC_TF.setText(String.valueOf(labRequest.getMicroscopy().getWbc().getValue()));
+        if(!labRequest.getMicroscopy().getRbc().getValue().isEmpty())
+            RBC_TF.setText(String.valueOf(labRequest.getMicroscopy().getRbc().getValue()));
+        if(!labRequest.getMicroscopy().getCasts().getValue().isEmpty())
+            CASTS_TF.setText(String.valueOf(labRequest.getMicroscopy().getCasts().getValue()));
+        if(!labRequest.getMicroscopy().getBacteria().getValue().isEmpty())
+            BACTERIA_TF.setText(String.valueOf(labRequest.getMicroscopy().getBacteria().getValue()));
+
+
+        if(!labRequest.getChemistry().getFbs().getValue().isEmpty())
+           FSB_TF.setText(String.valueOf(labRequest.getChemistry().getFbs().getValue()));
+        if(!labRequest.getChemistry().getRbs().getValue().isEmpty())
+           RBS_TF.setText(String.valueOf(labRequest.getChemistry().getRbs().getValue()));
+        if(!labRequest.getChemistry().getSgot().getValue().isEmpty())
+           SGOP_TF.setText(String.valueOf(labRequest.getChemistry().getSgot().getValue()));
+        if(!labRequest.getChemistry().getSgpt().getValue().isEmpty())
+           SGPT_TF.setText(String.valueOf(labRequest.getChemistry().getSgpt().getValue()));
+        if(!labRequest.getChemistry().getAlkalinePhosphate().getValue().isEmpty())
+            ALKALINE_PHOSPHATE_TF.setText(String.valueOf(labRequest.getChemistry().getAlkalinePhosphate().getValue()));
+        if(!labRequest.getChemistry().getBilirubinTotal().getValue().isEmpty())
+            BILIRUBIN_TOTAL_TF.setText(String.valueOf(labRequest.getChemistry().getBilirubinTotal().getValue()));
+        if(!labRequest.getChemistry().getBilirubinDirect().getValue().isEmpty())
+            BILIRUBIN_DIRECT_TF.setText(String.valueOf(labRequest.getChemistry().getBilirubinDirect().getValue()));
+        if(!labRequest.getChemistry().getBun().getValue().isEmpty())
+            BUN_TF.setText(String.valueOf(labRequest.getChemistry().getBun().getValue()));
+        if(!labRequest.getChemistry().getCreatinine().getValue().isEmpty())
+            CREATININE_TF.setText(String.valueOf(labRequest.getChemistry().getCreatinine().getValue()));
+        if(!labRequest.getChemistry().getUricAcid().getValue().isEmpty())
+            URIC_ACID_TF.setText(String.valueOf(labRequest.getChemistry().getUricAcid().getValue()));
+
+
+        if(!labRequest.getChemistry().getTotalProtein().getValue().isEmpty())
+            TOTAL_PROTEIN_TF.setText(String.valueOf(labRequest.getChemistry().getTotalProtein().getValue()));
+        if(!labRequest.getChemistry().getCholesterol().getValue().isEmpty())
+            CHOLESTEROEL_TF.setText(String.valueOf(labRequest.getChemistry().getCholesterol().getValue()));
+
+        if(!labRequest.getBacterology().getHpyloriStool().getValue().isEmpty())
+            H_PYLORI_STOOL_TF.setText(String.valueOf(labRequest.getBacterology().getHpyloriStool().getValue()));
+        if(!labRequest.getBacterology().getKoh().getValue().isEmpty())
+            KOH_TF.setText(String.valueOf(labRequest.getBacterology().getKoh().getValue()));
+        if(!labRequest.getOthers().getAfb().getValue().isEmpty())
+            AFB_TF.setText(String.valueOf(labRequest.getOthers().getAfb().getValue()));
+
+
+        if(!labRequest.getOthers().getWetFilm().getValue().isEmpty())
+            Wet_Film_TF.setText(String.valueOf(labRequest.getOthers().getWetFilm().getValue()));
+        if(!labRequest.getOthers().getGramStain().getValue().isEmpty())
+            Gram_Stain_TF.setText(String.valueOf(labRequest.getOthers().getGramStain().getValue()));
+        if(labRequest.getSerology().getVdrl().getValue()!=null){
+            cbo_vdrl.getSelectionModel().select(String.valueOf(labRequest.getSerology().getVdrl().getValue()));
+        }
+
+
+
+        if(labRequest.getSerology().getWidal_II_h().getValue()!=null)
+            cbo_h.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWidal_II_h().getValue()));
+        if(labRequest.getSerology().getWidal_II_o().getValue()!=null)
+            cbo_o.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWidal_II_o().getValue()));
+        if(labRequest.getSerology().getWellFelix().getValue()!=null)
+            cbo_felix.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWellFelix().getValue()));
+        if(labRequest.getSerology().getHbsag().getValue()!=null)
+            cbo_hbs.getSelectionModel().select(String.valueOf(labRequest.getSerology().getHbsag().getValue()));
+        if(labRequest.getSerology().getCrp().getValue()!=null)
+            cbo_crp.getSelectionModel().select(String.valueOf(labRequest.getSerology().getCrp().getValue()));
+
+        if(labRequest.getSerology().getAso().getValue()!=null)
+            cbo_aso.getSelectionModel().select(String.valueOf(labRequest.getSerology().getAso().getValue()));
+        if(labRequest.getSerology().getRheumatoidFactor().getValue()!=null)
+            cbo_rhe.getSelectionModel().select(String.valueOf(labRequest.getSerology().getRheumatoidFactor().getValue()));
+        if(labRequest.getSerology().getHpyloriSerum().getValue()!=null)
+            cbo_serum.getSelectionModel().select(String.valueOf(labRequest.getSerology().getHpyloriSerum().getValue()));
+        if(labRequest.getOthers().getHivAids().getValue()!=null)
+            cbo_aids.getSelectionModel().select(String.valueOf(labRequest.getOthers().getHivAids().getValue()));
+
+    }
+
+
+    }
