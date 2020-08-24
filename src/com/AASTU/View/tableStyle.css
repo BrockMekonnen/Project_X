@@ -34,6 +34,11 @@
     -fx-text-background-color:  #ffffff;
 }
 
+.table-row-cell:hover {
+    -fx-background-color: #0277BD;
+    -fx-text-background-color:  #ffffff;
+}
+
 .table-view .scroll-bar:horizontal .track,
 .table-view .scroll-bar:vertical .track{
     -fx-background-color: transparent;

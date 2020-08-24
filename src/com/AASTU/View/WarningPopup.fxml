@@ -39,7 +39,7 @@
                   <Font size="14.0" />
                </font>
             </JFXTextField>
-            <ImageView fx:id="warnImg" fitHeight="70.0" fitWidth="90.0" layoutX="249.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="warnImg" fitHeight="58.0" fitWidth="70.0" layoutX="280.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>

@@ -55,13 +55,10 @@ public class LaboratoryWindowController implements Initializable {
     private JFXTextField endHrTf;
 
     @FXML
-    private JFXTextField kebeleTf;
-
-    @FXML
     private JFXTextField cityTf;
 
     @FXML
-    private JFXTextField subcityTf;
+    private JFXTextField proUserNameTf;
 
     @FXML
     private JFXTextField passwordTf;
@@ -217,8 +214,7 @@ public class LaboratoryWindowController implements Initializable {
         passwordTf.setEditable(status);
         genderTf.setEditable(status);
         cityTf.setEditable(status);
-        subcityTf.setEditable(status);
-        kebeleTf.setEditable(status);
+        proUserNameTf.setEditable(status);
         phonTf.setEditable(status);
         srartHrTf.setEditable(false);
         endHrTf.setEditable(false);
@@ -240,8 +236,7 @@ public class LaboratoryWindowController implements Initializable {
         endHrTf.setText(currentLaboratory.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
         phonTf.setText(currentLaboratory.getPhoneNumber());
         cityTf.setText(currentLaboratory.getCity());
-        subcityTf.setText(currentLaboratory.getSubcity());
-        kebeleTf.setText(currentLaboratory.getKebele());
+        proUserNameTf.setText(currentLaboratory.getUserName());
     }
     @FXML
     void canceProlHandler(ActionEvent event) {
@@ -249,10 +244,13 @@ public class LaboratoryWindowController implements Initializable {
     }
 
     @FXML
-    void editProHandler(ActionEvent event) {
+    void editProHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
-        if(editBtn.getText().equals("save")){
-            editProfile();
+        if(editBtn.getText().equals("Save")){
+            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+            if(Warning.isOk){
+                editProfile();
+            }
         }
         editBtn.setText("Save");
     }
@@ -274,8 +272,7 @@ public class LaboratoryWindowController implements Initializable {
             laboratory.setSex(genderTf.getText().toLowerCase().charAt(0));
             laboratory.setPhoneNumber(phonTf.getText());
             laboratory.setCity(cityTf.getText());
-            laboratory.setSubcity(subcityTf.getText());
-            laboratory.setKebele(kebeleTf.getText());
+            laboratory.setUserName(proUserNameTf.getText());
 
             session.getTransaction().commit();
         } finally {
@@ -488,7 +485,9 @@ public class LaboratoryWindowController implements Initializable {
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().signOut(event, "../view/Login.fxml");
+        new WindowChangeController().warningPopup("Checking", "Are you sure to Sign Out?", "warn_confirm.png");
+        if (Warning.isOk) {
+            new WindowChangeController().signOut(event, "../view/Login.fxml");
+        }
     }
-
 }

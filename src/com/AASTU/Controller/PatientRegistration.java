@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -101,16 +103,20 @@ public class PatientRegistration implements Initializable{
 
     public static LocalDate endDate;
 
-
+    private String firstName;
+    private int age;
+    private String phoneNo;
     private char sex;
 
     // to check all text fields are get data
     public boolean validatUserInput() throws IOException {
-        if(firstNameTf.getText().isEmpty() || lastNameTf.getText().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
-                ageTf.getText().isEmpty()|| phoneNumberTf.getText().isEmpty() || cityTf.getText().isEmpty() ||
-                subcityTf.getText().isEmpty() || kebeleTf.getText().isEmpty() || houseNuberTf.getText().isEmpty()) {
-//              new WindowChangeController().warningPopup("Validate Fields", "Please Enter Into the fields ","warn_confirm.png");
-            return false;
+        if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
+                lastNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
+                ageTf.getText().isEmpty()|| ageTf.getText().trim().isEmpty() || phoneNumberTf.getText().isEmpty() ||
+                phoneNumberTf.getText().trim().isEmpty() || cityTf.getText().isEmpty() || cityTf.getText().trim().isEmpty() ||
+                subcityTf.getText().isEmpty() || subcityTf.getText().trim().isEmpty() || kebeleTf.getText().isEmpty() ||
+                kebeleTf.getText().trim().isEmpty()|| houseNuberTf.getText().isEmpty() || houseNuberTf.getText().trim().isEmpty()) {
+             return false;
         }
         return true;
     }
@@ -144,7 +150,7 @@ public class PatientRegistration implements Initializable{
             }
             //this if condition is temporary and it is not finished
             if (NewOutPatient.isAdd && Warning.isOk) {
-                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 outPatient.setStartDate(startDate);
 
                 outPatient.setPatientStatus(true);
@@ -157,7 +163,8 @@ public class PatientRegistration implements Initializable{
                 session.save(outPatient);
                 NewOutPatient.isAdd = false;
             } else {
-                Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+
+               Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 patient.setOutPatinet(false);
 
                 patient.setPatientStatus(true);
@@ -165,7 +172,6 @@ public class PatientRegistration implements Initializable{
                 patient.setDocActives(true);
 
                 patient.setPatientStatus(true);
-
                 session.save(patient);
                 new DataSaver().Activity("Registration",new SecretaryWindowController().SecretaryId,patient.getPatientId());
             }
@@ -182,15 +188,26 @@ public class PatientRegistration implements Initializable{
         patientAddedDateTF.setText(LocalDate.now().format( DateTimeFormatter.ofPattern("dd/LLLL/yyyy")));
     }
 
-
     public void ConfirmationAction() throws IOException {
         if(validatUserInput()) {
-            new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-            if(Warning.isOk) {
-                saveNewPatient();
-            }
+          if( ExceptionHandler.isLetter(firstNameTf.getText()) && ExceptionHandler.isLetter(lastNameTf.getText()) && ExceptionHandler.isLetter(cityTf.getText()) &&
+              ExceptionHandler.validateNum(kebeleTf.getText()) && ExceptionHandler.validateNum(ageTf.getText()) &&
+              ExceptionHandler.ValidatePhone(phoneNumberTf.getText())){
+               new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
+                 if(Warning.isOk) {
+                   WindowChangeController.closeWindow();
+                   saveNewPatient();
+                   NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
+              }
+          }else {
+            new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
+
+          }
+        }else {
+            new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
         }
     }
+
 
     @FXML
     void DiscardAction(ActionEvent event) throws IOException {

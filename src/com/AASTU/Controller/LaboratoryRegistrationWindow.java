@@ -65,9 +65,20 @@ public class LaboratoryRegistrationWindow implements Initializable {
 
     @FXML
     private JFXTimePicker startTimePk;
-
+    @FXML
+    private JFXTextField userNameTf;
     private char sex;
-
+    public boolean validatUserInput() throws IOException {
+        if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
+                lastNameTf.getText().trim().isEmpty() || userNameTf.getText().isEmpty()|| userNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
+                startTimePk.getValue() == null|| startTimePk.getValue() == null ||endTimePk.getValue() == null ||
+                endTimePk.getValue()== null|| cityTf.getText().isEmpty() || cityTf.getText().trim().isEmpty() ||
+                subCityTf.getText().isEmpty() || subCityTf.getText().trim().isEmpty() || kebeleTf.getText().isEmpty() ||
+                kebeleTf.getText().trim().isEmpty()|| phoneTf.getText().isEmpty() || phoneTf.getText().trim().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources){
         addedTf.setDisable(true);
@@ -76,14 +87,35 @@ public class LaboratoryRegistrationWindow implements Initializable {
 
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
-        new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-        saveNewLaboratory();
+        boolean userNameExist = new DataLoader().laboratoriestUserNameExist(userNameTf.getText());
+        if(validatUserInput()){
+            if(ExceptionHandler.isLetter(firstNameTf.getText()) && ExceptionHandler.isLetter(lastNameTf.getText()) && ExceptionHandler.validateNum(phoneTf.getText()) &&
+               ExceptionHandler.isLetter(cityTf.getText()) && ExceptionHandler.validateNum(kebeleTf.getText())){
+                 if(!userNameExist){
+                 new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
+                 if(Warning.isOk){
+                     saveNewLaboratory();
+                     WindowChangeController.closeWindow();
+                     NotificationController.savedNotification("Laboratories Added","Registered Successfully ","warn_confirm.png");
+                 }
+             }else {
+                     new WindowChangeController().warningPopup("Saving Error", "The User Name is Already Used!!","warn_confirm.png");
+              }
+            } else {
+                new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
+            }
+        }else {
+            new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+
+        }
     }
 
     @FXML
     void handleDiscardBtn(ActionEvent event) {
         WindowChangeController.closeWindow();
     }
+
+
     public void saveNewLaboratory(){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -100,7 +132,7 @@ public class LaboratoryRegistrationWindow implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Laboratory laboratory = new Laboratory(firstNameTf.getText(),lastNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Laboratory laboratory = new Laboratory(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(laboratory);
             session.getTransaction().commit();
         } finally {
