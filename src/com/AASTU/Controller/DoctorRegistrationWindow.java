@@ -113,8 +113,8 @@ public class DoctorRegistrationWindow implements Initializable {
         boolean userNameCheck = new DataLoader().doctorUserNameExist(userNameTf.getText());
         System.out.println(userNameCheck);
         if(validatUserInput()){
-            if(ExceptionHandler.isLetter(firstNameTf.getText()) && ExceptionHandler.isLetter(lastNameTf.getText())&& ExceptionHandler.ValidatePhone(phoneTf.getText()) &&
-              ExceptionHandler.isLetter(cityTf.getText()) && ExceptionHandler.validateNum(kebeleTf.getText())){
+            if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(),lastNameTf)&& ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf) &&
+              ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf)){
                 if(!userNameCheck){
                   new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
                  if(Warning.isOk){

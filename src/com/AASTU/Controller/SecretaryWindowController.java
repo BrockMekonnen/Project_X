@@ -33,6 +33,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
@@ -259,18 +260,23 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
     }
     @FXML
     void editProHandler(ActionEvent event) throws IOException {
-        textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
-            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-            if(Warning.isOk){
+            textFieldStatus(true);
                 editProfile();
-            }
         }
         editBtn.setText("Save");
 
     }
+    private boolean compareSecretaryObjs(Secretary obj1, Secretary obj2){
+        if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
+                Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
+                Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) && Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase())){
+            return true;
+        }
+        return false;
+    }
 
-    public void editProfile(){
+    public void editProfile() throws IOException {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Secretary.class)
@@ -288,8 +294,19 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
             secretary.setPhoneNumber(phonTf.getText());
             secretary.setCity(cityTf.getText());
             secretary.setUserName(proUserNameTf.getText());
-
-            session.getTransaction().commit();
+             if(compareSecretaryObjs(secretary,currentSecretary)){
+                 new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
+             }else {
+                 if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),proUserNameTf.getText())){
+                     new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                     if(Warning.isOk){
+                         session.getTransaction().commit();
+                         NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
+                     }
+                 }else {
+                     new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+                 }
+             }
         } finally {
             factory.close();
             session.close();
@@ -648,6 +665,8 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
 
     public void displayProfile(){
         textFieldStatus(false);
+        String startTime = new DataLoader().formatTime(currentSecretary.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        String endTime = new DataLoader().formatTime(currentSecretary.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm"))) ;
         String sex = null;
         if(currentSecretary.getSex() == 'm') {
             sex = "Male";
@@ -658,8 +677,8 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
         lastNameTf.setText(currentSecretary.getLastName());
         genderTf.setText(sex);
         passwordTf.setText(currentSecretary.getPassword());
-        startHrTf.setText(currentSecretary.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
-        endHrTf.setText(currentSecretary.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        startHrTf.setText(startTime);
+        endHrTf.setText(endTime);
         phonTf.setText(currentSecretary.getPhoneNumber());
         cityTf.setText(currentSecretary.getCity());
         proUserNameTf.setText(currentSecretary.getUserName());
@@ -778,6 +797,7 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
 
     @FXML
     public void navAction(ActionEvent event) {
+        editBtn.setText("Edit");
         opacityPane1.setVisible(true);
         slidePane1.setVisible(true);
         TransitionController.translation(slidePane1,0,1,0.1);

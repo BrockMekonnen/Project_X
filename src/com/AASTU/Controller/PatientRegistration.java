@@ -190,14 +190,14 @@ public class PatientRegistration implements Initializable{
 
     public void ConfirmationAction() throws IOException {
         if(validatUserInput()) {
-          if( ExceptionHandler.isLetter(firstNameTf.getText()) && ExceptionHandler.isLetter(lastNameTf.getText()) && ExceptionHandler.isLetter(cityTf.getText()) &&
-              ExceptionHandler.validateNum(kebeleTf.getText()) && ExceptionHandler.validateNum(ageTf.getText()) &&
-              ExceptionHandler.ValidatePhone(phoneNumberTf.getText())){
+          if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
+              ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) &&
+              ExceptionHandler.validateNum(ageTf.getText(),ageTf) && ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
                new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-                 if(Warning.isOk) {
-                   WindowChangeController.closeWindow();
-                   saveNewPatient();
-                   NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
+                if(Warning.isOk) {
+                     WindowChangeController.closeWindow();
+                     saveNewPatient();
+                     NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
               }
           }else {
             new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");

@@ -89,8 +89,8 @@ public class LaboratoryRegistrationWindow implements Initializable {
     void handleConfirmButton(ActionEvent event) throws IOException {
         boolean userNameExist = new DataLoader().laboratoriestUserNameExist(userNameTf.getText());
         if(validatUserInput()){
-            if(ExceptionHandler.isLetter(firstNameTf.getText()) && ExceptionHandler.isLetter(lastNameTf.getText()) && ExceptionHandler.validateNum(phoneTf.getText()) &&
-               ExceptionHandler.isLetter(cityTf.getText()) && ExceptionHandler.validateNum(kebeleTf.getText())){
+            if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(),lastNameTf) && ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf) &&
+               ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf)){
                  if(!userNameExist){
                  new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
                  if(Warning.isOk){
@@ -114,7 +114,6 @@ public class LaboratoryRegistrationWindow implements Initializable {
     void handleDiscardBtn(ActionEvent event) {
         WindowChangeController.closeWindow();
     }
-
 
     public void saveNewLaboratory(){
         SessionFactory factory = new Configuration()

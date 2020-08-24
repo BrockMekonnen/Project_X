@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LaboratoryWindowController implements Initializable {
@@ -159,7 +160,7 @@ public class LaboratoryWindowController implements Initializable {
     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
 
     //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
-    ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
+    ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+ currentLaboratory.getLaboratoryId()));
     ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
     void goToView(boolean active, boolean pending, boolean record, boolean waiting){
         pendingPnl.setVisible(pending);
@@ -222,8 +223,11 @@ public class LaboratoryWindowController implements Initializable {
         endHrTf.setEditable(false);
 
     }
+
     public void displayProfile(){
         textFieldStatus(false);
+        String startTime = new DataLoader().formatTime(currentLaboratory.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        String endTime = new DataLoader().formatTime(currentLaboratory.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm"))) ;
         String sex = null;
         if(currentLaboratory.getSex() == 'm') {
             sex = "Male";
@@ -234,8 +238,8 @@ public class LaboratoryWindowController implements Initializable {
         lastNameTf.setText(currentLaboratory.getLastName());
         genderTf.setText(sex);
         passwordTf.setText(currentLaboratory.getPassword());
-        srartHrTf.setText(currentLaboratory.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
-        endHrTf.setText(currentLaboratory.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        srartHrTf.setText(startTime);
+        endHrTf.setText(endTime);
         phonTf.setText(currentLaboratory.getPhoneNumber());
         cityTf.setText(currentLaboratory.getCity());
         proUserNameTf.setText(currentLaboratory.getUserName());
@@ -249,15 +253,19 @@ public class LaboratoryWindowController implements Initializable {
     void editProHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
-            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-            if(Warning.isOk){
                 editProfile();
-            }
         }
         editBtn.setText("Save");
     }
-
-    public void editProfile(){
+    private boolean compareLaboratoryObjs(Laboratory obj1, Laboratory obj2){
+        if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
+                Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
+                Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) && Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase())){
+            return true;
+        }
+        return false;
+    }
+    public void editProfile() throws IOException {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Laboratory.class)
@@ -275,8 +283,19 @@ public class LaboratoryWindowController implements Initializable {
             laboratory.setPhoneNumber(phonTf.getText());
             laboratory.setCity(cityTf.getText());
             laboratory.setUserName(proUserNameTf.getText());
-
-            session.getTransaction().commit();
+            if(compareLaboratoryObjs(laboratory,currentLaboratory)){
+                new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
+            }else {
+                if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),proUserNameTf.getText())){
+                    new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                    if(Warning.isOk){
+                        session.getTransaction().commit();
+                        NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
+                    }
+                }else {
+                    new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+                }
+            }
         } finally {
             factory.close();
             session.close();
@@ -376,9 +395,8 @@ public class LaboratoryWindowController implements Initializable {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
-                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    Patient rowData = WaitingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
                     try {
-
                         new WindowChangeController().popupWindow1(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
 //                         new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
 
@@ -471,6 +489,7 @@ public class LaboratoryWindowController implements Initializable {
     }
 
     public void OptionAction(){
+        editBtn.setText("Edit");
         coverPane.setVisible(true);
         AccountSettingPane.setVisible(true);
         TransitionController.translation(AccountSettingPane,0,1,0.1);

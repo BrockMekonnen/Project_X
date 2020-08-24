@@ -920,5 +920,18 @@ public class DataLoader {
         return list;
     }
 
-
+    /**
+     * Method to Format the Working Hour */
+    public String formatTime(String t){
+        String time[] = t.split(":");
+        String timeSet;
+        int hr = Integer.parseInt(time[0]);
+        if(hr >= 12){
+            timeSet = " PM";
+            return t + timeSet;
+        }else {
+            timeSet = " AM";
+            return t + timeSet;
+        }
+    }
 }
