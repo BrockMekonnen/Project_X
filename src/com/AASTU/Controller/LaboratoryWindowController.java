@@ -155,15 +155,13 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private AnchorPane recordPnl;
 
+
     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-
     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
+
     //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
-
     ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
-
     ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
-
     void goToView(boolean active, boolean pending, boolean record, boolean waiting){
         pendingPnl.setVisible(pending);
         waitingPnl.setVisible(waiting);
@@ -211,6 +209,8 @@ public class LaboratoryWindowController implements Initializable {
         waitingPnl.toFront();
     }
 
+    // profile Handler
+
     private void textFieldStatus(boolean status) {
         firstNameTf.setEditable(status);
         lastNameTf.setEditable(status);
@@ -224,7 +224,6 @@ public class LaboratoryWindowController implements Initializable {
         endHrTf.setEditable(false);
 
     }
-
     public void displayProfile(){
         textFieldStatus(false);
         String sex = null;
@@ -244,7 +243,6 @@ public class LaboratoryWindowController implements Initializable {
         subcityTf.setText(currentLaboratory.getSubcity());
         kebeleTf.setText(currentLaboratory.getKebele());
     }
-
     @FXML
     void canceProlHandler(ActionEvent event) {
 
@@ -486,6 +484,7 @@ public class LaboratoryWindowController implements Initializable {
         profileOpacityPane.setVisible(true);
         profilePane.setVisible(true);
     }
+
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {

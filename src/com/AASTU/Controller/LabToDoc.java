@@ -20,151 +20,151 @@ import java.util.ResourceBundle;
 public class LabToDoc implements Initializable {
 
     @FXML
-    public JFXTextField Hema_HBC_TF,Wet_Film_TF;
+    private JFXTextField Hema_HBC_TF,Wet_Film_TF;
 
     @FXML
-    public JFXTextField LYMTF,AFB_TF;
+    private JFXTextField LYMTF,AFB_TF;
 
     @FXML
-    public JFXTextField GRA_TF;
+    private JFXTextField GRA_TF;
 
     @FXML
-    public JFXTextField MID_TF;
+    private JFXTextField MID_TF;
 
     @FXML
-    public JFXTextField Hema_RBC_TF,RBC_TF;
+    private JFXTextField Hema_RBC_TF,RBC_TF;
 
     @FXML
-    public JFXTextField HGB_TF;
+    private JFXTextField HGB_TF;
 
     @FXML
-    public JFXTextField MCHC_TF;
+    private JFXTextField MCHC_TF;
 
     @FXML
     private JFXTextField MCH_TF;
 
     @FXML
-    public JFXTextField MCB_TF;
+    private JFXTextField MCB_TF;
 
     @FXML
-    public JFXTextField RDW_CY_TF;
+    private JFXTextField RDW_CY_TF;
 
     @FXML
-    public JFXTextField HCT_TF;
+    private JFXTextField HCT_TF;
 
     @FXML
-    public JFXTextField PLT_TF;
+    private JFXTextField PLT_TF;
 
     @FXML
-    public JFXTextField PCT_TF;
+    private JFXTextField PCT_TF;
 
     @FXML
-    public JFXTextField P_LCT_TF;
+    private JFXTextField P_LCT_TF;
 
     @FXML
-    public JFXTextField ESR_TF;
+    private JFXTextField ESR_TF;
 
     @FXML
-    public JFXTextField Blood_Group_TF;
+    private JFXTextField Blood_Group_TF;
 
     @FXML
-    public JFXTextField Blood_Film_TF;
+    private JFXTextField Blood_Film_TF;
 
     @FXML
-    public JFXTextField STOOL_TEST_TF;
+    private JFXTextField STOOL_TEST_TF;
 
     @FXML
-    public JFXTextField OCCULT_BLOOD_TF;
+    private JFXTextField OCCULT_BLOOD_TF;
 
     @FXML
-    public JFXTextField CONSISTENCY_TF1;
+    private JFXTextField CONSISTENCY_TF1;
 
     @FXML
-    public JFXTextField CONSISTENCY_TF2;
+    private JFXTextField CONSISTENCY_TF2;
 
     @FXML
-    public JFXTextField OVAL_PARASITE_TF1;
+    private JFXTextField OVAL_PARASITE_TF1;
 
     @FXML
-    public JFXTextField OVAL_PARASITE_TF2;
+    private JFXTextField OVAL_PARASITE_TF2;
 
     @FXML
-    public JFXTextField OVAL_PARASITE_TF3;
+    private JFXTextField OVAL_PARASITE_TF3;
 
     @FXML
-    public JFXTextField DIPISTIC_COLOR_TF;
+    private JFXTextField DIPISTIC_COLOR_TF;
 
     @FXML
-    public JFXTextField APPERANCE_TF;
+    private JFXTextField APPERANCE_TF;
 
     @FXML
-    public JFXTextField PH_TF;
+    private JFXTextField PH_TF;
 
     @FXML
-    public JFXTextField PSG_TF;
+    private JFXTextField PSG_TF;
 
     @FXML
-    public JFXTextField PROTEIN_TF;
+    private JFXTextField PROTEIN_TF;
 
     @FXML
-    public JFXTextField GLUCOSE_TF;
+    private JFXTextField GLUCOSE_TF;
 
     @FXML
-    public JFXTextField KETONE_TF;
+    private JFXTextField KETONE_TF;
 
     @FXML
-    public JFXTextField BILIRUBIN_TF;
+    private JFXTextField BILIRUBIN_TF;
 
     @FXML
-    public JFXTextField UROBILINOGEN_TF;
+    private JFXTextField UROBILINOGEN_TF;
 
     @FXML
-    public JFXTextField BLOOD_TF;
+    private JFXTextField BLOOD_TF;
 
     @FXML
-    public JFXTextField EPIT_CELLS_TF;
+    private JFXTextField EPIT_CELLS_TF;
 
     @FXML
-    public JFXTextField WBC_TF;
+    private JFXTextField WBC_TF;
 
     @FXML
-    public JFXTextField CASTS_TF;
+    private JFXTextField CASTS_TF;
 
     @FXML
-    public JFXTextField BACTERIA_TF;
+    private JFXTextField BACTERIA_TF;
 
     @FXML
-    public JFXTextField FSB_TF;
+    private JFXTextField FSB_TF;
 
     @FXML
-    public JFXTextField RBS_TF;
+    private JFXTextField RBS_TF;
 
     @FXML
-    public JFXTextField SGOP_TF;
+    private JFXTextField SGOP_TF;
 
     @FXML
-    public JFXTextField SGPT_TF;
+    private JFXTextField SGPT_TF;
 
     @FXML
-    public JFXTextField ALKALINE_PHOSPHATE_TF;
+    private JFXTextField ALKALINE_PHOSPHATE_TF;
 
     @FXML
-    public JFXTextField BILIRUBIN_TOTAL_TF;
+    private JFXTextField BILIRUBIN_TOTAL_TF;
 
     @FXML
-    public JFXTextField BILIRUBIN_DIRECT_TF;
+    private JFXTextField BILIRUBIN_DIRECT_TF;
 
     @FXML
-    public JFXTextField BUN_TF;
+    private JFXTextField BUN_TF;
 
     @FXML
-    public JFXTextField CREATININE_TF;
+    private JFXTextField CREATININE_TF;
 
     @FXML
-    public JFXTextField URIC_ACID_TF;
+    private JFXTextField URIC_ACID_TF;
 
     @FXML
-    public JFXTextField TOTAL_PROTEIN_TF;
+    private JFXTextField TOTAL_PROTEIN_TF;
 
     @FXML
     private JFXTextField CHOLESTEROEL_TF;
