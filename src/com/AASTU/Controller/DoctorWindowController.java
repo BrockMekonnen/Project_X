@@ -5,10 +5,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +18,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Callback;
 import javafx.util.Duration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,6 +29,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DoctorWindowController implements Initializable {
@@ -358,6 +354,8 @@ public class DoctorWindowController implements Initializable {
 
     public void displayProfile(){
         textFieldStatus(false);
+        String startTime = new DataLoader().formatTime(currentDoctor.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        String endTime = new DataLoader().formatTime(currentDoctor.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm"))) ;
         String sex = null;
         if(currentDoctor.getSex() == 'm') {
             sex = "Male";
@@ -368,8 +366,8 @@ public class DoctorWindowController implements Initializable {
         lastNameTf.setText(currentDoctor.getLastName());
         passwordTf.setText(currentDoctor.getPassword());
         genderTf.setText(sex);
-        startHrTf.setText(currentDoctor.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
-        endHrTf.setText(currentDoctor.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        startHrTf.setText(startTime);
+        endHrTf.setText(endTime);
         phonTf.setText(currentDoctor.getPhoneNumber());
         cityTf.setText(currentDoctor.getCity());
         proUserNameTf.setText(currentDoctor.getUserName());
@@ -380,17 +378,21 @@ public class DoctorWindowController implements Initializable {
 
     }
 
+    private boolean compareDoctorsObjs(Doctor obj1, Doctor obj2){
+        if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
+           Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
+           Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) && Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase())){
+            return true;
+        }
+        return false;
+    }
     @FXML
     void editProHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
-            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-            if(Warning.isOk){
             editProfile();
-            }
         }
         editBtn.setText("Save");
-
     }
     public void editProfile() throws IOException {
         SessionFactory factory = new Configuration()
@@ -410,7 +412,25 @@ public class DoctorWindowController implements Initializable {
             doctor.setPhoneNumber(phonTf.getText());
             doctor.setCity(cityTf.getText());
             doctor.setUserName(proUserNameTf.getText());
-            session.getTransaction().commit();
+            if(compareDoctorsObjs(doctor,currentDoctor)){
+                new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
+            }else {
+                if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),proUserNameTf.getText())){
+//                    if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
+//                            ExceptionHandler.isLetter(genderTf.getText(), genderTf)&& ExceptionHandler.isLetter(cityTf.getText(),cityTf) &&
+//                            ExceptionHandler.ValidatePhone(phonTf.getText(),phonTf)){
+                            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                            if(Warning.isOk){
+                                session.getTransaction().commit();
+                                NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
+                            }
+//                    }else {
+//                        new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
+//                    }
+                }else {
+                    new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+                }
+            }
         } finally {
             factory.close();
             session.close();
@@ -504,6 +524,7 @@ public class DoctorWindowController implements Initializable {
     }
 
     public void OptionAction(){
+        editBtn.setText("Edit");
         opacityPane.setVisible(true);
         slidePane.setVisible(true);
         TransitionController.translation(slidePane,0,1,0.1);

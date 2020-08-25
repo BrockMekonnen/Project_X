@@ -53,8 +53,7 @@ public class Warning implements Initializable{
     void handleOkButton(ActionEvent event) {
         isOk = true;
 
-        WindowChangeController.closeWindow();
-
+//        WindowChangeController.closeWindow();
 //        WindowChangeController.closeWindow();
         WindowChangeController.closeWindow();
 //         return true;

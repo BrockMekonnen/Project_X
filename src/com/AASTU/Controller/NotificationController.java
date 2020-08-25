@@ -6,7 +6,6 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
 
-
 public class NotificationController {
 
     static void savedNotification(String title, String textContent, String image){
