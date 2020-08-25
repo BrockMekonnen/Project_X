@@ -19,6 +19,7 @@ import org.hibernate.cfg.Configuration;
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SecretaryPatientView implements Initializable {
@@ -108,9 +109,28 @@ public class SecretaryPatientView implements Initializable {
         birthMonthTf.setEditable(status);
         birthYearTf.setEditable(status);
     }
-
+    private boolean validatUserInput() throws IOException {
+        if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
+                lastNameTf.getText().trim().isEmpty() || sexTf.getText().isEmpty()|| sexTf.getText().trim().isEmpty() ||
+                ageTf.getText().isEmpty()|| ageTf.getText().trim().isEmpty() || phoneTf.getText().isEmpty() ||
+                phoneTf.getText().trim().isEmpty() || cityTf.getText().isEmpty() || cityTf.getText().trim().isEmpty() ||
+                subcityTf.getText().isEmpty() || subcityTf.getText().trim().isEmpty() || kebeleTf.getText().isEmpty() ||
+                kebeleTf.getText().trim().isEmpty()|| houseNoTf.getText().isEmpty() || houseNoTf.getText().trim().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+    private boolean comparePatientObjs(Patient obj1, Patient obj2){
+        if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
+                Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getAge(), obj2.getAge()) && Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) &&
+                Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase()) &&  Objects.equals(obj1.getSubcity().toLowerCase(), obj2.getSubcity().toLowerCase()) &&
+                Objects.equals(obj1.getKebele().toLowerCase(), obj2.getKebele().toLowerCase()) &&  Objects.equals(obj1.getHouseNumber().toLowerCase(), obj2.getHouseNumber().toLowerCase())){
+            return true;
+        }
+        return false;
+    }
     // to update patient info
-    public void updatePatientInfo(Patient obj){
+    public void updatePatientInfo(Patient obj) throws IOException {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
@@ -134,15 +154,38 @@ public class SecretaryPatientView implements Initializable {
             Patient patient = session.get(Patient.class, obj.getPatientId());
             patient.setFirstName(firstNameTf.getText());
             patient.setLastName(lastNameTf.getText());
-            patient.setAge(Integer.parseInt(ageTf.getText()));
-            patient.setSex(sexTf.getText().toLowerCase().charAt(0));
-            patient.setPhoneNumber(phoneTf.getText());
-            patient.setCity(cityTf.getText());
-            patient.setSubcity(subcityTf.getText());
-            patient.setKebele(kebeleTf.getText());
-            patient.setHouseNumber(houseNoTf.getText());
+            if(ExceptionHandler.validateNum(ageTf.getText(),ageTf)){
+                patient.setAge(Integer.parseInt(ageTf.getText()));
+                patient.setSex(sexTf.getText().toLowerCase().charAt(0));
+                patient.setPhoneNumber(phoneTf.getText());
+                patient.setCity(cityTf.getText());
+                patient.setSubcity(subcityTf.getText());
+                patient.setKebele(kebeleTf.getText());
+                patient.setHouseNumber(houseNoTf.getText());
+                    if(comparePatientObjs(patient,obj)){
+                        new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
+                    }else {
+                        if(validatUserInput()){
+                            if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
+                                ExceptionHandler.isLetter(sexTf.getText(), sexTf)&& ExceptionHandler.isLetter(cityTf.getText(),cityTf) &&
+                                ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) && ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf)) {
+                                new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                                if (Warning.isOk) {
+                                    session.getTransaction().commit();
+                                    NotificationController.savedNotification("Profile Edited", firstNameTf.getText() + " Info Updated successfully!", "warn_confirm.png");
+//                                    WindowChangeController.closeWindow();
+                                }
+                            }else {
+                                new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
+                            }
+                        }else {
+                            new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+                        }
+                    }
+            } else {
+                new WindowChangeController().warningPopup("Saving Error", "The Age is Not correct","warn_confirm.png");
+            }
 
-            session.getTransaction().commit();
         } finally {
             factory.close();
             session.close();
@@ -225,8 +268,7 @@ public class SecretaryPatientView implements Initializable {
     void editAndSaveHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
-            new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
-            updatePatientInfo(this.patientObj);
+             updatePatientInfo(this.patientObj);
         }
         editBtn.setText("Save");
     }
