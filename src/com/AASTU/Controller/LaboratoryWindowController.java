@@ -171,19 +171,19 @@ public class LaboratoryWindowController implements Initializable {
     void handleActiveButton(ActionEvent event) {
         //some specification will be done here to access Active Patients only
         ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
-        SearchField();
         TableOperation();
         goToView(true,false,false,false);
         activePnl.toFront();
+        SearchField();
     }
 
     @FXML
     void handlePendingButton(ActionEvent event) {
         //some Specification will be done here to access only Pending Patients
         PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-        SearchField();
         TableOperation();
         goToView(false,true,false,false);
+        SearchField();
         pendingPnl.toFront();
     }
 
@@ -191,9 +191,9 @@ public class LaboratoryWindowController implements Initializable {
     void handleRecordButton(ActionEvent event) {
         //Some specification will be done here To Access Patients that are treated by Specific Laboratory Technician
         RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
-        SearchField();
         TableOperation();
         goToView(false,false,true,false);
+        SearchField();
         recordPnl.toFront();
     }
 
@@ -201,9 +201,9 @@ public class LaboratoryWindowController implements Initializable {
     void handleWaitingButton(ActionEvent event) {
         //some specification wil be done here to access only waiting Patients from the whole lists
         WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
-        SearchField();
         TableOperation();
         goToView(false,false, false,true);
+        SearchField();
         waitingPnl.toFront();
     }
 
@@ -429,17 +429,17 @@ public class LaboratoryWindowController implements Initializable {
         TableView<Patient> TableViews;
 // conditions that are checked on the visibility of AnchorPanes
 
-        if(pendingPnl.isVisible()==true){
+        if(pendingPnl.isVisible()){
 
             list=Pending_PatientList;
             TableViews=PendingPatientTableView;
 
-        }else if(waitingPnl.isVisible()==true){
+        }else if(waitingPnl.isVisible()){
 
             list=Waiting_PatientList;
             TableViews=WaitingPatientTableView;
         }
-        else if(activePnl.isVisible()==true){
+        else if(activePnl.isVisible()){
 
             list=Active_PatientList;
             TableViews=ActivePatientTableView;

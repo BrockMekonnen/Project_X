@@ -79,7 +79,7 @@ public class ClinicalNoteAdd implements Initializable{
             String note = textArea.getText();
             int id = clinicalNotesList.get(position).getNoteId(); // using the position get its id
             new DataSaver().saveEditedClinicalNote(id, note); // save the note
-            new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+new DoctorWindowController().DoctorId+" Edit the Clinical Note of Patient for  "+ DateTimeFormatter.BASIC_ISO_DATE.format(clinicalNotesList.get(position).getDate())+" \n",1,LocalDate.now(),new DoctorWindowController().DoctorId);
+            new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.currentDoctor.getDoctorID()+" Edit the Clinical Note of Patient for  "+ DateTimeFormatter.BASIC_ISO_DATE.format(clinicalNotesList.get(position).getDate())+" \n",1,LocalDate.now(),DoctorWindowController.currentDoctor.getDoctorID());
         }
         else {
             ClinicalNotes note = new ClinicalNotes();
@@ -88,7 +88,7 @@ public class ClinicalNoteAdd implements Initializable{
 
             new DataSaver().saveClinicalNote(this.patient, note);
         }
-        new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+new DoctorWindowController().DoctorId+" Treat The Patient \n",1,LocalDate.now(),new DoctorWindowController().DoctorId);
+        new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.currentDoctor.getDoctorID()+" Treat The Patient \n",1,LocalDate.now(),DoctorWindowController.currentDoctor.getDoctorID());
 
     }
 
