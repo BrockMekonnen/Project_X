@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import static com.AASTU.Controller.LaboratoryWindowController.currentLaboratory;
 
 public class DataSaver {
+
     public void saveLabResult(Patient patient, LabRequest result){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")

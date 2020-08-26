@@ -561,6 +561,7 @@ public class LabToDoc implements Initializable {
             check=false;
         if(labRequest.getCbs().getLym().isTest() && (LYMTF.getText().isEmpty() || LYMTF.getText().equals(" ")))
             check=false;
+        labRequest.getCbs().getWbc().setValue(Hema_HBC_TF.getText());
         labRequest.getCbs().getLym().setValue(LYMTF.getText());
         if(labRequest.getCbs().getGra().isTest() && (GRA_TF.getText().isEmpty() || GRA_TF.getText().equals(" ")))
             check=false;
@@ -814,6 +815,8 @@ public class LabToDoc implements Initializable {
             HGB_TF.setText(String.valueOf(labRequest.getCbs().getHgb().getValue()));
         if(!labRequest.getCbs().getMchc().getValue().isEmpty())
            MCHC_TF.setText(labRequest.getCbs().getMchc().getValue());
+        if(!labRequest.getCbs().getMch().getValue().isEmpty())
+            MCH_TF.setText(labRequest.getCbs().getMch().getValue());
 
         if(!labRequest.getCbs().getMcv().getValue().isEmpty())
             MCB_TF.setText(String.valueOf(labRequest.getCbs().getMcv().getValue()));
