@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import static com.AASTU.Controller.LaboratoryWindowController.getCurrentLaboratory;
 
 public class DataSaver {
+
     public void saveLabResult(Patient patient, LabRequest result){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -332,12 +333,20 @@ public class DataSaver {
                 WorkActivity obj=session.load(WorkActivity.class,obj1.getActivityId());
                 if(identify==1){
                     obj.setActivity(obj.getActivity()+Activity);
+
                     obj.setDoctorId( DoctorWindowController.getCurrentDoctor().getDoctorID());
+
+                    obj.setDoctorId(DoctorWindowController.currentDoctor.getDoctorID());
+
                     session.update(obj);
                 }
                 else if(identify==2){
                     obj.setActivity(obj.getActivity()+Activity);
+
                     obj.setLabTechnicianId(LaboratoryWindowController.getCurrentLaboratory().getLaboratoryId());
+
+                    obj.setLabTechnicianId(LaboratoryWindowController.currentLaboratory.getLaboratoryId());
+
                     session.update(obj);
                 }
                 session.getTransaction().commit();}

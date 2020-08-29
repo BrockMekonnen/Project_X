@@ -183,6 +183,7 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private BorderPane diseasePane;
 
+
     public static Doctor getCurrentDoctor() {
         return currentDoctor;
     }
@@ -192,6 +193,7 @@ public class DoctorWindowController implements Initializable {
     }
 
     public int DoctorId=22;
+
 
     private void populateRecordTable(){
         columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));

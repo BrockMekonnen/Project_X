@@ -183,7 +183,11 @@ public class LaboratoryWindowController implements Initializable {
         TableOperation();
         goToView(true,false,false,false);
         activePnl.toFront();
+
         searchFieldHandler(ActivePatientList,ActivePatientTableView,PatientSearchTF);
+
+        SearchField();
+
     }
 
     @FXML
@@ -192,6 +196,7 @@ public class LaboratoryWindowController implements Initializable {
         PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
         TableOperation();
         goToView(false,true,false,false);
+        SearchField();
         pendingPnl.toFront();
         searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
     }
@@ -202,6 +207,7 @@ public class LaboratoryWindowController implements Initializable {
         RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
         TableOperation();
         goToView(false,false,true,false);
+        SearchField();
         recordPnl.toFront();
         searchFieldHandler(RecordedDataPatientList,RecordedPatientTableView,PatientSearchTF);
     }
@@ -212,6 +218,7 @@ public class LaboratoryWindowController implements Initializable {
         WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
         TableOperation();
         goToView(false,false, false,true);
+        SearchField();
         waitingPnl.toFront();
         searchFieldHandler(WaitingPatientList,WaitingPatientTableView,PatientSearchTF);
     }
@@ -424,6 +431,64 @@ public class LaboratoryWindowController implements Initializable {
         WaitingPatientTableView.setItems(WaitingPatientList);
 
     }
+
+    public void SearchField(){
+        FilteredList<Patient> Pending_PatientList=new FilteredList<>(PendingPatientList, p ->true);
+        FilteredList<Patient> Waiting_PatientList=new FilteredList<>(WaitingPatientList, p ->true);
+        FilteredList<Patient> Active_PatientList=new FilteredList<>(ActivePatientList, p ->true);
+        FilteredList<Patient> Record_PatientList=new FilteredList<>(RecordedDataPatientList, p ->true);
+        FilteredList<Patient> list;
+        TableView<Patient> TableViews;
+// conditions that are checked on the visibility of AnchorPanes
+
+        if(pendingPnl.isVisible()){
+
+            list=Pending_PatientList;
+            TableViews=PendingPatientTableView;
+
+        }else if(waitingPnl.isVisible()){
+
+            list=Waiting_PatientList;
+            TableViews=WaitingPatientTableView;
+        }
+        else if(activePnl.isVisible()){
+
+            list=Active_PatientList;
+            TableViews=ActivePatientTableView;
+
+        }else{
+
+            list=Record_PatientList;
+            TableViews=RecordedPatientTableView;
+
+        }
+
+        PatientSearchTF.textProperty().addListener(((observable, oldValue, newValue) -> {
+            list.setPredicate(myObject ->{
+                if (newValue==null || newValue.isEmpty()){
+                    return true;
+                }
+
+                String lowerCaseFilter=newValue.toLowerCase();
+                if(String.valueOf(myObject.getFirstName()).toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                else if(String.valueOf(myObject.getLastName()).toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                else if(String.valueOf(myObject.getPhoneNumber()).toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                return false;
+            });
+        }
+        ));
+        // sorted value of filtered list and add the list value to the table list
+        SortedList<Patient> sortedList=new SortedList<>(list);
+        sortedList.comparatorProperty().bind(TableViews.comparatorProperty());
+        TableViews.setItems(sortedList);
+    }
+
 
     public void translateTransitionBack(AnchorPane pane, double move, double sec){
         TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);

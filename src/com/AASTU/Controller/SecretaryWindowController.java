@@ -231,6 +231,7 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     private JFXTextField searchfield;
 
+
     public int SecretaryId=12;
 
     public static Secretary getCurrentSecretary() {
@@ -249,6 +250,13 @@ public class SecretaryWindowController implements Initializable {
 
     // prices list
  ObservableList<Pricing> pricings = FXCollections.observableArrayList(new DataLoader().loadPricing());
+
+// getting patient lists from database
+List<Patient> allPatientList = new DataLoader().loadSpecificPatientData("from Patient where secActives = 1");
+List<Patient> normalPatientList =new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0 and patientStatus = 1");
+List<Patient> outPatientList = new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 1 and outPatient = 1");
+List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient where payed = 0 and secActives = 1");
+
 
     // profile handler
     private void textFieldStatus(boolean status) {
