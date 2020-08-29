@@ -336,7 +336,7 @@ public class DataSaver {
 
                     obj.setDoctorId( DoctorWindowController.getCurrentDoctor().getDoctorID());
 
-                    obj.setDoctorId(DoctorWindowController.currentDoctor.getDoctorID());
+                    obj.setDoctorId(DoctorWindowController.getCurrentDoctor().getDoctorID());
 
                     session.update(obj);
                 }
@@ -345,7 +345,7 @@ public class DataSaver {
 
                     obj.setLabTechnicianId(LaboratoryWindowController.getCurrentLaboratory().getLaboratoryId());
 
-                    obj.setLabTechnicianId(LaboratoryWindowController.currentLaboratory.getLaboratoryId());
+                    obj.setLabTechnicianId(LaboratoryWindowController.getCurrentLaboratory().getLaboratoryId());
 
                     session.update(obj);
                 }
