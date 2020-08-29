@@ -193,11 +193,7 @@ public class SecretaryPatientView implements Initializable {
     }
     /* this function accepts Patient Object and assign
     * some values to the textField */
-    public void setObject(Patient object, boolean visiblity){
-        if(!visiblity){
-        activateBtn.setVisible(visiblity);
-        editBtn.setTranslateX(100);
-        }
+    public void setObject(Patient object){
         patientObj = object;
         String sex = null;
         if(object.getSex() == 'm') {
@@ -223,8 +219,7 @@ public class SecretaryPatientView implements Initializable {
     /**
      * button handlers
      * */
-    @FXML
-    void activateBtnHandler(ActionEvent event) {
+    void activatePatient(){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
@@ -249,9 +244,18 @@ public class SecretaryPatientView implements Initializable {
             activePatient.setDocActives(true);
             activePatient.setFromSec(true);
             session.getTransaction().commit();
+            NotificationController.savedNotification("Activated","Patient Activated successfully!","warn_confirm.png");
         } finally {
             factory.close();
             session.close();
+        }
+    }
+    @FXML
+    void activateBtnHandler(ActionEvent event) throws IOException {
+        new WindowChangeController().warningPopup("Checking", "Are you sure to Activate?", "warn_confirm.png");
+        if(Warning.isOk){
+            activatePatient();
+            WindowChangeController.closeWindow();
         }
     }
 

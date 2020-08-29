@@ -56,13 +56,13 @@ public class NewOutPatient implements Initializable {
         LocalDate endDate = this.endDate.getValue();
         if(validateUserInputForOut()){
             new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
-            PatientRegistration patientRegistration= new PatientRegistration();
-            patientRegistration.startDate = startDate;
-            patientRegistration.endDate = endDate;
+            PatientRegistration.startDate = startDate;
+            PatientRegistration.endDate = endDate;
             if(patient != null){
             new DataSaver().saveOutPatient(patient, startDate, endDate);
             }
             isAdd = true;
+            WindowChangeController.closeWindow();
         }else {
             new WindowChangeController().warningPopup("Validate Fields", "Please Fill the Date First! ","warn_confirm.png");
 

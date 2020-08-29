@@ -62,7 +62,8 @@ public class LaboratoryRegistrationWindow implements Initializable {
 
     @FXML
     private JFXTimePicker endTimePk;
-
+    @FXML
+    private Label phoneLable;
     @FXML
     private JFXTimePicker startTimePk;
     @FXML
@@ -131,7 +132,7 @@ public class LaboratoryRegistrationWindow implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Laboratory laboratory = new Laboratory(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Laboratory laboratory = new Laboratory(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneLable.getText()+phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(laboratory);
             session.getTransaction().commit();
         } finally {

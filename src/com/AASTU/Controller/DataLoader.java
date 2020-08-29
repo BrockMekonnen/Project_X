@@ -349,44 +349,43 @@ public class DataLoader {
         return  diseaseRecords;
     }
 
-    public LabRequest loadLabRequest(Patient tempPateint) {
-        List<LabRequest> labRequestList;
-
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-
-                .addAnnotatedClass(LabRequest.class)
-                .addAnnotatedClass(Patient.class)
-                .addAnnotatedClass(ClinicalNotes.class)
-
-                .buildSessionFactory();
-
-        Session session = factory.getCurrentSession();
-
-        try {
-
-            session.beginTransaction();
-            String quiry = "from LabRequest where patient_id = " + tempPateint.getPatientId();
-            labRequestList = session.createQuery(quiry).list();
-
-            session.getTransaction().commit();
-
-        } finally {
-            factory.close();
-            session.close();
-        }
-        LabRequest labRequest=null;
-        if(labRequestList.size() != 0){
-            for(int i=0;i<labRequestList.size();i++){
-                if(labRequestList.get(i).isViewable()){
-                    labRequest = labRequestList.get(i);
-                }
-            }
-        }
-
-        return labRequest;
-
-    }
+//    public LabRequest loadLabRequest(Patient tempPateint) {
+//        List<LabRequest> labRequestList;
+//
+//        SessionFactory factory = new Configuration()
+//                .configure("hibernate.cfg.xml")
+//
+//                .addAnnotatedClass(LabRequest.class)
+//                .addAnnotatedClass(Patient.class)
+//                .addAnnotatedClass(ClinicalNotes.class)
+//                .buildSessionFactory();
+//
+//        Session session = factory.getCurrentSession();
+//
+//        try {
+//
+//            session.beginTransaction();
+//            String quiry = "from LabRequest where patient_id = " + tempPateint.getPatientId();
+//            labRequestList = session.createQuery(quiry).list();
+//
+//            session.getTransaction().commit();
+//
+//        } finally {
+//            factory.close();
+//            session.close();
+//        }
+//        LabRequest labRequest=null;
+//        if(labRequestList.size() != 0){
+//            for(int i=0;i<labRequestList.size();i++){
+//                if(labRequestList.get(i).isViewable()){
+//                    labRequest = labRequestList.get(i);
+//                }
+//            }
+//        }
+//
+//        return labRequest;
+//
+//    }
 
     public List<ClinicalNotes> loadClincalNotes(Patient tempPateint) {
         List<ClinicalNotes> clinicalNotesList;
@@ -454,42 +453,119 @@ public class DataLoader {
         }
         return  note;
     }
-
+//    public List<Pricing> loadPricings(){
+//        List<Pricing> pricingList;
+//        SessionFactory factory = new Configuration()
+//                .configure("hibernate.cfg.xml")
+//                .addAnnotatedClass(Pricing.class)
+//                .buildSessionFactory();
+//        Session session = factory.getCurrentSession();
+//
+//        try {
+//            session.beginTransaction();
+//            pricingList = session.createQuery("from Pricing").list();
+//            session.getTransaction().commit();
+//        }finally {
+//            factory.close();
+//            session.close();
+//        }
+//
+//        return pricingList;
+//    }
     // this function return each testProperty price
-    public double prices(int id) {
-        Pricing price = null;
+//    public double prices(int id) {
+//        Pricing price = null;
+//
+//        SessionFactory factory = new Configuration()
+//                .configure("hibernate.cfg.xml")
+//                .addAnnotatedClass(Pricing.class)
+//
+//                .buildSessionFactory();
+//
+//        Session session = factory.getCurrentSession();
+//
+//        try {
+//
+//            session.beginTransaction();
+//            try {
+//                price = session.get(Pricing.class, id);
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//
+//            session.getTransaction().commit();
+//
+//        } finally {
+//            factory.close();
+//            session.close();
+//        }
+//
+//
+//        return price.getPrice();
+//
+//    }
+//    public int getCardId() {
+//        Integer lastId = null;
+//        SessionFactory factory = new Configuration()
+//                .configure("hibernate.cfg.xml")
+//                .addAnnotatedClass(Pricing.class)
+//
+//                .buildSessionFactory();
+//
+//        Session session = factory.getCurrentSession();
+//
+//        try {
+//
+//            session.beginTransaction();
+//            try {
+//                String sql = "SELECT max( i.id ) FROM Pricing i";
+//                lastId = (Integer) session.createQuery( sql ).uniqueResult();
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//
+//            session.getTransaction().commit();
+//
+//        } finally {
+//            factory.close();
+//            session.close();
+//        }
+//
+//        return lastId ;
+//
+//    }
 
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Pricing.class)
-
-                .buildSessionFactory();
-
-        Session session = factory.getCurrentSession();
-
-        try {
-
-            session.beginTransaction();
-            try {
-                price = session.get(Pricing.class, id);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-            session.getTransaction().commit();
-
-        } finally {
-            factory.close();
-            session.close();
-        }
-
-
-        return price.getPrice();
-
-    }
-
-    public List<LabRequest> labRequest(Patient tempPateint) {
-        List<LabRequest>  labRequest;
+//    public List<LabRequest> labRequest(Patient tempPateint) {
+//        List<LabRequest>  labRequest;
+//
+//        SessionFactory factory = new Configuration()
+//                .configure("hibernate.cfg.xml")
+//
+//                .addAnnotatedClass(LabRequest.class)
+//                .addAnnotatedClass(Patient.class)
+//                .addAnnotatedClass(ClinicalNotes.class)
+//
+//                .buildSessionFactory();
+//
+//        Session session = factory.getCurrentSession();
+//
+//        try {
+//
+//            session.beginTransaction();
+//            System.out.println(tempPateint.getPatientId());
+//            labRequest = session.createQuery("from LabRequest where patient_id = " + tempPateint.getPatientId() + "and viewable = 1").list();
+//            session.getTransaction().commit();
+//
+//        } finally {
+//            factory.close();
+//            session.close();
+//        }
+//
+//        return labRequest;
+//
+//    }
+    public LabRequest loadLabRequest(Patient tempPateint) {
+        LabRequest  labRequest;
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -506,8 +582,10 @@ public class DataLoader {
 
             session.beginTransaction();
             System.out.println(tempPateint.getPatientId());
-            labRequest = session.createQuery("from LabRequest where patient_id = " + tempPateint.getPatientId()).list();
-
+            Query query = session.createQuery("from LabRequest where patient_id = :patientId and viewable =: viewable");
+            query.setParameter("patientId",tempPateint.getPatientId());
+            query.setParameter("viewable",true);
+            labRequest = (LabRequest) query.uniqueResult();
             session.getTransaction().commit();
 
         } finally {

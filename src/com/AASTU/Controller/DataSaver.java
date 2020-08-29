@@ -1,7 +1,10 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Model.*;
+import com.AASTU.Model.ClinicalNotes;
+import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.LaboratoryRequest.*;
+import com.AASTU.Model.Patient;
+import com.AASTU.Model.WorkActivity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,7 +12,7 @@ import org.hibernate.cfg.Configuration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.AASTU.Controller.LaboratoryWindowController.currentLaboratory;
+import static com.AASTU.Controller.LaboratoryWindowController.getCurrentLaboratory;
 
 public class DataSaver {
 
@@ -66,7 +69,7 @@ public class DataSaver {
             request=result;
             session.update(request);
             session.getTransaction().commit();
-            updateActivity(patient.getPatientId(),LaboratoryWindowController.currentLaboratory.getFirstName()+" "+LaboratoryWindowController.currentLaboratory.getLastName()+" Send Patient's Laboratory Result to Doctor",2,LocalDate.now(),currentLaboratory.getLaboratoryId());
+            updateActivity(patient.getPatientId(),LaboratoryWindowController.getCurrentLaboratory().getFirstName()+" "+LaboratoryWindowController.getCurrentLaboratory().getLastName()+" Send Patient's Laboratory Result to Doctor",2,LocalDate.now(),getCurrentLaboratory().getLaboratoryId());
         } finally {
             factory.close();
             session.close();
@@ -330,12 +333,20 @@ public class DataSaver {
                 WorkActivity obj=session.load(WorkActivity.class,obj1.getActivityId());
                 if(identify==1){
                     obj.setActivity(obj.getActivity()+Activity);
+
+                    obj.setDoctorId( DoctorWindowController.getCurrentDoctor().getDoctorID());
+
                     obj.setDoctorId(DoctorWindowController.currentDoctor.getDoctorID());
+
                     session.update(obj);
                 }
                 else if(identify==2){
                     obj.setActivity(obj.getActivity()+Activity);
+
+                    obj.setLabTechnicianId(LaboratoryWindowController.getCurrentLaboratory().getLaboratoryId());
+
                     obj.setLabTechnicianId(LaboratoryWindowController.currentLaboratory.getLaboratoryId());
+
                     session.update(obj);
                 }
                 session.getTransaction().commit();}

@@ -7,6 +7,7 @@
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -53,6 +54,9 @@
                <StackPane.margin>
                   <Insets top="190.0" />
                </StackPane.margin>
+               <effect>
+                  <Shadow />
+               </effect>
             </JFXButton>
             <JFXButton onAction="#ToIdentificationWindow" prefHeight="45.0" prefWidth="130.0" style="-fx-border-color: #01579B; -fx-border-radius: 50px; -fx-background-radius: 50px;" text="Back" textFill="#01579b" StackPane.alignment="BOTTOM_RIGHT">
                <font>
