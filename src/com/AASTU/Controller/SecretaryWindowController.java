@@ -371,6 +371,281 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
         recordPnl.setVisible(record);
     }
 
+    // method to calculate the total payment
+    public double calcTotalPayment(Patient obj){
+//        double total=new DataLoader().prices(308);
+        double total=0, price;
+        List<LabRequest> labObject = new DataLoader().labRequest(obj);
+        for(LabRequest labRequest: labObject){
+            if(labRequest.getBacterology().getKoh().isTest()){
+                price = new DataLoader().prices(labRequest.getBacterology().getKoh().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getBacterology().getKoh().getPriceId());
+            }if(labRequest.getBacterology().getHpyloriStool().isTest()){
+                price = new DataLoader().prices(labRequest.getBacterology().getHpyloriStool().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getBacterology().getHpyloriStool().getPriceId());
+            }if(labRequest.getParasitology().getConsistency1().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getConsistency1().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getParasitology().getConsistency1().getPriceId());
+            }if(labRequest.getParasitology().getConsistency2().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getConsistency2().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getParasitology().getConsistency2().getPriceId());
+            }if(labRequest.getParasitology().getOccultBlood().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOccultBlood().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getParasitology().getOccultBlood().getPriceId());
+            }if(labRequest.getParasitology().getOvalParasite1().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOvalParasite1().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getParasitology().getOvalParasite1().getPriceId());
+            }if(labRequest.getParasitology().getOvalParasite2().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOvalParasite2().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getParasitology().getOvalParasite2().getPriceId());
+            }if(labRequest.getParasitology().getOvalParasite3().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getOvalParasite3().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getParasitology().getOvalParasite3().getPriceId());
+            }if(labRequest.getParasitology().getStoolTest().isTest()){
+                price = new DataLoader().prices(labRequest.getParasitology().getStoolTest().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getParasitology().getStoolTest().getPriceId());
+            }if(labRequest.getCbs().getBloodFilm().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getBloodFilm().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getBloodFilm().getPriceId());
+            }if(labRequest.getCbs().getBloodGroupRh().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getBloodGroupRh().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getBloodGroupRh().getPriceId());
+            }if(labRequest.getCbs().getEsr().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getEsr().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getEsr().getPriceId());
+            }if(labRequest.getCbs().getGra().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getGra().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getGra().getPriceId());
+            }if(labRequest.getCbs().getHct().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getHct().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getHct().getPriceId());
+            }if(labRequest.getCbs().getHgb().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getHgb().getPriceId());
+                total += price;
+              getPriceingObj(labRequest.getCbs().getHgb().getPriceId());
+            }if(labRequest.getCbs().getLym().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getLym().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getLym().getPriceId());
+            }if(labRequest.getCbs().getMch().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMch().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getMch().getPriceId());
+            }if(labRequest.getCbs().getMchc().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMchc().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getMchc().getPriceId());
+            }if(labRequest.getCbs().getMcv().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMcv().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getMcv().getPriceId());
+            }if(labRequest.getCbs().getMid().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getMid().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getMid().getPriceId());
+            }if(labRequest.getCbs().getP_lcr().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getP_lcr().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getP_lcr().getPriceId());
+            }if(labRequest.getCbs().getPct().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getPct().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getPct().getPriceId());
+            }if(labRequest.getCbs().getPlt().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getPlt().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getPlt().getPriceId());
+            }if(labRequest.getCbs().getRbc().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getRbc().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getRbc().getPriceId());
+            }if(labRequest.getCbs().getRdw_cv().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getRdw_cv().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getRdw_cv().getPriceId());
+            }if(labRequest.getCbs().getWbc().isTest()){
+                price = new DataLoader().prices(labRequest.getCbs().getWbc().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getCbs().getWbc().getPriceId());
+            }if(labRequest.getChemistry().getAlkalinePhosphate().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getAlkalinePhosphate().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getAlkalinePhosphate().getPriceId());
+            }if(labRequest.getChemistry().getBilirubinDirect().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getBilirubinDirect().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getBilirubinDirect().getPriceId());
+            }if(labRequest.getChemistry().getBilirubinTotal().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getBilirubinTotal().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getBilirubinTotal().getPriceId());
+            }if(labRequest.getChemistry().getBun().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getBun().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getBun().getPriceId());
+            }if(labRequest.getChemistry().getCholesterol().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getCholesterol().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getCholesterol().getPriceId());
+            }if(labRequest.getChemistry().getCreatinine().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getCreatinine().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getCreatinine().getPriceId());
+            }if(labRequest.getChemistry().getFbs().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getFbs().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getFbs().getPriceId());
+            }if(labRequest.getChemistry().getRbs().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getRbs().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getRbs().getPriceId());
+            }if(labRequest.getChemistry().getSgot().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getSgot().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getSgot().getPriceId());
+            }if(labRequest.getChemistry().getSgpt().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getSgpt().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getSgpt().getPriceId());
+            }if(labRequest.getChemistry().getTotalProtein().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getTotalProtein().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getTotalProtein().getPriceId());
+            }if(labRequest.getChemistry().getUricAcid().isTest()){
+                price = new DataLoader().prices(labRequest.getChemistry().getUricAcid().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getChemistry().getUricAcid().getPriceId());
+            }if(labRequest.getDipistic().getAppearance().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getAppearance().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getAppearance().getPriceId());
+            }if(labRequest.getDipistic().getBilrubin().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getBilrubin().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getBilrubin().getPriceId());
+            }if(labRequest.getDipistic().getBlood().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getBlood().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getBlood().getPriceId());
+            }if(labRequest.getDipistic().getGlucose().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getGlucose().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getGlucose().getPriceId());
+            }if(labRequest.getDipistic().getKetone().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getKetone().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getKetone().getPriceId());
+            }if(labRequest.getDipistic().getPh().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getPh().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getPh().getPriceId());
+            }if(labRequest.getDipistic().getProtein().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getProtein().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getProtein().getPriceId());
+            }if(labRequest.getDipistic().getPsg().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getPsg().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getPsg().getPriceId());
+            }if(labRequest.getDipistic().getTestColor().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getTestColor().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getTestColor().getPriceId());
+            }if(labRequest.getDipistic().getUrobilinogen().isTest()){
+                price = new DataLoader().prices(labRequest.getDipistic().getUrobilinogen().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getDipistic().getUrobilinogen().getPriceId());
+            }if(labRequest.getSerology().getAso().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getAso().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getAso().getPriceId());
+            }if(labRequest.getSerology().getCrp().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getCrp().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getCrp().getPriceId());
+            }if(labRequest.getSerology().getHbsag().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getHbsag().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getHbsag().getPriceId());
+            }if(labRequest.getSerology().getHpyloriSerum().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getHpyloriSerum().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getHpyloriSerum().getPriceId());
+            }if(labRequest.getSerology().getRheumatoidFactor().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getRheumatoidFactor().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getRheumatoidFactor().getPriceId());
+            }if(labRequest.getSerology().getVdrl().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getVdrl().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getVdrl().getPriceId());
+            }if(labRequest.getSerology().getWellFelix().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getWellFelix().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getWellFelix().getPriceId());
+            }if(labRequest.getSerology().getWidal_II_h().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getWidal_II_h().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getWidal_II_h().getPriceId());
+            }if(labRequest.getSerology().getWidal_II_o().isTest()){
+                price = new DataLoader().prices(labRequest.getSerology().getWidal_II_o().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getSerology().getWidal_II_o().getPriceId());
+            }if(labRequest.getMicroscopy().getBacteria().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getBacteria().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getMicroscopy().getBacteria().getPriceId());
+            }if(labRequest.getMicroscopy().getCasts().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getCasts().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getMicroscopy().getCasts().getPriceId());
+            }if(labRequest.getMicroscopy().getEpitCells().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getEpitCells().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getMicroscopy().getEpitCells().getPriceId());
+            }if(labRequest.getMicroscopy().getRbc().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getRbc().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getMicroscopy().getRbc().getPriceId());
+            }if(labRequest.getMicroscopy().getWbc().isTest()){
+                price = new DataLoader().prices(labRequest.getMicroscopy().getWbc().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getMicroscopy().getWbc().getPriceId());
+            }if(labRequest.getOthers().getAfb().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getAfb().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getOthers().getAfb().getPriceId());
+            }if(labRequest.getOthers().getGramStain().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getGramStain().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getOthers().getGramStain().getPriceId());
+            }if(labRequest.getOthers().getHivAids().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getHivAids().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getOthers().getHivAids().getPriceId());
+            }if(labRequest.getOthers().getWetFilm().isTest()){
+                price = new DataLoader().prices(labRequest.getOthers().getWetFilm().getPriceId());
+                total += price;
+                getPriceingObj(labRequest.getOthers().getWetFilm().getPriceId());
+            }
+        }
+        return total;
+    }
+
     /**
      * ROW CLICK HANDLER
      * */
