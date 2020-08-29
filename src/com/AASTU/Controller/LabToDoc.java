@@ -930,7 +930,6 @@ public class LabToDoc implements Initializable {
             cbo_serum.getSelectionModel().select(String.valueOf(labRequest.getSerology().getHpyloriSerum().getValue()));
         if(labRequest.getOthers().getHivAids().getValue()!=null)
             cbo_aids.getSelectionModel().select(String.valueOf(labRequest.getOthers().getHivAids().getValue()));
-
     }
 
 

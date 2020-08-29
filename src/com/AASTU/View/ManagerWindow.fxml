@@ -94,12 +94,14 @@
                      <columns>
                         <TableColumn fx:id="labNoCol1" prefWidth="75.0" text="No" />
                         <TableColumn fx:id="labIDCol1" prefWidth="198.0" text="Laboratory ID" />
-                        <TableColumn fx:id="labFullNameCol1" prefWidth="457.0" text="Full Name" />
-                        <TableColumn fx:id="labAddedDateCol1" prefWidth="220.0" text="Added Date" />
-                        <TableColumn fx:id="labStartHrCol1" prefWidth="190.0" text="start Hour" />
-                        <TableColumn fx:id="labEndHrCol1" prefWidth="207.0" text="end Hour" />
-                        <TableColumn fx:id="labUserNameCol" prefWidth="207.0" text="User Name" />
-                        <TableColumn fx:id="labPasswordCol" prefWidth="207.0" text="Passoword" />
+                        <TableColumn fx:id="labFullNameCol1" prefWidth="300.0" text="Full Name" />
+                        <TableColumn fx:id="labPhoneCol" prefWidth="205.0" text="Phone Number" />
+                        <TableColumn fx:id="labCityCol1" prefWidth="150.0" text="City" />
+                        <TableColumn fx:id="labAddedDateCol1" prefWidth="170.0" text="Added Date" />
+                        <TableColumn fx:id="labStartHrCol1" prefWidth="150.0" text="start Hour" />
+                        <TableColumn fx:id="labEndHrCol1" prefWidth="150.0" text="end Hour" />
+                        <TableColumn fx:id="labUserNameCol" prefWidth="150.0" text="User Name" />
+                        <TableColumn fx:id="labPasswordCol" prefWidth="150.0" text="Passoword" />
                      </columns>
                   </TableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -115,12 +117,14 @@
                     <columns>
                       <TableColumn fx:id="noCol" prefWidth="75.0" text="No" />
                       <TableColumn fx:id="docIDCol" prefWidth="198.0" text="Doctor ID" />
-                        <TableColumn fx:id="fullNameCol" prefWidth="457.0" text="Full Name" />
-                        <TableColumn fx:id="addedDateCol" prefWidth="220.0" text="Added Date" />
-                        <TableColumn fx:id="startHrCol" prefWidth="190.0" text="start Hour" />
-                        <TableColumn fx:id="endHrCol" prefWidth="207.0" text="end Hour" />
-                        <TableColumn fx:id="docUserNameCol" prefWidth="207.0" text="User Name" />
-                        <TableColumn fx:id="docPasswordCol" prefWidth="207.0" text="Password" />
+                        <TableColumn fx:id="fullNameCol" prefWidth="300.0" text="Full Name" />
+                        <TableColumn fx:id="docPhoneCol" prefWidth="205.0" text="Phone Number" />
+                        <TableColumn fx:id="docCityCol" prefWidth="150.0" text="City" />
+                        <TableColumn fx:id="addedDateCol" prefWidth="170.0" text="Added Date" />
+                        <TableColumn fx:id="startHrCol" prefWidth="150.0" text="start Hour" />
+                        <TableColumn fx:id="endHrCol" prefWidth="150.0" text="end Hour" />
+                        <TableColumn fx:id="docUserNameCol" prefWidth="150.0" text="User Name" />
+                        <TableColumn fx:id="docPasswordCol" prefWidth="150.0" text="Password" />
                     </columns>
                   </TableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -136,12 +140,14 @@
                      <columns>
                         <TableColumn fx:id="secNoCol11" prefWidth="75.0" text="No" />
                         <TableColumn fx:id="secIDCol11" prefWidth="198.0" text="Secretary ID" />
-                        <TableColumn fx:id="secFullNameCol11" prefWidth="457.0" text="Full Name" />
-                        <TableColumn fx:id="secAddedDateCol11" prefWidth="220.0" text="Added Date" />
-                        <TableColumn fx:id="secStartHrCol11" prefWidth="190.0" text="start Hour" />
-                        <TableColumn fx:id="secEndHrCol11" prefWidth="207.0" text="end Hour" />
-                        <TableColumn fx:id="secUserNameCol" prefWidth="207.0" text="User Name" />
-                        <TableColumn fx:id="secPasswordCol" prefWidth="207.0" text="Password" />
+                        <TableColumn fx:id="secFullNameCol11" prefWidth="300.0" text="Full Name" />
+                        <TableColumn fx:id="secPhoneCol" prefWidth="205.0" text="Phone Number" />
+                        <TableColumn fx:id="secCityCol" prefWidth="190.0" text="City" />
+                        <TableColumn fx:id="secAddedDateCol11" prefWidth="170.0" text="Added Date" />
+                        <TableColumn fx:id="secStartHrCol11" prefWidth="150.0" text="start Hour" />
+                        <TableColumn fx:id="secEndHrCol11" prefWidth="150.0" text="end Hour" />
+                        <TableColumn fx:id="secUserNameCol" prefWidth="150.0" text="User Name" />
+                        <TableColumn fx:id="secPasswordCol" prefWidth="150.0" text="Password" />
                      </columns>
                   </TableView>
                   <AnchorPane prefHeight="113.0" prefWidth="1600.0" style="-fx-background-color: transparetn;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

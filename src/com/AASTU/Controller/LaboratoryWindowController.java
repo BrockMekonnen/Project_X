@@ -33,9 +33,11 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.AASTU.Controller.NotificationController.searchFieldHandler;
+
 public class LaboratoryWindowController implements Initializable {
 
-    public static Laboratory currentLaboratory;
+    private static Laboratory currentLaboratory;
     // profile
     @FXML
     private JFXTextField firstNameTf;
@@ -153,6 +155,13 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private AnchorPane recordPnl;
 
+    public static Laboratory getCurrentLaboratory() {
+        return currentLaboratory;
+    }
+
+    public static void setCurrentLaboratory(Laboratory currentLaboratory) {
+        LaboratoryWindowController.currentLaboratory = currentLaboratory;
+    }
 
     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
@@ -171,52 +180,51 @@ public class LaboratoryWindowController implements Initializable {
     void handleActiveButton(ActionEvent event) {
         //some specification will be done here to access Active Patients only
         ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
-        SearchField();
         TableOperation();
         goToView(true,false,false,false);
         activePnl.toFront();
+        searchFieldHandler(ActivePatientList,ActivePatientTableView,PatientSearchTF);
     }
 
     @FXML
     void handlePendingButton(ActionEvent event) {
         //some Specification will be done here to access only Pending Patients
         PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-        SearchField();
         TableOperation();
         goToView(false,true,false,false);
         pendingPnl.toFront();
+        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
     }
 
     @FXML
     void handleRecordButton(ActionEvent event) {
         //Some specification will be done here To Access Patients that are treated by Specific Laboratory Technician
         RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
-        SearchField();
         TableOperation();
         goToView(false,false,true,false);
         recordPnl.toFront();
+        searchFieldHandler(RecordedDataPatientList,RecordedPatientTableView,PatientSearchTF);
     }
 
     @FXML
     void handleWaitingButton(ActionEvent event) {
         //some specification wil be done here to access only waiting Patients from the whole lists
         WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
-        SearchField();
         TableOperation();
         goToView(false,false, false,true);
         waitingPnl.toFront();
+        searchFieldHandler(WaitingPatientList,WaitingPatientTableView,PatientSearchTF);
     }
 
     // profile Handler
-
     private void textFieldStatus(boolean status) {
-        firstNameTf.setEditable(status);
-        lastNameTf.setEditable(status);
+        firstNameTf.setEditable(false);
+        lastNameTf.setEditable(false);
         passwordTf.setEditable(status);
-        genderTf.setEditable(status);
-        cityTf.setEditable(status);
+        genderTf.setEditable(false);
+        cityTf.setEditable(false);
         proUserNameTf.setEditable(status);
-        phonTf.setEditable(status);
+        phonTf.setEditable(false);
         srartHrTf.setEditable(false);
         endHrTf.setEditable(false);
 
@@ -304,15 +312,12 @@ public class LaboratoryWindowController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         VisibilityTest();
-        //For table operations or assignments
         TableOperation();
-        //Used for text field searching
-        SearchField();
+        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
         displayProfile();
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         coverPane.setVisible(false);
-//        translation(0.1);
         TransitionController.translateTransition(AccountSettingPane, -600, 0.5);
         TransitionController.translation(AccountSettingPane,1,0,0.1);
         coverPane.setOnMouseClicked(event -> {
@@ -418,63 +423,6 @@ public class LaboratoryWindowController implements Initializable {
         WaitingCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
         WaitingPatientTableView.setItems(WaitingPatientList);
 
-    }
-
-    public void SearchField(){
-        FilteredList<Patient> Pending_PatientList=new FilteredList<>(PendingPatientList, p ->true);
-        FilteredList<Patient> Waiting_PatientList=new FilteredList<>(WaitingPatientList, p ->true);
-        FilteredList<Patient> Active_PatientList=new FilteredList<>(ActivePatientList, p ->true);
-        FilteredList<Patient> Record_PatientList=new FilteredList<>(RecordedDataPatientList, p ->true);
-        FilteredList<Patient> list;
-        TableView<Patient> TableViews;
-// conditions that are checked on the visibility of AnchorPanes
-
-        if(pendingPnl.isVisible()==true){
-
-            list=Pending_PatientList;
-            TableViews=PendingPatientTableView;
-
-        }else if(waitingPnl.isVisible()==true){
-
-            list=Waiting_PatientList;
-            TableViews=WaitingPatientTableView;
-        }
-        else if(activePnl.isVisible()==true){
-
-            list=Active_PatientList;
-            TableViews=ActivePatientTableView;
-
-        }else{
-
-            list=Record_PatientList;
-            TableViews=RecordedPatientTableView;
-
-        }
-
-        PatientSearchTF.textProperty().addListener(((observable, oldValue, newValue) -> {
-            list.setPredicate(myObject ->{
-                if (newValue==null || newValue.isEmpty()){
-                    return true;
-                }
-
-                String lowerCaseFilter=newValue.toLowerCase();
-                if(String.valueOf(myObject.getFirstName()).toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                }
-                else if(String.valueOf(myObject.getLastName()).toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                }
-                else if(String.valueOf(myObject.getPhoneNumber()).toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                }
-                return false;
-            });
-        }
-        ));
-        // sorted value of filtered list and add the list value to the table list
-        SortedList<Patient> sortedList=new SortedList<>(list);
-        sortedList.comparatorProperty().bind(TableViews.comparatorProperty());
-        TableViews.setItems(sortedList);
     }
 
     public void translateTransitionBack(AnchorPane pane, double move, double sec){

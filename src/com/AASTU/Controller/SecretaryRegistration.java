@@ -24,6 +24,9 @@ import java.util.ResourceBundle;
 public class SecretaryRegistration implements Initializable {
 
     @FXML
+    private Label phoneLable;
+
+    @FXML
     private JFXTextField firstNameTf;
 
     @FXML
@@ -92,7 +95,7 @@ public class SecretaryRegistration implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Secretary secretary = new Secretary(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Secretary secretary = new Secretary(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex, LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneLable.getText()+phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(secretary);
             session.getTransaction().commit();
         } finally {

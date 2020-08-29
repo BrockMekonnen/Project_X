@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,6 +25,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -42,7 +44,6 @@ public class PaymentController implements Initializable{
     @FXML
     private TableColumn<Pricing, Double> pricecol;
 
-
     @FXML
     private JFXTextField totalPriceTf;
 
@@ -53,6 +54,7 @@ public class PaymentController implements Initializable{
     private JFXButton cancelBtn;
 
     public static ObservableList<Pricing> pricings = FXCollections.observableArrayList();
+
 
     public void setObject(Patient obj){
         patientObj = obj;
@@ -71,40 +73,45 @@ public class PaymentController implements Initializable{
     }
     @FXML
     void cancelHandler(ActionEvent event) {
+        pricings.clear();
         WindowChangeController.closeWindow();
     }
 
     @FXML
-    void payedHandler(ActionEvent event) {
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Patient.class)
-                .addAnnotatedClass(ClinicalNotes.class)
-                .addAnnotatedClass(TestProperty.class)
-                .addAnnotatedClass(Parasitology.class)
-                .addAnnotatedClass(Bacteriology.class)
-                .addAnnotatedClass(Microscopy.class)
-                .addAnnotatedClass(Chemistry.class)
-                .addAnnotatedClass(Dipstick.class)
-                .addAnnotatedClass(Others.class)
-                .addAnnotatedClass(Cbs.class)
-                .addAnnotatedClass(Serology.class)
-                .addAnnotatedClass(LabRequest.class)
-                .buildSessionFactory();
+    void payedHandler(ActionEvent event) throws IOException {
+        new WindowChangeController().warningPopup("Checking", "Are you sure?", "warn_confirm.png");
+        if(Warning.isOk) {
+            SessionFactory factory = new Configuration()
+                    .configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(Patient.class)
+                    .addAnnotatedClass(ClinicalNotes.class)
+                    .addAnnotatedClass(TestProperty.class)
+                    .addAnnotatedClass(Parasitology.class)
+                    .addAnnotatedClass(Bacteriology.class)
+                    .addAnnotatedClass(Microscopy.class)
+                    .addAnnotatedClass(Chemistry.class)
+                    .addAnnotatedClass(Dipstick.class)
+                    .addAnnotatedClass(Others.class)
+                    .addAnnotatedClass(Cbs.class)
+                    .addAnnotatedClass(Serology.class)
+                    .addAnnotatedClass(LabRequest.class)
+                    .buildSessionFactory();
 
-        Session session = factory.getCurrentSession();
-        try{
-            session.beginTransaction();
+            Session session = factory.getCurrentSession();
+            try{
+                session.beginTransaction();
 
-            Patient activePatient = session.get(Patient.class, patientObj.getPatientId());
-            activePatient.setLabActives(true);
-            activePatient.setFromSec(true);
-            activePatient.setPayed(true);
-            activePatient.setSecActives(false);
-            session.getTransaction().commit();
-        } finally {
-            factory.close();
-            session.close();
+                Patient activePatient = session.get(Patient.class, patientObj.getPatientId());
+                activePatient.setLabActives(true);
+                activePatient.setFromSec(true);
+                activePatient.setPayed(true);
+                activePatient.setSecActives(false);
+                session.getTransaction().commit();
+                WindowChangeController.closeWindow();
+            } finally {
+                factory.close();
+                session.close();
+            }
         }
     }
     @Override
