@@ -171,7 +171,7 @@ public class PatientRegistration implements Initializable{
 
                 patient.setPatientStatus(true);
                 session.save(patient);
-                new DataSaver().Activity("Registration",SecretaryWindowController.currentSecretary.getSecretaryId(),patient.getPatientId());
+                new DataSaver().Activity("Registration",SecretaryWindowController.getCurrentSecretary().getSecretaryId(),patient.getPatientId());
             }
             session.getTransaction().commit();
         } finally {
