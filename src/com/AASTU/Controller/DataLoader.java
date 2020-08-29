@@ -388,6 +388,8 @@ public class DataLoader {
 
     }
 
+
+
     public List<ClinicalNotes> loadClincalNotes(Patient tempPateint) {
         List<ClinicalNotes> clinicalNotesList;
 
@@ -419,6 +421,8 @@ public class DataLoader {
 
     }
 
+    /** this function accepts patinet object and find if there is
+     *  editable clinical note and if found return the object if not then retrun null */
     public ClinicalNotes loadClinicalNote(Patient object){
 
         SessionFactory factory = new Configuration()

@@ -34,7 +34,7 @@
       </Pane>
       <Pane layoutX="4.0" layoutY="42.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="357.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXTextField fx:id="warnBodyFld" editable="false" focusColor="WHITE" layoutX="9.0" layoutY="25.0" prefHeight="48.0" prefWidth="229.0" style="-fx-text-fill: #01579B;" unFocusColor="WHITE">
+            <JFXTextField fx:id="warnBodyFld" editable="false" focusColor="WHITE" layoutX="9.0" layoutY="25.0" prefHeight="48.0" prefWidth="260.0" style="-fx-text-fill: #01579B;" unFocusColor="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

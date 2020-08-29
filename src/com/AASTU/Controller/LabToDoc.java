@@ -788,7 +788,7 @@ public class LabToDoc implements Initializable {
         }
     }
 
-    public void exceptionForWaiting(LabRequest labRequest){
+        public void exceptionForWaiting(LabRequest labRequest){
 
         if(!labRequest.getCbs().getLym().getValue().isEmpty())
             LYMTF.setText(String.valueOf(labRequest.getCbs().getLym().getValue()));
@@ -905,12 +905,10 @@ public class LabToDoc implements Initializable {
             Wet_Film_TF.setText(String.valueOf(labRequest.getOthers().getWetFilm().getValue()));
         if(!labRequest.getOthers().getGramStain().getValue().isEmpty())
             Gram_Stain_TF.setText(String.valueOf(labRequest.getOthers().getGramStain().getValue()));
-        if(labRequest.getSerology().getVdrl().getValue()!=null){
+
+
+        if(labRequest.getSerology().getVdrl().getValue()!=null)
             cbo_vdrl.getSelectionModel().select(String.valueOf(labRequest.getSerology().getVdrl().getValue()));
-        }
-
-
-
         if(labRequest.getSerology().getWidal_II_h().getValue()!=null)
             cbo_h.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWidal_II_h().getValue()));
         if(labRequest.getSerology().getWidal_II_o().getValue()!=null)

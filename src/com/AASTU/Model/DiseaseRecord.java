@@ -88,13 +88,9 @@ public class DiseaseRecord {
         return new ReadOnlyObjectWrapper<>(age.getM30to64());
     }
 
-    public ReadOnlyObjectWrapper<Integer> mGreater65ForTable() {
-        return new ReadOnlyObjectWrapper<>(age.getmGreater65());
-    }
+    public ReadOnlyObjectWrapper<Integer> mGreater65ForTable() { return new ReadOnlyObjectWrapper<>(age.getmGreater65()); }
 
-    public ReadOnlyObjectWrapper<Integer> fLess1ForTable() {
-        return new ReadOnlyObjectWrapper<Integer>(age.getfLess1());
-    }
+    public ReadOnlyObjectWrapper<Integer> fLess1ForTable() { return new ReadOnlyObjectWrapper<Integer>(age.getfLess1()); }
 
     public ReadOnlyObjectWrapper<Integer> F1to4ForTable() {
         return new ReadOnlyObjectWrapper<>(age.getF1to4());
@@ -107,11 +103,11 @@ public class DiseaseRecord {
     public ReadOnlyObjectWrapper<Integer> F15to29ForTable() {
         return new ReadOnlyObjectWrapper<>(age.getF15to29());
     }
+
     public ReadOnlyObjectWrapper<Integer> F30to64ForTable() {
         return new ReadOnlyObjectWrapper<>(age.getF30to64());
     }
-    public ReadOnlyObjectWrapper<Integer> fGreater65ForTable() {
-        return new ReadOnlyObjectWrapper<>(age.getfGreater65());
-    }
+
+    public ReadOnlyObjectWrapper<Integer> fGreater65ForTable() { return new ReadOnlyObjectWrapper<>(age.getfGreater65()); }
 
 }

@@ -349,6 +349,8 @@ List<Patient> payers = new DataLoader().loadSpecificPatientData("from Patient wh
         PaymentController.pricings.add(new DataLoader().priceObj(objId));
     }
 
+
+
     // method to calculate the total payment
     public double calcTotalPayment(Patient obj){
 //        double total=new DataLoader().prices(308);
