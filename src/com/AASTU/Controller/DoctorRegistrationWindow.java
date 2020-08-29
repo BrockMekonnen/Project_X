@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXTimePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -57,7 +58,8 @@ public class DoctorRegistrationWindow implements Initializable {
 
     @FXML
     private JFXTimePicker endTimePk;
-
+    @FXML
+    private Label phoneLable;
     @FXML
     private JFXTimePicker startTimePk;
     @FXML
@@ -94,7 +96,7 @@ public class DoctorRegistrationWindow implements Initializable {
                 sex = 'f';
             }
             //this if condition is temporary and it is not finished
-            Doctor doctor = new Doctor(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex,LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
+            Doctor doctor = new Doctor(firstNameTf.getText(),lastNameTf.getText(),userNameTf.getText(),sex,LocalDate.now(),"password", startTimePk.getValue(),endTimePk.getValue(),phoneLable.getText()+phoneTf.getText(),cityTf.getText(),subCityTf.getText(),kebeleTf.getText());
             session.save(doctor);
             session.getTransaction().commit();
         } finally {

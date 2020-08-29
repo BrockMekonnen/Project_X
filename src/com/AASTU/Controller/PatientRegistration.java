@@ -152,10 +152,8 @@ public class PatientRegistration implements Initializable{
             if (NewOutPatient.isAdd && Warning.isOk) {
                 Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 outPatient.setStartDate(startDate);
-
-                outPatient.setPatientStatus(true);
-
                 outPatient.setEndDate(endDate);
+                outPatient.setPatientStatus(true);
                 outPatient.setPatientStatus(true);
                 outPatient.setOutPatinet(true);
                 outPatient.setFromSec(true);
@@ -173,7 +171,7 @@ public class PatientRegistration implements Initializable{
 
                 patient.setPatientStatus(true);
                 session.save(patient);
-                new DataSaver().Activity("Registration",new SecretaryWindowController().SecretaryId,patient.getPatientId());
+                new DataSaver().Activity("Registration",SecretaryWindowController.currentSecretary.getSecretaryId(),patient.getPatientId());
             }
             session.getTransaction().commit();
         } finally {
@@ -195,10 +193,11 @@ public class PatientRegistration implements Initializable{
               ExceptionHandler.validateNum(ageTf.getText(),ageTf) && ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
                new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
                 if(Warning.isOk) {
-                     WindowChangeController.closeWindow();
                      saveNewPatient();
+                     WindowChangeController.closeWindow();
                      NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
-              }
+//                     new SecretaryWindowController().displayPatients();
+                }
           }else {
             new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
 

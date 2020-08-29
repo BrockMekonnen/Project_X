@@ -33,9 +33,11 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.AASTU.Controller.NotificationController.searchFieldHandler;
+
 public class LaboratoryWindowController implements Initializable {
 
-    public static Laboratory currentLaboratory;
+    private static Laboratory currentLaboratory;
     // profile
     @FXML
     private JFXTextField firstNameTf;
@@ -153,6 +155,13 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private AnchorPane recordPnl;
 
+    public static Laboratory getCurrentLaboratory() {
+        return currentLaboratory;
+    }
+
+    public static void setCurrentLaboratory(Laboratory currentLaboratory) {
+        LaboratoryWindowController.currentLaboratory = currentLaboratory;
+    }
 
     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
@@ -171,52 +180,58 @@ public class LaboratoryWindowController implements Initializable {
     void handleActiveButton(ActionEvent event) {
         //some specification will be done here to access Active Patients only
         ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
-        SearchField();
         TableOperation();
         goToView(true,false,false,false);
         activePnl.toFront();
+
+        searchFieldHandler(ActivePatientList,ActivePatientTableView,PatientSearchTF);
+
+        SearchField();
+
     }
 
     @FXML
     void handlePendingButton(ActionEvent event) {
         //some Specification will be done here to access only Pending Patients
         PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-        SearchField();
         TableOperation();
         goToView(false,true,false,false);
+        SearchField();
         pendingPnl.toFront();
+        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
     }
 
     @FXML
     void handleRecordButton(ActionEvent event) {
         //Some specification will be done here To Access Patients that are treated by Specific Laboratory Technician
         RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
-        SearchField();
         TableOperation();
         goToView(false,false,true,false);
+        SearchField();
         recordPnl.toFront();
+        searchFieldHandler(RecordedDataPatientList,RecordedPatientTableView,PatientSearchTF);
     }
 
     @FXML
     void handleWaitingButton(ActionEvent event) {
         //some specification wil be done here to access only waiting Patients from the whole lists
         WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
-        SearchField();
         TableOperation();
         goToView(false,false, false,true);
+        SearchField();
         waitingPnl.toFront();
+        searchFieldHandler(WaitingPatientList,WaitingPatientTableView,PatientSearchTF);
     }
 
     // profile Handler
-
     private void textFieldStatus(boolean status) {
-        firstNameTf.setEditable(status);
-        lastNameTf.setEditable(status);
+        firstNameTf.setEditable(false);
+        lastNameTf.setEditable(false);
         passwordTf.setEditable(status);
-        genderTf.setEditable(status);
-        cityTf.setEditable(status);
+        genderTf.setEditable(false);
+        cityTf.setEditable(false);
         proUserNameTf.setEditable(status);
-        phonTf.setEditable(status);
+        phonTf.setEditable(false);
         srartHrTf.setEditable(false);
         endHrTf.setEditable(false);
 
@@ -304,15 +319,12 @@ public class LaboratoryWindowController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         VisibilityTest();
-        //For table operations or assignments
         TableOperation();
-        //Used for text field searching
-        SearchField();
+        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
         displayProfile();
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         coverPane.setVisible(false);
-//        translation(0.1);
         TransitionController.translateTransition(AccountSettingPane, -600, 0.5);
         TransitionController.translation(AccountSettingPane,1,0,0.1);
         coverPane.setOnMouseClicked(event -> {
@@ -429,17 +441,17 @@ public class LaboratoryWindowController implements Initializable {
         TableView<Patient> TableViews;
 // conditions that are checked on the visibility of AnchorPanes
 
-        if(pendingPnl.isVisible()==true){
+        if(pendingPnl.isVisible()){
 
             list=Pending_PatientList;
             TableViews=PendingPatientTableView;
 
-        }else if(waitingPnl.isVisible()==true){
+        }else if(waitingPnl.isVisible()){
 
             list=Waiting_PatientList;
             TableViews=WaitingPatientTableView;
         }
-        else if(activePnl.isVisible()==true){
+        else if(activePnl.isVisible()){
 
             list=Active_PatientList;
             TableViews=ActivePatientTableView;
@@ -476,6 +488,7 @@ public class LaboratoryWindowController implements Initializable {
         sortedList.comparatorProperty().bind(TableViews.comparatorProperty());
         TableViews.setItems(sortedList);
     }
+
 
     public void translateTransitionBack(AnchorPane pane, double move, double sec){
         TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);

@@ -126,7 +126,6 @@ public class Patient {
         this.subcity = subcity;
         this.kebele = kebele;
         this.houseNumber = houseNumber;
-
     }
 
     public boolean isOutPatinet() {

@@ -557,8 +557,11 @@ public class LabToDoc implements Initializable {
 
         boolean check=true;
 
+        if(labRequest.getCbs().getWbc().isTest() && (Hema_HBC_TF.getText().isEmpty() || Hema_HBC_TF.getText().equals(" ")))
+            check=false;
         if(labRequest.getCbs().getLym().isTest() && (LYMTF.getText().isEmpty() || LYMTF.getText().equals(" ")))
             check=false;
+        labRequest.getCbs().getWbc().setValue(Hema_HBC_TF.getText());
         labRequest.getCbs().getLym().setValue(LYMTF.getText());
         if(labRequest.getCbs().getGra().isTest() && (GRA_TF.getText().isEmpty() || GRA_TF.getText().equals(" ")))
             check=false;
@@ -619,6 +622,11 @@ public class LabToDoc implements Initializable {
         if(labRequest.getCbs().getBloodFilm().isTest() && (Blood_Film_TF.getText().isEmpty() || Blood_Film_TF.getText().equals(" ")))
             check=false;
         labRequest.getCbs().getBloodFilm().setValue(Blood_Film_TF.getText());
+
+        if(labRequest.getParasitology().getStoolTest().isTest() && (STOOL_TEST_TF.getText().isEmpty() || STOOL_TEST_TF.getText().equals(" ")))
+            check=false;
+        labRequest.getParasitology().getStoolTest().setValue(STOOL_TEST_TF.getText());
+
         if(labRequest.getParasitology().getOccultBlood().isTest() && (OCCULT_BLOOD_TF.getText().isEmpty() || OCCULT_BLOOD_TF.getText().equals(" ")))
             check=false;
         labRequest.getParasitology().getOccultBlood().setValue(OCCULT_BLOOD_TF.getText());
@@ -646,11 +654,13 @@ public class LabToDoc implements Initializable {
             check=false;
         if(labRequest.getDipistic().getProtein().isTest() && (PROTEIN_TF.getText().isEmpty() || PROTEIN_TF.getText().equals(" ")))
             check=false;
-        if(labRequest.getDipistic().getKetone().isTest() && (PROTEIN_TF.getText().isEmpty() || PROTEIN_TF.getText().equals(" ")))
+        if(labRequest.getDipistic().getKetone().isTest() && (KETONE_TF.getText().isEmpty() || KETONE_TF.getText().equals(" ")))
             check=false;
         if(labRequest.getDipistic().getBilrubin().isTest() && (BILIRUBIN_TF.getText().isEmpty() || BILIRUBIN_TF.getText().equals(" ")))
             check=false;
         if(labRequest.getDipistic().getUrobilinogen().isTest() && (UROBILINOGEN_TF.getText().isEmpty() || UROBILINOGEN_TF.getText().equals(" ")))
+            check=false;
+        if(labRequest.getDipistic().getGlucose().isTest() && (GLUCOSE_TF.getText().isEmpty() || GLUCOSE_TF.getText().equals(" ")))
             check=false;
         if(labRequest.getDipistic().getBlood().isTest() && (BLOOD_TF.getText().isEmpty() || BLOOD_TF.getText().equals(" ")))
             check=false;
@@ -660,6 +670,7 @@ public class LabToDoc implements Initializable {
         labRequest.getDipistic().getTestColor().setValue(DIPISTIC_COLOR_TF.getText());
         labRequest.getDipistic().getAppearance().setValue(APPERANCE_TF.getText());
         labRequest.getDipistic().getPh().setValue(PH_TF.getText());
+        labRequest.getDipistic().getGlucose().setValue(GLUCOSE_TF.getText());
         labRequest.getDipistic().getPsg().setValue(PSG_TF.getText());
         labRequest.getDipistic().getProtein().setValue(PROTEIN_TF.getText());
         labRequest.getDipistic().getKetone().setValue(KETONE_TF.getText());
@@ -790,6 +801,8 @@ public class LabToDoc implements Initializable {
 
         public void exceptionForWaiting(LabRequest labRequest){
 
+        if(!labRequest.getCbs().getWbc().getValue().isEmpty())
+            Hema_HBC_TF.setText(String.valueOf(labRequest.getCbs().getWbc().getValue()));
         if(!labRequest.getCbs().getLym().getValue().isEmpty())
             LYMTF.setText(String.valueOf(labRequest.getCbs().getLym().getValue()));
         if(!labRequest.getCbs().getGra().getValue().isEmpty())
@@ -802,12 +815,19 @@ public class LabToDoc implements Initializable {
             HGB_TF.setText(String.valueOf(labRequest.getCbs().getHgb().getValue()));
         if(!labRequest.getCbs().getMchc().getValue().isEmpty())
            MCHC_TF.setText(labRequest.getCbs().getMchc().getValue());
+        if(!labRequest.getCbs().getMch().getValue().isEmpty())
+            MCH_TF.setText(labRequest.getCbs().getMch().getValue());
 
         if(!labRequest.getCbs().getMcv().getValue().isEmpty())
             MCB_TF.setText(String.valueOf(labRequest.getCbs().getMcv().getValue()));
+        if(!labRequest.getCbs().getRdw_cv().getValue().isEmpty())
+            RDW_CY_TF.setText(String.valueOf(labRequest.getCbs().getRdw_cv().getValue()));
+
         if(!labRequest.getCbs().getHct().getValue().isEmpty())
             HCT_TF.setText(String.valueOf(labRequest.getCbs().getHct().getValue()));
 
+        if(!labRequest.getCbs().getPlt().getValue().isEmpty())
+            PLT_TF.setText(String.valueOf(labRequest.getCbs().getPct().getValue()));
         if(!labRequest.getCbs().getPct().getValue().isEmpty())
             PCT_TF.setText(String.valueOf(labRequest.getCbs().getPct().getValue()));
         if(!labRequest.getCbs().getP_lcr().getValue().isEmpty())
@@ -823,6 +843,8 @@ public class LabToDoc implements Initializable {
         if(!labRequest.getParasitology().getOccultBlood().getValue().isEmpty())
             OCCULT_BLOOD_TF.setText(String.valueOf(labRequest.getParasitology().getOccultBlood().getValue()));
 
+        if(!labRequest.getParasitology().getStoolTest().getValue().isEmpty())
+            STOOL_TEST_TF.setText(String.valueOf(labRequest.getParasitology().getConsistency1().getValue()));
 
         if(!labRequest.getParasitology().getConsistency1().getValue().isEmpty())
             CONSISTENCY_TF1.setText(String.valueOf(labRequest.getParasitology().getConsistency1().getValue()));
@@ -846,6 +868,8 @@ public class LabToDoc implements Initializable {
             PH_TF.setText(String.valueOf(labRequest.getDipistic().getPh().getValue()));
         if(!labRequest.getDipistic().getPsg().getValue().isEmpty())
             PSG_TF.setText(String.valueOf(labRequest.getDipistic().getPsg().getValue()));
+        if(!labRequest.getDipistic().getGlucose().getValue().isEmpty())
+            GLUCOSE_TF.setText(String.valueOf(labRequest.getDipistic().getGlucose().getValue()));
         if(!labRequest.getDipistic().getProtein().getValue().isEmpty())
             PROTEIN_TF.setText(String.valueOf(labRequest.getDipistic().getProtein().getValue()));
         if(!labRequest.getDipistic().getKetone().getValue().isEmpty())
@@ -853,7 +877,8 @@ public class LabToDoc implements Initializable {
         if(!labRequest.getDipistic().getUrobilinogen().getValue().isEmpty())
            UROBILINOGEN_TF.setText(String.valueOf(labRequest.getDipistic().getUrobilinogen().getValue()));
 
-
+        if(!labRequest.getMicroscopy().getEpitCells().getValue().isEmpty())
+            EPIT_CELLS_TF.setText(String.valueOf(labRequest.getMicroscopy().getEpitCells().getValue()));
         if(!labRequest.getDipistic().getBlood().getValue().isEmpty())
             BLOOD_TF.setText(String.valueOf(labRequest.getDipistic().getBlood().getValue()));
         if(!labRequest.getMicroscopy().getWbc().getValue().isEmpty())
@@ -864,7 +889,6 @@ public class LabToDoc implements Initializable {
             CASTS_TF.setText(String.valueOf(labRequest.getMicroscopy().getCasts().getValue()));
         if(!labRequest.getMicroscopy().getBacteria().getValue().isEmpty())
             BACTERIA_TF.setText(String.valueOf(labRequest.getMicroscopy().getBacteria().getValue()));
-
 
         if(!labRequest.getChemistry().getFbs().getValue().isEmpty())
            FSB_TF.setText(String.valueOf(labRequest.getChemistry().getFbs().getValue()));
@@ -928,7 +952,6 @@ public class LabToDoc implements Initializable {
             cbo_serum.getSelectionModel().select(String.valueOf(labRequest.getSerology().getHpyloriSerum().getValue()));
         if(labRequest.getOthers().getHivAids().getValue()!=null)
             cbo_aids.getSelectionModel().select(String.valueOf(labRequest.getOthers().getHivAids().getValue()));
-
     }
 
 

@@ -3,8 +3,6 @@ package com.AASTU.Controller;
 import com.AASTU.Model.*;
 import com.jfoenix.controls.JFXButton;
 
-import com.sun.xml.internal.ws.api.pipe.FiberContextSwitchInterceptor;
-
 import javafx.animation.TranslateTransition;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,32 +13,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
-import javafx.scene.Parent;
-
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 import javafx.util.Duration;
+import javafx.util.converter.DoubleStringConverter;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-import javax.persistence.criteria.CriteriaBuilder;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ManagerWindow implements Initializable {
@@ -75,6 +66,11 @@ public class ManagerWindow implements Initializable {
     @FXML
     private TableColumn<Doctor, String> docPasswordCol;
 
+    @FXML
+    private TableColumn<Doctor, String> docPhoneCol;
+
+    @FXML
+    private TableColumn<Doctor, String> docCityCol;
     /**
      * price Table
      * */
@@ -124,6 +120,11 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     private TableColumn<Laboratory, String> labPasswordCol;
+    @FXML
+    private TableColumn<Laboratory, String> labPhoneCol;
+
+    @FXML
+    private TableColumn<Laboratory, String> labCityCol1;
 
 
     /**
@@ -155,6 +156,13 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     private TableColumn<Secretary, String> secPasswordCol;
+
+    @FXML
+    private TableColumn<Secretary, String> secPhoneCol;
+
+    @FXML
+    private TableColumn<Secretary, String> secCityCol;
+
 
 
     /**Work Table*/
@@ -258,15 +266,15 @@ public class ManagerWindow implements Initializable {
     @FXML
     private BorderPane pnl_analysis_disease;
 
-    // doctor Lists
-    List<Doctor> doctorList = new DataLoader().loadDoctorsData();
     // prices lists
-    List<Pricing> pricings = new DataLoader().loadPricing();
+    ObservableList<Pricing> pricings =FXCollections.observableArrayList(new DataLoader().loadPricing());
+    // doctor Lists
+    ObservableList<Doctor> doctorList;
     // laboratory lists
-    List<Laboratory> laboratoriesList = new DataLoader().loadLaboratoriestData();
+    ObservableList<Laboratory> laboratoriesList;
 
     // Secretary List
-    List<Secretary> secretaryList = new DataLoader().loadSecretariesData();
+    ObservableList<Secretary> secretaryList;
     /**
      * Laboratory
      * */
@@ -284,27 +292,20 @@ public class ManagerWindow implements Initializable {
         new WindowChangeController().popupWindow(event, "../View/LaboratoryRegistration.fxml");
     }
 
-    @FXML
-    public void editLaboratoryBtn(ActionEvent event) {
-
-    }
-
     public void displayLaboratory(){
+        laboratoriesList = FXCollections.observableArrayList(new DataLoader().loadLaboratoriestData());
         labNoCol1.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(laboratoryTable.getItems().indexOf(column.getValue())));
         labIDCol1.setCellValueFactory(new PropertyValueFactory<Laboratory, Integer>("laboratoryId"));
         labFullNameCol1.setCellValueFactory(l -> new SimpleStringProperty(l.getValue().getFirstName()
                 + " " + l.getValue().getLastName()));
+        labPhoneCol.setCellValueFactory(new PropertyValueFactory<Laboratory, String>("phoneNumber"));
+        labCityCol1.setCellValueFactory(new PropertyValueFactory<Laboratory, String>("city"));
         labAddedDateCol1.setCellValueFactory(new PropertyValueFactory<Laboratory, LocalDate>("addedDate"));
         labStartHrCol1.setCellValueFactory(new PropertyValueFactory<Laboratory,LocalTime>("workingStartTime"));
         labEndHrCol1.setCellValueFactory(new PropertyValueFactory<Laboratory, LocalTime>("workingEndTime"));
         labUserNameCol.setCellValueFactory(new PropertyValueFactory<Laboratory,String>("userName"));
         labPasswordCol.setCellValueFactory(new PropertyValueFactory<Laboratory, String>("password"));
-
-        ObservableList<Laboratory> laboratoryObservableList = FXCollections.observableArrayList();
-        for(Laboratory doctor: laboratoriesList){
-            laboratoryObservableList.add(doctor);
-        }
-        laboratoryTable.setItems(laboratoryObservableList);
+        laboratoryTable.setItems(laboratoriesList);
     }
 
     private void deleteLaboratory() throws IOException {
@@ -339,22 +340,21 @@ public class ManagerWindow implements Initializable {
      * Doctor
      * */
     public void displayDoctors(){
+        doctorList = FXCollections.observableArrayList(new DataLoader().loadDoctorsData());
         noCol.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(doctorTable.getItems().indexOf(column.getValue())));
         docIDCol.setCellValueFactory(new PropertyValueFactory<Doctor, Integer>("doctorID"));
         fullNameCol.setCellValueFactory(d -> new SimpleStringProperty(d.getValue().getFirstName()
                 + " " + d.getValue().getLastName()));
+        docPhoneCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("phoneNumber"));
+        docCityCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("city"));
         addedDateCol.setCellValueFactory(new PropertyValueFactory<Doctor, LocalDate>("addedDate"));
         startHrCol.setCellValueFactory(new PropertyValueFactory<Doctor,LocalTime>("workingStartTime"));
         endHrCol.setCellValueFactory(new PropertyValueFactory<Doctor, LocalTime>("workingEndTime"));
         docUserNameCol.setCellValueFactory(new PropertyValueFactory<Doctor,String>("userName"));
         docPasswordCol.setCellValueFactory(new PropertyValueFactory<Doctor, String>("password"));
-
-        ObservableList<Doctor> patientsList = FXCollections.observableArrayList();
-        for(Doctor doctor: doctorList){
-            patientsList.add(doctor);
-        }
-            doctorTable.setItems(patientsList);
+        doctorTable.setItems(doctorList);
     }
+
     private void deleteDoctor() throws IOException {
         doctorTable.setEditable(true);
         Doctor doctor = doctorTable.getSelectionModel().getSelectedItem();
@@ -391,14 +391,10 @@ public class ManagerWindow implements Initializable {
     }
 
 
-    @FXML
-    public void editDoctorBtn(ActionEvent event) throws IOException {
-    }
 
     @FXML
     public void deleteDoctorBtn(ActionEvent event) throws IOException {
          deleteDoctor();
-
     }
     /**
      * Secretary
@@ -414,26 +410,20 @@ public class ManagerWindow implements Initializable {
         deleteSecretary();
     }
 
-    @FXML
-    public void editSecretaryBtn(ActionEvent event) throws IOException {
-    }
-
     public void displaySecretary(){
+        secretaryList = FXCollections.observableArrayList(new DataLoader().loadSecretariesData());
         secNoCol11.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(secretaryTable1.getItems().indexOf(column.getValue())));
         secIDCol11.setCellValueFactory(new PropertyValueFactory<Secretary, Integer>("secretaryId"));
         secFullNameCol11.setCellValueFactory(s -> new SimpleStringProperty(s.getValue().getFirstName()
                 + " " + s.getValue().getLastName()));
+        secPhoneCol.setCellValueFactory(new PropertyValueFactory<Secretary, String>("phoneNumber"));
+        secCityCol.setCellValueFactory(new PropertyValueFactory<Secretary, String>("city"));
         secAddedDateCol11.setCellValueFactory(new PropertyValueFactory<Secretary, LocalDate>("addedDate"));
         secStartHrCol11.setCellValueFactory(new PropertyValueFactory<Secretary,LocalTime>("workingStartTime"));
         secEndHrCol11.setCellValueFactory(new PropertyValueFactory<Secretary, LocalTime>("workingEndTime"));
         secUserNameCol.setCellValueFactory(new PropertyValueFactory<Secretary,String>("userName"));
         secPasswordCol.setCellValueFactory(new PropertyValueFactory<Secretary,String>("password"));
-
-        ObservableList<Secretary> secretaryObservableList = FXCollections.observableArrayList();
-        for(Secretary secretary: secretaryList){
-            secretaryObservableList.add(secretary);
-        }
-        secretaryTable1.setItems(secretaryObservableList);
+        secretaryTable1.setItems(secretaryList);
     }
 
 
@@ -477,10 +467,67 @@ public class ManagerWindow implements Initializable {
 
     @FXML
     void editPriceBtn(ActionEvent event) {
-        editSaveBtn.setText("Save");
+//        editSaveBtn.setText("Save");
+        testTable.setEditable(true);
+//        editSaveBtn.setVisible(false);
+        cellEdit();
     }
 
+    void cellEdit() {
+        testNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        testNameCol.setOnEditCommit(event1 -> {
+            final String name = event1.getNewValue() != null ? event1.getNewValue() :
+                    event1.getOldValue();
+            editName(name);
+        });
+        priceCol.setCellFactory(TextFieldTableCell.<Pricing, Double>forTableColumn(new DoubleStringConverter()));
+            priceCol.setOnEditCommit(event1 -> {
+                    final Double price = event1.getNewValue() != null ? event1.getNewValue() :
+                            event1.getOldValue();
+                    editPrice(price);
+            });
+    }
 
+    void editName(String name){
+        Pricing pricing = testTable.getSelectionModel().getSelectedItem();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pricing.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+            session.beginTransaction();
+            Pricing pricing1 = session.get(Pricing.class, pricing.getPriceId());
+            pricing1.setTestName(name);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
+    void editPrice(Double price){
+        Pricing pricing = testTable.getSelectionModel().getSelectedItem();
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Pricing.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+            session.beginTransaction();
+            Pricing pricing1 = session.get(Pricing.class, pricing.getPriceId());
+            pricing1.setPrice(price);
+            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
     private void displayPrice(){
         testIdCol.setCellValueFactory(new PropertyValueFactory<Pricing, Integer>("priceId"));
         testNameCol.setCellValueFactory(new PropertyValueFactory<Pricing,String>("testName"));
@@ -491,7 +538,6 @@ public class ManagerWindow implements Initializable {
             pricingList.add(pricing);
         }
         testTable.setItems(pricingList);
-
     }
 
     @Override
@@ -565,13 +611,16 @@ public class ManagerWindow implements Initializable {
     @FXML
     void handleButtonAction(ActionEvent event) throws IOException {
         if(event.getSource() == btn_doctors){
+            displayDoctors();
             changeInnerWindow(true,false,false,false,false,false,false,false);
         }
         else if(event.getSource() == btn_lab){
+            displayLaboratory();
             changeInnerWindow(false,true,false,false,false,false,false,false);
 
         }
         else if(event.getSource() == btn_secretaries){
+            displaySecretary();
             changeInnerWindow(false,false,true,false,false,false,false, false);
 
         }

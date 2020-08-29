@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 
 public class DoctorWindowController implements Initializable {
 
-    public static Doctor currentDoctor;
+    private static Doctor currentDoctor;
     // profile
     @FXML
     private ImageView exitBtn;
@@ -183,7 +183,17 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private BorderPane diseasePane;
 
+
+    public static Doctor getCurrentDoctor() {
+        return currentDoctor;
+    }
+
+    public static void setCurrentDoctor(Doctor currentDoctor) {
+        DoctorWindowController.currentDoctor = currentDoctor;
+    }
+
     public int DoctorId=22;
+
 
     /** this function insert data from database to the record table **/
     private void populateRecordTable(){
@@ -234,13 +244,13 @@ public class DoctorWindowController implements Initializable {
     }
     // profile handler
     private void textFieldStatus(boolean status) {
-        firstNameTf.setEditable(status);
-        lastNameTf.setEditable(status);
+        firstNameTf.setEditable(false);
+        lastNameTf.setEditable(false);
         passwordTf.setEditable(status);
-        genderTf.setEditable(status);
-        cityTf.setEditable(status);
+        genderTf.setEditable(false);
+        cityTf.setEditable(false);
         proUserNameTf.setEditable(status);
-        phonTf.setEditable(status);
+        phonTf.setEditable(false);
         startHrTf.setEditable(false);
         endHrTf.setEditable(false);
     }
@@ -310,17 +320,11 @@ public class DoctorWindowController implements Initializable {
                 new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
             }else {
                 if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),proUserNameTf.getText())){
-//                    if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
-//                            ExceptionHandler.isLetter(genderTf.getText(), genderTf)&& ExceptionHandler.isLetter(cityTf.getText(),cityTf) &&
-//                            ExceptionHandler.ValidatePhone(phonTf.getText(),phonTf)){
-                            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-                            if(Warning.isOk){
-                                session.getTransaction().commit();
-                                NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
-                            }
-//                    }else {
-//                        new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
-//                    }
+                    new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                    if(Warning.isOk) {
+                        session.getTransaction().commit();
+                        NotificationController.savedNotification("Profile Edited", "Profile Updated successfully!", "warn_confirm.png");
+                    }
                 }else {
                     new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
                 }
