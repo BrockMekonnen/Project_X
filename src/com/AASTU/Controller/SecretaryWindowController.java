@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -104,7 +105,7 @@ public class SecretaryWindowController implements Initializable {
     private TableColumn<Patient, Character> sexCol;
 
     @FXML
-    private TableColumn<Patient, Integer> ageCol;
+    private TableColumn<Patient, Double> ageCol;
 
     @FXML
     private TableColumn<Patient, LocalDate> addedDateCol;
@@ -457,7 +458,6 @@ public class SecretaryWindowController implements Initializable {
         cityColRec.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
         recordTable.setItems(allPatientList);
     }
-
     // method to display the registered patients to the table
     public  void displayPatients() {
         normalPatientList =FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0 and patientStatus = 1"));
@@ -468,7 +468,8 @@ public class SecretaryWindowController implements Initializable {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
         sexCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
-        ageCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
+        ageCol.setCellValueFactory(new PropertyValueFactory<Patient, Double>("age"));
+
         addedDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
         phoneNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
         cityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
