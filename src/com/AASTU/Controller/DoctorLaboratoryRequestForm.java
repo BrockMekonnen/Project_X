@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -228,7 +229,25 @@ public class DoctorLaboratoryRequestForm implements Initializable {
     @FXML
     private JFXCheckBox rbs;
 
-
+    private boolean checkSelectEmpity(){
+        if(rbs.isSelected() || fbs.isSelected() || hivAids.isSelected() || afb.isSelected() || wetFilm.isSelected() || gramStain.isSelected()
+                || bactKoh.isSelected() || bactHpyloriStool.isSelected() || seroHpyloriSerum.isSelected() || seroRheumatoidFactor.isSelected()
+                || seroAso.isSelected() || seroCrp.isSelected() || seroHbsag.isSelected() || seroWellFelix.isSelected() || seroWidall.isSelected()
+                || seroVdrl.isSelected() || urinBacteria.isSelected() || urinCasts.isSelected() || urinRbc.isSelected() || urinWbc.isSelected()
+                || urinEpitCells.isSelected() || urinBlood.isSelected() || urinUrobilinogen.isSelected() || urinBilirubin.isSelected()
+                || urinKetone.isSelected() || urinGlucose.isSelected() || urinProtein.isSelected() || urinPsg.isSelected() || urinPh.isSelected()
+                || urinAppearance.isSelected() || urinColor.isSelected() || cholesterol.isSelected() || totalProtein.isSelected()
+                || uricAcid.isSelected() || creatinine.isSelected() || bun.isSelected() || bilirubinDirect.isSelected() || bilirubinTotal.isSelected()
+                || alkalinePhosphate.isSelected() || sgpt.isSelected() || sgot.isSelected() || ovalParasite.isSelected() || consistency.isSelected()
+                || occultBlood.isSelected() || stoolTest.isSelected() || BloodFilm.isSelected() || BloodGroupRh.isSelected() || cbcEsr.isSelected()
+                || cbcPlcr.isSelected() || cbcPct.isSelected() || cbcPlt.isSelected() || cbcHct.isSelected() || cbcRdwCv.isSelected() || cbcMcv.isSelected()
+                || cbcMch.isSelected() || cbcMchc.isSelected() || cbcHgb.isSelected() || cbcRbc.isSelected() || cbcGra.isSelected() || cbcMid.isSelected()
+                || cbcLym.isSelected() || cbcWbc.isSelected()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     @FXML
     private JFXTextField nameFld;
@@ -243,6 +262,9 @@ public class DoctorLaboratoryRequestForm implements Initializable {
     private JFXTextField dateFld;
 
     private Patient patient;
+
+
+
 
     public void setData(Patient patient){
         this.patient = patient;
@@ -347,10 +369,9 @@ public class DoctorLaboratoryRequestForm implements Initializable {
         ovalParasite.setSelected(selectAllParasitology.isSelected());
     }
 
-    @FXML
-    void handleSendButton(ActionEvent event) {
+    /** get the selected check box  */
+    private LabRequest getSelected(){
         LabRequest labRequest = new LabRequest();
-
         labRequest.getCbs().getWbc().setTest(cbcWbc.isSelected());
         labRequest.getCbs().getLym().setTest(cbcLym.isSelected());
         labRequest.getCbs().getMid().setTest(cbcMid.isSelected());
@@ -424,6 +445,26 @@ public class DoctorLaboratoryRequestForm implements Initializable {
         labRequest.getOthers().getAfb().setTest(afb.isSelected());
         labRequest.getOthers().getHivAids().setTest(hivAids.isSelected());
 
+        return labRequest;
+    }
+
+
+    @FXML
+    void handleSendButton(ActionEvent event) throws IOException {
+        WindowChangeController warn = new WindowChangeController();
+        DataLoader loader = new DataLoader();
+
+        LabRequest labRequest = getSelected();
+        if(!checkSelectEmpity()){
+            warn.warningPopup("Not Selected", "you have not selected any test", "warn_exclamation.png");
+            return;
+        }
+
+        warn.warningPopup("Confirm Saving", "Are you sure you went to save it?", "warn_confirm.png");
+        if(!Warning.isIsOk()){
+            return;
+        }
+
         new DataSaver().saveLabResult(patient, labRequest);
 
         patient.setSecActives(true);
@@ -432,7 +473,8 @@ public class DoctorLaboratoryRequestForm implements Initializable {
         patient.setPayed(false);
 
         new DataSaver().saveEditedPatient(patient);
-
+        WindowChangeController.closeWindow();
+        WindowChangeController.closeWindow();
     }
 
     @Override

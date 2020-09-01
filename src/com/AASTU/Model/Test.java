@@ -20,26 +20,25 @@ public class Test {
 
         SessionFactory factory = new Configuration()
                                 .configure("hibernate.cfg.xml")
-                                .addAnnotatedClass(Pricing.class)
 
-//                                .addAnnotatedClass(Pricing.class)
-//                                .addAnnotatedClass(DiseaseType.class)
-//                                .addAnnotatedClass(Patient.class)
-//                                .addAnnotatedClass(ClinicalNotes.class)
-//                                .addAnnotatedClass(TestProperty.class)
-//                                .addAnnotatedClass(Parasitology.class)
-//                                .addAnnotatedClass(Bacteriology.class)
-//                                .addAnnotatedClass(Microscopy.class)
-//                                .addAnnotatedClass(Chemistry.class)
-//                                .addAnnotatedClass(Dipstick.class)
-//                                .addAnnotatedClass(Others.class)
-//                                .addAnnotatedClass(Cbs.class)
-//                                .addAnnotatedClass(Serology.class)
-//                                .addAnnotatedClass(LabRequest.class)
-//                                .addAnnotatedClass(IncomeAnalysis.class)
-//                                .addAnnotatedClass(DiseaseRecord.class)
-//                                .addAnnotatedClass(PatientAnalysis.class)
-//                                .addAnnotatedClass(AgeScale.class)
+                                .addAnnotatedClass(Pricing.class)
+                                .addAnnotatedClass(DiseaseType.class)
+                                .addAnnotatedClass(Patient.class)
+                                .addAnnotatedClass(ClinicalNotes.class)
+                                .addAnnotatedClass(TestProperty.class)
+                                .addAnnotatedClass(Parasitology.class)
+                                .addAnnotatedClass(Bacteriology.class)
+                                .addAnnotatedClass(Microscopy.class)
+                                .addAnnotatedClass(Chemistry.class)
+                                .addAnnotatedClass(Dipstick.class)
+                                .addAnnotatedClass(Others.class)
+                                .addAnnotatedClass(Cbs.class)
+                                .addAnnotatedClass(Serology.class)
+                                .addAnnotatedClass(LabRequest.class)
+                                .addAnnotatedClass(IncomeAnalysis.class)
+                                .addAnnotatedClass(DiseaseRecord.class)
+                                .addAnnotatedClass(PatientAnalysis.class)
+                                .addAnnotatedClass(AgeScale.class)
 
                                 .buildSessionFactory();
 
@@ -78,11 +77,11 @@ public class Test {
 //
 //
 
-//            Patient patient1 = new Patient("Abrish","TD",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
-//            Patient patient2 = new Patient("Alex","AD",44,'m',LocalDate.now(),"326598","city","cc","kk","5");
-//            Patient patient3 = new Patient("Dagi","AB",44,'m',LocalDate.now(),"125465","city","cc","kk","5");
-//            Patient patient4 = new Patient("Dagi","KB",44,'m',LocalDate.now(),"985412","city","cc","kk","5");
-//            Patient patient5 = new Patient("Amani","AL",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
+            Patient patient1 = new Patient("Abrish","TD",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
+            Patient patient2 = new Patient("Alex","AD",34,'m',LocalDate.now(),"326598","city","cc","kk","5");
+            Patient patient3 = new Patient("Dagi","AB",24,'m',LocalDate.now(),"125465","city","cc","kk","5");
+            Patient patient4 = new Patient("Dagi","KB",14,'m',LocalDate.now(),"985412","city","cc","kk","5");
+            Patient patient5 = new Patient("Amani","AL",4,'m',LocalDate.now(),"124578","city","cc","kk","5");
 
 //
 //            ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"this is for test!","docId");
@@ -96,6 +95,7 @@ public class Test {
 
 
 
+
 //            session.save(patient2);
 //            session.save(patient1);
 //            session.save(patient3);
@@ -103,19 +103,20 @@ public class Test {
 //            session.save(patient5);
 
 
-//            List<Patient> patientList = session.createQuery("from Patient where patientStatus = 1").list();
+//            List<Patient> patientList = session.createQuery("from Patient where patientStatus = 0").list();
 //            for(Patient temp : patientList){
+//                temp.setPatientStatus(true);
 //                temp.setDocActives(true);
 //            }
 
-//            List<IncomeAnalysis> list = new ArrayList<>();
-//
-//            for(int i=0, j=5000; i<19; i++){
-//                list.add(i,new IncomeAnalysis(LocalDate.of(2020,8,i+1), j-=70));
-//            }
-//            for(IncomeAnalysis temp: list){
-//                session.save(temp);
-//            }
+            List<IncomeAnalysis> list = new ArrayList<>();
+
+            for(int i=0, j=4000; i<31; i++){
+                list.add(i,new IncomeAnalysis(LocalDate.of(2020,5,i+1), j+=35));
+            }
+            for(IncomeAnalysis temp: list){
+                session.save(temp);
+            }
 
 
 //            AgeScale scale = new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6);
@@ -123,8 +124,13 @@ public class Test {
 //            AgeScale scale3 = new AgeScale(5,1,10,4,1,13,7,2,8,10,3,6);
 //            AgeScale scale4 = new AgeScale(55,97,168,502,706,910,77,220,812,1001,1204,656);
 //            List<DiseaseRecord> diseaseRecordList = new ArrayList<>();
+
+//            for(int i=0; i<26;i++){
+//                diseaseRecordList.add(i,new DiseaseRecord(LocalDate.of(2020,8,i+1),"Ebola", scale3));
+
 //            for(int i=0; i<22;i++){
 //                diseaseRecordList.add(i,new DiseaseRecord(LocalDate.of(2020,8,i+1),"Corona virus", scale4));
+
 //            }
 //            for(DiseaseRecord temp: diseaseRecordList){
 //                session.save(temp);
@@ -132,6 +138,11 @@ public class Test {
 //
 //            session.save(new DiseaseRecord(LocalDate.now(),"Ebola", new AgeScale( 1, 3, 5, 11, 7 , 12, 0, 13, 14, 11, 12, 15)));
 
+
+
+
+//            Pricing pricing = new Pricing(20,"Card");
+//                session.save(pricing);
 
 
 //            Pricing pricing1 = new Pricing(20,"H.PYLORI STOOL");
@@ -269,6 +280,7 @@ public class Test {
 //            session.save(pricing65);
 //            session.save(pricing66);
 //            session.save(pricing67);
+
             session.getTransaction().commit();
 
         } finally {
