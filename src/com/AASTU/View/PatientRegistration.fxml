@@ -7,6 +7,7 @@
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -94,28 +95,6 @@
                         <Insets left="190.0" top="270.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXTextField fx:id="birthMonthTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="46.0" promptText=" Month" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                     <effect>
-                        <DropShadow color="#29b6f6" />
-                     </effect>
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="245.0" top="270.0" />
-                     </StackPane.margin>
-                  </JFXTextField>
-                  <JFXTextField fx:id="birthYearTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="50.0" promptText=" Year" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                     <effect>
-                        <DropShadow color="#29b6f6" />
-                     </effect>
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="305.0" top="270.0" />
-                     </StackPane.margin>
-                  </JFXTextField>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Phone Number" textFill="#01579b" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="13.0" />
@@ -156,7 +135,7 @@
                         <Insets left="150.0" top="330.0" />
                      </StackPane.margin>
                   </JFXTextField>
-                  <JFXComboBox fx:id="cboCalender" prefHeight="30.0" prefWidth="74.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
+                  <JFXComboBox fx:id="cboCalender" prefHeight="33.0" prefWidth="83.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="E.C" />
@@ -164,7 +143,7 @@
                         </FXCollections>
                      </items>
                      <StackPane.margin>
-                        <Insets left="370.0" top="270.0" />
+                        <Insets left="580.0" top="270.0" />
                      </StackPane.margin>
                   </JFXComboBox>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="111.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Address" textFill="#01579b" StackPane.alignment="TOP_LEFT">
@@ -275,6 +254,21 @@
                         <Insets right="20.0" top="20.0" />
                      </StackPane.margin>
                   </JFXTextField>
+                  <ComboBox fx:id="yearCombo" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="104.0" promptText="Year" style="-fx-border-color: #01579B; -fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="450.0" top="270.0" />
+                     </StackPane.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="monthCombo" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="103.0" promptText="Month" style="-fx-border-color: #01579B; -fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="310.0" top="270.0" />
+                     </StackPane.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="dayCombo" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="84.0" promptText="Day" style="-fx-border-color: #01579B; -fx-background-color: #fff;" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="190.0" top="270.0" />
+                     </StackPane.margin>
+                  </ComboBox>
                </children>
             </StackPane>
          </children>

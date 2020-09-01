@@ -9,18 +9,13 @@ import java.io.IOException;
 public class ExceptionHandler  extends Exception{
     static ValidationSupport validationSupport = new ValidationSupport();
     static boolean validateNum(String numString, TextField textField) throws IOException {
-        if(numString.matches("[0-9]+")){
+        try {
+            Double.parseDouble(numString);
             return true;
-        }else {
+        }catch (NumberFormatException e) {
             validationSupport.registerValidator(textField, Validator.createEmptyValidator("Invalid input, Please Enter Number"));
             return false;
         }
-//      try{
-//          Integer.parseInt(numString);
-//           return true;
-//      }catch (NumberFormatException e){
-//          return false;
-//      }
   }
 
   static boolean ValidatePhone(String ph, TextField textField) throws IOException {

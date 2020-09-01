@@ -3,23 +3,33 @@ package com.AASTU.Controller;
 import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
 import com.jfoenix.controls.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import org.controlsfx.validation.ValidationSupport;
-import org.controlsfx.validation.Validator;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.joda.time.DateTime;
+import org.joda.time.chrono.EthiopicChronology;
+import org.joda.time.chrono.GregorianChronology;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.chrono.Chronology;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 
 public class PatientRegistration implements Initializable{
@@ -46,16 +56,16 @@ public class PatientRegistration implements Initializable{
     private JFXTextField lastNameTf;
 
     @FXML
-    private JFXComboBox<?> cboGender;
+    private JFXComboBox<String> cboGender;
 
     @FXML
-    private JFXTextField birthDayTf;
+    private ComboBox<Integer> yearCombo;
 
     @FXML
-    private JFXTextField birthMonthTf;
+    private ComboBox<String> monthCombo;
 
     @FXML
-    private JFXTextField birthYearTf;
+    private ComboBox<Integer> dayCombo;
 
     @FXML
     private JFXTextField phoneNumberTf;
@@ -102,16 +112,139 @@ public class PatientRegistration implements Initializable{
     public static LocalDate startDate;
 
     public static LocalDate endDate;
+    private int day;
+    private int month;
+    private int year;
 
-    private String firstName;
-    private int age;
-    private String phoneNo;
-    private char sex;
+    ObservableList<String> months = FXCollections.observableArrayList("January","February","March","April","May","Jun","July","August","September","October","November","December");
+    ObservableList<Integer> years = FXCollections.observableArrayList();
+    ObservableList<Integer> days = FXCollections.observableArrayList();
 
+    void arrange(){
+        for(int i =LocalDate.now().getYear(); i>= 1920; i--){
+            years.add(i);
+        }
+        for(int i=1;i<= 31;i++){
+            days.add(i);
+        }
+        yearCombo.setItems(years);
+        monthCombo.setItems(months);
+        dayCombo.setItems(days);
+    }
+    void checkBirth(){
+        if(cboCalender.getValue().equals("E.C")){
+            DateTime ethioDate = new DateTime(yearCombo.getValue(), getIntMonth(monthCombo.getValue()), dayCombo.getValue(),12,0, 0,EthiopicChronology.getInstance());
+            DateTime gcDate = ethioDate.withChronology(GregorianChronology.getInstance());
+            System.out.println(gcDate.getYear());
+            year = gcDate.getYear();
+            System.out.println(gcDate.getMonthOfYear());
+            month = gcDate.getMonthOfYear();
+            System.out.println(gcDate.getDayOfMonth());
+            day = gcDate.getDayOfMonth();
+        }else if(cboCalender.getValue().equals("G.C")){
+            year = yearCombo.getValue();
+            month = getIntMonth(monthCombo.getValue());
+            day = dayCombo.getValue();
+        }
+
+    }
+    private int getIntMonth(String stringMonth){
+        if(cboCalender.getValue().equals("E.C")){
+            switch (stringMonth){
+                case "January":
+                    month = 5;
+                    break;
+                case "February":
+                    month =6;
+                    break;
+                case "March":
+                    month = 7;
+                    break;
+                case "April":
+                    month = 8;
+                    break;
+                case "May":
+                    month =9;
+                    break;
+                case "Jun":
+                    month =10;
+                    break;
+                case "July":
+                    month =11;
+                    break;
+                case "August":
+                    month = 12;
+                    break;
+                case "September":
+                    month = 1;
+                    break;
+                case "October":
+                    month =2;
+                    break;
+                case "November":
+                    month =3;
+                    break;
+                case "December":
+                    month = 4;
+                    break;
+            }
+        }else if(cboCalender.getValue().equals("G.C")){
+            switch (stringMonth){
+                case "January":
+                    month = 1;
+                    break;
+                case "February":
+                    month =2;
+                    break;
+                case "March":
+                    month = 3;
+                    break;
+                case "April":
+                    month = 4;
+                    break;
+                case "May":
+                    month =5;
+                    break;
+                case "Jun":
+                    month =6;
+                    break;
+                case "July":
+                    month =7;
+                    break;
+                case "August":
+                    month = 8;
+                    break;
+                case "September":
+                    month = 9;
+                    break;
+                case "October":
+                    month =10;
+                    break;
+                case "November":
+                    month =11;
+                    break;
+                case "December":
+                    month = 12;
+                    break;
+            }
+        }
+        return month;
+
+    }
+    private char getSex(String genderType){
+        char sex = 0;
+        if (genderType.equals("Male")) {
+            sex = 'm';
+        } else if (genderType.equals("Female")) {
+            sex = 'f';
+        }
+        return sex;
+    }
     // to check all text fields are get data
     public boolean validatUserInput() throws IOException {
         if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
-                lastNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
+                lastNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() || dayCombo.getSelectionModel().isEmpty()||
+                monthCombo.getSelectionModel().isEmpty()|| yearCombo.getSelectionModel().isEmpty() || cboCalender.getValue().isEmpty()||
                 ageTf.getText().isEmpty()|| ageTf.getText().trim().isEmpty() || phoneNumberTf.getText().isEmpty() ||
                 phoneNumberTf.getText().trim().isEmpty() || cityTf.getText().isEmpty() || cityTf.getText().trim().isEmpty() ||
                 subcityTf.getText().isEmpty() || subcityTf.getText().trim().isEmpty() || kebeleTf.getText().isEmpty() ||
@@ -142,15 +275,10 @@ public class PatientRegistration implements Initializable{
         try {
 
             session.beginTransaction();
-
-            if (cboGender.getValue().toString().equals("Male")) {
-                sex = 'm';
-            } else if (cboGender.getValue().toString().equals("Female")) {
-                sex = 'f';
-            }
+            checkBirth();
             //this if condition is temporary and it is not finished
             if (NewOutPatient.isAdd && Warning.isOk) {
-                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Double.parseDouble(ageTf.getText()),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 outPatient.setStartDate(startDate);
                 outPatient.setEndDate(endDate);
                 outPatient.setPatientStatus(true);
@@ -162,7 +290,7 @@ public class PatientRegistration implements Initializable{
                 NewOutPatient.isAdd = false;
             } else {
 
-               Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(), Integer.parseInt(ageTf.getText()), sex, LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+               Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Double.parseDouble(ageTf.getText()),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 patient.setOutPatinet(false);
 
                 patient.setPatientStatus(true);
@@ -184,6 +312,7 @@ public class PatientRegistration implements Initializable{
         cboCalender.getSelectionModel().select("E.C");
         patientAddedDateTF.setDisable(true);
         patientAddedDateTF.setText(LocalDate.now().format( DateTimeFormatter.ofPattern("dd/LLLL/yyyy")));
+        arrange();
     }
 
     public void ConfirmationAction() throws IOException {

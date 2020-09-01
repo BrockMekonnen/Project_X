@@ -21,7 +21,16 @@ public class Patient {
     private String lastName;
 
     @Column(name = "age")
-    private int age;
+    private double age;
+
+    @Column(name = "birth_day")
+    private int birthDay;
+
+    @Column(name = "birth_month")
+    private int birthMonth;
+
+    @Column(name = "birth_year")
+    private int birthYear;
 
     @Column(name = "sex")
     private char sex;
@@ -115,10 +124,13 @@ public class Patient {
         this.requests = null;
     }
 
-    public Patient(String firstName, String lastName, int age, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber) {
+    public Patient(String firstName, String lastName, double age, int birthDay, int birthMonth, int birthYear, char sex, LocalDate date, String phoneNumber, String city, String subcity, String kebele, String houseNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.birthDay = birthDay;
+        this.birthMonth = birthMonth;
+        this.birthYear = birthYear;
         this.sex = sex;
         this.date = date;
         this.phoneNumber = phoneNumber;
@@ -244,11 +256,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public double getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(double age) {
         this.age = age;
     }
 
@@ -306,6 +318,30 @@ public class Patient {
 
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    public int getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public int getBirthMonth() {
+        return birthMonth;
+    }
+
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
     public List<ClinicalNotes> getNotes() {
