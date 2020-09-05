@@ -154,12 +154,12 @@ public class LaboratoryWindowController implements Initializable {
     private AnchorPane recordPnl;
 
 
-    ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-    ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
+    ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
+    ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1"));
 
     //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
-    ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+ currentLaboratory.getLaboratoryId()));
-    ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
+    ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0"));
+    ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
     void goToView(boolean active, boolean pending, boolean record, boolean waiting){
         pendingPnl.setVisible(pending);
         waitingPnl.setVisible(waiting);
@@ -190,7 +190,7 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     void handleRecordButton(ActionEvent event) {
         //Some specification will be done here To Access Patients that are treated by Specific Laboratory Technician
-        RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
+        RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient"));
         TableOperation();
         goToView(false,false,true,false);
         SearchField();
@@ -255,6 +255,7 @@ public class LaboratoryWindowController implements Initializable {
         }
         editBtn.setText("Save");
     }
+
     private boolean compareLaboratoryObjs(Laboratory obj1, Laboratory obj2){
         if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
                 Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
@@ -263,6 +264,7 @@ public class LaboratoryWindowController implements Initializable {
         }
         return false;
     }
+
     public void editProfile() throws IOException {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -377,6 +379,22 @@ public class LaboratoryWindowController implements Initializable {
         ActivePhoneNumberCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
         ActiveCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
         ActivePatientTableView.setItems(ActivePatientList);
+        RecordedPatientTableView.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = RecordedPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().PopUpLabRecord(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+//                         new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
         /**Recorded Patient on the laboratory Technician Id **/
         RecordKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
         RecordSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
