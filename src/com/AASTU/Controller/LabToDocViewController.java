@@ -109,12 +109,14 @@ public class LabToDocViewController implements Initializable {
                 catch (Exception e){
                     e.printStackTrace();
             }
-            }
+             }
             else {
                     try{
                 FXMLLoader loader=new FXMLLoader(getClass().getResource("../View/NoResultIsHere.fxml"));
                 AnchorPane root=loader.load();
-                VboxForChildren.getChildren().add(root);}catch (Exception e){
+                VboxForChildren.getChildren().add(root);
+                    Next.setVisible(false);
+                    }catch (Exception e){
                     e.printStackTrace();}
             }
                 setObjectComponents(patient);
