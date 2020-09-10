@@ -69,7 +69,6 @@ public class DataSaver {
             request=result;
             session.update(request);
             session.getTransaction().commit();
-            updateActivity(patient.getPatientId(),LaboratoryWindowController.getCurrentLaboratory().getFirstName()+" "+LaboratoryWindowController.getCurrentLaboratory().getLastName()+" Send Patient's Laboratory Result to Doctor",2,LocalDate.now(),getCurrentLaboratory().getLaboratoryId());
         } finally {
             factory.close();
             session.close();

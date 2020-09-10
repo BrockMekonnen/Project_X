@@ -23,6 +23,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import static com.AASTU.Controller.LaboratoryWindowController.getCurrentLaboratory;
+
 public class LabToDoc implements Initializable {
 
     private String text;
@@ -814,10 +816,15 @@ public class LabToDoc implements Initializable {
         labRequest.getOthers().getGramStain().setValue(Gram_Stain_TF.getText());
         labRequest.getOthers().getHivAids().setValue(cbo_aids.getSelectionModel().getSelectedItem());
 
-        if(waiting)
+        String message=" Send Patient's Laboratory Result to Doctor";
+
+        if(waiting){
             check=true;
+            message=" Send Patient's Laboratory Result Waiting List";
+        }
         if(check){
-            labRequest.setLabTechnicianId(String.valueOf(LaboratoryWindowController.currentLaboratory.getLaboratoryId()));
+            new DataSaver().updateActivity(patient.getPatientId(),LaboratoryWindowController.getCurrentLaboratory().getFirstName()+" "+LaboratoryWindowController.getCurrentLaboratory().getLastName()+message,2,LocalDate.now(),getCurrentLaboratory().getLaboratoryId());
+            labRequest.setLabTechnicianId(String.valueOf(LaboratoryWindowController.getCurrentLaboratory().getLaboratoryId()));
         new DataSaver().updateLabresult(patient,labRequest,labRequest.getId());
         patient.setOnWaiting(waiting);
         patient.setDocActives(docActive);
