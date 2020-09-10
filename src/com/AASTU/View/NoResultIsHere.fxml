@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="1100.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.RecordPatientView">
+   <children>
+      <Label alignment="CENTER" layoutX="101.0" layoutY="286.0" prefHeight="528.0" prefWidth="918.0" text="This Patient has No Laboratory Result">
+         <font>
+            <Font name="Georgia" size="51.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

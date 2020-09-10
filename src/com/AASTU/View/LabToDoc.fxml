@@ -11,22 +11,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1200.0" style="-fx-background-color: transparent;" stylesheets="@LabToDoc.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LabToDoc">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1200.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" stylesheets="@LabToDoc.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LabToDoc">
    <children>
-      <GridPane layoutX="14.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane layoutX="2.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1088.0" prefWidth="1198.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" maxWidth="369.0" minWidth="0.0" prefWidth="60.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="689.0" minWidth="10.0" prefWidth="350.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="550.0" minWidth="10.0" prefWidth="350.0" />
-            <ColumnConstraints halignment="CENTER" maxWidth="1485.0" minWidth="10.0" prefWidth="350.0" />
-            <ColumnConstraints maxWidth="1485.0" minWidth="10.0" prefWidth="90.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="369.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="689.0" minWidth="10.0" prefWidth="344.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="597.0" minWidth="10.0" prefWidth="466.0" />
+            <ColumnConstraints halignment="CENTER" maxWidth="1485.0" minWidth="10.0" prefWidth="389.0" />
+            <ColumnConstraints maxWidth="1485.0" minWidth="0.0" prefWidth="0.0" />
+            <ColumnConstraints maxWidth="1485.0" minWidth="0.0" prefWidth="0.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1048.0" minHeight="10.0" prefHeight="1048.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="544.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="1">
@@ -382,7 +385,7 @@
                   <CheckBox fx:id="Creatinine_CheckBox" layoutX="261.0" layoutY="968.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                </children>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="971.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1048.0" prefWidth="318.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
                <children>
                   <Label alignment="CENTER" layoutX="41.0" layoutY="731.0" prefHeight="27.0" prefWidth="115.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Gram Stain">
                      <font>
@@ -579,11 +582,18 @@
                   <CheckBox fx:id="ASO_CheckBox" layoutX="270.0" layoutY="423.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="Rheumatoid_Factor_CheckBox" layoutX="270.0" layoutY="455.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="H_Pylori_Serum_CheckBox" layoutX="270.0" layoutY="487.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
-                  <JFXButton buttonType="RAISED" layoutX="16.0" layoutY="995.0" onAction="#send" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Send" />
-                  <JFXButton buttonType="RAISED" layoutX="123.0" layoutY="993.0" onAction="#wait" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Waiting" />
-                  <JFXButton buttonType="RAISED" layoutX="225.0" layoutY="994.0" onAction="#cancel" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Cancel" />
                </children>
             </AnchorPane>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <children>
+                  <JFXButton fx:id="sendbtn" buttonType="RAISED" onAction="#send" prefHeight="43.0" prefWidth="116.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Send" />
+                  <JFXButton fx:id="waitbtn" buttonType="RAISED" onAction="#wait" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Waiting" />
+                  <JFXButton fx:id="cancelbtn" buttonType="RAISED" onAction="#cancel" prefHeight="43.0" prefWidth="116.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Cancel" />
+               </children>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </HBox>
          </children>
       </GridPane>
    </children>

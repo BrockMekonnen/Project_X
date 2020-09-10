@@ -2,6 +2,7 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.Patient;
+import com.AASTU.Model.Laboratory;
 import com.AASTU.Model.Pricing;
 import com.AASTU.Model.WorkActivity;
 import javafx.collections.ObservableList;
@@ -159,12 +160,31 @@ public class WindowChangeController {
         temp.showAndWait();
 
     }
+
     public void popupWindow1(MouseEvent event,String fxml,Patient obj) throws IOException{
 
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         LabToDocViewController view = loader.getController(); // get the controller of DoctorPatientView
         view.setWindow(obj,"../View/LabToDoc.fxml"); // assign some information from the object to the Scene
+        Stage temp = new Stage();
+        Scene scene = new Scene(root);
+        temp.setScene(scene);
+        temp.initStyle(StageStyle.UNDECORATED);
+        temp.initModality(Modality.APPLICATION_MODAL);
+        popupStage[windowCount] = temp;
+        windowCount++;
+        temp.showAndWait();
+
+    }
+
+
+    public void PopUpLabRecord(MouseEvent event,String fxml,Patient obj) throws IOException{
+
+        FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
+        Parent root = loader.load();
+        LabToDocViewController view = loader.getController(); // get the controller of DoctorPatientView
+        view.setWindowRecord(obj,"../View/RecordPatientView.fxml"); // assign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);

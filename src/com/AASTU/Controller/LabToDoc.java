@@ -1,140 +1,153 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Main;
 import com.AASTU.Model.LabRequest;
+import com.AASTU.Model.Laboratory;
 import com.AASTU.Model.LaboratoryRequest.*;
 import com.AASTU.Model.Patient;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.corba.se.spi.monitoring.LongMonitoredAttributeBase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
-import javax.xml.crypto.Data;
-import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class LabToDoc implements Initializable {
 
-    @FXML
-    private JFXTextField Hema_HBC_TF,Wet_Film_TF;
+    private String text;
+
 
     @FXML
-    private JFXTextField LYMTF,AFB_TF;
+    private JFXTextField Hema_HBC_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField GRA_TF;
+    private JFXTextField Wet_Film_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField MID_TF;
+    private JFXTextField LYMTF=new JFXTextField(),AFB_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField Hema_RBC_TF,RBC_TF;
+    private JFXTextField GRA_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField HGB_TF;
+    private JFXTextField MID_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField MCHC_TF;
+    private JFXTextField Hema_RBC_TF=new JFXTextField(),RBC_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField MCH_TF;
+    private JFXTextField HGB_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField MCB_TF;
+    private JFXTextField MCHC_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField RDW_CY_TF;
+    private JFXTextField MCH_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField HCT_TF;
+    private JFXTextField MCB_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField PLT_TF;
+    private JFXTextField RDW_CY_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField PCT_TF;
+    private JFXTextField HCT_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField P_LCT_TF;
+    private JFXTextField PLT_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField ESR_TF;
+    private JFXTextField PCT_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField Blood_Group_TF;
+    private JFXTextField P_LCT_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField Blood_Film_TF;
+    private JFXTextField ESR_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField STOOL_TEST_TF;
+    public JFXTextField Blood_Group_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField OCCULT_BLOOD_TF;
+    private JFXTextField Blood_Film_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField CONSISTENCY_TF1;
+    private JFXTextField STOOL_TEST_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField CONSISTENCY_TF2;
+    private JFXTextField OCCULT_BLOOD_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField OVAL_PARASITE_TF1;
+    private JFXTextField CONSISTENCY_TF1=new JFXTextField();
 
     @FXML
-    private JFXTextField OVAL_PARASITE_TF2;
+    private JFXTextField CONSISTENCY_TF2=new JFXTextField();
 
     @FXML
-    private JFXTextField OVAL_PARASITE_TF3;
+    private JFXTextField OVAL_PARASITE_TF1=new JFXTextField();
 
     @FXML
-    private JFXTextField DIPISTIC_COLOR_TF;
+    private JFXTextField OVAL_PARASITE_TF2=new JFXTextField();
 
     @FXML
-    private JFXTextField APPERANCE_TF;
+    private JFXTextField OVAL_PARASITE_TF3=new JFXTextField();
 
     @FXML
-    private JFXTextField PH_TF;
+    private JFXTextField DIPISTIC_COLOR_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField PSG_TF;
+    private JFXTextField APPERANCE_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField PROTEIN_TF;
+    private JFXTextField PH_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField GLUCOSE_TF;
+    private JFXTextField PSG_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField KETONE_TF;
+    private JFXTextField PROTEIN_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField BILIRUBIN_TF;
+    private JFXTextField GLUCOSE_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField UROBILINOGEN_TF;
+    private JFXTextField KETONE_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField BLOOD_TF;
+    private JFXTextField BILIRUBIN_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField EPIT_CELLS_TF;
+    private JFXTextField UROBILINOGEN_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField WBC_TF;
+    private JFXTextField BLOOD_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField CASTS_TF;
+    private JFXTextField EPIT_CELLS_TF=new JFXTextField(text);
+
 
     @FXML
-    private JFXTextField BACTERIA_TF;
+    private JFXTextField WBC_TF=new JFXTextField();
 
     @FXML
-    private JFXTextField FSB_TF;
+    private JFXTextField CASTS_TF=new JFXTextField();
+
+    @FXML
+    private JFXTextField BACTERIA_TF=new JFXTextField();
+
+    @FXML
+    private JFXTextField FSB_TF=new JFXTextField();
 
     @FXML
     private JFXTextField RBS_TF;
@@ -392,17 +405,38 @@ public class LabToDoc implements Initializable {
     private CheckBox AFB_CheckBox;
 
     @FXML
+    private VBox DateVbox;
+
+    @FXML
     private CheckBox HIV_AIDS_CheckBox;
+
+
+    @FXML
+    private JFXButton sendbtn;
+
+    @FXML
+    private JFXButton waitbtn;
+
+    @FXML
+    public AnchorPane rootPane;
+
+    @FXML
+    private JFXButton cancelbtn;
 
     private LabRequest labRequest;
 
-    private Patient patient;
+    public Patient patient;
+
+    public static ObservableList<LabRequest> Labresults;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
     public void VisibilityOfCheckBoxes(Patient patient){
+        sendbtn.setVisible(true);
+        waitbtn.setVisible(true);
+        cancelbtn.setVisible(true);
         this.patient=patient;
         labRequest=new DataLoader().loadLabRequest(patient);
         WBCcheckBox.setVisible(labRequest.getCbs().getWbc().isTest());
@@ -556,13 +590,15 @@ public class LabToDoc implements Initializable {
     public void setObjectLabTestValue( Patient patient, boolean waiting, boolean docActive, boolean labActive,boolean fromLab,boolean secActive){
 
         boolean check=true;
-
         if(labRequest.getCbs().getWbc().isTest() && (Hema_HBC_TF.getText().isEmpty() || Hema_HBC_TF.getText().equals(" ")))
             check=false;
         if(labRequest.getCbs().getLym().isTest() && (LYMTF.getText().isEmpty() || LYMTF.getText().equals(" ")))
             check=false;
+
         labRequest.getCbs().getWbc().setValue(Hema_HBC_TF.getText());
+
         labRequest.getCbs().getLym().setValue(LYMTF.getText());
+
         if(labRequest.getCbs().getGra().isTest() && (GRA_TF.getText().isEmpty() || GRA_TF.getText().equals(" ")))
             check=false;
         labRequest.getCbs().getGra().setValue(GRA_TF.getText());
@@ -730,6 +766,7 @@ public class LabToDoc implements Initializable {
         labRequest.getChemistry().getUricAcid().setValue(URIC_ACID_TF.getText());
         labRequest.getChemistry().getTotalProtein().setValue(TOTAL_PROTEIN_TF.getText());
         labRequest.getChemistry().getCholesterol().setValue(CHOLESTEROEL_TF.getText());
+
         if(labRequest.getSerology().getVdrl().isTest() && cbo_vdrl.getSelectionModel().isEmpty())
             check=false;
         if(labRequest.getSerology().getWidal_II_h().isTest() && cbo_h.getSelectionModel().isEmpty())
@@ -748,6 +785,7 @@ public class LabToDoc implements Initializable {
             check=false;
         if(labRequest.getSerology().getHpyloriSerum().isTest() && cbo_serum.getSelectionModel().isEmpty())
             check=false;
+
         labRequest.getSerology().getVdrl().setValue(cbo_vdrl.getSelectionModel().getSelectedItem());
         labRequest.getSerology().getWidal_II_h().setValue(cbo_h.getSelectionModel().getSelectedItem());
         labRequest.getSerology().getWidal_II_o().setValue(cbo_o.getSelectionModel().getSelectedItem());
@@ -778,9 +816,8 @@ public class LabToDoc implements Initializable {
 
         if(waiting)
             check=true;
-
         if(check){
-
+            labRequest.setLabTechnicianId(String.valueOf(LaboratoryWindowController.currentLaboratory.getLaboratoryId()));
         new DataSaver().updateLabresult(patient,labRequest,labRequest.getId());
         patient.setOnWaiting(waiting);
         patient.setDocActives(docActive);
@@ -877,7 +914,7 @@ public class LabToDoc implements Initializable {
         if(!labRequest.getDipistic().getUrobilinogen().getValue().isEmpty())
            UROBILINOGEN_TF.setText(String.valueOf(labRequest.getDipistic().getUrobilinogen().getValue()));
 
-        if(!labRequest.getMicroscopy().getEpitCells().getValue().isEmpty())
+        if(!labRequest.getMicroscopy().getEpitCells().getValue().trim().isEmpty())
             EPIT_CELLS_TF.setText(String.valueOf(labRequest.getMicroscopy().getEpitCells().getValue()));
         if(!labRequest.getDipistic().getBlood().getValue().isEmpty())
             BLOOD_TF.setText(String.valueOf(labRequest.getDipistic().getBlood().getValue()));
@@ -930,28 +967,35 @@ public class LabToDoc implements Initializable {
         if(!labRequest.getOthers().getGramStain().getValue().isEmpty())
             Gram_Stain_TF.setText(String.valueOf(labRequest.getOthers().getGramStain().getValue()));
 
+        if(labRequest.getSerology().getVdrl().getValue()!=null && !labRequest.getSerology().getVdrl().getValue().isEmpty())
+            cbo_vdrl.getSelectionModel().select(String.valueOf(labRequest.getSerology().getVdrl().getValue()));
+
+
+        if(labRequest.getSerology().getWidal_II_h().getValue()!=null && !labRequest.getSerology().getWidal_II_h().getValue().isEmpty())
 
         if(labRequest.getSerology().getVdrl().getValue()!=null)
             cbo_vdrl.getSelectionModel().select(String.valueOf(labRequest.getSerology().getVdrl().getValue()));
         if(labRequest.getSerology().getWidal_II_h().getValue()!=null)
+
             cbo_h.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWidal_II_h().getValue()));
-        if(labRequest.getSerology().getWidal_II_o().getValue()!=null)
+        if(labRequest.getSerology().getWidal_II_o().getValue()!=null && !labRequest.getSerology().getWidal_II_o().getValue().isEmpty())
             cbo_o.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWidal_II_o().getValue()));
-        if(labRequest.getSerology().getWellFelix().getValue()!=null)
+        if(labRequest.getSerology().getWellFelix().getValue()!=null && !labRequest.getSerology().getWellFelix().getValue().isEmpty())
             cbo_felix.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWellFelix().getValue()));
-        if(labRequest.getSerology().getHbsag().getValue()!=null)
+        if(labRequest.getSerology().getHbsag().getValue()!=null && !labRequest.getSerology().getHbsag().getValue().isEmpty())
             cbo_hbs.getSelectionModel().select(String.valueOf(labRequest.getSerology().getHbsag().getValue()));
-        if(labRequest.getSerology().getCrp().getValue()!=null)
+        if(labRequest.getSerology().getCrp().getValue()!=null && !labRequest.getSerology().getCrp().getValue().isEmpty())
             cbo_crp.getSelectionModel().select(String.valueOf(labRequest.getSerology().getCrp().getValue()));
 
-        if(labRequest.getSerology().getAso().getValue()!=null)
+        if(labRequest.getSerology().getAso().getValue()!=null && !labRequest.getSerology().getAso().getValue().isEmpty())
             cbo_aso.getSelectionModel().select(String.valueOf(labRequest.getSerology().getAso().getValue()));
-        if(labRequest.getSerology().getRheumatoidFactor().getValue()!=null)
+        if(labRequest.getSerology().getRheumatoidFactor().getValue()!=null && !labRequest.getSerology().getRheumatoidFactor().getValue().isEmpty())
             cbo_rhe.getSelectionModel().select(String.valueOf(labRequest.getSerology().getRheumatoidFactor().getValue()));
-        if(labRequest.getSerology().getHpyloriSerum().getValue()!=null)
+        if(labRequest.getSerology().getHpyloriSerum().getValue()!=null && !labRequest.getSerology().getHpyloriSerum().getValue().isEmpty())
             cbo_serum.getSelectionModel().select(String.valueOf(labRequest.getSerology().getHpyloriSerum().getValue()));
-        if(labRequest.getOthers().getHivAids().getValue()!=null)
+        if(labRequest.getOthers().getHivAids().getValue()!=null && !labRequest.getOthers().getHivAids().getValue().isEmpty())
             cbo_aids.getSelectionModel().select(String.valueOf(labRequest.getOthers().getHivAids().getValue()));
+
     }
 
 
