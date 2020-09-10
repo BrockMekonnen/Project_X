@@ -31,7 +31,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class PaymentController implements Initializable{
+
     private  Patient patientObj;
+
     @FXML
     private TableView<Pricing> paymentDetailTable;
 

@@ -638,7 +638,7 @@ public class DataLoader {
 
             session.beginTransaction();
 
-            labRequest = session.createQuery("from LabRequest where patient_id = " + tempPateint.getPatientId()).list();
+//            labRequest = session.createQuery("from LabRequest where patient_id = " + tempPateint.getPatientId()).list();
 
 
             System.out.println(tempPateint.getPatientId());
