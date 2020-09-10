@@ -24,16 +24,23 @@ public class Warning implements Initializable{
     @FXML
     private JFXTextField warnBodyFld = new JFXTextField();
 
+    public static boolean isIsOk() {
+        return isOk;
+    }
 
-    public void setWarnHeaderFld(String warnHeader) {
+    public static void setIsOk(boolean isOk) {
+        Warning.isOk = isOk;
+    }
+
+    void setWarnHeaderFld(String warnHeader) {
         warnHeaderFld.setText(warnHeader);
     }
 
-    public void setWarnImg(String imageView) {
+    void setWarnImg(String imageView) {
         this.warnImg.setImage(new Image(imageView));
     }
 
-    public void setWarnBodyFld(String warnBody) {
+    void setWarnBodyFld(String warnBody) {
         this.warnBodyFld.setText(warnBody);
     }
 

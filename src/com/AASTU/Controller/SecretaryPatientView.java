@@ -105,6 +105,9 @@ public class SecretaryPatientView implements Initializable {
         houseNoTf.setEditable(status);
         addedDateTf.setEditable(status);
         patientIdTf.setEditable(false);
+        birthDayTf.setEditable(false);
+        birthMonthTf.setEditable(false);
+        birthYearTf.setEditable(false);
         birthDayTf.setEditable(status);
         birthMonthTf.setEditable(status);
         birthYearTf.setEditable(status);
@@ -155,7 +158,7 @@ public class SecretaryPatientView implements Initializable {
             patient.setFirstName(firstNameTf.getText());
             patient.setLastName(lastNameTf.getText());
             if(ExceptionHandler.validateNum(ageTf.getText(),ageTf)){
-                patient.setAge(Integer.parseInt(ageTf.getText()));
+                patient.setAge(Double.parseDouble(ageTf.getText()));
                 patient.setSex(sexTf.getText().toLowerCase().charAt(0));
                 patient.setPhoneNumber(phoneTf.getText());
                 patient.setCity(cityTf.getText());
@@ -191,13 +194,53 @@ public class SecretaryPatientView implements Initializable {
             session.close();
         }
     }
+    private String convertMonth(Patient patient){
+        String month = null;
+            switch (patient.getBirthMonth()){
+                case 1:
+                    month = "January";
+                    break;
+                case 2:
+                    month ="February";
+                    break;
+                case 3:
+                    month ="March";
+                    break;
+                case 4:
+                    month = "April";
+                    break;
+                case 5:
+                    month ="May";
+                    break;
+                case 6:
+                    month ="Jun";
+                    break;
+                case 7:
+                    month ="July";
+                    break;
+                case 8:
+                    month = "August";
+                    break;
+                case 9:
+                    month = "September";
+                    break;
+                case 10:
+                    month ="October";
+                    break;
+                case 11:
+                    month ="November";
+                    break;
+                case 12:
+                    month = "December";
+                    break;
+            }
+            return month;
+
+        }
+
     /* this function accepts Patient Object and assign
     * some values to the textField */
-    public void setObject(Patient object, boolean visiblity){
-        if(!visiblity){
-        activateBtn.setVisible(visiblity);
-        editBtn.setTranslateX(100);
-        }
+    public void setObject(Patient object){
         patientObj = object;
         String sex = null;
         if(object.getSex() == 'm') {
@@ -215,6 +258,9 @@ public class SecretaryPatientView implements Initializable {
         kebeleTf.setText(object.getKebele());
         phoneTf.setText(object.getPhoneNumber());
         houseNoTf.setText(object.getHouseNumber());
+        birthDayTf.setText(Integer.toString(object.getBirthDay()));
+        birthMonthTf.setText(convertMonth(object));
+        birthYearTf.setText(Integer.toString(object.getBirthYear()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy");
         addedDateTf.setText(object.getDate().format(formatter));
         patientIdTf.setText(String.valueOf(object.getPatientId()));
@@ -223,8 +269,7 @@ public class SecretaryPatientView implements Initializable {
     /**
      * button handlers
      * */
-    @FXML
-    void activateBtnHandler(ActionEvent event) {
+    void activatePatient(){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
@@ -249,9 +294,18 @@ public class SecretaryPatientView implements Initializable {
             activePatient.setDocActives(true);
             activePatient.setFromSec(true);
             session.getTransaction().commit();
+            NotificationController.savedNotification("Activated","Patient Activated successfully!","warn_confirm.png");
         } finally {
             factory.close();
             session.close();
+        }
+    }
+    @FXML
+    void activateBtnHandler(ActionEvent event) throws IOException {
+        new WindowChangeController().warningPopup("Checking", "Are you sure to Activate?", "warn_confirm.png");
+        if(Warning.isOk){
+            activatePatient();
+            WindowChangeController.closeWindow();
         }
     }
 

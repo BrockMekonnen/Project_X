@@ -33,7 +33,6 @@ public class ClinicalNoteAdd implements Initializable{
     @FXML
     private JFXTextArea textArea;
 
-
     private List<ClinicalNotes> clinicalNotesList;
     private Patient patient;
 
@@ -44,6 +43,7 @@ public class ClinicalNoteAdd implements Initializable{
 
     void setPatient(Patient patient){
         this.patient = patient;
+
         clinicalNotesList = new DataLoader().loadClincalNotes(patient);
         boolean check = false;
         int position=0;
@@ -74,21 +74,25 @@ public class ClinicalNoteAdd implements Initializable{
                 position = i; // get its position
             }
         }
-
+        // if editable clinical found
         if(check){
             String note = textArea.getText();
             int id = clinicalNotesList.get(position).getNoteId(); // using the position get its id
             new DataSaver().saveEditedClinicalNote(id, note); // save the note
-            new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.currentDoctor.getDoctorID()+" Edit the Clinical Note of Patient for  "+ DateTimeFormatter.BASIC_ISO_DATE.format(clinicalNotesList.get(position).getDate())+" \n",1,LocalDate.now(),DoctorWindowController.currentDoctor.getDoctorID());
+
+            new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.getCurrentDoctor().getDoctorID()+" Edit the Clinical Note of Patient for  "+ DateTimeFormatter.BASIC_ISO_DATE.format(clinicalNotesList.get(position).getDate())+" \n",1,LocalDate.now(),DoctorWindowController.getCurrentDoctor().getDoctorID());
+
         }
         else {
             ClinicalNotes note = new ClinicalNotes();
             note.setDate(LocalDate.now());
             note.setNotes(textArea.getText());
-
             new DataSaver().saveClinicalNote(this.patient, note);
+            WindowChangeController.closeWindow();
         }
-        new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.currentDoctor.getDoctorID()+" Treat The Patient \n",1,LocalDate.now(),DoctorWindowController.currentDoctor.getDoctorID());
+
+     new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.getCurrentDoctor().getDoctorID()+" Treat The Patient \n",1,LocalDate.now(),DoctorWindowController.getCurrentDoctor().getDoctorID());
+
 
     }
 

@@ -199,12 +199,12 @@ public class WindowChangeController {
 
     /** this function accepts mouse event, string text and patient object
      * and create a window that pops up with information inside of patient object */
-    public void secretaryPatientView(MouseEvent event,String fxml,Patient obj, boolean vis) throws IOException {
+    public void secretaryPatientView(MouseEvent event,String fxml,Patient obj) throws IOException {
         tempObject = obj;
         FXMLLoader loader = new FXMLLoader((getClass().getResource(fxml)));
         Parent root = loader.load();
         SecretaryPatientView view1 = loader.getController(); // get the controller of SecretaryPatientView
-        view1.setObject(tempObject,vis);  // sign some information from the object to the Scene
+        view1.setObject(tempObject);  // sign some information from the object to the Scene
         Stage temp = new Stage();
         Scene scene = new Scene(root);
         temp.setScene(scene);

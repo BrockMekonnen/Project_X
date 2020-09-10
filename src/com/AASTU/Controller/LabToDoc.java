@@ -836,7 +836,7 @@ public class LabToDoc implements Initializable {
         }
     }
 
-    public void exceptionForWaiting(LabRequest labRequest){
+        public void exceptionForWaiting(LabRequest labRequest){
 
         if(!labRequest.getCbs().getWbc().getValue().isEmpty())
             Hema_HBC_TF.setText(String.valueOf(labRequest.getCbs().getWbc().getValue()));
@@ -970,7 +970,13 @@ public class LabToDoc implements Initializable {
         if(labRequest.getSerology().getVdrl().getValue()!=null && !labRequest.getSerology().getVdrl().getValue().isEmpty())
             cbo_vdrl.getSelectionModel().select(String.valueOf(labRequest.getSerology().getVdrl().getValue()));
 
+
         if(labRequest.getSerology().getWidal_II_h().getValue()!=null && !labRequest.getSerology().getWidal_II_h().getValue().isEmpty())
+
+        if(labRequest.getSerology().getVdrl().getValue()!=null)
+            cbo_vdrl.getSelectionModel().select(String.valueOf(labRequest.getSerology().getVdrl().getValue()));
+        if(labRequest.getSerology().getWidal_II_h().getValue()!=null)
+
             cbo_h.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWidal_II_h().getValue()));
         if(labRequest.getSerology().getWidal_II_o().getValue()!=null && !labRequest.getSerology().getWidal_II_o().getValue().isEmpty())
             cbo_o.getSelectionModel().select(String.valueOf(labRequest.getSerology().getWidal_II_o().getValue()));
@@ -989,7 +995,6 @@ public class LabToDoc implements Initializable {
             cbo_serum.getSelectionModel().select(String.valueOf(labRequest.getSerology().getHpyloriSerum().getValue()));
         if(labRequest.getOthers().getHivAids().getValue()!=null && !labRequest.getOthers().getHivAids().getValue().isEmpty())
             cbo_aids.getSelectionModel().select(String.valueOf(labRequest.getOthers().getHivAids().getValue()));
-
 
     }
 

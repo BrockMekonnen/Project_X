@@ -90,6 +90,10 @@ public class LabToDocViewController implements Initializable {
             rootAnchor.getChildren().add(root);
             setObjectComponents(patient);
 
+
+
+            patient.setOnWaiting(true);
+
         }catch (Exception e){
             e.printStackTrace();
         }

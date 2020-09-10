@@ -48,9 +48,9 @@
                   </Pane>
                </children>
               </AnchorPane>
-            <AnchorPane fx:id="recordPnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="recordPnl" prefHeight="200.0" prefWidth="200.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="recordTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                  <TableView fx:id="recordTable" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn prefWidth="22.0" />
                       <TableColumn fx:id="columnRecordId" prefWidth="161.0" text="Patient ID" />
@@ -64,17 +64,9 @@
                         <InnerShadow />
                      </effect>
                   </TableView>
-                  <Pane prefHeight="27.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <JFXButton buttonType="RAISED" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Yesterday" />
-                        <JFXButton buttonType="RAISED" layoutX="151.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Week" />
-                        <JFXButton buttonType="RAISED" layoutX="302.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="Last Month" />
-                        <JFXButton buttonType="RAISED" layoutX="453.0" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #BBDEFB; -fx-background-radius: 0 20 0 0;" text="All" />
-                     </children>
-                  </Pane>
                </children>
             </AnchorPane>
-            <BorderPane fx:id="diseasePane" style="-fx-background-color: #E1F5FE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+            <BorderPane fx:id="diseasePane" style="-fx-background-color: #E1F5FE;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
                <effect>
                   <InnerShadow />
                </effect></BorderPane>

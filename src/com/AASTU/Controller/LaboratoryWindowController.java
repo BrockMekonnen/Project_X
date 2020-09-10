@@ -33,9 +33,11 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static com.AASTU.Controller.NotificationController.searchFieldHandler;
+
 public class LaboratoryWindowController implements Initializable {
 
-    public static Laboratory currentLaboratory;
+    private static Laboratory currentLaboratory;
     // profile
     @FXML
     private JFXTextField firstNameTf;
@@ -153,6 +155,13 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private AnchorPane recordPnl;
 
+    public static Laboratory getCurrentLaboratory() {
+        return currentLaboratory;
+    }
+
+    public static void setCurrentLaboratory(Laboratory currentLaboratory) {
+        LaboratoryWindowController.currentLaboratory = currentLaboratory;
+    }
 
     ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
     ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1"));
@@ -174,7 +183,11 @@ public class LaboratoryWindowController implements Initializable {
         TableOperation();
         goToView(true,false,false,false);
         activePnl.toFront();
+
+        searchFieldHandler(ActivePatientList,ActivePatientTableView,PatientSearchTF);
+
         SearchField();
+
     }
 
     @FXML
@@ -185,6 +198,7 @@ public class LaboratoryWindowController implements Initializable {
         goToView(false,true,false,false);
         SearchField();
         pendingPnl.toFront();
+        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
     }
 
     @FXML
@@ -195,6 +209,7 @@ public class LaboratoryWindowController implements Initializable {
         goToView(false,false,true,false);
         SearchField();
         recordPnl.toFront();
+        searchFieldHandler(RecordedDataPatientList,RecordedPatientTableView,PatientSearchTF);
     }
 
     @FXML
@@ -205,18 +220,18 @@ public class LaboratoryWindowController implements Initializable {
         goToView(false,false, false,true);
         SearchField();
         waitingPnl.toFront();
+        searchFieldHandler(WaitingPatientList,WaitingPatientTableView,PatientSearchTF);
     }
 
     // profile Handler
-
     private void textFieldStatus(boolean status) {
-        firstNameTf.setEditable(status);
-        lastNameTf.setEditable(status);
+        firstNameTf.setEditable(false);
+        lastNameTf.setEditable(false);
         passwordTf.setEditable(status);
-        genderTf.setEditable(status);
-        cityTf.setEditable(status);
+        genderTf.setEditable(false);
+        cityTf.setEditable(false);
         proUserNameTf.setEditable(status);
-        phonTf.setEditable(status);
+        phonTf.setEditable(false);
         srartHrTf.setEditable(false);
         endHrTf.setEditable(false);
 
@@ -306,15 +321,12 @@ public class LaboratoryWindowController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         VisibilityTest();
-        //For table operations or assignments
         TableOperation();
-        //Used for text field searching
-        SearchField();
+        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
         displayProfile();
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         coverPane.setVisible(false);
-//        translation(0.1);
         TransitionController.translateTransition(AccountSettingPane, -600, 0.5);
         TransitionController.translation(AccountSettingPane,1,0,0.1);
         coverPane.setOnMouseClicked(event -> {
@@ -494,6 +506,7 @@ public class LaboratoryWindowController implements Initializable {
         sortedList.comparatorProperty().bind(TableViews.comparatorProperty());
         TableViews.setItems(sortedList);
     }
+
 
     public void translateTransitionBack(AnchorPane pane, double move, double sec){
         TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);

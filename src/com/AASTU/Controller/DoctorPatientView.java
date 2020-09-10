@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -83,10 +84,16 @@ public class DoctorPatientView implements Initializable{
 
     @FXML
     void handleAddNoteButton(ActionEvent event) throws IOException {
-        new WindowChangeController().clinicalNotesView(event,"../View/ClinicalNoteAdd.fxml");
+        WindowChangeController change = new WindowChangeController();
+        if(!(new DataLoader().loadClinicalNote(this.patient) == null)){
+            change.warningPopup("Unfinished Note", "There is note which has not been finished yet", "warn_exclamation.png");
+            return;
+        }
+        change.clinicalNotesView(event,"../View/ClinicalNoteAdd.fxml");
     }
 
-    /* this function accepts Patient Object and assign
+
+    /** this function accepts Patient Object and assign
      * some values to the textField */
     public void setObject(Patient object){
         this.patient = object;
@@ -112,7 +119,12 @@ public class DoctorPatientView implements Initializable{
 
     @FXML
     void handleRequestAction(ActionEvent event) throws IOException {
-        new WindowChangeController().docLabRequestView(event, "../View/DoctorLaboratoryRequestForm.fxml");
+        WindowChangeController obj = new WindowChangeController();
+        if(!(new DataLoader().loadLabRequest(patient) == null)){
+            obj.warningPopup("Request Already Exists","Please finish the first request first.", "warn_exclamation.png");
+            return;
+        }
+        obj.docLabRequestView(event, "../View/DoctorLaboratoryRequestForm.fxml");
     }
 
     @FXML
@@ -136,13 +148,26 @@ public class DoctorPatientView implements Initializable{
     }
 
     @FXML
-    void handleCloseCaseButton(ActionEvent event) {
+    void handleCloseCaseButton(ActionEvent event) throws IOException {
         DataSaver saver = new DataSaver();
 
         patient.setDocActives(false);
-        patient.setPatientStatus(false);
         patient.setFromSec(false);
         patient.setFromLab(false);
+        patient.setLabActives(false);
+        patient.setOnWaiting(false);
+        patient.setSecActives(false);
+        patient.setPatientStatus(false);
+
+        if( patient.isOutPatinet()){// check if patient is out Patient
+            if(patient.getEndDate().compareTo(LocalDate.now()) < 0 )// check if the patient has finished
+                patient.setOutPatinet(false);
+        }
+
+        new WindowChangeController().warningPopup("Confirm Saving", "Are you sure you went to save it", "warn_confirm.png");
+        if(!Warning.isIsOk()){
+            return;
+        }
 
         LabRequest request = new DataLoader().loadLabRequest(patient);
         if(request != null){
@@ -156,9 +181,6 @@ public class DoctorPatientView implements Initializable{
         }
 
         saver.saveEditedPatient(patient);
-
-        System.out.println(patient.isDocActives());
-        System.out.println(patient.isPatientStatus());
-
+        WindowChangeController.closeWindow();
     }
 }

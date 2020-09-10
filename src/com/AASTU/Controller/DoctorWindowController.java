@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
 
 public class DoctorWindowController implements Initializable {
 
-    public static Doctor currentDoctor;
+    private static Doctor currentDoctor;
     // profile
     @FXML
     private ImageView exitBtn;
@@ -184,6 +184,18 @@ public class DoctorWindowController implements Initializable {
     private BorderPane diseasePane;
 
 
+    public static Doctor getCurrentDoctor() {
+        return currentDoctor;
+    }
+
+    public static void setCurrentDoctor(Doctor currentDoctor) {
+        DoctorWindowController.currentDoctor = currentDoctor;
+    }
+
+    public int DoctorId=22;
+
+
+    /** this function insert data from database to the record table **/
     private void populateRecordTable(){
         columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         columnRecordDate.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
@@ -192,125 +204,17 @@ public class DoctorWindowController implements Initializable {
         columnRecordSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnRecordAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0");
+        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0"); // load data from database those patient which are active
         for(Patient temp: patientList){
-            observableList.add(temp);
+            observableList.add(temp); // convert to observable list
         }
         recordTable.setItems(observableList);
     }
 
 
-//    private void populateDiseaseTable(List<DiseaseRecord> diseaseRecordList){
-//        ObservableList<DiseaseRecord> observableList = FXCollections.observableArrayList();
-//
-//        columnDate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, LocalDate>, ObservableValue<LocalDate>>() {
-//            @Override
-//            public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<DiseaseRecord, LocalDate> param) {
-//                return param.getValue().getDate();
-//            }
-//        });
-//
-//        columnDisease.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, String>, ObservableValue<String>>() {
-//            @Override
-//            public ObservableValue<String> call(TableColumn.CellDataFeatures<DiseaseRecord, String> param) {
-//                return param.getValue().getDiseaseName();
-//            }
-//        });
-//
-//        columnless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().mLess1ForTable();
-//            }
-//        });
-//
-//        column1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().M1to4ForTable();
-//            }
-//        });
-//
-//        column5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().M5to14ForTable();
-//            }
-//        });
-//
-//        column14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().M15to29ForTable();
-//            }
-//        });
-//
-//        column28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().M30to64ForTable();
-//            }
-//        });
-//
-//        columnGreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().mGreater65ForTable();
-//            }
-//        });
-//
-//        columnFless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().fLess1ForTable();
-//            }
-//        });
-//
-//        columnF1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().F1to4ForTable();
-//            }
-//        });
-//
-//        columnF5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().F5to14ForTable();
-//            }
-//        });
-//
-//        columnF14to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().F15to29ForTable();
-//            }
-//        });
-//
-//        columnF28to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().F30to64ForTable();
-//            }
-//        });
-//
-//        columnFgreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-//            @Override
-//            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-//                return param.getValue().fGreater65ForTable();
-//            }
-//        });
-//
-//        for(DiseaseRecord temp: diseaseRecordList){
-//            observableList.add(temp);
-//        }
-//
-//        diseaseTable.setItems(observableList);
-//    }
-
-    /* this function inserts data from the database to the pendingTable */
+    /** this function inserts data from the database to the pendingTable */
     private void populatePendingTable(String command){
-
+        // this makes the row clickable
         pendingTable.setRowFactory(tv -> {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
@@ -340,13 +244,13 @@ public class DoctorWindowController implements Initializable {
     }
     // profile handler
     private void textFieldStatus(boolean status) {
-        firstNameTf.setEditable(status);
-        lastNameTf.setEditable(status);
+        firstNameTf.setEditable(false);
+        lastNameTf.setEditable(false);
         passwordTf.setEditable(status);
-        genderTf.setEditable(status);
-        cityTf.setEditable(status);
+        genderTf.setEditable(false);
+        cityTf.setEditable(false);
         proUserNameTf.setEditable(status);
-        phonTf.setEditable(status);
+        phonTf.setEditable(false);
         startHrTf.setEditable(false);
         endHrTf.setEditable(false);
     }
@@ -377,6 +281,7 @@ public class DoctorWindowController implements Initializable {
 
     }
 
+    /** accepts to doctor object and checks if they are equal or not */
     private boolean compareDoctorsObjs(Doctor obj1, Doctor obj2){
         if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
            Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
@@ -415,17 +320,11 @@ public class DoctorWindowController implements Initializable {
                 new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
             }else {
                 if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),proUserNameTf.getText())){
-//                    if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
-//                            ExceptionHandler.isLetter(genderTf.getText(), genderTf)&& ExceptionHandler.isLetter(cityTf.getText(),cityTf) &&
-//                            ExceptionHandler.ValidatePhone(phonTf.getText(),phonTf)){
-                            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-                            if(Warning.isOk){
-                                session.getTransaction().commit();
-                                NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
-                            }
-//                    }else {
-//                        new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
-//                    }
+                    new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                    if(Warning.isOk) {
+                        session.getTransaction().commit();
+                        NotificationController.savedNotification("Profile Edited", "Profile Updated successfully!", "warn_confirm.png");
+                    }
                 }else {
                     new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
                 }
@@ -439,7 +338,6 @@ public class DoctorWindowController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         transition();
-        populatePendingTable("from Patient where docActives = 1");
         goToPending();
         displayProfile();
 
@@ -465,10 +363,11 @@ public class DoctorWindowController implements Initializable {
 
     @FXML
     void goToPending(ActionEvent event) {
-        populatePendingTable("from Patient where docActives = 0");
+        populatePendingTable("from Patient where docActives = 1");
         goToView(false,true,false);
     }
     void goToPending(){
+        populatePendingTable("from Patient where docActives = 1");
         goToView(false,true,false);
     }
 
@@ -479,33 +378,6 @@ public class DoctorWindowController implements Initializable {
         AnchorPane root = loader.load();
         diseasePane.setCenter(root);
     }
-
-//    @FXML
-//    void handleTodayDiseaseButton(ActionEvent event) {
-//        String command;
-//        LocalDate date = LocalDate.now();
-//        command = "from DiseaseRecord where date = " + DateTimeFormatter.BASIC_ISO_DATE.format(date);
-//        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData(command);
-//        populateDiseaseTable(diseaseRecordList);
-//        goToView(true,false,false);
-//    }
-
-//    @FXML
-//    void handleYestardayDiseaseButton(ActionEvent event) {
-//        String command;
-//        LocalDate date = LocalDate.now().minusDays(1);
-//        command = "from DiseaseRecord where date = " + DateTimeFormatter.BASIC_ISO_DATE.format(date);
-//        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData(command);
-//        populateDiseaseTable(diseaseRecordList);
-//        goToView(true,false,false);
-//    }
-
-//    @FXML
-//    void handleAllDiseaseButton(ActionEvent event) {
-//        List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData("from DiseaseRecord");
-//        populateDiseaseTable(diseaseRecordList);
-//        goToView(true,false,false);
-//    }
 
     @FXML
     void goToRecord(ActionEvent event) {
