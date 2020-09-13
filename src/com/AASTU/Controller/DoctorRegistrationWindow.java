@@ -1,10 +1,6 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Model.ClinicalNotes;
 import com.AASTU.Model.Doctor;
-import com.AASTU.Model.LabRequest;
-import com.AASTU.Model.LaboratoryRequest.*;
-import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -20,7 +16,6 @@ import org.hibernate.cfg.Configuration;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -67,7 +62,7 @@ public class DoctorRegistrationWindow implements Initializable {
     private JFXTextField userNameTf;
 
     private char sex;
-    List<Doctor> lists = new DataLoader().loadDoctorsData();
+    List<Doctor> DoctorLists = new DataLoader().loadDoctorsData();
     // to check all text fields are get data
     public boolean validatUserInput() throws IOException {
         if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
@@ -122,9 +117,19 @@ public class DoctorRegistrationWindow implements Initializable {
 //            }
 //        return false;
 //    }
+
+    private boolean checkDoctorUserName(String userName){
+        for (Doctor doctor: DoctorLists){
+            if(doctor.getUserName().toLowerCase().equals(userName.toLowerCase())){
+                return true;
+            }
+        }
+        return false;
+    }
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
-        boolean userNameCheck = new DataLoader().doctorUserNameExist(userNameTf.getText());
+//        boolean userNameCheck = new DataLoader().doctorUserNameExist(userNameTf.getText());
+        boolean userNameCheck = checkDoctorUserName(userNameTf.getText());
         System.out.println(userNameCheck);
         if(validatUserInput()){
             if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(),lastNameTf)&& ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf) &&

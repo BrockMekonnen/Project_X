@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -33,9 +34,31 @@ public class LoginController implements Initializable{
     @FXML
     private JFXPasswordField password;
 
+//    List<Doctor> doctors = new DataLoader().loadDoctorsData();
+//    List<Laboratory> laboratories = new DataLoader().loadLaboratoriestData();
+//    List<Secretary> secretaries = new DataLoader().loadSecretariesData();
+
     Secretary secretary;
     Doctor doctor;
     Laboratory laboratory;
+
+//    private Doctor checkPrivilage(String userName, String password){
+//        Doctor doctor = null;
+////        boolean doctorExit = false;
+//        for(Doctor doctor1: doctors){
+//            if(doctor1.getUserName().equals(userName) && doctor1.getPassword().equals(password)){
+////                doctorExit = true;
+//                doctor = doctor1;
+//            }
+//        }
+//        return doctor;
+////        if(doctorExit){
+////            return doctor;
+////        }else {
+////            return null;
+////        }
+//    }
+
     @FXML
     void signIn(ActionEvent event) throws IOException {
         String name = userName.getText();
@@ -49,7 +72,6 @@ public class LoginController implements Initializable{
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
                         errorLabel.setVisible(true);
-                        errorLabel.setText("Check Your Spellings!");
                     }
                 }else {
                     errorLabel.setAlignment(Pos.CENTER);
@@ -57,6 +79,7 @@ public class LoginController implements Initializable{
                 }
             } else if(source.equals("doc")){
                 doctor = new DataLoader().doctorObj(pass, name);
+//                doctor = checkPrivilage(pass, name);
                 if(doctor != null){
                     if (Objects.equals(doctor.getUserName(), name) && Objects.equals(doctor.getPassword(),pass) ) {
                         DoctorWindowController.setCurrentDoctor(doctor);
@@ -64,7 +87,6 @@ public class LoginController implements Initializable{
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
                         errorLabel.setVisible(true);
-                        errorLabel.setText("Check Your Spellings!");
                     }
                 }else {
                     errorLabel.setAlignment(Pos.CENTER);
@@ -87,7 +109,6 @@ public class LoginController implements Initializable{
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
                         errorLabel.setVisible(true);
-                        errorLabel.setText("Check Your Spellings!");
                     }
                 }else {
                     errorLabel.setAlignment(Pos.CENTER);
@@ -116,7 +137,6 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
-                            errorLabel.setText("Check Your Spellings!");
                         }
                 }else {
                     errorLabel.setAlignment(Pos.CENTER);
@@ -131,7 +151,6 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
-                            errorLabel.setText("Check Your Spellings!");
                         }
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
@@ -154,7 +173,6 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
-                            errorLabel.setText("Check Your Spellings!");
                         }
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
