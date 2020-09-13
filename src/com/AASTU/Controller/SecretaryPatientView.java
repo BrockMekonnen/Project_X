@@ -96,7 +96,7 @@ public class SecretaryPatientView implements Initializable {
     private void textFieldStatus(boolean status) {
         firstNameTf.setEditable(status);
         lastNameTf.setEditable(status);
-        ageTf.setEditable(status);
+        ageTf.setEditable(false);
         sexTf.setEditable(status);
         cityTf.setEditable(status);
         subcityTf.setEditable(status);
@@ -108,9 +108,6 @@ public class SecretaryPatientView implements Initializable {
         birthDayTf.setEditable(false);
         birthMonthTf.setEditable(false);
         birthYearTf.setEditable(false);
-        birthDayTf.setEditable(status);
-        birthMonthTf.setEditable(status);
-        birthYearTf.setEditable(status);
     }
     private boolean validatUserInput() throws IOException {
         if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
@@ -165,26 +162,26 @@ public class SecretaryPatientView implements Initializable {
                 patient.setSubcity(subcityTf.getText());
                 patient.setKebele(kebeleTf.getText());
                 patient.setHouseNumber(houseNoTf.getText());
-                    if(comparePatientObjs(patient,obj)){
-                        new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
-                    }else {
-                        if(validatUserInput()){
-                            if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
+                if(comparePatientObjs(patient,obj)){
+                    new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
+                }else {
+                    if(validatUserInput()){
+                        if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
                                 ExceptionHandler.isLetter(sexTf.getText(), sexTf)&& ExceptionHandler.isLetter(cityTf.getText(),cityTf) &&
                                 ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) && ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf)) {
-                                new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-                                if (Warning.isOk) {
-                                    session.getTransaction().commit();
-                                    NotificationController.savedNotification("Profile Edited", firstNameTf.getText() + " Info Updated successfully!", "warn_confirm.png");
+                            new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                            if (Warning.isOk) {
+                                session.getTransaction().commit();
+                                NotificationController.savedNotification("Profile Edited", firstNameTf.getText() + " Info Updated successfully!", "warn_confirm.png");
 //                                    WindowChangeController.closeWindow();
-                                }
-                            }else {
-                                new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
                             }
                         }else {
-                            new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+                            new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
                         }
+                    }else {
+                        new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
                     }
+                }
             } else {
                 new WindowChangeController().warningPopup("Saving Error", "The Age is Not correct","warn_confirm.png");
             }
@@ -196,53 +193,64 @@ public class SecretaryPatientView implements Initializable {
     }
     private String convertMonth(Patient patient){
         String month = null;
-            switch (patient.getBirthMonth()){
-                case 1:
-                    month = "January";
-                    break;
-                case 2:
-                    month ="February";
-                    break;
-                case 3:
-                    month ="March";
-                    break;
-                case 4:
-                    month = "April";
-                    break;
-                case 5:
-                    month ="May";
-                    break;
-                case 6:
-                    month ="Jun";
-                    break;
-                case 7:
-                    month ="July";
-                    break;
-                case 8:
-                    month = "August";
-                    break;
-                case 9:
-                    month = "September";
-                    break;
-                case 10:
-                    month ="October";
-                    break;
-                case 11:
-                    month ="November";
-                    break;
-                case 12:
-                    month = "December";
-                    break;
-            }
-            return month;
-
+        switch (patient.getBirthMonth()){
+            case 1:
+                month = "January";
+                break;
+            case 2:
+                month ="February";
+                break;
+            case 3:
+                month ="March";
+                break;
+            case 4:
+                month = "April";
+                break;
+            case 5:
+                month ="May";
+                break;
+            case 6:
+                month ="Jun";
+                break;
+            case 7:
+                month ="July";
+                break;
+            case 8:
+                month = "August";
+                break;
+            case 9:
+                month = "September";
+                break;
+            case 10:
+                month ="October";
+                break;
+            case 11:
+                month ="November";
+                break;
+            case 12:
+                month = "December";
+                break;
         }
+        return month;
 
+    }
+
+    String convertage(double age){
+        if(age < 1){
+         return  Math.round(age * 10) + " Month";
+        }else {
+            return String.valueOf(Math.round(age));
+        }
+    }
     /* this function accepts Patient Object and assign
     * some values to the textField */
-    public void setObject(Patient object){
+    public void setObject(Patient object, boolean hasActive){
         patientObj = object;
         String sex = null;
+        if(!hasActive){
+            activateBtn.setVisible(false);
+            editBtn.setTranslateX(100);
+        }
         if(object.getSex() == 'm') {
             sex = "Male";
         }else if(object.getSex() == 'f'){
@@ -251,7 +259,7 @@ public class SecretaryPatientView implements Initializable {
         textFieldStatus(false);
         firstNameTf.setText(object.getFirstName());
         lastNameTf.setText(object.getLastName());
-        ageTf.setText(( String.valueOf(object.getAge())));
+        ageTf.setText( convertage(object.getAge()));
         sexTf.setText(sex);
         cityTf.setText(object.getCity());
         subcityTf.setText(object.getSubcity());
@@ -322,7 +330,7 @@ public class SecretaryPatientView implements Initializable {
     void editAndSaveHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
-             updatePatientInfo(this.patientObj);
+            updatePatientInfo(this.patientObj);
         }
         editBtn.setText("Save");
     }

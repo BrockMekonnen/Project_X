@@ -100,12 +100,12 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="69.0" top="390.0" />
+                        <Insets left="69.0" top="340.0" />
                      </StackPane.margin>
                   </Label>
                   <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="39.0" style="-fx-border-color: #01579B; -fx-border-width: 1 0 1 1; -fx-background-color: #ffffff;" text="+251" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
-                        <Insets left="178.0" top="390.0" />
+                        <Insets left="178.0" top="340.0" />
                      </StackPane.margin>
                   </Label>
                   <JFXTextField fx:id="phoneNumberTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="104.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B; -fx-border-width: 1 1 1 0;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
@@ -113,26 +113,7 @@
                         <Font size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="217.0" top="390.0" />
-                     </StackPane.margin>
-                  </JFXTextField>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Age" textFill="#01579b" StackPane.alignment="TOP_LEFT">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="69.0" top="330.0" />
-                     </StackPane.margin>
-                  </Label>
-                  <JFXTextField fx:id="ageTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
-                     <effect>
-                        <DropShadow color="#29b6f6" />
-                     </effect>
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                     <StackPane.margin>
-                        <Insets left="150.0" top="330.0" />
+                        <Insets left="217.0" top="340.0" />
                      </StackPane.margin>
                   </JFXTextField>
                   <JFXComboBox fx:id="cboCalender" prefHeight="33.0" prefWidth="83.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
@@ -151,7 +132,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="69.0" top="450.0" />
+                        <Insets left="69.0" top="400.0" />
                      </StackPane.margin>
                   </Label>
                   <JFXTextField fx:id="cityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="City" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
@@ -162,7 +143,7 @@
                         <Font size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="180.0" top="450.0" />
+                        <Insets left="180.0" top="400.0" />
                      </StackPane.margin>
                   </JFXTextField>
                   <JFXTextField fx:id="subcityTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Subcity" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
@@ -173,7 +154,7 @@
                         <Font size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="180.0" top="490.0" />
+                        <Insets left="180.0" top="440.0" />
                      </StackPane.margin>
                   </JFXTextField>
                   <JFXTextField fx:id="kebeleTf" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" promptText="Kebele" style="-fx-background-color: #ffffff; -fx-border-color: #01579B;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
@@ -184,7 +165,7 @@
                         <Font size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="180.0" top="530.0" />
+                        <Insets left="180.0" top="480.0" />
                      </StackPane.margin>
                   </JFXTextField>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="71.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Date" textFill="#01579b" StackPane.alignment="TOP_RIGHT">
@@ -219,7 +200,7 @@
                         <Font size="13.0" />
                      </font>
                      <StackPane.margin>
-                        <Insets left="180.0" top="568.0" />
+                        <Insets left="180.0" top="518.0" />
                      </StackPane.margin>
                   </JFXTextField>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="55.0" stroke="#01579b" strokeType="INSIDE" width="180.0" StackPane.alignment="BOTTOM_RIGHT">
