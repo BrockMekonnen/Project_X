@@ -68,7 +68,7 @@
          <children>
             <AnchorPane fx:id="pendingPnl" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="PendingPatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <TableView fx:id="PendingPatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="PendingOrderNoCol" maxWidth="1000.0" prefWidth="45.0" text="No." />
                       <TableColumn fx:id="PendingFirstNameCol" prefWidth="116.0" text="First Name" />
@@ -89,7 +89,7 @@
             </AnchorPane>
             <AnchorPane fx:id="waitingPnl" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="WaitingPatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <TableView fx:id="WaitingPatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="WaitingNoOrderCol" maxWidth="1000.0" prefWidth="45.0" text="No." />
                         <TableColumn fx:id="WaitingFirstNameCol" prefWidth="116.0" text="First Name" />
@@ -110,7 +110,7 @@
             </AnchorPane>
             <AnchorPane fx:id="activePnl" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="ActivePatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <TableView fx:id="ActivePatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="ActiveOrderNoCol" maxWidth="1000.0" prefWidth="45.0" text="No." />
                         <TableColumn fx:id="ActiveFirstNameCol" prefWidth="116.0" text="First Name" />
@@ -131,7 +131,7 @@
             </AnchorPane>
             <AnchorPane fx:id="recordPnl" layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="RecordedPatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <TableView fx:id="RecordedPatientTableView" prefHeight="641.0" prefWidth="1105.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="RecordOrderNoCol" maxWidth="1000.0" prefWidth="45.0" text="No." />
                         <TableColumn fx:id="RecordFirstNameCol" prefWidth="116.0" text="First Name" />

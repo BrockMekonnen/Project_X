@@ -18,9 +18,10 @@ import javafx.stage.StageStyle;
 public class Main extends Application {
 
     public static DataLoader controller1=new DataLoader();
+    public static Thread thread;
     Stage stage;
-    @Override
 
+    @Override
     public void start(Stage primaryStage)throws Exception {
         this.stage=primaryStage;
         WellcomScreen();
