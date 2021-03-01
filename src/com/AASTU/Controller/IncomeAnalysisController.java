@@ -116,19 +116,9 @@ public class IncomeAnalysisController implements Initializable {
 
     private void populateTableView(){
         List<IncomeAnalysis> list = new DataLoader().loadAllIncomeAnalysisData();
-
-        dateCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IncomeAnalysis, LocalDate>, ObservableValue<LocalDate>>() {
-            @Override
-            public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<IncomeAnalysis, LocalDate> param) {
-                return param.getValue().tableDateGetter();
-            }
-        });
-        totalIncomeCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IncomeAnalysis, Double>, ObservableValue<Double>>() {
-            @Override
-            public ObservableValue<Double> call(TableColumn.CellDataFeatures<IncomeAnalysis, Double> param) {
-                return param.getValue().tableIncomeGetter();
-            }
-        });
+        System.out.println("IncomeAnalysisController.populateTableView: list size" + list.size());
+        dateCol.setCellValueFactory(param -> param.getValue().tableDateGetter());
+        totalIncomeCol.setCellValueFactory(param -> param.getValue().tableIncomeGetter());
 
         ObservableList<IncomeAnalysis> observableList = FXCollections.observableArrayList();
         for (IncomeAnalysis temp: list){
@@ -277,6 +267,7 @@ public class IncomeAnalysisController implements Initializable {
     private void populateLineChart(){
         lineChart.getData().clear();
         unChackAll();
+        System.out.println("list seze = " + list.size());
         LocalDate date = list.get(0).getDate();
 
         XYChart.Series series = new XYChart.Series();

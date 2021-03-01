@@ -76,14 +76,14 @@ public class Test {
 //            DiseaseRecord record2=new DiseaseRecord(LocalDate.now(),"tiphoyid",new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6));
 //
 //
-
-            Patient patient1 = new Patient("Abrish","TD",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
-            Patient patient2 = new Patient("Alex","AD",34,'m',LocalDate.now(),"326598","city","cc","kk","5");
-            Patient patient3 = new Patient("Dagi","AB",24,'m',LocalDate.now(),"125465","city","cc","kk","5");
-            Patient patient4 = new Patient("Dagi","KB",14,'m',LocalDate.now(),"985412","city","cc","kk","5");
-            Patient patient5 = new Patient("Amani","AL",4,'m',LocalDate.now(),"124578","city","cc","kk","5");
-
 //
+//            Patient patient1 = new Patient("Abrish","TD",44,'m',LocalDate.now(),"124578","city","cc","kk","5");
+//            Patient patient2 = new Patient("Alex","AD",34,'m',LocalDate.now(),"326598","city","cc","kk","5");
+//            Patient patient3 = new Patient("Dagi","AB",24,'m',LocalDate.now(),"125465","city","cc","kk","5");
+//            Patient patient4 = new Patient("Dagi","KB",14,'m',LocalDate.now(),"985412","city","cc","kk","5");
+//            Patient patient5 = new Patient("Amani","AL",4,'m',LocalDate.now(),"124578","city","cc","kk","5");
+//
+////
 //            ClinicalNotes clinicalNote = new ClinicalNotes(LocalDate.now(),"this is for test!","docId");
 //            ClinicalNotes clinicalNote2 = new ClinicalNotes(LocalDate.now(),"this is for another test!!","docId");
 //
@@ -103,40 +103,54 @@ public class Test {
 //            session.save(patient5);
 
 
-//            List<Patient> patientList = session.createQuery("from Patient where patientStatus = 0").list();
+//            List<Patient> patientList = session.createQuery("from Patient where patientStatus = false").list();
 //            for(Patient temp : patientList){
 //                temp.setPatientStatus(true);
 //                temp.setDocActives(true);
 //            }
+//
+//            for(Patient temp : patientList){
+//                session.save(temp);
+//            }
 
-            List<IncomeAnalysis> list = new ArrayList<>();
+//            List<IncomeAnalysis> list = new ArrayList<>();
+//
+//            for(int i=0, j=6000; i<31; i++){
+//                list.add(i,new IncomeAnalysis(LocalDate.of(2021,3,i+1), j+=35));
+//            }
+//            for(IncomeAnalysis temp: list){
+//                session.save(temp);
+//            }
 
-            for(int i=0, j=4000; i<31; i++){
-                list.add(i,new IncomeAnalysis(LocalDate.of(2020,5,i+1), j+=35));
+//            List<PatientAnalysis> list = new ArrayList<>();
+//
+//            for(int i=0, j=7000; i<28; i++){
+//                list.add(i,new PatientAnalysis(LocalDate.of(2021,2,i+1), j-=37));
+//
+//            }
+//            for(PatientAnalysis temp: list){
+//                session.save(temp);
+//            }
+
+
+            AgeScale scale = new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6);
+            AgeScale scale2 = new AgeScale(9,11,0,7,14,3,7,12,18,1,9,4);
+            AgeScale scale3 = new AgeScale(5,1,10,4,1,13,7,2,8,10,3,6);
+            AgeScale scale4 = new AgeScale(55,97,168,502,706,910,77,220,812,1001,1204,656);
+            List<DiseaseRecord> diseaseRecordList = new ArrayList<>();
+
+            for(int i=0; i<26;i++) {
+                diseaseRecordList.add(i, new DiseaseRecord(LocalDate.of(2021, 2, i + 1), "Ebola", scale3));
             }
-            for(IncomeAnalysis temp: list){
+            for(int j=0; j<22;j++){
+                diseaseRecordList.add(j,new DiseaseRecord(LocalDate.of(2021,2,j+1),"Corona virus", scale4));
+
+            }
+            for(DiseaseRecord temp: diseaseRecordList){
                 session.save(temp);
             }
 
-
-//            AgeScale scale = new AgeScale(4,5,1,2,3,4,7,8,4,5,8,6);
-//            AgeScale scale2 = new AgeScale(9,11,0,7,14,3,7,12,18,1,9,4);
-//            AgeScale scale3 = new AgeScale(5,1,10,4,1,13,7,2,8,10,3,6);
-//            AgeScale scale4 = new AgeScale(55,97,168,502,706,910,77,220,812,1001,1204,656);
-//            List<DiseaseRecord> diseaseRecordList = new ArrayList<>();
-
-//            for(int i=0; i<26;i++){
-//                diseaseRecordList.add(i,new DiseaseRecord(LocalDate.of(2020,8,i+1),"Ebola", scale3));
-
-//            for(int i=0; i<22;i++){
-//                diseaseRecordList.add(i,new DiseaseRecord(LocalDate.of(2020,8,i+1),"Corona virus", scale4));
-
-//            }
-//            for(DiseaseRecord temp: diseaseRecordList){
-//                session.save(temp);
-//            }
-//
-//            session.save(new DiseaseRecord(LocalDate.now(),"Ebola", new AgeScale( 1, 3, 5, 11, 7 , 12, 0, 13, 14, 11, 12, 15)));
+            session.save(new DiseaseRecord(LocalDate.now(),"Ebola", new AgeScale( 1, 3, 5, 11, 7 , 12, 0, 13, 14, 11, 12, 15)));
 
 
 

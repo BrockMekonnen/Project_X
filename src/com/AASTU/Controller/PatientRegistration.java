@@ -306,6 +306,7 @@ public class PatientRegistration implements Initializable{
             factory.close();
             session.close();
         }
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -325,7 +326,6 @@ public class PatientRegistration implements Initializable{
                      saveNewPatient();
                      WindowChangeController.closeWindow();
                      NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
-//                     new SecretaryWindowController().displayPatients();
                 }
           }else {
             new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
