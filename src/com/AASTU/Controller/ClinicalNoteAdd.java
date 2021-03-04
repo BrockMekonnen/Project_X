@@ -34,6 +34,7 @@ public class ClinicalNoteAdd implements Initializable{
     private JFXTextArea textArea;
 
     private List<ClinicalNotes> clinicalNotesList;
+
     private Patient patient;
 
     @FXML
@@ -79,7 +80,7 @@ public class ClinicalNoteAdd implements Initializable{
             String note = textArea.getText();
             int id = clinicalNotesList.get(position).getNoteId(); // using the position get its id
             new DataSaver().saveEditedClinicalNote(id, note); // save the note
-
+            WindowChangeController.closeWindow();
             new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.getCurrentDoctor().getDoctorID()+" Edit the Clinical Note of Patient for  "+ DateTimeFormatter.BASIC_ISO_DATE.format(clinicalNotesList.get(position).getDate())+" \n",1,LocalDate.now(),DoctorWindowController.getCurrentDoctor().getDoctorID());
 
         }
@@ -91,8 +92,7 @@ public class ClinicalNoteAdd implements Initializable{
             WindowChangeController.closeWindow();
         }
 
-     new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.getCurrentDoctor().getDoctorID()+" Treat The Patient \n",1,LocalDate.now(),DoctorWindowController.getCurrentDoctor().getDoctorID());
-
+    new DataSaver().updateActivity(patient.getPatientId()," Doctor: "+DoctorWindowController.getCurrentDoctor().getDoctorID()+" Treat The Patient \n",1,LocalDate.now(),DoctorWindowController.getCurrentDoctor().getDoctorID());
 
     }
 

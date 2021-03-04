@@ -1,13 +1,11 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Model.ClinicalNotes;
-import com.AASTU.Model.LabRequest;
+import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
-import com.AASTU.Model.Patient;
-import com.AASTU.Model.WorkActivity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -356,6 +354,7 @@ public class DataSaver {
         }
     }
 
+
     public void saveOther(String activity,int identify,int id,LocalDate date,int Patientid){
         WorkActivity obj=new WorkActivity();
         obj.setActivity(activity);
@@ -382,4 +381,84 @@ public class DataSaver {
             session.close();
         }
     }
+
+    public void saveIncomeAnalysis(IncomeAnalysis analysis){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(IncomeAnalysis.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+            session.beginTransaction();
+            session.save(analysis);
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void savePatientAnalysis(PatientAnalysis patientAnalysis){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(PatientAnalysis.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+            session.beginTransaction();
+            session.save(patientAnalysis);
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+    }
+
+    public void updatePatientAnalysis(LocalDate date){
+        PatientAnalysis patientAnalysis = null;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(PatientAnalysis.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("from PatientAnalysis where date = :date");
+            query.setParameter("date", date);
+            patientAnalysis = (PatientAnalysis) query.uniqueResult();
+            patientAnalysis.setTotalPatient(patientAnalysis.getTotalPatient() + 1);
+            session.update(patientAnalysis);
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+    }
+    public void updateIncomeAnalysis(LocalDate date, double payment){
+        IncomeAnalysis incomeAnalysis = null;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(IncomeAnalysis.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("from IncomeAnalysis where date = :date");
+            query.setParameter("date", date);
+            incomeAnalysis = (IncomeAnalysis) query.uniqueResult();
+            incomeAnalysis.setTotalIncome(incomeAnalysis.getTotalIncome() + payment);
+            session.update(incomeAnalysis);
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+    }
+
 }

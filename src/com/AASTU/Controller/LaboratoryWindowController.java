@@ -214,7 +214,7 @@ public class LaboratoryWindowController implements Initializable {
                 int recordedDataPatientListSize = recordedDataPatientList.size();
                 int waitingPatientListSize = waitingPatientList.size();
                 while (DatabaseThread.RUNNING) {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     if(isOnPending) {
                         pendingPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
                         if(pendingPatientListSize != pendingPatientList.size()) {

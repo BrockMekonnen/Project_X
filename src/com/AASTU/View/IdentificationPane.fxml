@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
@@ -100,11 +99,6 @@
                   <Insets right="110.0" top="225.0" />
                </StackPane.margin>
             </JFXButton>
-            <Label fx:id="log_lbl" alignment="CENTER" prefHeight="94.0" prefWidth="322.0" style="-fx-background-color: transparent; -fx-border-color: #4FC3F7; -fx-border-width: 0 0 1 3;" stylesheets="@IdentificationPane.css" text="Log In As" textFill="WHITE" StackPane.alignment="CENTER_LEFT">
-               <font>
-                  <Font size="49.0" />
-               </font>
-            </Label>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

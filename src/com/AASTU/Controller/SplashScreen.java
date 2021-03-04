@@ -1,6 +1,7 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Main;
+import com.AASTU.Model.IncomeAnalysis;
+import com.AASTU.Model.PatientAnalysis;
 import javafx.fxml.FXML;
 
 import javafx.geometry.Rectangle2D;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,10 +32,35 @@ public class SplashScreen implements Initializable{
     }
 
     class Splash extends Thread{
+
+        private void checkIncome() {
+            DataLoader loadData = new DataLoader();
+            DataSaver saveData = new DataSaver();
+            IncomeAnalysis analysis = loadData.loadSingleIncomeAnalysisData(LocalDate.now());
+            if(analysis == null) {
+                System.out.println("IncomeAnalysis: null");
+                analysis = new IncomeAnalysis(LocalDate.now(), 0);
+                saveData.saveIncomeAnalysis(analysis);
+            }
+        }
+
+        private void checkTodayPatientAnalysis() {
+            DataLoader loadData = new DataLoader();
+            DataSaver saveData = new DataSaver();
+            PatientAnalysis analysis = loadData.loadSinglePatientAnalysisData(LocalDate.now());
+            if(analysis == null) {
+                System.out.println("IncomeAnalysis: null");
+                analysis = new PatientAnalysis(LocalDate.now(), 0);
+                saveData.savePatientAnalysis(analysis);
+            }
+        }
+
         @Override
         public void run(){
             try {
-                Thread.sleep(3000);
+                Thread.sleep(100);
+                checkIncome();
+                checkTodayPatientAnalysis();
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
