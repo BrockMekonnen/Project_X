@@ -42,12 +42,9 @@ public class ClinicalNoteView implements Initializable{
         noteArea.setText(text);
     }
 
-
-
     @FXML
     void handleEditButton(ActionEvent event) throws IOException {
         new WindowChangeController().clinicalNotesView(event,"../View/ClinicalNoteAdd.fxml");
     }
-
 
 }

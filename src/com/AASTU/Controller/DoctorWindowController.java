@@ -186,6 +186,10 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private BorderPane diseasePane;
 
+    @FXML
+    private JFXTextField searchTextField;
+
+
     private boolean isDiseaseTable = false;
     private boolean isPendingTable = true;
     private boolean isRecordTable = false;
@@ -224,7 +228,7 @@ public class DoctorWindowController implements Initializable {
             int activeListSize = docActivePatientList.size();
             int fromLabListSize = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromLab = 1")).size();
             int fromSecListSize = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromSec = 1")).size();
-
+            System.out.println("DoctorWindowController.call");
             while(DatabaseThread.RUNNING){
                 Thread.sleep(2000);
                 if(isPendingTable) {
@@ -284,6 +288,7 @@ public class DoctorWindowController implements Initializable {
         columnRecordSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnRecordAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         recordTable.setItems(observableRecordList);
+        NotificationController.searchFieldHandler(observableRecordList, recordTable, searchTextField);
     }
 
 
@@ -311,6 +316,7 @@ public class DoctorWindowController implements Initializable {
         columnSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         pendingTable.setItems(docActivePatientList);
+        NotificationController.searchFieldHandler(docActivePatientList, pendingTable, searchTextField);
     }
 
     @FXML

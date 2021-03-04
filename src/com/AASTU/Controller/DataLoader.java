@@ -976,10 +976,55 @@ public class DataLoader {
           return activity;
     }
 
+    public IncomeAnalysis loadSingleIncomeAnalysisData(LocalDate date){
+        IncomeAnalysis incomeAnalysis = null;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
 
+                .addAnnotatedClass(IncomeAnalysis.class)
 
+                .buildSessionFactory();
 
+        Session session = factory.getCurrentSession();
 
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("from IncomeAnalysis  where date = :date");
+            query.setParameter("date", date);
+            incomeAnalysis = (IncomeAnalysis) query.uniqueResult();
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+        return incomeAnalysis;
+    }
+
+    public PatientAnalysis loadSinglePatientAnalysisData(LocalDate date){
+        PatientAnalysis patientAnalysis = null;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(PatientAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("from PatientAnalysis where date = :date");
+            query.setParameter("date", date);
+            patientAnalysis = (PatientAnalysis) query.uniqueResult();
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+
+        return patientAnalysis;
+    }
 
 
     public List<IncomeAnalysis> loadIncomeAnalaysisData(int year, int month){
@@ -1078,7 +1123,7 @@ public class DataLoader {
         try{
 
             session.beginTransaction();
-            String quiry = "select DISTINCT diseaseName from DiseaseRecord where extract(YEAR FROM date) = " + year + " and extract(MONTH FROM date) = " + month;
+            String quiry = "select DISTINCT diseaseName from DiseaseRecord";
             list = session.createQuery(quiry).list();
 
             session.getTransaction().commit();

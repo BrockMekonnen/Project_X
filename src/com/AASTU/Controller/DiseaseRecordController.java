@@ -440,7 +440,6 @@ public class DiseaseRecordController implements Initializable {
         for(int i=0 ;i<distinctDisease.size(); i++){
             diseaseCombo.getItems().add(distinctDisease.get(i));
             barDiseaseCombo.getItems().add(distinctDisease.get(i));
-
         }
         datePicker.setValue(LocalDate.now());
         ageDatePicker.setValue(LocalDate.now());

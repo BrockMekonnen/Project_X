@@ -442,7 +442,7 @@
                <children>
                   <AnchorPane fx:id="pnl_table_work" prefHeight="616.0" prefWidth="1350.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView fx:id="workTableView" prefHeight="612.0" prefWidth="1350.0" stylesheets="@tableStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <TableView fx:id="workTableView" prefHeight="612.0" prefWidth="1350.0" stylesheets="@tableStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn fx:id="ActiveCol" maxWidth="2500.0" prefWidth="75.0" text="Active.NO" />
                             <TableColumn fx:id="DateCol" maxWidth="3500.0" prefWidth="75.0" text="Date" />

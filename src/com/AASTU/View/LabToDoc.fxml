@@ -18,7 +18,7 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1200.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" stylesheets="@LabToDoc.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LabToDoc">
    <children>
-      <GridPane layoutX="2.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1088.0" prefWidth="1198.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+      <GridPane layoutX="2.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1088.0" prefWidth="1198.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="10.0">
          <columnConstraints>
             <ColumnConstraints hgrow="NEVER" maxWidth="369.0" minWidth="0.0" prefWidth="0.0" />
             <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="689.0" minWidth="10.0" prefWidth="344.0" />
@@ -28,11 +28,11 @@
             <ColumnConstraints maxWidth="1485.0" minWidth="0.0" prefWidth="0.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="1048.0" minHeight="10.0" prefHeight="1048.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="544.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1048.0" minHeight="10.0" prefHeight="1011.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="544.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="1">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1020.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="1">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="608.0" layoutX="20.0" layoutY="71.0" stroke="#01579b" strokeType="INSIDE" width="285.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <Label alignment="CENTER" layoutX="47.0" layoutY="29.0" prefHeight="34.0" prefWidth="232.0" text="HEMATOLOGY" textFill="#01579b" underline="true">
@@ -186,7 +186,7 @@
                   <Insets />
                </GridPane.margin>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="2">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1020.0" prefWidth="325.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="2">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="568.0" layoutX="32.0" layoutY="43.0" stroke="#01579b" strokeType="INSIDE" width="285.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <Label alignment="CENTER" layoutX="34.0" layoutY="12.0" prefHeight="27.0" prefWidth="228.0" text="URINALYSIS" textFill="#01579b" underline="true">
@@ -269,7 +269,7 @@
                   <CheckBox fx:id="EpitCell_CheckBox" layoutX="266.0" layoutY="423.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="MicroWBC_CheckBox" layoutX="266.0" layoutY="455.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="Blood_CheckBox" layoutX="268.0" layoutY="359.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="379.0" layoutX="20.0" layoutY="652.0" stroke="#01579b" strokeType="INSIDE" width="285.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1f5fe" height="360.0" layoutX="20.0" layoutY="652.0" stroke="#01579b" strokeType="INSIDE" width="285.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <Label alignment="CENTER" layoutX="49.0" layoutY="615.0" prefHeight="32.0" prefWidth="217.0" text="CHEMISTRY" textFill="#01579b" underline="true">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -384,8 +384,11 @@
                   <CheckBox fx:id="Bun_CheckBox" layoutX="261.0" layoutY="936.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                   <CheckBox fx:id="Creatinine_CheckBox" layoutX="261.0" layoutY="968.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="19.0" />
                </children>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1048.0" prefWidth="318.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1020.0" prefWidth="318.0" style="-fx-background-color: #E1F5FE;" GridPane.columnIndex="3">
                <children>
                   <Label alignment="CENTER" layoutX="41.0" layoutY="731.0" prefHeight="27.0" prefWidth="115.0" style="-fx-border-color: #01579B; -fx-border-width: 2 0 2 2;" text="Gram Stain">
                      <font>
@@ -591,7 +594,7 @@
                   <JFXButton fx:id="cancelbtn" buttonType="RAISED" onAction="#cancel" prefHeight="43.0" prefWidth="116.0" style="-fx-background-color: #ffffff; -fx-border-color: #0277BDd1; -fx-border-width: 2 2 2 2;" text="Cancel" />
                </children>
                <GridPane.margin>
-                  <Insets top="10.0" />
+                  <Insets top="30.0" />
                </GridPane.margin>
             </HBox>
          </children>

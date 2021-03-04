@@ -325,6 +325,7 @@ public class PatientRegistration implements Initializable{
                 if(Warning.isOk) {
                      saveNewPatient();
                      WindowChangeController.closeWindow();
+                     new DataSaver().updatePatientAnalysis(LocalDate.now());
                      NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
                 }
           }else {
