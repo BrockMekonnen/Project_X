@@ -4,17 +4,19 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate.cfg.xml" value="c5b23c9d-4cbd-4635-b067-7a26e365269d" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
       </configuration>
     </facet>
-    <facet type="javaeeApplication" name="javaEEApplication">
+    <facet type="jpa" name="JPA">
       <configuration>
-        <descriptors>
-          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/META-INF/application.xml" />
-        </descriptors>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping>
+          <factory-entry name="Project_X" value="6c538de2-242a-4bde-9161-e44aa8a73cae" />
+        </datasource-mapping>
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>
@@ -27,6 +29,5 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="controlsfx-8.40.11" level="project" />
   </component>
 </module>
