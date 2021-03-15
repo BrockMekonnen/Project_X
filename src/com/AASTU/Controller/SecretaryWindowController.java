@@ -1,6 +1,7 @@
 package com.AASTU.Controller;
 
 import com.AASTU.Model.*;
+import com.AASTU.utils.DatabaseThread;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
@@ -9,6 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,7 +31,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import java.util.Calendar;
+
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -234,6 +238,12 @@ public class SecretaryWindowController implements Initializable {
 
     public int SecretaryId=12;
 
+    private boolean isOnActiveTable = true;
+    private boolean isOnPayTable = false;
+    private boolean isOnOutTable = false;
+    private boolean isOnRecordTable = false;
+
+
     public static Secretary getCurrentSecretary() {
         return currentSecretary;
     }
@@ -243,13 +253,119 @@ public class SecretaryWindowController implements Initializable {
     }
 
     // getting patient lists from database
-    ObservableList<Patient> allPatientList;
-    ObservableList<Patient> normalPatientList;
-    ObservableList<Patient> outPatientList;
-    ObservableList<Patient> payers;
+    ObservableList<Patient> recordList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0"));
+    ObservableList<Patient> normalPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0 and patientStatus = 1"));
+    ObservableList<Patient> outPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 1 and outPatient = 1"));
+    ObservableList<Patient> payers = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where payed = 0 and secActives = 1"));
 
     // prices list
     ObservableList<Pricing> pricings = FXCollections.observableArrayList(new DataLoader().loadPricing());
+
+    public void refreshTable(){
+
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                int patientListSize = normalPatientList.size();
+                int recordListSize = recordList.size();
+                int outPatientListSize = outPatientList.size();
+                int payersListSize = payers.size();
+                while(DatabaseThread.RUNNING){
+                    Thread.sleep(3000);
+                    if(isOnActiveTable){
+                        normalPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0 and patientStatus = 1"));
+                        if(patientListSize != normalPatientList.size()){
+                            Platform.runLater(() -> {
+                                displayPatients(normalPatientList);
+                            });
+                            patientListSize = normalPatientList.size();
+                        }
+                    } else if(isOnRecordTable) {
+                        recordList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0"));
+                        if(recordListSize != recordList.size()){
+                            Platform.runLater(() -> {
+                                displayRecords(recordList);
+                            });
+                            recordListSize = recordList.size();
+                        }
+
+                    } else if(isOnOutTable) {
+                        outPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 1 and outPatient = 1"));
+                        if(outPatientListSize != outPatientList.size()){
+                            Platform.runLater(() -> {
+                               displayOutPatient(outPatientList);
+                            });
+                            outPatientListSize = outPatientList.size();
+                        }
+
+                    } else if(isOnPayTable) {
+                        payers = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where payed = 0 and secActives = 1"));
+                        if(payersListSize != payers.size()){
+                            Platform.runLater(() -> {
+                                displayPayment(payers);
+                            });
+                            payersListSize = payers.size();
+                        }
+                    }
+                }
+                return null;
+            }
+        };
+        Thread hilo = new Thread(task);
+        hilo.setDaemon(true);
+        hilo.start();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        DatabaseThread.start();
+
+        profilePane.setVisible(false);
+        profileOpacityPane.setVisible(false);
+        opacityPane1.setVisible(false);
+        TransitionController.translateTransition(slidePane1, -600, 0.5);
+        TransitionController.translation(slidePane1,1,0,0.1);
+        opacityPane1.setOnMouseClicked(event -> {
+            translateTransitionBack(slidePane1,-600,1);
+        });
+
+        profileOpacityPane.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
+
+        exitBtn.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
+        refreshTable();
+        displayPatients(normalPatientList);
+        displayOutPatient(outPatientList);
+        displayPayment(payers);
+        displayRecords(recordList);
+        displayProfile();
+        searchFieldHandler(normalPatientList,mainTable,searchfield);
+    }
+
+    // method to display the registered patients to the table
+    public  void displayPatients(ObservableList<Patient> normalPatientList) {
+        rowClickHandler(mainTable);
+        // to display normal patient
+        patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+        sexCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        ageCol.setCellValueFactory(new PropertyValueFactory<Patient, Double>("age"));
+
+        addedDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        phoneNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
+        cityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
+        subCityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
+        kebeleCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
+        houseNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
+        mainTable.setItems(normalPatientList);
+        searchFieldHandler(normalPatientList,mainTable,searchfield);
+    }
+
+
 
     // profile handler
     private void textFieldStatus(boolean status) {
@@ -324,44 +440,20 @@ public class SecretaryWindowController implements Initializable {
         }
     }
 
-    public void refresh(){
-        normalPatientList.clear();
-        displayPatients();
-    }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        profilePane.setVisible(false);
-        profileOpacityPane.setVisible(false);
-        opacityPane1.setVisible(false);
-        TransitionController.translateTransition(slidePane1, -600, 0.5);
-        TransitionController.translation(slidePane1,1,0,0.1);
-        opacityPane1.setOnMouseClicked(event -> {
-            translateTransitionBack(slidePane1,-600,1);
-        });
-
-        profileOpacityPane.setOnMouseClicked(event -> {
-            TransitionController.exitHandler(profilePane, profileOpacityPane);
-        });
-
-        exitBtn.setOnMouseClicked(event -> {
-            TransitionController.exitHandler(profilePane, profileOpacityPane);
-        });
-
-        displayPatients();
-        displayOutPatient();
-        displayPayment();
-        displayRecords();
-        displayProfile();
-        searchFieldHandler(normalPatientList,mainTable,searchfield);
-    }
-
-
 
     void goToView(boolean active, boolean pay, boolean out, boolean record){
+
         ActivePatientPnl.setVisible(active);
+        isOnActiveTable = active;
+
         paymentPnl.setVisible(pay);
+        isOnPayTable = pay;
+
         outPatientPnl.setVisible(out);
+        isOnOutTable = out;
+
         recordPnl.setVisible(record);
+        isOnRecordTable = record;
     }
 
     /**
@@ -429,8 +521,8 @@ public class SecretaryWindowController implements Initializable {
      * */
 
     // method to display the total payment of patient but it is not finished yet!
-    public void displayPayment() {
-        payers = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where payed = 0 and secActives = 1"));
+    public void displayPayment(ObservableList<Patient> payers) {
+//        payers
         searchFieldHandler(payers,paymentTable,searchfield);
         rowClickHandlerforPayment(paymentTable);
         payPatientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
@@ -441,10 +533,17 @@ public class SecretaryWindowController implements Initializable {
     }
 
     //  method to display patient records
+
     public void displayRecords() {
         allPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where secActives = 1 and outPatient = 0"));
         searchFieldHandler(allPatientList,recordTable,searchfield);
         rowClickHandler(recordTable,true);
+
+    public void displayRecords(ObservableList<Patient> recordList) {
+//        allPatientList =
+        searchFieldHandler(recordList,recordTable,searchfield);
+        rowClickHandler(recordTable);
+
         patientIdColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         fullNameColRec.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>, ObservableValue<String>>() {
             @Override
@@ -456,7 +555,7 @@ public class SecretaryWindowController implements Initializable {
         sexColRec.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         ageColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
         cityColRec.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
-        recordTable.setItems(allPatientList);
+        recordTable.setItems(recordList);
     }
     // method to display the registered patients to the table
     public  void displayPatients() {
@@ -481,6 +580,10 @@ public class SecretaryWindowController implements Initializable {
     }
     public void displayOutPatient(){
         outPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0 and outPatient = 1"));
+
+
+    public void displayOutPatient(ObservableList<Patient> outPatientList){
+//        outPatientList
         searchFieldHandler(outPatientList,outPatientTable,searchfield);
         rowClickHandler(outPatientTable,true);
         // to display out patient
@@ -505,7 +608,7 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     void handleActivePatientButton(ActionEvent event) {
-        displayPatients();
+        displayPatients(normalPatientList);
         goToView(true,false,false,false);
         ActivePatientPnl.toFront();
         searchFieldHandler(normalPatientList,mainTable,searchfield);
@@ -513,7 +616,7 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     void handleOutPatientButton(ActionEvent event) {
-        displayOutPatient();
+        displayOutPatient(outPatientList);
         goToView(false,false,true,false);
         outPatientPnl.toFront();
         searchFieldHandler(outPatientList,outPatientTable,searchfield);
@@ -521,7 +624,7 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     void handlePaymentButton(ActionEvent event) {
-        displayPayment();
+        displayPayment(payers);
         goToView(false,true,false,false);
         paymentPnl.toFront();
         searchFieldHandler(payers,paymentTable,searchfield);
@@ -529,10 +632,10 @@ public class SecretaryWindowController implements Initializable {
 
     @FXML
     void handleRecordButton(ActionEvent event) {
-        displayRecords();
+        displayRecords(recordList);
         goToView(false,false,false,true);
         recordPnl.toFront();
-        searchFieldHandler(allPatientList,recordTable,searchfield);
+        searchFieldHandler(recordList,recordTable,searchfield);
     }
 
     @FXML
@@ -570,6 +673,7 @@ public class SecretaryWindowController implements Initializable {
         if (Warning.isOk) {
             new WindowChangeController().signOut(event, "../view/Login.fxml");
         }
+        DatabaseThread.terminate();
     }
 
     @FXML

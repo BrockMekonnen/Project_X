@@ -320,6 +320,7 @@ public class PatientRegistration implements Initializable{
             factory.close();
             session.close();
         }
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -331,6 +332,7 @@ public class PatientRegistration implements Initializable{
 
     public void ConfirmationAction() throws IOException {
         if(validatUserInput()) {
+
             if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
                     ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) &&
                     ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
@@ -344,6 +346,17 @@ public class PatientRegistration implements Initializable{
                     }
                 }else {
                     new WindowChangeController().warningPopup("Saving Error", "Invalid Year! Please Check the year. ","warn_confirm.png");
+
+          if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
+              ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) &&
+              ExceptionHandler.validateNum(ageTf.getText(),ageTf) && ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
+               new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
+                if(Warning.isOk) {
+                     saveNewPatient();
+                     WindowChangeController.closeWindow();
+                     new DataSaver().updatePatientAnalysis(LocalDate.now());
+                     NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
+
                 }
             }else {
                 new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");

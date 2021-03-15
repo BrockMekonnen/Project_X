@@ -2,6 +2,9 @@ package com.AASTU.Controller;
 
 import com.AASTU.Model.*;
 import com.AASTU.Model.LaboratoryRequest.*;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -41,6 +44,7 @@ public class DataLoader {
 //        }
 //    }
 
+
     public List<Doctor> loadDoctorsData(){
         List<Doctor> doctorsList;
         SessionFactory factory = new Configuration()
@@ -61,6 +65,7 @@ public class DataLoader {
         return doctorsList;
     }
 
+
     public List<Laboratory> loadLaboratoriestData(){
         List<Laboratory> laboratoryList;
         SessionFactory factory = new Configuration()
@@ -80,6 +85,7 @@ public class DataLoader {
 
         return laboratoryList;
     }
+
 
     public Laboratory laboratoryObj(String password, String userName){
         Laboratory laboratory;
@@ -105,6 +111,7 @@ public class DataLoader {
         return laboratory;
     }
 
+
     public Laboratory loadSingleLaboratory(WorkActivity work){
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -119,6 +126,25 @@ public class DataLoader {
             if(laboratory!=null)
                 System.out.println(laboratory.getFirstName());
             else System.out.println("this is null Value");
+            session.getTransaction().commit();
+        }finally {
+            factory.close();
+            session.close();
+        }
+
+        return laboratory;
+    }
+
+    public List<Laboratory> loadLaboratoryResult(String selectiveCommand){
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+        Session session = factory.getCurrentSession();
+        List<Laboratory> laboratory=null;
+        try {
+            session.beginTransaction();
+             laboratory = session.createQuery(selectiveCommand).list();
             session.getTransaction().commit();
         }finally {
             factory.close();
@@ -170,8 +196,6 @@ public class DataLoader {
         }
           return secretary;
     }
-
-
 
 
     public Secretary secretaryObj(String password, String userName){
@@ -343,6 +367,36 @@ public class DataLoader {
 //    }
 
 
+
+    public List<LabRequest> loadLabRequest(String selectiveCommand) {
+        List<LabRequest> labRequestList;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            labRequestList = session.createQuery(selectiveCommand).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return labRequestList;
+
+    }
 
     public List<ClinicalNotes> loadClincalNotes(Patient tempPateint) {
         List<ClinicalNotes> clinicalNotesList;
@@ -540,11 +594,16 @@ public class DataLoader {
         try {
 
             session.beginTransaction();
+
+//            labRequest = session.createQuery("from LabRequest where patient_id = " + tempPateint.getPatientId()).list();
+
+
             System.out.println(tempPateint.getPatientId());
             Query query = session.createQuery("from LabRequest where patient_id = :patientId and viewable =: viewable");
             query.setParameter("patientId",tempPateint.getPatientId());
             query.setParameter("viewable",true);
             labRequest = (LabRequest) query.uniqueResult();
+
             session.getTransaction().commit();
 
         } finally {
@@ -555,7 +614,37 @@ public class DataLoader {
         return labRequest;
 
     }
-    // this method return one pricing obj at a time
+
+    public List<LabRequest> LabRequest(String selectiveCommand) {
+        List<LabRequest>  labRequest;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(LabRequest.class)
+                .addAnnotatedClass(Patient.class)
+                .addAnnotatedClass(ClinicalNotes.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try {
+
+            session.beginTransaction();
+            labRequest = session.createQuery(selectiveCommand).list();
+
+            session.getTransaction().commit();
+
+        } finally {
+            factory.close();
+            session.close();
+        }
+
+        return labRequest;
+
+    }
+    // this method return ClickButtons pricing obj at a time
     public Pricing priceObj(int id) {
         Pricing price = null;
 
@@ -610,7 +699,7 @@ public class DataLoader {
 
     }
 
-    public Patient loadSinglePatinetObject(Patient patient){
+    public Patient loadSinglePatinetObject(int id){
 
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -632,8 +721,6 @@ public class DataLoader {
         Patient obj;
         try{
             session.beginTransaction();
-
-            int id = patient.getPatientId();
 
             obj = (Patient) session.load(Patient.class, id);
 
@@ -843,10 +930,55 @@ public class DataLoader {
           return activity;
     }
 
+    public IncomeAnalysis loadSingleIncomeAnalysisData(LocalDate date){
+        IncomeAnalysis incomeAnalysis = null;
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
 
+                .addAnnotatedClass(IncomeAnalysis.class)
 
+                .buildSessionFactory();
 
+        Session session = factory.getCurrentSession();
 
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("from IncomeAnalysis  where date = :date");
+            query.setParameter("date", date);
+            incomeAnalysis = (IncomeAnalysis) query.uniqueResult();
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+        return incomeAnalysis;
+    }
+
+    public PatientAnalysis loadSinglePatientAnalysisData(LocalDate date){
+        PatientAnalysis patientAnalysis = null;
+
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+
+                .addAnnotatedClass(PatientAnalysis.class)
+
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+
+        try{
+            session.beginTransaction();
+            Query query = session.createQuery("from PatientAnalysis where date = :date");
+            query.setParameter("date", date);
+            patientAnalysis = (PatientAnalysis) query.uniqueResult();
+            session.getTransaction().commit();
+        } finally{
+            factory.close();
+            session.close();
+        }
+
+        return patientAnalysis;
+    }
 
 
     public List<IncomeAnalysis> loadIncomeAnalaysisData(int year, int month){
@@ -945,7 +1077,7 @@ public class DataLoader {
         try{
 
             session.beginTransaction();
-            String quiry = "select DISTINCT diseaseName from DiseaseRecord where extract(YEAR FROM date) = " + year + " and extract(MONTH FROM date) = " + month;
+            String quiry = "select DISTINCT diseaseName from DiseaseRecord";
             list = session.createQuery(quiry).list();
 
             session.getTransaction().commit();

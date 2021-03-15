@@ -139,108 +139,37 @@ public class DiseaseRecordController implements Initializable {
     private void populateDiseaseTable(List<DiseaseRecord> diseaseRecordList){
         ObservableList<DiseaseRecord> observableList = FXCollections.observableArrayList();
 
-        columnDate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, LocalDate>, ObservableValue<LocalDate>>() {
-            @Override
-            public ObservableValue<LocalDate> call(TableColumn.CellDataFeatures<DiseaseRecord, LocalDate> param) {
-                return param.getValue().getDate();
-            }
-        });
+        columnDate.setCellValueFactory(param -> param.getValue().getDate());
 
-        columnDisease.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<DiseaseRecord, String> param) {
-                return param.getValue().getDiseaseName();
-            }
-        });
+        columnDisease.setCellValueFactory(param -> param.getValue().getDiseaseName());
 
-        columnLess1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().mLess1ForTable();
-            }
-        });
+        columnLess1.setCellValueFactory(param -> param.getValue().mLess1ForTable());
 
-        column1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().M1to4ForTable();
-            }
-        });
+        column1to4.setCellValueFactory(param -> param.getValue().M1to4ForTable());
 
-        column5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().M5to14ForTable();
-            }
-        });
+        column5to14.setCellValueFactory(param -> param.getValue().M5to14ForTable());
 
-        column15to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().M15to29ForTable();
-            }
-        });
+        column15to29.setCellValueFactory(param -> param.getValue().M15to29ForTable());
 
-        column30to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().M30to64ForTable();
-            }
-        });
+        column30to64.setCellValueFactory(param -> param.getValue().M30to64ForTable());
 
-        columnGreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().mGreater65ForTable();
-            }
-        });
+        columnGreater63.setCellValueFactory(param -> param.getValue().mGreater65ForTable());
 
-        columnFless1.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().fLess1ForTable();
-            }
-        });
+        columnFless1.setCellValueFactory(param -> param.getValue().fLess1ForTable());
 
-        columnF1to4.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().F1to4ForTable();
-            }
-        });
+        columnF1to4.setCellValueFactory(param -> param.getValue().F1to4ForTable());
 
-        columnF5to14.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().F5to14ForTable();
-            }
-        });
+        columnF5to14.setCellValueFactory(param -> param.getValue().F5to14ForTable());
 
-        columnF15to29.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().F15to29ForTable();
-            }
-        });
+        columnF15to29.setCellValueFactory(param -> param.getValue().F15to29ForTable());
 
-        columnF30to64.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().F30to64ForTable();
-            }
-        });
+        columnF30to64.setCellValueFactory(param -> param.getValue().F30to64ForTable());
 
-        columnFGreater63.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DiseaseRecord, Integer>, ObservableValue<Integer>>() {
-            @Override
-            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<DiseaseRecord, Integer> param) {
-                return param.getValue().fGreater65ForTable();
-            }
-        });
+        columnFGreater63.setCellValueFactory(param -> param.getValue().fGreater65ForTable());
 
         for(DiseaseRecord temp: diseaseRecordList){
             observableList.add(temp);
         }
-
         diseaseTable.setItems(observableList);
     }
 
@@ -511,16 +440,20 @@ public class DiseaseRecordController implements Initializable {
         for(int i=0 ;i<distinctDisease.size(); i++){
             diseaseCombo.getItems().add(distinctDisease.get(i));
             barDiseaseCombo.getItems().add(distinctDisease.get(i));
-
         }
         datePicker.setValue(LocalDate.now());
         ageDatePicker.setValue(LocalDate.now());
         barDiseaseDatePicker.setValue(LocalDate.now());
         barDatePicker.setValue(LocalDate.now());
 
+
+
         populatePieChart();
         populateBarChart();
         List<DiseaseRecord> diseaseRecordList = new DataLoader().loadDiseaseData("from DiseaseRecord");
+        System.out.println("List Month: " + listMonth.size());
+        System.out.println("List Day: " + listDay.size());
+        System.out.println("Disease Record: " + diseaseRecordList.size());
         populateDiseaseTable(diseaseRecordList);
     }
 }

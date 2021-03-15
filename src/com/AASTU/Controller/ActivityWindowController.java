@@ -49,6 +49,7 @@ public class ActivityWindowController implements Initializable {
 
         Data.setText(work.getActivity_day().toString());
         DetailTA.setText(work.getActivity());
+        DetailTA.setEditable(false);
         if(work.getPatientId()==0)
             PatientName.setText("No Patient Data");
         else{

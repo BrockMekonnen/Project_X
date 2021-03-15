@@ -1,16 +1,20 @@
 package com.AASTU.Controller;
 
 import com.AASTU.Model.*;
+import com.AASTU.utils.DatabaseThread;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -28,7 +32,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -183,6 +186,20 @@ public class DoctorWindowController implements Initializable {
     @FXML
     private BorderPane diseasePane;
 
+    @FXML
+    private JFXTextField searchTextField;
+
+
+    private boolean isDiseaseTable = false;
+    private boolean isPendingTable = true;
+    private boolean isRecordTable = false;
+
+    private boolean isCardTab = false;
+    private boolean isLabTab = false;
+    private boolean isAllTab = true;
+
+    ObservableList<Patient> observableRecordList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0"));
+    ObservableList<Patient> docActivePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1"));
 
     public static Doctor getCurrentDoctor() {
         return currentDoctor;
@@ -192,28 +209,91 @@ public class DoctorWindowController implements Initializable {
         DoctorWindowController.currentDoctor = currentDoctor;
     }
 
-    public int DoctorId=22;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        transition();
+        goToPending();
+        displayProfile();
+        DatabaseThread.start();
+        refreshTable();
+    }
+
+    public void refreshTable(){
+
+        Task<Void> listener = new Task<Void>() {
+
+            @Override
+            protected Void call() throws Exception {
+            int recordListSize = observableRecordList.size();
+            int activeListSize = docActivePatientList.size();
+            int fromLabListSize = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromLab = 1")).size();
+            int fromSecListSize = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromSec = 1")).size();
+            System.out.println("DoctorWindowController.call");
+            while(DatabaseThread.RUNNING){
+                Thread.sleep(2000);
+                if(isPendingTable) {
+                    if(isAllTab) {
+                        docActivePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1"));
+                        if(activeListSize != docActivePatientList.size()) {
+                            Platform.runLater(() -> {
+                                populatePendingTable(docActivePatientList);
+                            });
+                            activeListSize = docActivePatientList.size();
+                        }
+                    }
+                    else if(isCardTab) {
+                        docActivePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromSec = 1"));
+                        if(fromSecListSize != docActivePatientList.size()) {
+                            Platform.runLater(() -> {
+                                populatePendingTable(docActivePatientList);
+                            });
+                            fromSecListSize = docActivePatientList.size();
+                        }
+                    }
+                    else if(isLabTab) {
+                        docActivePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromLab = 1"));
+                        if(fromLabListSize != docActivePatientList.size()) {
+                            Platform.runLater(() -> {
+                               populatePendingTable(docActivePatientList);
+                            });
+                            fromSecListSize = docActivePatientList.size();
+                        }
+                    }
+                }
+                else if(isRecordTable) {
+                    observableRecordList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0"));
+                    if(recordListSize != observableRecordList.size()) {
+                        Platform.runLater(() -> {
+                            populateRecordTable(observableRecordList);
+                        });
+                        recordListSize = observableRecordList.size();
+                    }
+                }
+            }
+            return null;
+            }
+        };
+        Thread dbThread = new Thread(listener);
+        dbThread.setDaemon(true);
+        dbThread.start();
+    }
 
 
     /** this function insert data from database to the record table **/
-    private void populateRecordTable(){
+    private void populateRecordTable(ObservableList<Patient> observableRecordList){
         columnRecordId.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         columnRecordDate.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
         columnRecordFirst.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
         columnRecordLast.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
         columnRecordSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnRecordAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
-        ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0"); // load data from database those patient which are active
-        for(Patient temp: patientList){
-            observableList.add(temp); // convert to observable list
-        }
-        recordTable.setItems(observableList);
+        recordTable.setItems(observableRecordList);
+        NotificationController.searchFieldHandler(observableRecordList, recordTable, searchTextField);
     }
 
 
     /** this function inserts data from the database to the pendingTable */
-    private void populatePendingTable(String command){
+    private void populatePendingTable(ObservableList<Patient> docActivePatientList){
         // this makes the row clickable
         pendingTable.setRowFactory(tv -> {
             TableRow<Patient> row = new TableRow<>(); // get the row
@@ -235,13 +315,62 @@ public class DoctorWindowController implements Initializable {
         columnLast.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
         columnSex.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
         columnAge.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("age"));
-        ObservableList<Patient> observableList = FXCollections.observableArrayList();
-        List<Patient> patientList = new DataLoader().loadSpecificPatientData(command); // get list of data from the database
-        for(Patient temp: patientList){
-            observableList.add(temp); // change each object from list to observableList
-        }
-        pendingTable.setItems(observableList);
+        pendingTable.setItems(docActivePatientList);
+        NotificationController.searchFieldHandler(docActivePatientList, pendingTable, searchTextField);
     }
+
+    @FXML
+    void cancelProHandler(ActionEvent event) { }
+
+    @FXML
+    void goToPending(ActionEvent event) {
+        populatePendingTable(docActivePatientList);
+        goToView(false,true,false);
+        goToSelectedTab(true, false, false);
+    }
+
+    void goToPending(){
+        populatePendingTable(docActivePatientList);
+        goToView(false,true,false);
+    }
+
+    @FXML
+    void handleCardButton(ActionEvent event) {
+        docActivePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromSec = 1"));
+        populatePendingTable(docActivePatientList);
+        goToPending();
+        goToSelectedTab(false, true, false);
+    }
+
+    @FXML
+    void handleLabButton(ActionEvent event) {
+        docActivePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where docActives = 1 and fromLab = 1"));
+        populatePendingTable(docActivePatientList);
+        goToPending();
+        goToSelectedTab(false, false, true);
+    }
+
+    @FXML
+    void goToRecord(ActionEvent event) {
+        populateRecordTable(observableRecordList);
+        goToView(false,false,true);
+    }
+
+    private void goToSelectedTab(boolean isOnAllTab, boolean isOnCardTab, boolean isOnLabTab) {
+        isAllTab = isOnAllTab;
+        isLabTab = isOnLabTab;
+        isCardTab = isOnCardTab;
+    }
+
+    private void goToView(boolean disease, boolean pending, boolean record){
+        diseasePane.setVisible(disease);
+        isDiseaseTable = disease;
+        pendingPnl.setVisible(pending);
+        isPendingTable = pending;
+        recordPnl.setVisible(record);
+        isRecordTable = record;
+    }
+
     // profile handler
     private void textFieldStatus(boolean status) {
         firstNameTf.setEditable(false);
@@ -277,19 +406,77 @@ public class DoctorWindowController implements Initializable {
     }
 
     @FXML
-    void cancelProHandler(ActionEvent event) {
+    void goToDisease(ActionEvent event) throws IOException {
+        goToView(true, false, false);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/DiseaseRecord.fxml"));
+        AnchorPane root = loader.load();
+        diseasePane.setCenter(root);
+    }
 
+    public void translateTransitionBack(AnchorPane pane, double move, double sec){
+        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);
+        translateTransition.setByX(move);
+        translateTransition.play();
+        translateTransition.setOnFinished(event -> {
+            opacityPane.setVisible(false);
+        });
+    }
+
+    public void OptionAction(){
+        editBtn.setText("Edit");
+        opacityPane.setVisible(true);
+        slidePane.setVisible(true);
+        TransitionController.translation(slidePane,0,1,0.1);
+        TransitionController.translateTransition(slidePane, 600, 1);
+    }
+
+    @FXML
+    void profileHandler(ActionEvent event) {
+        translateTransitionBack(slidePane,-600,1);
+        profileOpacityPane.setVisible(true);
+        profilePane.setVisible(true);
+    }
+
+    @FXML
+    void signOutHandler(ActionEvent event) throws IOException {
+
+        new WindowChangeController().warningPopup("Checking", "Are you sure to Sign Out?", "warn_confirm.png");
+        if(Warning.isOk){
+          new WindowChangeController().signOut(event,"../view/Login.fxml");
+        }
+        DatabaseThread.terminate();
+    }
+
+    private void transition(){
+        profilePane.setVisible(false);
+        profileOpacityPane.setVisible(false);
+        opacityPane.setVisible(false);
+        TransitionController.translateTransition(slidePane, -600, 0.5);
+        TransitionController.translation(slidePane,1,0,0.1);
+        opacityPane.setOnMouseClicked(event -> {
+            translateTransitionBack(slidePane, -600, 1);
+        });
+
+        profileOpacityPane.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+
+        });
+
+        exitBtn.setOnMouseClicked(event -> {
+            TransitionController.exitHandler(profilePane, profileOpacityPane);
+        });
     }
 
     /** accepts to doctor object and checks if they are equal or not */
     private boolean compareDoctorsObjs(Doctor obj1, Doctor obj2){
         if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
-           Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
-           Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) && Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase())){
+                Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
+                Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) && Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase())){
             return true;
         }
         return false;
     }
+
     @FXML
     void editProHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
@@ -298,6 +485,7 @@ public class DoctorWindowController implements Initializable {
         }
         editBtn.setText("Save");
     }
+
     public void editProfile() throws IOException {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -333,108 +521,6 @@ public class DoctorWindowController implements Initializable {
             factory.close();
             session.close();
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        transition();
-        goToPending();
-        displayProfile();
-
-    }
-
-    @FXML
-    void handleCardButton(ActionEvent event) {
-        populatePendingTable("from Patient where docActives = 1 and fromSec = 1");
-        goToPending();
-    }
-
-    @FXML
-    void handleLabButton(ActionEvent event) {
-        populatePendingTable("from Patient where docActives = 1 and fromLab = 1");
-        goToPending();
-    }
-
-    private void goToView(boolean disease, boolean pending, boolean record){
-        diseasePane.setVisible(disease);
-        pendingPnl.setVisible(pending);
-        recordPnl.setVisible(record);
-    }
-
-    @FXML
-    void goToPending(ActionEvent event) {
-        populatePendingTable("from Patient where docActives = 1");
-        goToView(false,true,false);
-    }
-    void goToPending(){
-        populatePendingTable("from Patient where docActives = 1");
-        goToView(false,true,false);
-    }
-
-    @FXML
-    void goToDisease(ActionEvent event) throws IOException {
-        goToView(true, false, false);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/DiseaseRecord.fxml"));
-        AnchorPane root = loader.load();
-        diseasePane.setCenter(root);
-    }
-
-    @FXML
-    void goToRecord(ActionEvent event) {
-        populateRecordTable();
-        goToView(false,false,true);
-    }
-
-    public void translateTransitionBack(AnchorPane pane, double move, double sec){
-        TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);
-        translateTransition.setByX(move);
-        translateTransition.play();
-        translateTransition.setOnFinished(event -> {
-            opacityPane.setVisible(false);
-        });
-    }
-
-    public void OptionAction(){
-        editBtn.setText("Edit");
-        opacityPane.setVisible(true);
-        slidePane.setVisible(true);
-        TransitionController.translation(slidePane,0,1,0.1);
-        TransitionController.translateTransition(slidePane, 600, 1);
-    }
-
-    @FXML
-    void profileHandler(ActionEvent event) {
-        translateTransitionBack(slidePane,-600,1);
-        profileOpacityPane.setVisible(true);
-        profilePane.setVisible(true);
-    }
-
-    @FXML
-    void signOutHandler(ActionEvent event) throws IOException {
-        new WindowChangeController().warningPopup("Checking", "Are you sure to Sign Out?", "warn_confirm.png");
-        if(Warning.isOk){
-          new WindowChangeController().signOut(event,"../view/Login.fxml");
-        }
-    }
-
-    private void transition(){
-        profilePane.setVisible(false);
-        profileOpacityPane.setVisible(false);
-        opacityPane.setVisible(false);
-        TransitionController.translateTransition(slidePane, -600, 0.5);
-        TransitionController.translation(slidePane,1,0,0.1);
-        opacityPane.setOnMouseClicked(event -> {
-            translateTransitionBack(slidePane, -600, 1);
-        });
-
-        profileOpacityPane.setOnMouseClicked(event -> {
-            TransitionController.exitHandler(profilePane, profileOpacityPane);
-
-        });
-
-        exitBtn.setOnMouseClicked(event -> {
-            TransitionController.exitHandler(profilePane, profileOpacityPane);
-        });
     }
 
 }

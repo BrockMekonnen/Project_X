@@ -4,8 +4,16 @@ package com.AASTU.Controller;
 import com.AASTU.Model.Doctor;
 import com.AASTU.Model.Laboratory;
 import com.AASTU.Model.Secretary;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
+import io.reactivex.Observable;
+import io.reactivex.Scheduler;
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -34,9 +42,17 @@ public class LoginController implements Initializable{
     @FXML
     private JFXPasswordField password;
 
+
 //    List<Doctor> doctors = new DataLoader().loadDoctorsData();
 //    List<Laboratory> laboratories = new DataLoader().loadLaboratoriestData();
 //    List<Secretary> secretaries = new DataLoader().loadSecretariesData();
+
+    @FXML
+    private JFXProgressBar progressBar;
+
+    @FXML
+    private JFXButton signIn;
+
 
     Secretary secretary;
     Doctor doctor;
@@ -60,10 +76,14 @@ public class LoginController implements Initializable{
 //    }
 
     @FXML
-    void signIn(ActionEvent event) throws IOException {
+    void signIn(ActionEvent event) {
+        progressBar.setVisible(true);
+        signIn.setDisable(true);
+        Thread taskThread = new Thread(() -> {
         String name = userName.getText();
         String pass = password.getText();
             if(source.equals("sec")){
+
                 secretary = new DataLoader().secretaryObj(pass, name);
                 if(secretary != null){
                     if (Objects.equals(secretary.getUserName(), name) && Objects.equals(secretary.getPassword(),pass) ){
@@ -91,31 +111,145 @@ public class LoginController implements Initializable{
                 }else {
                     errorLabel.setAlignment(Pos.CENTER);
                     errorLabel.setVisible(true);
+
+                try {
+                    onSecretarySignIn(event, name, pass);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+            } else if(source.equals("doc")){
+
+                try {
+                    onDoctorSignIn(event, name, pass);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }else if(source.equals("mana")) {
-                if(name.equals("admin")  && pass.equals("admin") ) {
-                    new WindowChangeController().changeWindow(event,"../view/ManagerWindow.fxml");
-                }else {
-                    errorLabel.setAlignment(Pos.CENTER);
-                    errorLabel.setVisible(true);
-                }
+                onManagerSignIn(event, name, pass);
             }else if(source.equals("lab")){
-                laboratory = new DataLoader().laboratoryObj(pass, name);
-                if(laboratory != null){
-                    if (Objects.equals(laboratory.getUserName(), name) && Objects.equals(laboratory.getPassword(),pass) ) {
-                        LaboratoryWindowController.setCurrentLaboratory(laboratory);
-                        System.out.println(laboratory);
+
+                progressBar.setVisible(true);
+                signIn.setDisable(true);
+                onLaboratorySignIn(event, name, pass);
+
+            }
+        });
+        taskThread.start();
+    }
+
+    private void onManagerSignIn(ActionEvent event, String name, String pass) {
+        if(name.equals("admin")  && pass.equals("admin") ) {
+            Platform.runLater(() -> {
+                try {
+                    new WindowChangeController().changeWindow(event,"../view/ManagerWindow.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }else {
+            Platform.runLater(() -> {
+                signIn.setDisable(false);
+                progressBar.setVisible(false);
+            });
+            errorLabel.setAlignment(Pos.CENTER);
+            errorLabel.setVisible(true);
+        }
+    }
+
+    private void onLaboratorySignIn(ActionEvent event, String name, String pass) {
+        laboratory = new DataLoader().laboratoryObj(pass, name);
+        System.out.println("Thread lab: " + laboratory);
+
+        if(laboratory != null){
+            if (Objects.equals(laboratory.getUserName(), name) && Objects.equals(laboratory.getPassword(),pass) ) {
+                LaboratoryWindowController.setCurrentLaboratory(laboratory);
+                System.out.println(laboratory);
+                Platform.runLater(() -> {
+                    try {
                         new WindowChangeController().changeWindow(event, "../view/LaboratoryWindow.fxml");
+
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
                         errorLabel.setVisible(true);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+
                     }
-                }else {
-                    errorLabel.setAlignment(Pos.CENTER);
-                    errorLabel.setVisible(true);
-                }
+                });
+            }else {
+                errorLabel.setAlignment(Pos.CENTER);
+                errorLabel.setVisible(true);
+                errorLabel.setText("Check Your Spellings!");
             }
+        }else {
+
+            Platform.runLater(() -> {
+                signIn.setDisable(false);
+                progressBar.setVisible(false);
+            });
+            errorLabel.setAlignment(Pos.CENTER);
+            errorLabel.setVisible(true);
+        }
     }
+
+    private void onSecretarySignIn(ActionEvent event, String name, String pass) throws IOException {
+        secretary = new DataLoader().secretaryObj(pass, name);
+        if(secretary != null){
+            if (Objects.equals(secretary.getUserName(), name) && Objects.equals(secretary.getPassword(),pass) ){
+                SecretaryWindowController.setCurrentSecretary(secretary);
+
+                Platform.runLater(() -> {
+                    try {
+                        new WindowChangeController().changeWindow(event,"../view/SecretaryWindow.fxml");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }else {
+                errorLabel.setAlignment(Pos.CENTER);
+                errorLabel.setVisible(true);
+                errorLabel.setText("Check Your Spellings!");
+            }
+        }else {
+            Platform.runLater(() -> {
+                signIn.setDisable(false);
+                progressBar.setVisible(false);
+            });
+            errorLabel.setAlignment(Pos.CENTER);
+            errorLabel.setVisible(true);
+        }
+    }
+
+    private void onDoctorSignIn(ActionEvent event, String name, String pass) throws IOException {
+        doctor = new DataLoader().doctorObj(pass, name);
+        if(doctor != null){
+            if (Objects.equals(doctor.getUserName(), name) && Objects.equals(doctor.getPassword(),pass) ) {
+                DoctorWindowController.setCurrentDoctor(doctor);
+
+                Platform.runLater(() -> {
+                    try {
+                        new WindowChangeController().changeWindow(event, "../view/DoctorWindow.fxml");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }else {
+                errorLabel.setAlignment(Pos.CENTER);
+                errorLabel.setVisible(true);
+                errorLabel.setText("Check Your Spellings!");
+            }
+        }else {
+            Platform.runLater(() -> {
+                signIn.setDisable(false);
+                progressBar.setVisible(false);
+            });
+            errorLabel.setAlignment(Pos.CENTER);
+            errorLabel.setVisible(true);
+        }
+    }
+
 
     @FXML
     void ToIdentificationWindow(ActionEvent event) throws IOException {
@@ -189,6 +323,6 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        progressBar.setVisible(false);
     }
 }

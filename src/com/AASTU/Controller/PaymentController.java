@@ -27,11 +27,14 @@ import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PaymentController implements Initializable{
+
     private  Patient patientObj;
+
     @FXML
     private TableView<Pricing> paymentDetailTable;
 
@@ -53,6 +56,8 @@ public class PaymentController implements Initializable{
     @FXML
     private JFXButton cancelBtn;
 
+    private double totalPrice;
+
     public static ObservableList<Pricing> pricings = FXCollections.observableArrayList();
 
 
@@ -62,7 +67,7 @@ public class PaymentController implements Initializable{
         pricecol.setCellValueFactory(new PropertyValueFactory<Pricing, Double>("price"));
         // generate the row number
         testNoCol.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(paymentDetailTable.getItems().indexOf(column.getValue())));
-        double totalPrice = new SecretaryWindowController().calcTotalPayment(obj);
+        totalPrice = new SecretaryWindowController().calcTotalPayment(obj);
         String total = Double.toString(totalPrice);
         totalPriceTf.setText(total + " ETB.");
         ObservableList<Pricing> pricingObservableList = FXCollections.observableArrayList();
@@ -81,6 +86,8 @@ public class PaymentController implements Initializable{
     void payedHandler(ActionEvent event) throws IOException {
         new WindowChangeController().warningPopup("Checking", "Are you sure?", "warn_confirm.png");
         if(Warning.isOk) {
+            System.out.println(totalPrice);
+            new DataSaver().updateIncomeAnalysis(LocalDate.now(), totalPrice);
             SessionFactory factory = new Configuration()
                     .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(Patient.class)
@@ -100,10 +107,9 @@ public class PaymentController implements Initializable{
             Session session = factory.getCurrentSession();
             try{
                 session.beginTransaction();
-
                 Patient activePatient = session.get(Patient.class, patientObj.getPatientId());
                 activePatient.setLabActives(true);
-                activePatient.setFromSec(true);
+                activePatient.setFromSec(false);
                 activePatient.setPayed(true);
                 activePatient.setSecActives(false);
                 session.getTransaction().commit();
@@ -112,6 +118,7 @@ public class PaymentController implements Initializable{
                 factory.close();
                 session.close();
             }
+
         }
     }
     @Override

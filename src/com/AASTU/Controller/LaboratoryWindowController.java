@@ -3,15 +3,17 @@ package com.AASTU.Controller;
 import com.AASTU.Main;
 import com.AASTU.Model.Laboratory;
 import com.AASTU.Model.Patient;
-import com.AASTU.Model.Secretary;
+import com.AASTU.utils.DatabaseThread;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -155,6 +157,18 @@ public class LaboratoryWindowController implements Initializable {
     @FXML
     private AnchorPane recordPnl;
 
+    private boolean isOnActive = false;
+    private boolean isOnPending = true;
+    private boolean isOnRecord = false;
+    private boolean isOnWaiting = false;
+
+    ObservableList<Patient> pendingPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
+    ObservableList<Patient> activePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1"));
+
+    //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
+    ObservableList<Patient> recordedDataPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0"));
+    ObservableList<Patient> waitingPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
+
     public static Laboratory getCurrentLaboratory() {
         return currentLaboratory;
     }
@@ -163,165 +177,15 @@ public class LaboratoryWindowController implements Initializable {
         LaboratoryWindowController.currentLaboratory = currentLaboratory;
     }
 
-    ObservableList<Patient> PendingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-    ObservableList<Patient> ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
-
-    //sending sql command for the database concatenating with the laboratoryid to filter out Patients that are treated by this Technician
-    ObservableList<Patient> RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+ currentLaboratory.getLaboratoryId()));
-    ObservableList<Patient> WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
-    void goToView(boolean active, boolean pending, boolean record, boolean waiting){
-        pendingPnl.setVisible(pending);
-        waitingPnl.setVisible(waiting);
-        activePnl.setVisible(active);
-        recordPnl.setVisible(record);
-    }
-
-    @FXML
-    void handleActiveButton(ActionEvent event) {
-        //some specification will be done here to access Active Patients only
-        ActivePatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
-        TableOperation();
-        goToView(true,false,false,false);
-        activePnl.toFront();
-
-        searchFieldHandler(ActivePatientList,ActivePatientTableView,PatientSearchTF);
-
-        SearchField();
-
-    }
-
-    @FXML
-    void handlePendingButton(ActionEvent event) {
-        //some Specification will be done here to access only Pending Patients
-        PendingPatientList= FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
-        TableOperation();
-        goToView(false,true,false,false);
-        SearchField();
-        pendingPnl.toFront();
-        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
-    }
-
-    @FXML
-    void handleRecordButton(ActionEvent event) {
-        //Some specification will be done here To Access Patients that are treated by Specific Laboratory Technician
-        RecordedDataPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where id="+currentLaboratory.getLaboratoryId()));
-        TableOperation();
-        goToView(false,false,true,false);
-        SearchField();
-        recordPnl.toFront();
-        searchFieldHandler(RecordedDataPatientList,RecordedPatientTableView,PatientSearchTF);
-    }
-
-    @FXML
-    void handleWaitingButton(ActionEvent event) {
-        //some specification wil be done here to access only waiting Patients from the whole lists
-        WaitingPatientList=FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
-        TableOperation();
-        goToView(false,false, false,true);
-        SearchField();
-        waitingPnl.toFront();
-        searchFieldHandler(WaitingPatientList,WaitingPatientTableView,PatientSearchTF);
-    }
-
-    // profile Handler
-    private void textFieldStatus(boolean status) {
-        firstNameTf.setEditable(false);
-        lastNameTf.setEditable(false);
-        passwordTf.setEditable(status);
-        genderTf.setEditable(false);
-        cityTf.setEditable(false);
-        proUserNameTf.setEditable(status);
-        phonTf.setEditable(false);
-        srartHrTf.setEditable(false);
-        endHrTf.setEditable(false);
-
-    }
-
-    public void displayProfile(){
-        textFieldStatus(false);
-        String startTime = new DataLoader().formatTime(currentLaboratory.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
-        String endTime = new DataLoader().formatTime(currentLaboratory.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm"))) ;
-        String sex = null;
-        if(currentLaboratory.getSex() == 'm') {
-            sex = "Male";
-        }else if(currentLaboratory.getSex() == 'f'){
-            sex = "Female";
-        }
-        firstNameTf.setText(currentLaboratory.getFirstName());
-        lastNameTf.setText(currentLaboratory.getLastName());
-        genderTf.setText(sex);
-        passwordTf.setText(currentLaboratory.getPassword());
-        srartHrTf.setText(startTime);
-        endHrTf.setText(endTime);
-        phonTf.setText(currentLaboratory.getPhoneNumber());
-        cityTf.setText(currentLaboratory.getCity());
-        proUserNameTf.setText(currentLaboratory.getUserName());
-    }
-    @FXML
-    void canceProlHandler(ActionEvent event) {
-
-    }
-
-    @FXML
-    void editProHandler(ActionEvent event) throws IOException {
-        textFieldStatus(true);
-        if(editBtn.getText().equals("Save")){
-                editProfile();
-        }
-        editBtn.setText("Save");
-    }
-    private boolean compareLaboratoryObjs(Laboratory obj1, Laboratory obj2){
-        if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
-                Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
-                Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) && Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase())){
-            return true;
-        }
-        return false;
-    }
-    public void editProfile() throws IOException {
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Laboratory.class)
-                .buildSessionFactory();
-
-        Session session = factory.getCurrentSession();
-        try{
-            session.beginTransaction();
-
-            Laboratory laboratory = session.get(Laboratory .class, currentLaboratory.getLaboratoryId());
-            laboratory.setFirstName(firstNameTf.getText());
-            laboratory.setLastName(lastNameTf.getText());
-            laboratory.setPassword(passwordTf.getText());
-            laboratory.setSex(genderTf.getText().toLowerCase().charAt(0));
-            laboratory.setPhoneNumber(phonTf.getText());
-            laboratory.setCity(cityTf.getText());
-            laboratory.setUserName(proUserNameTf.getText());
-            if(compareLaboratoryObjs(laboratory,currentLaboratory)){
-                new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
-            }else {
-                if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),proUserNameTf.getText())){
-                    new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-                    if(Warning.isOk){
-                        session.getTransaction().commit();
-                        NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
-                    }
-                }else {
-                    new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
-                }
-            }
-        } finally {
-            factory.close();
-            session.close();
-        }
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        DatabaseThread.start();
 
         VisibilityTest();
-        TableOperation();
-        searchFieldHandler(PendingPatientList,PendingPatientTableView,PatientSearchTF);
+        populatePendingTable(pendingPatientList);
+        searchFieldHandler(pendingPatientList,PendingPatientTableView,PatientSearchTF);
         displayProfile();
+
         profilePane.setVisible(false);
         profileOpacityPane.setVisible(false);
         coverPane.setVisible(false);
@@ -338,6 +202,118 @@ public class LaboratoryWindowController implements Initializable {
         exitBtn.setOnMouseClicked(event -> {
             TransitionController.exitHandler(profilePane, profileOpacityPane);
         });
+        refreshTable();
+    }
+
+    private void refreshTable() {
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                int pendingPatientListSize = pendingPatientList.size();
+                int activePatientListSize = activePatientList.size();
+                int recordedDataPatientListSize = recordedDataPatientList.size();
+                int waitingPatientListSize = waitingPatientList.size();
+                while (DatabaseThread.RUNNING) {
+                    Thread.sleep(1000);
+                    if(isOnPending) {
+                        pendingPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
+                        if(pendingPatientListSize != pendingPatientList.size()) {
+                            Platform.runLater(() -> {
+                                populatePendingTable(pendingPatientList);
+                            });
+                            pendingPatientListSize = pendingPatientList.size();
+                        }
+                    }
+                    else if(isOnActive) {
+                        activePatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1"));
+                        if(activePatientListSize != activePatientList.size()){
+                            Platform.runLater(() -> {
+                                populateActivePatientTable(activePatientList);
+                            });
+                            activePatientListSize = activePatientList.size();
+                        }
+                    }
+                    else if(isOnWaiting) {
+                        waitingPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where labActives = 1 and onWaiting=1"));
+                        if(waitingPatientListSize != waitingPatientList.size()) {
+                            Platform.runLater(()  -> {
+                                populateWaitingPatient(waitingPatientList);
+                            });
+                            waitingPatientListSize = waitingPatientList.size();
+                        }
+                    }
+                    else if(isOnRecord) {
+                        recordedDataPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0"));
+                        if(recordedDataPatientListSize != recordedDataPatientList.size()){
+                            Platform.runLater(() -> {
+                               populateRecordTable(recordedDataPatientList);
+                            });
+                            recordedDataPatientListSize = recordedDataPatientList.size();
+                        }
+                    }
+                }
+                return null;
+            }
+        };
+        Thread dbThread = new Thread(task);
+        dbThread.setDaemon(true);
+        dbThread.start();
+    }
+
+    void goToView(boolean active, boolean pending, boolean record, boolean waiting){
+        pendingPnl.setVisible(pending);
+        isOnPending = pending;
+        waitingPnl.setVisible(waiting);
+        isOnWaiting = waiting;
+        activePnl.setVisible(active);
+        isOnActive = active;
+        recordPnl.setVisible(record);
+        isOnRecord = record;
+    }
+
+    @FXML
+    void handleActiveButton(ActionEvent event) {
+        //some specification will be done here to access Active Patients only
+        activePatientList =FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1"));
+        populateActivePatientTable(activePatientList);
+        goToView(true,false,false,false);
+        activePnl.toFront();
+        searchFieldHandler(activePatientList,ActivePatientTableView,PatientSearchTF);
+        SearchField();
+
+    }
+
+    @FXML
+    void handlePendingButton(ActionEvent event) {
+        //some Specification will be done here to access only Pending Patients
+        pendingPatientList = FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 0"));
+        populatePendingTable(pendingPatientList);
+        goToView(false,true,false,false);
+        SearchField();
+        pendingPnl.toFront();
+        searchFieldHandler(pendingPatientList,PendingPatientTableView,PatientSearchTF);
+    }
+
+    @FXML
+    void handleRecordButton(ActionEvent event) {
+        //Some specification will be done here To Access Patients that are treated by Specific Laboratory Technician
+        recordedDataPatientList =FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient"));
+        populateRecordTable(recordedDataPatientList);
+        goToView(false,false,true,false);
+        SearchField();
+        recordPnl.toFront();
+        searchFieldHandler(recordedDataPatientList,RecordedPatientTableView,PatientSearchTF);
+    }
+
+    @FXML
+    void handleWaitingButton(ActionEvent event) {
+        //some specification wil be done here to access only waiting Patients from the whole lists
+        waitingPatientList =FXCollections.observableArrayList(Main.controller1.loadSpecificPatientData("from Patient where labActives = 1 and onWaiting = 1"));
+        populateWaitingPatient(waitingPatientList);
+        goToView(false,false, false,true);
+        SearchField();
+        waitingPnl.toFront();
+        searchFieldHandler(waitingPatientList,WaitingPatientTableView,PatientSearchTF);
     }
 
     public void VisibilityTest(){
@@ -347,60 +323,8 @@ public class LaboratoryWindowController implements Initializable {
         recordPnl.setVisible(false);
     }
 
-    public void TableOperation(){
+    public void populateWaitingPatient(ObservableList<Patient> WaitingPatientList){
 
-        PendingPatientTableView.setRowFactory(tv -> {
-            TableRow<Patient> row = new TableRow<>(); // get the row
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
-                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
-                    try {
-                        new WindowChangeController().popupWindow1(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            return row ;
-        });
-
-        /** Pending Patient Table List Operation **/
-        PendingKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
-        PendingSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
-        PendingAddDateCol.setCellValueFactory(new PropertyValueFactory<Patient,Date>("date"));
-        PendingAgecol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("age"));
-        PendingFirstNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("firstName"));
-        PendingLastNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("lastName"));
-        PendingOrderNoCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("patientId"));
-        PendingSexCol.setCellValueFactory(new PropertyValueFactory<Patient,Character>("sex"));
-        PendingPhoneNumbelCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
-        PendingCitycol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
-        PendingPatientTableView.setItems(PendingPatientList);
-
-        /**Active Patient Table List Operation**/
-        ActiveKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
-        ActiveSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
-        ActiveAddDateCol.setCellValueFactory(new PropertyValueFactory<Patient,Date>("date"));
-        ActiveAgeCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("age"));
-        ActiveFirstNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("firstName"));
-        ActiveLastNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("lastName"));
-        ActiveOrderNoCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("patientId"));
-        ActiveSexCol.setCellValueFactory(new PropertyValueFactory<Patient,Character>("sex"));
-        ActivePhoneNumberCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
-        ActiveCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
-        ActivePatientTableView.setItems(ActivePatientList);
-        /**Recorded Patient on the laboratory Technician Id **/
-        RecordKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
-        RecordSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
-        RecordAddDateCol.setCellValueFactory(new PropertyValueFactory<Patient,Date>("date"));
-        RecordAgeCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("age"));
-        RecordFirstNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("firstName"));
-        RecordLastNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("lastName"));
-        RecordOrderNoCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("patientId"));
-        RecordSexCol.setCellValueFactory(new PropertyValueFactory<Patient,Character>("sex"));
-        RecordPhoneNumberCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
-        RecordCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
-        RecordedPatientTableView.setItems(RecordedDataPatientList);
         WaitingPatientTableView.setRowFactory(tv -> {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
@@ -432,11 +356,88 @@ public class LaboratoryWindowController implements Initializable {
 
     }
 
+    private void populateRecordTable(ObservableList<Patient> RecordedDataPatientList) {
+        RecordedPatientTableView.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = RecordedPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().PopUpLabRecord(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+//                         new WindowChangeController().popupWindow1(event, "../View/DocLabResultView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
+        /**Recorded Patient on the laboratory Technician Id **/
+        RecordKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
+        RecordSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
+        RecordAddDateCol.setCellValueFactory(new PropertyValueFactory<Patient, Date>("date"));
+        RecordAgeCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("age"));
+        RecordFirstNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("firstName"));
+        RecordLastNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("lastName"));
+        RecordOrderNoCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("patientId"));
+        RecordSexCol.setCellValueFactory(new PropertyValueFactory<Patient,Character>("sex"));
+        RecordPhoneNumberCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
+        RecordCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
+        RecordedPatientTableView.setItems(RecordedDataPatientList);
+    }
+
+    private void populateActivePatientTable(ObservableList<Patient> ActivePatientList) {
+        /**Active Patient Table List Operation**/
+        ActiveKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
+        ActiveSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
+        ActiveAddDateCol.setCellValueFactory(new PropertyValueFactory<Patient, Date>("date"));
+        ActiveAgeCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("age"));
+        ActiveFirstNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("firstName"));
+        ActiveLastNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("lastName"));
+        ActiveOrderNoCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("patientId"));
+        ActiveSexCol.setCellValueFactory(new PropertyValueFactory<Patient,Character>("sex"));
+        ActivePhoneNumberCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
+        ActiveCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
+        ActivePatientTableView.setItems(ActivePatientList);
+    }
+
+    private void populatePendingTable(ObservableList<Patient> PendingPatientList) {
+        PendingPatientTableView.setRowFactory(tv -> {
+            TableRow<Patient> row = new TableRow<>(); // get the row
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
+                    Patient rowData = PendingPatientTableView.getSelectionModel().getSelectedItem(); //get the object in the row and assign it to patient object
+                    try {
+                        new WindowChangeController().popupWindow1(event, "../View/LabToDocView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
+
+        /** Pending Patient Table List Operation **/
+        PendingKebeleCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("kebele"));
+        PendingSubCityCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("subcity"));
+        PendingAddDateCol.setCellValueFactory(new PropertyValueFactory<Patient, Date>("date"));
+        PendingAgecol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("age"));
+        PendingFirstNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("firstName"));
+        PendingLastNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("lastName"));
+        PendingOrderNoCol.setCellValueFactory(new PropertyValueFactory<Patient,Integer>("patientId"));
+        PendingSexCol.setCellValueFactory(new PropertyValueFactory<Patient,Character>("sex"));
+        PendingPhoneNumbelCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
+        PendingCitycol.setCellValueFactory(new PropertyValueFactory<Patient,String>("City"));
+        PendingPatientTableView.setItems(PendingPatientList);
+
+    }
+
     public void SearchField(){
-        FilteredList<Patient> Pending_PatientList=new FilteredList<>(PendingPatientList, p ->true);
-        FilteredList<Patient> Waiting_PatientList=new FilteredList<>(WaitingPatientList, p ->true);
-        FilteredList<Patient> Active_PatientList=new FilteredList<>(ActivePatientList, p ->true);
-        FilteredList<Patient> Record_PatientList=new FilteredList<>(RecordedDataPatientList, p ->true);
+        FilteredList<Patient> Pending_PatientList=new FilteredList<>(pendingPatientList, p ->true);
+        FilteredList<Patient> Waiting_PatientList=new FilteredList<>(waitingPatientList, p ->true);
+        FilteredList<Patient> Active_PatientList=new FilteredList<>(activePatientList, p ->true);
+        FilteredList<Patient> Record_PatientList=new FilteredList<>(recordedDataPatientList, p ->true);
         FilteredList<Patient> list;
         TableView<Patient> TableViews;
 // conditions that are checked on the visibility of AnchorPanes
@@ -489,7 +490,6 @@ public class LaboratoryWindowController implements Initializable {
         TableViews.setItems(sortedList);
     }
 
-
     public void translateTransitionBack(AnchorPane pane, double move, double sec){
         TranslateTransition translateTransition=new TranslateTransition(Duration.seconds(sec),pane);
         translateTransition.setByX(move);
@@ -514,6 +514,42 @@ public class LaboratoryWindowController implements Initializable {
         profilePane.setVisible(true);
     }
 
+    public void editProfile() throws IOException {
+        SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Laboratory.class)
+                .buildSessionFactory();
+
+        Session session = factory.getCurrentSession();
+        try{
+            session.beginTransaction();
+
+            Laboratory laboratory = session.get(Laboratory .class, currentLaboratory.getLaboratoryId());
+            laboratory.setFirstName(firstNameTf.getText());
+            laboratory.setLastName(lastNameTf.getText());
+            laboratory.setPassword(passwordTf.getText());
+            laboratory.setSex(genderTf.getText().toLowerCase().charAt(0));
+            laboratory.setPhoneNumber(phonTf.getText());
+            laboratory.setCity(cityTf.getText());
+            laboratory.setUserName(proUserNameTf.getText());
+            if(compareLaboratoryObjs(laboratory,currentLaboratory)){
+                new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
+            }else {
+                if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),proUserNameTf.getText())){
+                    new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                    if(Warning.isOk){
+                        session.getTransaction().commit();
+                        NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
+                    }
+                }else {
+                    new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+                }
+            }
+        } finally {
+            factory.close();
+            session.close();
+        }
+    }
 
     @FXML
     void signOutHandler(ActionEvent event) throws IOException {
@@ -521,5 +557,65 @@ public class LaboratoryWindowController implements Initializable {
         if (Warning.isOk) {
             new WindowChangeController().signOut(event, "../view/Login.fxml");
         }
+        DatabaseThread.terminate();
     }
+
+    private boolean compareLaboratoryObjs(Laboratory obj1, Laboratory obj2){
+        if(Objects.equals(obj1.getFirstName().toLowerCase(), obj2.getFirstName().toLowerCase()) && Objects.equals(obj1.getLastName().toLowerCase(), obj2.getLastName().toLowerCase()) &&
+                Objects.equals(obj1.getUserName().toLowerCase(), obj2.getUserName().toLowerCase()) &&  Objects.equals(obj1.getPassword().toLowerCase(), obj2.getPassword().toLowerCase()) &&
+                Objects.equals(obj1.getPhoneNumber(), obj2.getPhoneNumber()) && Objects.equals(obj1.getSex(), obj2.getSex()) &&  Objects.equals(obj1.getCity().toLowerCase(), obj2.getCity().toLowerCase())){
+            return true;
+        }
+        return false;
+    }
+
+    @FXML
+    void canceProlHandler(ActionEvent event) {
+
+    }
+
+    @FXML
+    void editProHandler(ActionEvent event) throws IOException {
+        textFieldStatus(true);
+        if(editBtn.getText().equals("Save")){
+            editProfile();
+        }
+        editBtn.setText("Save");
+    }
+
+    // profile Handler
+    private void textFieldStatus(boolean status) {
+        firstNameTf.setEditable(false);
+        lastNameTf.setEditable(false);
+        passwordTf.setEditable(status);
+        genderTf.setEditable(false);
+        cityTf.setEditable(false);
+        proUserNameTf.setEditable(status);
+        phonTf.setEditable(false);
+        srartHrTf.setEditable(false);
+        endHrTf.setEditable(false);
+
+    }
+
+    public void displayProfile(){
+        textFieldStatus(false);
+        String startTime = new DataLoader().formatTime(currentLaboratory.getWorkingStartTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+        String endTime = new DataLoader().formatTime(currentLaboratory.getWorkingEndTime().format(DateTimeFormatter.ofPattern("HH:mm"))) ;
+        String sex = null;
+        if(currentLaboratory.getSex() == 'm') {
+            sex = "Male";
+        }else if(currentLaboratory.getSex() == 'f'){
+            sex = "Female";
+        }
+        firstNameTf.setText(currentLaboratory.getFirstName());
+        lastNameTf.setText(currentLaboratory.getLastName());
+        genderTf.setText(sex);
+        passwordTf.setText(currentLaboratory.getPassword());
+        srartHrTf.setText(startTime);
+        endHrTf.setText(endTime);
+        phonTf.setText(currentLaboratory.getPhoneNumber());
+        cityTf.setText(currentLaboratory.getCity());
+        proUserNameTf.setText(currentLaboratory.getUserName());
+    }
+
 }

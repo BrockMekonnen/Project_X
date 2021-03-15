@@ -47,4 +47,12 @@ public class IncomeAnalysis {
     public SimpleObjectProperty<Double> tableIncomeGetter(){
         return new SimpleObjectProperty<>(totalIncome);
     }
+
+    @Override
+    public String toString() {
+        return "IncomeAnalysis{" +
+                "date=" + date +
+                ", totalIncome=" + totalIncome +
+                '}';
+    }
 }

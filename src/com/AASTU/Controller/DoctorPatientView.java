@@ -3,7 +3,10 @@ package com.AASTU.Controller;
 import com.AASTU.Model.ClinicalNotes;
 import com.AASTU.Model.LabRequest;
 import com.AASTU.Model.Patient;
+import com.AASTU.utils.DatabaseThread;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,10 +62,49 @@ public class DoctorPatientView implements Initializable{
     private Patient patient;
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        DatabaseThread.startClinicalNoteThread();
     }
+
+    private void refreshNodeList() {
+        Task<Void> task = new Task<Void>() {
+
+            int listSize =new DataLoader().loadClincalNotes(patient).size();
+
+            @Override
+            protected Void call() throws Exception {
+                String clinicalNote = "";
+                if(listSize > 0){
+                    clinicalNote = new DataLoader().loadClincalNotes(patient).get(listSize - 1).getNotes();
+                }
+                while(DatabaseThread.CLINICALNOTERUNNING) {
+                    Thread.sleep(1000);
+                    List<ClinicalNotes> list =new DataLoader().loadClincalNotes(patient);
+                    if(listSize != list.size()){
+                        Platform.runLater(() -> {
+                            refreshNodes(list);
+                        });
+                        listSize = list.size();
+                    }
+                    if(listSize > 0){
+                        if(!clinicalNote.equals(new DataLoader().loadClincalNotes(patient).get(listSize - 1).getNotes())){
+                            Platform.runLater(() -> {
+                                refreshNodes(list);
+                            });
+                            clinicalNote = new DataLoader().loadClincalNotes(patient).get(listSize - 1).getNotes();
+                        }
+                    }
+                }
+                return null;
+            }
+        };
+        Thread dbThread = new Thread(task);
+        dbThread.setDaemon(true);
+        dbThread.start();
+    }
+
     private void refreshNodes(List<ClinicalNotes> list){
 
         pnl_Scroll.getChildren().clear();
@@ -92,7 +134,6 @@ public class DoctorPatientView implements Initializable{
         change.clinicalNotesView(event,"../View/ClinicalNoteAdd.fxml");
     }
 
-
     /** this function accepts Patient Object and assign
      * some values to the textField */
     public void setObject(Patient object){
@@ -109,7 +150,7 @@ public class DoctorPatientView implements Initializable{
         dateFld.setText(object.getDate().format(formatter));
         idFld.setText(String.valueOf(object.getPatientId()));
         refreshNodes(new DataLoader().loadClincalNotes(object));
-
+        refreshNodeList();
     }
 
     @FXML
@@ -140,6 +181,7 @@ public class DoctorPatientView implements Initializable{
     @FXML
     void handleExitButton(ActionEvent event) {
         WindowChangeController.closeWindow();
+        DatabaseThread.terminateClinicalNoteThread();
     }
 
     @FXML

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1307.0" stylesheets="@LabToDoc.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AASTU.Controller.LabToDocViewController">
     <children>
@@ -55,12 +55,16 @@
                 </JFXButton>
             </children>
         </AnchorPane>
-      <ScrollPane id="scrollPane" layoutX="2.0" layoutY="74.0" prefHeight="674.0" prefWidth="1305.0" stylesheets="@DoctorPatientView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <ScrollPane id="scrollPane" layoutX="13.0" layoutY="74.0" prefHeight="768.0" prefWidth="1296.0" stylesheets="@DoctorPatientView.css" AnchorPane.bottomAnchor="-84.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="-1.0">
         <content>
-          <AnchorPane fx:id="rootAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="1200.0" prefWidth="1200.0" />
+          <AnchorPane fx:id="rootAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="1180.0" prefWidth="1200.0">
+               <children>
+                  <VBox fx:id="VboxForChildren" layoutX="-3.0" prefHeight="1100.0" prefWidth="1200.0" />
+                  <JFXButton fx:id="Next" layoutX="1170.0" layoutY="1000.0" onAction="#NextResult" prefHeight="42.0" prefWidth="80.0" style="-fx-background-radius: 10px; -fx-border-radius: 50px; -fx-background-color: E1F5FE;" text="Next Result" textFill="#030303" wrapText="true" />
+                  <JFXButton fx:id="Previous" layoutX="1040.0" layoutY="1000.0" onAction="#PreviousResult" prefHeight="42.0" prefWidth="120.0" style="-fx-background-radius: 10px; -fx-border-radius: 50px; -fx-background-color: #E1F5FE;" text="Previous Result" textFill="#030303" wrapText="true" />
+               </children></AnchorPane>
         </content>
       </ScrollPane>
-      <Pane prefHeight="113.0" prefWidth="468.0" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="3.0" />
     </children>
     <effect>
         <DropShadow blurType="GAUSSIAN" />
