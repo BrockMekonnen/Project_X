@@ -25,7 +25,6 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -42,39 +41,15 @@ public class LoginController implements Initializable{
     @FXML
     private JFXPasswordField password;
 
-
-//    List<Doctor> doctors = new DataLoader().loadDoctorsData();
-//    List<Laboratory> laboratories = new DataLoader().loadLaboratoriestData();
-//    List<Secretary> secretaries = new DataLoader().loadSecretariesData();
-
     @FXML
     private JFXProgressBar progressBar;
 
     @FXML
     private JFXButton signIn;
 
-
     Secretary secretary;
     Doctor doctor;
     Laboratory laboratory;
-
-//    private Doctor checkPrivilage(String userName, String password){
-//        Doctor doctor = null;
-////        boolean doctorExit = false;
-//        for(Doctor doctor1: doctors){
-//            if(doctor1.getUserName().equals(userName) && doctor1.getPassword().equals(password)){
-////                doctorExit = true;
-//                doctor = doctor1;
-//            }
-//        }
-//        return doctor;
-////        if(doctorExit){
-////            return doctor;
-////        }else {
-////            return null;
-////        }
-//    }
-
     @FXML
     void signIn(ActionEvent event) {
         progressBar.setVisible(true);
@@ -83,35 +58,6 @@ public class LoginController implements Initializable{
         String name = userName.getText();
         String pass = password.getText();
             if(source.equals("sec")){
-
-                secretary = new DataLoader().secretaryObj(pass, name);
-                if(secretary != null){
-                    if (Objects.equals(secretary.getUserName(), name) && Objects.equals(secretary.getPassword(),pass) ){
-                        SecretaryWindowController.setCurrentSecretary(secretary);
-                        new WindowChangeController().changeWindow(event,"../view/SecretaryWindow.fxml");
-                    }else {
-                        errorLabel.setAlignment(Pos.CENTER);
-                        errorLabel.setVisible(true);
-                    }
-                }else {
-                    errorLabel.setAlignment(Pos.CENTER);
-                    errorLabel.setVisible(true);
-                }
-            } else if(source.equals("doc")){
-                doctor = new DataLoader().doctorObj(pass, name);
-//                doctor = checkPrivilage(pass, name);
-                if(doctor != null){
-                    if (Objects.equals(doctor.getUserName(), name) && Objects.equals(doctor.getPassword(),pass) ) {
-                        DoctorWindowController.setCurrentDoctor(doctor);
-                        new WindowChangeController().changeWindow(event, "../view/DoctorWindow.fxml");
-                    }else {
-                        errorLabel.setAlignment(Pos.CENTER);
-                        errorLabel.setVisible(true);
-                    }
-                }else {
-                    errorLabel.setAlignment(Pos.CENTER);
-                    errorLabel.setVisible(true);
-
                 try {
                     onSecretarySignIn(event, name, pass);
                 } catch (IOException e) {
@@ -168,14 +114,8 @@ public class LoginController implements Initializable{
                 Platform.runLater(() -> {
                     try {
                         new WindowChangeController().changeWindow(event, "../view/LaboratoryWindow.fxml");
-
-                    }else {
-                        errorLabel.setAlignment(Pos.CENTER);
-                        errorLabel.setVisible(true);
-
                     } catch (IOException e) {
                         e.printStackTrace();
-
                     }
                 });
             }else {
@@ -271,6 +211,7 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
+                            errorLabel.setText("Check Your Spellings!");
                         }
                 }else {
                     errorLabel.setAlignment(Pos.CENTER);
@@ -285,6 +226,7 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
+                            errorLabel.setText("Check Your Spellings!");
                         }
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
@@ -307,6 +249,7 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
+                            errorLabel.setText("Check Your Spellings!");
                         }
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
