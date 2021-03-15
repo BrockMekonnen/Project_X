@@ -25,6 +25,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -47,17 +48,58 @@ public class LoginController implements Initializable{
     @FXML
     private JFXButton signIn;
 
+
     Secretary secretary;
     Doctor doctor;
     Laboratory laboratory;
+
+
+
     @FXML
-    void signIn(ActionEvent event) {
+    void signIn(ActionEvent event) throws IOException {
         progressBar.setVisible(true);
         signIn.setDisable(true);
         Thread taskThread = new Thread(() -> {
         String name = userName.getText();
         String pass = password.getText();
             if(source.equals("sec")){
+
+                secretary = new DataLoader().secretaryObj(pass, name);
+                if(secretary != null){
+                    if (Objects.equals(secretary.getUserName(), name) && Objects.equals(secretary.getPassword(),pass) ){
+                        SecretaryWindowController.setCurrentSecretary(secretary);
+                        try {
+                            new WindowChangeController().changeWindow(event,"../view/SecretaryWindow.fxml");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        errorLabel.setAlignment(Pos.CENTER);
+                        errorLabel.setVisible(true);
+                    }
+                }else {
+                    errorLabel.setAlignment(Pos.CENTER);
+                    errorLabel.setVisible(true);
+                }
+            } else if(source.equals("doc")){
+                doctor = new DataLoader().doctorObj(pass, name);
+//                doctor = checkPrivilage(pass, name);
+                if(doctor != null){
+                    if (Objects.equals(doctor.getUserName(), name) && Objects.equals(doctor.getPassword(),pass) ) {
+                        DoctorWindowController.setCurrentDoctor(doctor);
+                        try {
+                            new WindowChangeController().changeWindow(event, "../view/DoctorWindow.fxml");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        errorLabel.setAlignment(Pos.CENTER);
+                        errorLabel.setVisible(true);
+                    }
+                }else {
+                    errorLabel.setAlignment(Pos.CENTER);
+                    errorLabel.setVisible(true);
+
                 try {
                     onSecretarySignIn(event, name, pass);
                 } catch (IOException e) {
@@ -82,7 +124,7 @@ public class LoginController implements Initializable{
             }
         });
         taskThread.start();
-    }
+
 
     private void onManagerSignIn(ActionEvent event, String name, String pass) {
         if(name.equals("admin")  && pass.equals("admin") ) {
@@ -114,8 +156,14 @@ public class LoginController implements Initializable{
                 Platform.runLater(() -> {
                     try {
                         new WindowChangeController().changeWindow(event, "../view/LaboratoryWindow.fxml");
+
+                    }else {
+                        errorLabel.setAlignment(Pos.CENTER);
+                        errorLabel.setVisible(true);
+
                     } catch (IOException e) {
                         e.printStackTrace();
+
                     }
                 });
             }else {
@@ -211,7 +259,6 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
-                            errorLabel.setText("Check Your Spellings!");
                         }
                 }else {
                     errorLabel.setAlignment(Pos.CENTER);
@@ -226,7 +273,6 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
-                            errorLabel.setText("Check Your Spellings!");
                         }
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
@@ -249,7 +295,6 @@ public class LoginController implements Initializable{
                         }else {
                             errorLabel.setAlignment(Pos.CENTER);
                             errorLabel.setVisible(true);
-                            errorLabel.setText("Check Your Spellings!");
                         }
                     }else {
                         errorLabel.setAlignment(Pos.CENTER);
@@ -262,10 +307,20 @@ public class LoginController implements Initializable{
         if(event.getCode() == KeyCode.BACK_SPACE){
             new WindowChangeController().changeWindow1(event,"../View/IdentificationPane.fxml");
         }
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        progressBar.setVisible(false);
+
     }
+
+
+    private void onSecretarySignIn(ActionEvent event, String name, String pass) {
+
+    }
+
+}
+
+
+
+
 }
