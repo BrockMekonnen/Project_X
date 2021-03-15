@@ -240,7 +240,11 @@ public class SecretaryPatientView implements Initializable {
 
     /* this function accepts Patient Object and assign
     * some values to the textField */
-    public void setObject(Patient object){
+    public void setObject(Patient object, boolean isActive){
+        if(isActive){
+            activateBtn.setVisible(false);
+            editBtn.setTranslateX(100);
+        }
         patientObj = object;
         String sex = null;
         if(object.getSex() == 'm') {

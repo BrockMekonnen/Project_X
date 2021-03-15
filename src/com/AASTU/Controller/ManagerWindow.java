@@ -432,7 +432,7 @@ public class ManagerWindow implements Initializable {
         Secretary secretary = secretaryTable1.getSelectionModel().getSelectedItem();
         if (secretary != null) {
             new WindowChangeController().warningPopup("Check Deleting", "Are You Sure To delete?","warn_confirm.png");
-            if(Warning.isOk){
+            if(Warning.isOk) {
                 secretaryTable1.getItems().remove(secretary);
                 SessionFactory factory = new Configuration()
                         .configure("hibernate.cfg.xml")
@@ -449,9 +449,8 @@ public class ManagerWindow implements Initializable {
                     factory.close();
                     session.close();
                 }
+                NotificationController.deletedNotification("Secretaries deleted", "deleted Successfully", "warn_delete.png");
             }
-            NotificationController.deletedNotification("Secretaries deleted","deleted Successfully","warn_delete.png");
-
         }else {
             new WindowChangeController().warningPopup("No selection", "There is no Selected Person", "warn_confirm.png");
         }
