@@ -6,8 +6,10 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -53,18 +55,14 @@ public class NewOutPatient implements Initializable {
         LocalDate startDate = this.startDate.getValue();
         LocalDate endDate = this.endDate.getValue();
         if(validateUserInputForOut()){
-            if(ExceptionHandler.validateOutPatientDate(startDate,endDate)){
-                new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
-                PatientRegistration.startDate = startDate;
-                PatientRegistration.endDate = endDate;
-                if(patient != null){
-                new DataSaver().saveOutPatient(patient, startDate, endDate);
-                }
-                isAdd = true;
-                WindowChangeController.closeWindow();
-            }else {
-                new WindowChangeController().warningPopup("Validate Dates", "Incorrect Dates, Please enter valid dates! ","warn_confirm.png");
+            new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it?", "warn_confirm.png");
+            PatientRegistration.startDate = startDate;
+            PatientRegistration.endDate = endDate;
+            if(patient != null){
+            new DataSaver().saveOutPatient(patient, startDate, endDate);
             }
+            isAdd = true;
+            WindowChangeController.closeWindow();
         }else {
             new WindowChangeController().warningPopup("Validate Fields", "Please Fill the Date First! ","warn_confirm.png");
 

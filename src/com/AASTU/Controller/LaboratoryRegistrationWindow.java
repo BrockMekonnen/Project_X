@@ -1,10 +1,12 @@
 package com.AASTU.Controller;
 
+import com.AASTU.Model.Doctor;
 import com.AASTU.Model.Laboratory;
 import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Session;
@@ -15,7 +17,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class LaboratoryRegistrationWindow implements Initializable {
@@ -68,8 +69,6 @@ public class LaboratoryRegistrationWindow implements Initializable {
     @FXML
     private JFXTextField userNameTf;
     private char sex;
-
-    List<Laboratory> laboratories = new DataLoader().loadLaboratoriestData();
     public boolean validatUserInput() throws IOException {
         if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
                 lastNameTf.getText().trim().isEmpty() || userNameTf.getText().isEmpty()|| userNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
@@ -81,14 +80,6 @@ public class LaboratoryRegistrationWindow implements Initializable {
         }
         return true;
     }
-    private boolean checkLaboratoriesUserName(String userName){
-        for (Laboratory laboratory: laboratories){
-            if(laboratory.getUserName().toLowerCase().equals(userName.toLowerCase())){
-                return true;
-            }
-        }
-        return false;
-    }
     @Override
     public void initialize(URL location, ResourceBundle resources){
         addedTf.setDisable(true);
@@ -97,7 +88,7 @@ public class LaboratoryRegistrationWindow implements Initializable {
 
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
-        boolean userNameExist = checkLaboratoriesUserName(userNameTf.getText());
+        boolean userNameExist = new DataLoader().laboratoriestUserNameExist(userNameTf.getText());
         if(validatUserInput()){
             if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(),lastNameTf) && ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf) &&
                ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf)){

@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class SecretaryRegistration implements Initializable {
@@ -67,7 +66,6 @@ public class SecretaryRegistration implements Initializable {
 
     private char sex;
 
-    List<Secretary> secretaries = new DataLoader().loadSecretariesData();
     public boolean validatUserInput() throws IOException {
         if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
                 lastNameTf.getText().trim().isEmpty() || userNameTf.getText().isEmpty()|| userNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() ||
@@ -78,15 +76,6 @@ public class SecretaryRegistration implements Initializable {
             return false;
         }
         return true;
-    }
-
-    private boolean checkSecretaryUserName(String userName){
-        for (Secretary secretary: secretaries){
-            if(secretary.getUserName().toLowerCase().equals(userName.toLowerCase())){
-                return true;
-            }
-        }
-        return false;
     }
     private void saveNewSecretary(){
 
@@ -126,7 +115,7 @@ public class SecretaryRegistration implements Initializable {
 
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
-        boolean userNameExist = checkSecretaryUserName(userNameTf.getText());
+        boolean userNameExist = new DataLoader().secretaryUserNameExist(userNameTf.getText());
         if (validatUserInput()) {
             if (ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(),lastNameTf) && ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf) &&
                 ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf)) {

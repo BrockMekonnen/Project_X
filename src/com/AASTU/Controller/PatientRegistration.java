@@ -71,6 +71,9 @@ public class PatientRegistration implements Initializable{
     private JFXTextField phoneNumberTf;
 
     @FXML
+    private JFXTextField ageTf;
+
+    @FXML
     private JFXComboBox<String> cboCalender;
 
     @FXML
@@ -128,7 +131,7 @@ public class PatientRegistration implements Initializable{
         monthCombo.setItems(months);
         dayCombo.setItems(days);
     }
-    void checkBirth() {
+    void checkBirth(){
         if(cboCalender.getValue().equals("E.C")){
             DateTime ethioDate = new DateTime(yearCombo.getValue(), getIntMonth(monthCombo.getValue()), dayCombo.getValue(),12,0, 0,EthiopicChronology.getInstance());
             DateTime gcDate = ethioDate.withChronology(GregorianChronology.getInstance());
@@ -144,22 +147,6 @@ public class PatientRegistration implements Initializable{
             day = dayCombo.getValue();
         }
 
-    }
-    double getAge(){
-        double age;
-        // the given year and the current year the same but the month is differ
-        if(LocalDate.now().getYear() == year){
-            if(LocalDate.now().getMonthValue() - month < 10){
-                age = (Double.valueOf(LocalDate.now().getMonthValue()) - month) / 10;
-            }else {
-                age = (Double.valueOf(LocalDate.now().getMonthValue()) - month) / 100;
-            }
-        }else {
-            // the given year and the current year is differ
-            age = LocalDate.now().getYear() - year;
-        }
-
-        return age;
     }
     private int getIntMonth(String stringMonth){
         if(cboCalender.getValue().equals("E.C")){
@@ -258,11 +245,11 @@ public class PatientRegistration implements Initializable{
         if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
                 lastNameTf.getText().trim().isEmpty() || cboGender.getSelectionModel().isEmpty() || dayCombo.getSelectionModel().isEmpty()||
                 monthCombo.getSelectionModel().isEmpty()|| yearCombo.getSelectionModel().isEmpty() || cboCalender.getValue().isEmpty()||
-                phoneNumberTf.getText().isEmpty() || phoneNumberTf.getText().trim().isEmpty() || cityTf.getText().isEmpty() ||
-                cityTf.getText().trim().isEmpty() || subcityTf.getText().isEmpty() || subcityTf.getText().trim().isEmpty() ||
-                kebeleTf.getText().isEmpty() || kebeleTf.getText().trim().isEmpty()|| houseNuberTf.getText().isEmpty() ||
-                houseNuberTf.getText().trim().isEmpty()) {
-            return false;
+                ageTf.getText().isEmpty()|| ageTf.getText().trim().isEmpty() || phoneNumberTf.getText().isEmpty() ||
+                phoneNumberTf.getText().trim().isEmpty() || cityTf.getText().isEmpty() || cityTf.getText().trim().isEmpty() ||
+                subcityTf.getText().isEmpty() || subcityTf.getText().trim().isEmpty() || kebeleTf.getText().isEmpty() ||
+                kebeleTf.getText().trim().isEmpty()|| houseNuberTf.getText().isEmpty() || houseNuberTf.getText().trim().isEmpty()) {
+             return false;
         }
         return true;
     }
@@ -289,14 +276,13 @@ public class PatientRegistration implements Initializable{
 
             session.beginTransaction();
             checkBirth();
-            System.out.println(LocalDate.now().getMonthValue());
             //this if condition is temporary and it is not finished
             if (NewOutPatient.isAdd && Warning.isOk) {
-                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),getAge(),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Double.parseDouble(ageTf.getText()),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 outPatient.setStartDate(startDate);
                 outPatient.setEndDate(endDate);
                 outPatient.setPatientStatus(true);
-                outPatient.setPatientStatus(false);
+                outPatient.setPatientStatus(true);
                 outPatient.setOutPatinet(true);
                 outPatient.setFromSec(true);
                 outPatient.setDocActives(true);
@@ -304,7 +290,7 @@ public class PatientRegistration implements Initializable{
                 NewOutPatient.isAdd = false;
             } else {
 
-                Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(),getAge(),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+               Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Double.parseDouble(ageTf.getText()),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 patient.setOutPatinet(false);
 
                 patient.setPatientStatus(true);
@@ -313,7 +299,7 @@ public class PatientRegistration implements Initializable{
 
                 patient.setPatientStatus(true);
                 session.save(patient);
-                new DataSaver().Activity("Registration",new SecretaryWindowController().SecretaryId,patient.getPatientId());
+                new DataSaver().Activity("Registration",SecretaryWindowController.getCurrentSecretary().getSecretaryId(),patient.getPatientId());
             }
             session.getTransaction().commit();
         } finally {
@@ -332,21 +318,6 @@ public class PatientRegistration implements Initializable{
 
     public void ConfirmationAction() throws IOException {
         if(validatUserInput()) {
-
-            if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
-                    ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) &&
-                    ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
-                if(ExceptionHandler.isValidDate(cboCalender, yearCombo)){
-                    new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-                    if(Warning.isOk) {
-                        saveNewPatient();
-                        WindowChangeController.closeWindow();
-                        NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
-                        //                     new SecretaryWindowController().displayPatients();
-                    }
-                }else {
-                    new WindowChangeController().warningPopup("Saving Error", "Invalid Year! Please Check the year. ","warn_confirm.png");
-
           if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
               ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) &&
               ExceptionHandler.validateNum(ageTf.getText(),ageTf) && ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
@@ -356,11 +327,11 @@ public class PatientRegistration implements Initializable{
                      WindowChangeController.closeWindow();
                      new DataSaver().updatePatientAnalysis(LocalDate.now());
                      NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
-
                 }
-            }else {
-                new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
-            }
+          }else {
+            new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
+
+          }
         }else {
             new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
         }
