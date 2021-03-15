@@ -1,10 +1,6 @@
 package com.AASTU.Controller;
 
-import com.AASTU.Model.ClinicalNotes;
 import com.AASTU.Model.Doctor;
-import com.AASTU.Model.LabRequest;
-import com.AASTU.Model.LaboratoryRequest.*;
-import com.AASTU.Model.Patient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -20,8 +16,8 @@ import org.hibernate.cfg.Configuration;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DoctorRegistrationWindow implements Initializable {
@@ -66,7 +62,7 @@ public class DoctorRegistrationWindow implements Initializable {
     private JFXTextField userNameTf;
 
     private char sex;
-
+    List<Doctor> DoctorLists = new DataLoader().loadDoctorsData();
     // to check all text fields are get data
     public boolean validatUserInput() throws IOException {
         if(firstNameTf.getText().isEmpty() || firstNameTf.getText().trim().isEmpty() || lastNameTf.getText().isEmpty() ||
@@ -109,21 +105,42 @@ public class DoctorRegistrationWindow implements Initializable {
     void handleDiscardBtn(ActionEvent event) {
         WindowChangeController.closeWindow();
     }
+//    boolean validateWorkingHr(LocalTime startHr, LocalTime endHr){
+//        int stHr = startHr.getHour(), stMinute  = startHr.getMinute();
+//        int enHr = endHr.getHour(), enMunute = endHr.getMinute();
+//            for(Doctor list : lists ){
+//                if(list.getWorkingStartTime().equals(startHr)){
+//                      return false;
+//                }else {
+//                    return true;
+//                }
+//            }
+//        return false;
+//    }
 
+    private boolean checkDoctorUserName(String userName){
+        for (Doctor doctor: DoctorLists){
+            if(doctor.getUserName().toLowerCase().equals(userName.toLowerCase())){
+                return true;
+            }
+        }
+        return false;
+    }
     @FXML
     void handleConfirmButton(ActionEvent event) throws IOException {
-        boolean userNameCheck = new DataLoader().doctorUserNameExist(userNameTf.getText());
+//        boolean userNameCheck = new DataLoader().doctorUserNameExist(userNameTf.getText());
+        boolean userNameCheck = checkDoctorUserName(userNameTf.getText());
         System.out.println(userNameCheck);
         if(validatUserInput()){
             if(ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(),lastNameTf)&& ExceptionHandler.ValidatePhone(phoneTf.getText(),phoneTf) &&
               ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf)){
                 if(!userNameCheck){
-                  new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-                 if(Warning.isOk){
-                    saveNewDoctor();
-                    WindowChangeController.closeWindow();
-                     NotificationController.savedNotification("Doctor Added","Registered Successfully ","warn_confirm.png");
-                 }
+                        new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
+                         if(Warning.isOk){
+                            saveNewDoctor();
+                            WindowChangeController.closeWindow();
+                             NotificationController.savedNotification("Doctor Added","Registered Successfully ","warn_confirm.png");
+                         }
                }else {
                     new WindowChangeController().warningPopup("Saving Error", "The User Name is Already Used!!","warn_confirm.png");
                 }

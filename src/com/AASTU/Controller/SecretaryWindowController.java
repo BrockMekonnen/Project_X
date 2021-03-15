@@ -32,6 +32,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import java.util.Calendar;
+
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -234,10 +236,13 @@ public class SecretaryWindowController implements Initializable {
     @FXML
     private JFXTextField searchfield;
 
+    public int SecretaryId=12;
+
     private boolean isOnActiveTable = true;
     private boolean isOnPayTable = false;
     private boolean isOnOutTable = false;
     private boolean isOnRecordTable = false;
+
 
     public static Secretary getCurrentSecretary() {
         return currentSecretary;
@@ -255,7 +260,6 @@ public class SecretaryWindowController implements Initializable {
 
     // prices list
     ObservableList<Pricing> pricings = FXCollections.observableArrayList(new DataLoader().loadPricing());
-
 
     public void refreshTable(){
 
@@ -362,6 +366,7 @@ public class SecretaryWindowController implements Initializable {
     }
 
 
+
     // profile handler
     private void textFieldStatus(boolean status) {
         firstNameTf.setEditable(false);
@@ -383,7 +388,7 @@ public class SecretaryWindowController implements Initializable {
     void editProHandler(ActionEvent event) throws IOException {
         textFieldStatus(true);
         if(editBtn.getText().equals("Save")){
-                editProfile();
+            editProfile();
         }
         editBtn.setText("Save");
 
@@ -415,20 +420,20 @@ public class SecretaryWindowController implements Initializable {
             secretary.setPhoneNumber(phonTf.getText());
             secretary.setCity(cityTf.getText());
             secretary.setUserName(proUserNameTf.getText());
-             if(compareSecretaryObjs(secretary,currentSecretary)){
-                 new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
-             }else {
-                 if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),
-                    proUserNameTf.getText())){
-                     new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
-                     if(Warning.isOk){
-                         session.getTransaction().commit();
-                         NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
-                     }
-                 }else {
-                     new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
-                 }
-             }
+            if(compareSecretaryObjs(secretary,currentSecretary)){
+                new WindowChangeController().warningPopup("Checking", "You Didn't Make any change?", "warn_confirm.png");
+            }else {
+                if(ExceptionHandler.validatUserInput(firstNameTf.getText(),lastNameTf.getText(),passwordTf.getText(),genderTf.getText(),cityTf.getText(),phonTf.getText(),
+                        proUserNameTf.getText())){
+                    new WindowChangeController().warningPopup("Checking", "Are you sure to save your Edit?", "warn_confirm.png");
+                    if(Warning.isOk){
+                        session.getTransaction().commit();
+                        NotificationController.savedNotification("Profile Edited","Profile Updated successfully!","warn_confirm.png");
+                    }
+                }else {
+                    new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
+                }
+            }
         } finally {
             factory.close();
             session.close();
@@ -451,20 +456,18 @@ public class SecretaryWindowController implements Initializable {
         isOnRecordTable = record;
     }
 
-
-
     /**
      * ROW CLICK HANDLER
      * */
 
-    public void rowClickHandler( TableView<Patient> tableName) {
+    public void rowClickHandler( TableView<Patient> tableName, boolean active) {
         tableName.setRowFactory(tv -> {
             TableRow<Patient> row = new TableRow<>(); // get the row
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {// if double click and row is not empty
                     Patient rowData = row.getItem(); //get the object in the row and assign it to patient object
                     try {
-                        new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData); // created new object of WindowChangeController and called popup ( with Patient object)
+                        new WindowChangeController().secretaryPatientView(event, "../View/SecretaryPatientView.fxml", rowData, active); // created new object of WindowChangeController and called popup ( with Patient object)
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -530,10 +533,17 @@ public class SecretaryWindowController implements Initializable {
     }
 
     //  method to display patient records
+
+    public void displayRecords() {
+        allPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where secActives = 1 and outPatient = 0"));
+        searchFieldHandler(allPatientList,recordTable,searchfield);
+        rowClickHandler(recordTable,true);
+
     public void displayRecords(ObservableList<Patient> recordList) {
 //        allPatientList =
         searchFieldHandler(recordList,recordTable,searchfield);
         rowClickHandler(recordTable);
+
         patientIdColRec.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         fullNameColRec.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Patient, String>, ObservableValue<String>>() {
             @Override
@@ -547,11 +557,35 @@ public class SecretaryWindowController implements Initializable {
         cityColRec.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
         recordTable.setItems(recordList);
     }
+    // method to display the registered patients to the table
+    public  void displayPatients() {
+        normalPatientList =FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where outPatient = 0 and patientStatus = 1"));
+        searchFieldHandler(normalPatientList,mainTable,searchfield);
+        rowClickHandler(mainTable,false);
+        // to display normal patient
+        patientIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("lastName"));
+        sexCol.setCellValueFactory(new PropertyValueFactory<Patient, Character>("sex"));
+        ageCol.setCellValueFactory(new PropertyValueFactory<Patient, Double>("age"));
+
+        addedDateCol.setCellValueFactory(new PropertyValueFactory<Patient, LocalDate>("date"));
+        phoneNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("phoneNumber"));
+        cityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("city"));
+        subCityCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("subcity"));
+        kebeleCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("kebele"));
+        houseNoCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("houseNumber"));
+        mainTable.setItems(normalPatientList);
+
+    }
+    public void displayOutPatient(){
+        outPatientList = FXCollections.observableArrayList(new DataLoader().loadSpecificPatientData("from Patient where patientStatus = 0 and outPatient = 1"));
+
 
     public void displayOutPatient(ObservableList<Patient> outPatientList){
 //        outPatientList
         searchFieldHandler(outPatientList,outPatientTable,searchfield);
-        rowClickHandler(outPatientTable);
+        rowClickHandler(outPatientTable,true);
         // to display out patient
         patientOutIdCol.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("patientId"));
         firstNameOutCol.setCellValueFactory(new PropertyValueFactory<Patient, String>("firstName"));

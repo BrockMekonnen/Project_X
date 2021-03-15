@@ -198,7 +198,7 @@ public class DoctorPatientView implements Initializable{
         patient.setFromLab(false);
         patient.setLabActives(false);
         patient.setOnWaiting(false);
-        patient.setSecActives(false);
+        patient.setSecActives(true);
         patient.setPatientStatus(false);
 
         if( patient.isOutPatinet()){// check if patient is out Patient
