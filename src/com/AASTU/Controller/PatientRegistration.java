@@ -131,22 +131,30 @@ public class PatientRegistration implements Initializable{
         monthCombo.setItems(months);
         dayCombo.setItems(days);
     }
-    void checkBirth(){
+    boolean checkBirth(){
         if(cboCalender.getValue().equals("E.C")){
             DateTime ethioDate = new DateTime(yearCombo.getValue(), getIntMonth(monthCombo.getValue()), dayCombo.getValue(),12,0, 0,EthiopicChronology.getInstance());
             DateTime gcDate = ethioDate.withChronology(GregorianChronology.getInstance());
-            System.out.println(gcDate.getYear());
             year = gcDate.getYear();
-            System.out.println(gcDate.getMonthOfYear());
             month = gcDate.getMonthOfYear();
-            System.out.println(gcDate.getDayOfMonth());
             day = gcDate.getDayOfMonth();
+            System.out.println("from check box"+ year +" " + month + " " + day);
+            if(year == LocalDate.now().getYear()){
+                if(month == LocalDate.now().getMonthValue()){
+                    return LocalDate.now().getDayOfMonth() - day > 0;
+                }else return month <= LocalDate.now().getMonthValue();
+            }
         }else if(cboCalender.getValue().equals("G.C")){
             year = yearCombo.getValue();
             month = getIntMonth(monthCombo.getValue());
             day = dayCombo.getValue();
+            if(year == LocalDate.now().getYear()){
+                if(month == LocalDate.now().getMonthValue()){
+                    return LocalDate.now().getDayOfMonth() - day > 0;
+                }else return month <= LocalDate.now().getMonthValue();
+            }
         }
-
+        return true;
     }
     private int getIntMonth(String stringMonth){
         if(cboCalender.getValue().equals("E.C")){
@@ -254,7 +262,17 @@ public class PatientRegistration implements Initializable{
         return true;
     }
 
-    public void saveNewPatient() {
+    public double calculateAge(int month, int year, String calenderType ){
+        double calculatedAge = 0;
+        if (year == LocalDate.now().getYear()){
+                calculatedAge = LocalDate.now().getMonthValue() - month;
+            }else {
+                calculatedAge = LocalDate.now().getYear() - year;
+            }
+        return calculatedAge;
+    }
+
+    public void saveNewPatient(double age) {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Patient.class)
@@ -278,7 +296,7 @@ public class PatientRegistration implements Initializable{
             checkBirth();
             //this if condition is temporary and it is not finished
             if (NewOutPatient.isAdd && Warning.isOk) {
-                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Double.parseDouble(ageTf.getText()),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+                Patient outPatient = new Patient(firstNameTf.getText(), lastNameTf.getText(),age,day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 outPatient.setStartDate(startDate);
                 outPatient.setEndDate(endDate);
                 outPatient.setPatientStatus(true);
@@ -290,7 +308,7 @@ public class PatientRegistration implements Initializable{
                 NewOutPatient.isAdd = false;
             } else {
 
-               Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(),Double.parseDouble(ageTf.getText()),day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
+               Patient patient = new Patient(firstNameTf.getText(), lastNameTf.getText(),age,day,month,year, getSex(cboGender.getValue()), LocalDate.now(), phoneNumberTf.getText(), cityTf.getText(), subcityTf.getText(), kebeleTf.getText(), houseNuberTf.getText());
                 patient.setOutPatinet(false);
 
                 patient.setPatientStatus(true);
@@ -310,28 +328,34 @@ public class PatientRegistration implements Initializable{
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cboCalender.getSelectionModel().select("E.C");
+        cboCalender.getSelectionModel().select("G.C");
         patientAddedDateTF.setDisable(true);
         patientAddedDateTF.setText(LocalDate.now().format( DateTimeFormatter.ofPattern("dd/LLLL/yyyy")));
         arrange();
     }
 
     public void ConfirmationAction() throws IOException {
+        double age = 0;
         if(validatUserInput()) {
-          if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
-              ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) &&
-              ExceptionHandler.validateNum(ageTf.getText(),ageTf) && ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
-               new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ","warn_confirm.png");
-                if(Warning.isOk) {
-                     saveNewPatient();
-                     WindowChangeController.closeWindow();
-                     new DataSaver().updatePatientAnalysis(LocalDate.now());
-                     NotificationController.savedNotification("Patient Added","Registered Successfully ","warn_confirm.png");
+            if( ExceptionHandler.isLetter(firstNameTf.getText(),firstNameTf) && ExceptionHandler.isLetter(lastNameTf.getText(), lastNameTf) &&
+                    ExceptionHandler.isLetter(cityTf.getText(),cityTf) && ExceptionHandler.validateNum(kebeleTf.getText(),kebeleTf) &&
+                    ExceptionHandler.validateNum(ageTf.getText(),ageTf) && ExceptionHandler.ValidatePhone(phoneNumberTf.getText(),phoneNumberTf)){
+                if(checkBirth()) {
+                    new WindowChangeController().warningPopup("Confirm Saving", "Are you sure. you went to save it? ", "warn_confirm.png");
+                    age = calculateAge(month, year,cboCalender.getValue());
+                    if (Warning.isOk) {
+                        saveNewPatient(age);
+                        WindowChangeController.closeWindow();
+                        NotificationController.savedNotification("Patient Added", "Registered Successfully ", "warn_confirm.png");
+//                        secretaryWindowController.refresh();
+                    }
+                }else {
+                    new WindowChangeController().warningPopup("Saving Error", "Invalid Birth Date! Please Check. ","warn_confirm.png");
                 }
-          }else {
-            new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
+            }else {
+                new WindowChangeController().warningPopup("Saving Error", "Invalid Inputs! Please Check. ","warn_confirm.png");
 
-          }
+            }
         }else {
             new WindowChangeController().warningPopup("Validate Fields", "Please Fill the fields! ","warn_confirm.png");
         }

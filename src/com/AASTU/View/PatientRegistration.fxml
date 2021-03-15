@@ -138,7 +138,6 @@
                   <JFXComboBox fx:id="cboCalender" prefHeight="33.0" prefWidth="83.0" style="-fx-border-color: #01579B; -fx-background-color: #ffffff;" unFocusColor="#e1f5fe" StackPane.alignment="TOP_LEFT">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="E.C" />
                            <String fx:value="G.C" />
                         </FXCollections>
                      </items>
